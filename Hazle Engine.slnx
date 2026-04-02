@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+  </Configurations>
+  <Project Path="Sample Project/Sample Project.vcxproj" Id="9ad501ba-fb96-458d-af86-b0ead00c44df" />
+  <Project Path="Hazle Engine.vcxproj" Id="ecc41c8c-291e-43ce-a53f-fe5fb96641fb" />
+</Solution>
