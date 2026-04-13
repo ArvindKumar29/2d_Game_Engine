@@ -1,0 +1,9 @@
+[submodule "src/external-libraries/spdlog"]
+	path = src/external-libraries/spdlog
+	url = https://github.com/gabime/spdlog
+[submodule "HazleEngine/external-libraries/GLFW"]
+	path = HazleEngine/external-libraries/GLFW
+	url = https://github.com/TheCherno/glfw
+[submodule "vendor/GLFW"]
+	path = vendor/GLFW
+	url = https://github.com/TheCherno/glfw
