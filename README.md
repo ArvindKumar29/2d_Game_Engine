@@ -10,9 +10,8 @@
 > A high-performance 2D Game Engine built from scratch using C++ and OpenGL.
 
 ## 📸 Screenshots
-*(Yahan apne us rangeen triangle aur ImGui window ka screenshot daalna hai)*
+<img width="1082" height="752" alt="image" src="https://github.com/user-attachments/assets/1a027861-5ed9-426b-adb7-658070814245" />
 
-![Engine Screenshot](link_to_your_image_here.png)
 
 ## ✨ Current Features
 * **Core Architecture:** Custom application layer and window abstraction.
@@ -24,7 +23,7 @@
 ## 🚀 Getting Started
 
 ### Prerequisites
-* Visual Studio 2022 (with Desktop development with C++)
+* Visual Studio 2026 (with Desktop development with C++)
 * Git
 
 ### Building the Engine
