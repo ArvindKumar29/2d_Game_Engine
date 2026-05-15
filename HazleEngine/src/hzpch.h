@@ -1,0 +1,17 @@
+#pragma once
+
+#include <iostream>
+#include <functional>
+#include <algorithm>
+#include <utility>
+#include <memory>
+
+#include <vector>
+#include <sstream>
+#include <unordered_map>
+#include <unordered_set>
+#include "core.h"
+
+#ifdef HZ_PLATFORM_WINDOWS
+	#include <Windows.h>
+#endif

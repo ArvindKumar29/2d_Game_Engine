@@ -7,3 +7,9 @@
 [submodule "vendor/GLFW"]
 	path = vendor/GLFW
 	url = https://github.com/TheCherno/glfw
+[submodule "HazleEngine/external-libraries/imgui"]
+	path = HazleEngine/external-libraries/imgui
+	url = https://github.com/TheCherno/imgui
+[submodule "HazleEngine/external-libraries/GLM"]
+	path = HazleEngine/external-libraries/GLM
+	url = https://github.com/g-truc/glm

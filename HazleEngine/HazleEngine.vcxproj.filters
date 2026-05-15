@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Hazle">
+      <UniqueIdentifier>{792A4D0D-E53E-75BE-AEC0-181E1A9471EF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hazle\Core">
+      <UniqueIdentifier>{71C2D07B-5D7A-12C9-C681-EB24B258ADB9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hazle\Event">
+      <UniqueIdentifier>{8AE210F6-F697-89EB-7F8C-83C2EB4080EF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hazle\ImGui">
+      <UniqueIdentifier>{63D653F6-CF8B-CCEB-5880-C6C2C434C3EF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform">
+      <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\Windows">
+      <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Platform\OpenGL">
+      <UniqueIdentifier>{e50901ac-4b8a-40b4-895d-7e680f54966a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Hazle\Application.h">
+      <Filter>Hazle</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazle\Core\KeyCodes.h">
+      <Filter>Hazle\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazle\Core\MouseCodes.h">
+      <Filter>Hazle\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazle\EntryPoint.h">
+      <Filter>Hazle</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazle\Event\ApplicationEvent.h">
+      <Filter>Hazle\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazle\Event\Event.h">
+      <Filter>Hazle\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazle\Event\KeyEvent.h">
+      <Filter>Hazle\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazle\Event\MouseEvent.h">
+      <Filter>Hazle\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazle\Hazle.h">
+      <Filter>Hazle</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazle\ImGui\ImGuiLayer.h">
+      <Filter>Hazle\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazle\Input.h">
+      <Filter>Hazle</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazle\Layer.h">
+      <Filter>Hazle</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazle\LayerStack.h">
+      <Filter>Hazle</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazle\Log.h">
+      <Filter>Hazle</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazle\Window.h">
+      <Filter>Hazle</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazle\core.h">
+      <Filter>Hazle</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
+      <Filter>Platform\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="src\hzpch.h" />
+    <ClInclude Include="src\Hazle\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Hazle\Renderer\Shader.h" />
+    <ClInclude Include="src\Hazle\Renderer\Buffer.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="src\Hazle\Renderer\Renderer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Hazle\Application.cpp">
+      <Filter>Hazle</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hazle\ImGui\ImGuiBuild.cpp">
+      <Filter>Hazle\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hazle\ImGui\ImGuiLayer.cpp">
+      <Filter>Hazle\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hazle\Layer.cpp">
+      <Filter>Hazle</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hazle\LayerStack.cpp">
+      <Filter>Hazle</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hazle\Log.cpp">
+      <Filter>Hazle</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hazle\hzpch.cpp">
+      <Filter>Hazle</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
+      <Filter>Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Hazle\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Hazle\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\Hazle\Renderer\Renderer.cpp" />
+  </ItemGroup>
+</Project>
