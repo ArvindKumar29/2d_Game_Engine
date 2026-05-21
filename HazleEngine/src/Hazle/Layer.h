@@ -1,6 +1,7 @@
 #pragma once
 
 #include "core.h"
+#include "Core/Timestep.h"
 #include "Event/Event.h"
 
 namespace Hazle
@@ -13,7 +14,7 @@ namespace Hazle
 
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
-		virtual void OnUpdate() {}
+		virtual void OnUpdate(Timestep ts) {}
 		virtual void OnEvent(Event& event) {}
 		virtual void OnImGuiRender() {}
 

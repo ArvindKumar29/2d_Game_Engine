@@ -4,12 +4,11 @@
 #include "LayerStack.h" 
 #include "Event/ApplicationEvent.h"
 #include "ImGui/ImGuiLayer.h"
-#include "Renderer/Shader.h"
-#include "Renderer/Buffer.h"
+#include "Core/Timestep.h"
 
 namespace Hazle
 {
-	class HAZLE_API Application
+	class Application
 	{
 	public:
 		Application();
@@ -25,6 +24,7 @@ namespace Hazle
 
 		inline Window& GetWindow() { return *m_Window; }
 		inline static Application& Get() { return *s_Instance; }
+		void static Close();
 
 
 	private:
@@ -32,12 +32,8 @@ namespace Hazle
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		LayerStack m_LayerStack;
+		float m_LastFrameTime = 0.0f;
 		static Application* s_Instance;
-
-		unsigned int m_VertexArray;
-		std::unique_ptr<Shader> m_Shader;
-		std::unique_ptr<VertexBuffer> m_VertexBuffer;
-		std::unique_ptr<IndexBuffer> m_IndexBuffer;
 	};
 
 	// To be defined in client

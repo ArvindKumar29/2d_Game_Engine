@@ -1,6 +1,7 @@
 #include "hzpch.h"
 #include "WindowsWindow.h"
 
+#include "Hazle/Application.h"
 #include "Hazle/Event/ApplicationEvent.h"
 #include "Hazle/Event/KeyEvent.h"
 #include "Hazle/Event/MouseEvent.h"
@@ -19,6 +20,11 @@ namespace Hazle
 	Window* Window::Create(const WindowProps& props) 
 	{
 		return new WindowsWindow(props);
+	}
+	
+	void Window::Close()
+	{
+		Hazle::Application::Get().Close();
 	}
 
 	WindowsWindow::WindowsWindow(const WindowProps& props)

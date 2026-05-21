@@ -12,8 +12,8 @@ namespace Hazle {
 		unsigned int Height;
 
 		WindowProps(const std::string& title = "Hazle Engine",
-			unsigned int width = 1080,
-			unsigned int height = 720)
+			unsigned int width = 1440,
+			unsigned int height = 920)
 			: Title(title), Width(width), Height(height)
 		{}
 	};
@@ -35,6 +35,7 @@ namespace Hazle {
 		virtual bool IsVSync() const = 0;
 
 		static Window* Create(const WindowProps& props = WindowProps());
+		static void Close();
 		// public:
 		virtual void* GetNativeWindow() const { return m_NativeWindow; }
 
