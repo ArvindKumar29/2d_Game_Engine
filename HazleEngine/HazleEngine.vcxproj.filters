@@ -13,14 +13,17 @@
     <Filter Include="Hazle\ImGui">
       <UniqueIdentifier>{63D653F6-CF8B-CCEB-5880-C6C2C434C3EF}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Hazle\Renderer">
+      <UniqueIdentifier>{3F46466F-2B14-3A75-14A8-AA9B001516DA}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Platform">
       <UniqueIdentifier>{2AC788B4-1694-E3BF-3FAD-D1672BD9184E}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Platform\OpenGL">
+      <UniqueIdentifier>{1E7D2C1D-8A08-9AE1-9319-1DD6FF23F6E1}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Platform\Windows">
       <UniqueIdentifier>{64FBD71A-50F4-F66C-7926-DCF1657ED678}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Platform\OpenGL">
-      <UniqueIdentifier>{e50901ac-4b8a-40b4-895d-7e680f54966a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -31,6 +34,9 @@
       <Filter>Hazle\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Hazle\Core\MouseCodes.h">
+      <Filter>Hazle\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazle\Core\Timestep.h">
       <Filter>Hazle\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Hazle\EntryPoint.h">
@@ -66,11 +72,50 @@
     <ClInclude Include="src\Hazle\Log.h">
       <Filter>Hazle</Filter>
     </ClInclude>
+    <ClInclude Include="src\Hazle\Renderer\Buffer.h">
+      <Filter>Hazle\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazle\Renderer\GraphicsContext.h">
+      <Filter>Hazle\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazle\Renderer\OrthographicCamera.h">
+      <Filter>Hazle\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazle\Renderer\RenderCommand.h">
+      <Filter>Hazle\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazle\Renderer\Renderer.h">
+      <Filter>Hazle\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazle\Renderer\RendererAPI.h">
+      <Filter>Hazle\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazle\Renderer\Shader.h">
+      <Filter>Hazle\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazle\Renderer\VertexArray.h">
+      <Filter>Hazle\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Hazle\Window.h">
       <Filter>Hazle</Filter>
     </ClInclude>
     <ClInclude Include="src\Hazle\core.h">
       <Filter>Hazle</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h">
+      <Filter>Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h">
+      <Filter>Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsInput.h">
       <Filter>Platform\Windows</Filter>
@@ -79,23 +124,13 @@
       <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\hzpch.h" />
-    <ClInclude Include="src\Hazle\Renderer\GraphicsContext.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
-    <ClInclude Include="src\Hazle\Renderer\Shader.h" />
-    <ClInclude Include="src\Hazle\Renderer\Buffer.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
-    <ClInclude Include="src\Hazle\Renderer\Renderer.h" />
-    <ClInclude Include="src\Hazle\Renderer\VertexArray.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
-    <ClInclude Include="src\Hazle\Renderer\RendererAPI.h" />
-    <ClInclude Include="src\Hazle\Renderer\RenderCommand.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
-    <ClInclude Include="src\Hazle\Renderer\OrthographicCamera.h" />
-    <ClInclude Include="src\Hazle\Core\Timestep.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Hazle\Application.cpp">
       <Filter>Hazle</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hazle\Core\Timestep.cpp">
+      <Filter>Hazle\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Hazle\ImGui\ImGuiBuild.cpp">
       <Filter>Hazle\ImGui</Filter>
@@ -112,8 +147,44 @@
     <ClCompile Include="src\Hazle\Log.cpp">
       <Filter>Hazle</Filter>
     </ClCompile>
+    <ClCompile Include="src\Hazle\Renderer\Buffer.cpp">
+      <Filter>Hazle\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hazle\Renderer\OrthographicCamera.cpp">
+      <Filter>Hazle\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hazle\Renderer\RenderCommand.cpp">
+      <Filter>Hazle\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hazle\Renderer\Renderer.cpp">
+      <Filter>Hazle\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hazle\Renderer\RendererAPI.cpp">
+      <Filter>Hazle\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hazle\Renderer\Shader.cpp">
+      <Filter>Hazle\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hazle\Renderer\VertexArray.cpp">
+      <Filter>Hazle\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Hazle\hzpch.cpp">
       <Filter>Hazle</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
+      <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp">
+      <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp">
+      <Filter>Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp">
+      <Filter>Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
       <Filter>Platform\Windows</Filter>
@@ -121,17 +192,5 @@
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>Platform\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
-    <ClCompile Include="src\Hazle\Renderer\Shader.cpp" />
-    <ClCompile Include="src\Hazle\Renderer\Buffer.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
-    <ClCompile Include="src\Hazle\Renderer\Renderer.cpp" />
-    <ClCompile Include="src\Hazle\Renderer\VertexArray.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
-    <ClCompile Include="src\Hazle\Renderer\RendererAPI.cpp" />
-    <ClCompile Include="src\Hazle\Renderer\RenderCommand.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
-    <ClCompile Include="src\Hazle\Renderer\OrthographicCamera.cpp" />
-    <ClCompile Include="src\Hazle\Core\Timestep.cpp" />
   </ItemGroup>
 </Project>

@@ -49,7 +49,7 @@ project "HazleEngine"
 	includedirs {
 		"%{prj.name}/external-libraries/spdlog/include",
 		"%{prj.name}/external-libraries/glad/include",
-		"%{prj.name}/external-libraries/imgui",
+		-- "%{prj.name}/external-libraries/imgui",
 		"%{prj.name}/external-libraries/glm",
 		"%{prj.name}/src",
 		"%{IncludeDir.GLFW}",
@@ -113,7 +113,8 @@ project "Sandbox"
 	includedirs {
 		"HazleEngine/external-libraries/spdlog/include",
 		"%{IncludeDir.glm}",
-		"HazleEngine/src"
+		"HazleEngine/src",
+		"%{IncludeDir.imgui}"
 	}
 	
 	links {

@@ -3,8 +3,8 @@
 
 namespace Hazle
 {
-	std::shared_ptr<spdlog::logger> Log::s_CoreLogger;
-	std::shared_ptr<spdlog::logger> Log::s_ClientLogger;
+	Hazle::Ref<spdlog::logger> Log::s_CoreLogger;
+	Hazle::Ref<spdlog::logger> Log::s_ClientLogger;
 	void Log::init(){
 		spdlog::set_pattern("%^[%T] %n: %v%$");
 		

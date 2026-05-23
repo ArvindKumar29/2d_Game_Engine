@@ -22,7 +22,7 @@ namespace Hazle
 		return nullptr;
 	}
 
-	void RendererAPI::DrawIndexed(const std::shared_ptr<VertexArray>& vertexArray)
+	void RendererAPI::DrawIndexed(const Hazle::Ref<Hazle::VertexArray>& vertexArray)
 	{
 		
 	}

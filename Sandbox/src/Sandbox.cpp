@@ -1,10 +1,11 @@
 #include <Hazle/Hazle.h>
+//#include "imgui.h"
 
 class ExampleLayer : public Hazle::Layer
 {
 public:
 	ExampleLayer()
-		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition({ 0.0f, 0.0f, 0.0f }), m_CameraRotation(0.0f)
+		: Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9f), m_CameraPosition(0.0f), m_CameraRotation(0.0f), m_SquarePosition(0.0f), m_TrianglePosition(0.0f)
 	{
 		m_VertexArray.reset(Hazle::VertexArray::Create());
 
@@ -14,7 +15,7 @@ public:
 			 0.0f,  0.5f, 0.0f, 1.0f, 1.0f, 0.0f, 1.0f,
 		};
 
-		std::shared_ptr<Hazle::VertexBuffer> vertexBuffer;
+		Hazle::Ref<Hazle::VertexBuffer> vertexBuffer;
 		vertexBuffer.reset(Hazle::VertexBuffer::Create(vertices, sizeof(vertices)));
 
 		Hazle::BufferLayout layout = {
@@ -25,7 +26,7 @@ public:
 		m_VertexArray->AddVertexBuffer(vertexBuffer);
 
 		uint32_t indices[3] = { 0, 1, 2 };
-		std::shared_ptr<Hazle::IndexBuffer> indexBuffer;
+		Hazle::Ref<Hazle::IndexBuffer> indexBuffer;
 		indexBuffer.reset(Hazle::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
@@ -35,16 +36,16 @@ public:
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		m_SquareVA.reset(Hazle::VertexArray::Create());
 		float vertices2[3 * 4] = {
-			-0.7f, -0.7f, 0.0f,
-			 0.7f, -0.7f, 0.0f,
-			-0.7f,  0.7f, 0.0f,
-			 0.7f,  0.7f, 0.0f,
+			-0.5f, -0.5f, 0.0f,
+			 0.5f, -0.5f, 0.0f,
+			-0.5f,  0.5f, 0.0f,
+			 0.5f,  0.5f, 0.0f,
 		};
 		uint32_t indices2[6] = { 0, 1, 2, 1, 3, 2 };
-		std::shared_ptr<Hazle::VertexBuffer> squareVB;
+		Hazle::Ref<Hazle::VertexBuffer> squareVB;
 		squareVB.reset(Hazle::VertexBuffer::Create(vertices2, sizeof(vertices2)));
 		m_SquareVA->AddVertexBuffer(squareVB);
-		std::shared_ptr<Hazle::IndexBuffer> squareIB;
+		Hazle::Ref<Hazle::IndexBuffer> squareIB;
 		squareIB.reset(Hazle::IndexBuffer::Create(indices2, sizeof(indices2) / sizeof(uint32_t)));
 		m_SquareVA->SetIndexBuffer(squareIB);
 		///////////////////////////////////////////////////
@@ -65,6 +66,7 @@ public:
 			layout(location = 1) in vec4 a_Color;
 
 			uniform mat4 u_VP;
+			uniform mat4 u_Transform;
 			out vec3 v_Position;
 			out vec4 v_Color;
 
@@ -72,7 +74,7 @@ public:
 			{
 				v_Position = a_Position;
 				v_Color = a_Color;
-				gl_Position = u_VP * vec4(a_Position, 1.0);
+				gl_Position = u_VP * u_Transform * vec4(a_Position, 1.0);
 			} 
 		)";
 
@@ -89,7 +91,7 @@ public:
 				f_Color = vec4(v_Color.rgb, 1.0);					
 			}
 		)";
-		m_Shader.reset(new Hazle::Shader(vertexSrc, fragmentSrc));
+		m_Shader.reset(Hazle::Shader::Create(vertexSrc, fragmentSrc));
 
 		std::string vertexSrc2 = R"(
 			#version 330 core
@@ -97,12 +99,14 @@ public:
 			layout(location = 0) in vec3 a_Position;
 			
 			uniform mat4 u_VP;
+			uniform mat4 u_Transform;
+
 			out vec3 v_Position;
 
 			void main()
 			{
 				v_Position = a_Position;
-				gl_Position = u_VP * vec4(a_Position, 1.0);
+				gl_Position = u_VP * u_Transform * vec4(a_Position, 1.0);
 			} 
 		)";
 
@@ -112,15 +116,15 @@ public:
 			layout(location = 0) out vec4 f_Color;
 			
 			in vec3 v_Position;
-			in vec4 v_Color;
+			uniform vec3 u_Color;
 
 			void main()
 			{
-				f_Color = vec4(1.0, 0.0, 0.0, 0.0);					
+				f_Color = vec4(u_Color, 1.0);					
 			}
 		)";
 
-		m_Shader2.reset(new Hazle::Shader(vertexSrc2, fragmentSrc2));
+		m_Shader2.reset(Hazle::Shader::Create(vertexSrc2, fragmentSrc2));
 	}
 
 	void OnUpdate(Hazle::Timestep ts) override
@@ -155,6 +159,38 @@ public:
 		{
 			m_CameraRotation -= m_RotationSpeed * ts;
 		}
+		if (Hazle::Input::IsKeyPressed(Hazle::Key::A))
+		{
+			m_SquarePosition.x -= m_SquareSpeed * ts;
+		}
+		else if (Hazle::Input::IsKeyPressed(Hazle::Key::D))
+		{
+			m_SquarePosition.x += m_SquareSpeed * ts;
+		}
+		if (Hazle::Input::IsKeyPressed(Hazle::Key::W))
+		{
+			m_SquarePosition.y += m_SquareSpeed * ts;
+		}
+		else if (Hazle::Input::IsKeyPressed(Hazle::Key::S))
+		{
+			m_SquarePosition.y -= m_SquareSpeed * ts;
+		}
+		if (Hazle::Input::IsKeyPressed(Hazle::Key::J))
+		{
+			m_TrianglePosition.x -= m_TriangleSpeed * ts;
+		}
+		else if (Hazle::Input::IsKeyPressed(Hazle::Key::L))
+		{
+			m_TrianglePosition.x += m_TriangleSpeed * ts;
+		}
+		if (Hazle::Input::IsKeyPressed(Hazle::Key::I))
+		{
+			m_TrianglePosition.y += m_TriangleSpeed * ts;
+		}
+		else if (Hazle::Input::IsKeyPressed(Hazle::Key::K))
+		{
+			m_TrianglePosition.y -= m_TriangleSpeed * ts;
+		}
 
 
 		Hazle::RenderCommand::Clear();
@@ -164,14 +200,37 @@ public:
 		m_Camera.SetRotation(glm::radians(m_CameraRotation));
 
 		Hazle::Renderer::BeginScene(m_Camera);
-		Hazle::Renderer::Submit(m_Shader2, m_SquareVA);
-		Hazle::Renderer::Submit(m_Shader, m_VertexArray);
+
+		static glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
+		glm::mat4 triangleTransform;
+		glm::mat4 squareTransform;
+
+		std::dynamic_pointer_cast<Hazle::OpenGLShader>(m_Shader2)->Bind();
+		std::dynamic_pointer_cast<Hazle::OpenGLShader>(m_Shader2)->UploadUniformFloat3("u_Color", m_SquareColor);
+
+
+		for (int i = 0; i < 10; i++)
+		{
+			for (int j = 0; j < 10; j++)
+			{
+				glm::vec3 pos(j * 0.11f, i * 0.11f, 0.0f);
+				squareTransform = glm::translate(glm::mat4(1.0f), pos + m_SquarePosition) * scale;
+				triangleTransform = glm::translate(glm::mat4(1.0f), pos + m_TrianglePosition) * scale;
+				Hazle::Renderer::Submit(m_Shader2, m_SquareVA, squareTransform);
+				Hazle::Renderer::Submit(m_Shader, m_VertexArray, triangleTransform);
+				
+			}
+		}
+		//triangleTransform = glm::translate(glm::mat4(1.0f), m_TrianglePosition) * scale;
+		//Hazle::Renderer::Submit(m_Shader, m_VertexArray);
 		Hazle::Renderer::EndScene();
 	}
 
 	void OnImGuiRender() override
 	{
-	
+		ImGui::Begin("Settings");
+		ImGui::ColorEdit3("Square Color", glm::value_ptr(m_SquareColor));
+		ImGui::End();
 	}
 
 	void OnEvent(Hazle::Event& event) override
@@ -187,17 +246,27 @@ public:
 	}
 
 private:
-	std::shared_ptr<Hazle::Shader> m_Shader;
-	std::shared_ptr<Hazle::Shader> m_Shader2;
-	std::shared_ptr<Hazle::VertexArray> m_VertexArray;
-	std::shared_ptr<Hazle::VertexArray> m_SquareVA;
+
+	Hazle::Ref<Hazle::Shader> m_Shader;
+	Hazle::Ref<Hazle::Shader> m_Shader2;
+	Hazle::Ref<Hazle::VertexArray> m_VertexArray;
+	Hazle::Ref<Hazle::VertexArray> m_SquareVA;
 	Hazle::OrthographicCamera m_Camera;
 
 	glm::vec3 m_CameraPosition;
-	float m_CameraSpeed = 0.5f;
+	float m_CameraSpeed = 3.0f;
 	
 	float m_CameraRotation;
-	float m_RotationSpeed = 0.5f;
+	float m_RotationSpeed = 10.0f;
+
+	glm::vec3 m_SquarePosition;
+	float m_SquareSpeed = 1.0f;
+
+	glm::vec3 m_TrianglePosition;
+	float m_TriangleSpeed = 1.0f;
+
+	glm::vec3 m_SquareColor;
+
 };
 
 class sandbox : public Hazle::Application 
