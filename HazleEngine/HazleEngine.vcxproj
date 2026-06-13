@@ -78,7 +78,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DisableSpecificWarnings>4005;4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <PreprocessorDefinitions>HZ_PLATFORM_WINDOWS;HZ_BUILD_DLL;GLFW_INCLUDE_NONE;IMGUI_IMPL_OPENGL_LOADER_GLAD;_CRT_SECURE_NO_WARNINGS;HZ_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>external-libraries\spdlog\include;external-libraries\glad\include;external-libraries\glm;src;external-libraries\GLFW\include;external-libraries\imgui;src\Hazle;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>external-libraries\spdlog\include;external-libraries\glad\include;external-libraries\glm;src;external-libraries\GLFW\include;external-libraries\imgui;external-libraries\stb_image;src\Hazle;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -103,7 +103,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DisableSpecificWarnings>4005;4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <PreprocessorDefinitions>HZ_PLATFORM_WINDOWS;HZ_BUILD_DLL;GLFW_INCLUDE_NONE;IMGUI_IMPL_OPENGL_LOADER_GLAD;_CRT_SECURE_NO_WARNINGS;HZ_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>external-libraries\spdlog\include;external-libraries\glad\include;external-libraries\glm;src;external-libraries\GLFW\include;external-libraries\imgui;src\Hazle;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>external-libraries\spdlog\include;external-libraries\glad\include;external-libraries\glm;src;external-libraries\GLFW\include;external-libraries\imgui;external-libraries\stb_image;src\Hazle;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -132,7 +132,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DisableSpecificWarnings>4005;4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <PreprocessorDefinitions>HZ_PLATFORM_WINDOWS;HZ_BUILD_DLL;GLFW_INCLUDE_NONE;IMGUI_IMPL_OPENGL_LOADER_GLAD;_CRT_SECURE_NO_WARNINGS;HZ_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>external-libraries\spdlog\include;external-libraries\glad\include;external-libraries\glm;src;external-libraries\GLFW\include;external-libraries\imgui;src\Hazle;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>external-libraries\spdlog\include;external-libraries\glad\include;external-libraries\glm;src;external-libraries\GLFW\include;external-libraries\imgui;external-libraries\stb_image;src\Hazle;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -155,6 +155,7 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="external-libraries\stb_image\stb_image.h" />
     <ClInclude Include="src\Hazle\Application.h" />
     <ClInclude Include="src\Hazle\Core\KeyCodes.h" />
     <ClInclude Include="src\Hazle\Core\MouseCodes.h" />
@@ -177,6 +178,7 @@
     <ClInclude Include="src\Hazle\Renderer\Renderer.h" />
     <ClInclude Include="src\Hazle\Renderer\RendererAPI.h" />
     <ClInclude Include="src\Hazle\Renderer\Shader.h" />
+    <ClInclude Include="src\Hazle\Renderer\Texture.h" />
     <ClInclude Include="src\Hazle\Renderer\VertexArray.h" />
     <ClInclude Include="src\Hazle\Window.h" />
     <ClInclude Include="src\Hazle\core.h" />
@@ -184,12 +186,14 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\hzpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="external-libraries\stb_image\stb_image.cpp" />
     <ClCompile Include="src\Hazle\Application.cpp" />
     <ClCompile Include="src\Hazle\Core\Timestep.cpp" />
     <ClCompile Include="src\Hazle\ImGui\ImGuiBuild.cpp" />
@@ -203,6 +207,7 @@
     <ClCompile Include="src\Hazle\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Hazle\Renderer\RendererAPI.cpp" />
     <ClCompile Include="src\Hazle\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Hazle\Renderer\Texture.cpp" />
     <ClCompile Include="src\Hazle\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Hazle\hzpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
@@ -211,6 +216,7 @@
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />

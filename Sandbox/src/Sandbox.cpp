@@ -35,11 +35,11 @@ public:
 		///////////////////// SQUARE PART JUST TO TEST INDEX BUFFER BINDING TO DIFFERENT VERTEX ARRAY ////////////////////////////////
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		m_SquareVA.reset(Hazle::VertexArray::Create());
-		float vertices2[3 * 4] = {
-			-0.5f, -0.5f, 0.0f,
-			 0.5f, -0.5f, 0.0f,
-			-0.5f,  0.5f, 0.0f,
-			 0.5f,  0.5f, 0.0f,
+		float vertices2[5 * 4] = {
+			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+			 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f,
+			 0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
 		};
 		uint32_t indices2[6] = { 0, 1, 2, 1, 3, 2 };
 		Hazle::Ref<Hazle::VertexBuffer> squareVB;
@@ -51,6 +51,7 @@ public:
 		///////////////////////////////////////////////////
 		Hazle::BufferLayout layout2 = {
 			{Hazle::ShaderDataType::Float3, "a_Position"},
+			{Hazle::ShaderDataType::Float2, "a_TexCoord"}
 		};
 		squareVB->SetLayout(layout2);
 		m_SquareVA->AddVertexBuffer(squareVB);
@@ -125,6 +126,15 @@ public:
 		)";
 
 		m_Shader2.reset(Hazle::Shader::Create(vertexSrc2, fragmentSrc2));
+
+		m_TextureShader.reset(Hazle::Shader::Create("assets/Shaders/Texture.glsl"));
+		
+		m_Texture = Hazle::Texture2D::Create("assets/Checkerboard.png");
+		m_ArvindSignTexture = Hazle::Texture2D::Create("assets/sign2.png");
+
+		std::dynamic_pointer_cast<Hazle::OpenGLShader>(m_TextureShader)->Bind();
+		std::dynamic_pointer_cast<Hazle::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
+
 	}
 
 	void OnUpdate(Hazle::Timestep ts) override
@@ -202,11 +212,11 @@ public:
 		Hazle::Renderer::BeginScene(m_Camera);
 
 		static glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
-		glm::mat4 triangleTransform;
+		//glm::mat4 triangleTransform;
 		glm::mat4 squareTransform;
 
-		std::dynamic_pointer_cast<Hazle::OpenGLShader>(m_Shader2)->Bind();
-		std::dynamic_pointer_cast<Hazle::OpenGLShader>(m_Shader2)->UploadUniformFloat3("u_Color", m_SquareColor);
+		//std::dynamic_pointer_cast<Hazle::OpenGLShader>(m_Shader2)->Bind();
+		//std::dynamic_pointer_cast<Hazle::OpenGLShader>(m_Shader2)->UploadUniformFloat3("u_Color", m_SquareColor);
 
 
 		for (int i = 0; i < 10; i++)
@@ -215,17 +225,22 @@ public:
 			{
 				glm::vec3 pos(j * 0.11f, i * 0.11f, 0.0f);
 				squareTransform = glm::translate(glm::mat4(1.0f), pos + m_SquarePosition) * scale;
-				triangleTransform = glm::translate(glm::mat4(1.0f), pos + m_TrianglePosition) * scale;
+				//triangleTransform = glm::translate(glm::mat4(1.0f), pos + m_TrianglePosition) * scale;
 				Hazle::Renderer::Submit(m_Shader2, m_SquareVA, squareTransform);
-				Hazle::Renderer::Submit(m_Shader, m_VertexArray, triangleTransform);
+				//Hazle::Renderer::Submit(m_Shader, m_VertexArray, triangleTransform);
 				
 			}
 		}
+
+		m_Texture->Bind(0); 
+		Hazle::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		m_ArvindSignTexture->Bind(0);
+		Hazle::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 		//triangleTransform = glm::translate(glm::mat4(1.0f), m_TrianglePosition) * scale;
 		//Hazle::Renderer::Submit(m_Shader, m_VertexArray);
 		Hazle::Renderer::EndScene();
 	}
-
+	 
 	void OnImGuiRender() override
 	{
 		ImGui::Begin("Settings");
@@ -248,10 +263,12 @@ public:
 private:
 
 	Hazle::Ref<Hazle::Shader> m_Shader;
-	Hazle::Ref<Hazle::Shader> m_Shader2;
+	Hazle::Ref<Hazle::Shader> m_Shader2, m_TextureShader;
 	Hazle::Ref<Hazle::VertexArray> m_VertexArray;
 	Hazle::Ref<Hazle::VertexArray> m_SquareVA;
 	Hazle::OrthographicCamera m_Camera;
+
+	Hazle::Ref<Hazle::Texture2D> m_Texture, m_ArvindSignTexture;
 
 	glm::vec3 m_CameraPosition;
 	float m_CameraSpeed = 3.0f;

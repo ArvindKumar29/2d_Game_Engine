@@ -20,6 +20,7 @@
 #include "Renderer/Shader.h"
 #include "Renderer/Buffer.h"
 #include "Renderer/VertexArray.h"
+#include "Renderer/Texture.h"
 #include "Renderer/RenderCommand.h"
 #include "Renderer/RendererAPI.h"
 #include "Renderer/GraphicsContext.h"

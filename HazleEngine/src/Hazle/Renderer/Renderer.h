@@ -12,6 +12,7 @@ namespace Hazle
 	public:
 		static void BeginScene(const OrthographicCamera& camera);
 		static void EndScene();
+		static void Init();
 
 		static void Submit(const Hazle::Ref<Hazle::Shader>& shader, const Hazle::Ref<Hazle::VertexArray>& vertexArray, const glm::mat4& transform = glm::mat4(1.0f));
 

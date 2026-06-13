@@ -1,5 +1,9 @@
 #pragma once
 #include "Renderer/Shader.h"
+#include "glm/glm.hpp"
+//#include "glad/glad.h"
+
+typedef unsigned int GLenum;
 
 namespace Hazle
 {
@@ -7,6 +11,7 @@ namespace Hazle
 	{
 	public:
 		OpenGLShader(const std::string& vertexSrc, const std::string& fragmentSrc);
+		OpenGLShader(const std::string& path);
 		~OpenGLShader();
 
 		void Bind() const override;
@@ -22,6 +27,9 @@ namespace Hazle
 		void UploadUniformMat4(const std::string& name, const glm::mat4& mat);
 
 	private:
+		std::string ReadFile(const std::string& path);
+		std::unordered_map<GLenum, std::string> PreProcess(const std::string& source);
+		void compile(const std::unordered_map<GLenum, std::string>& shaderSources);
 		uint32_t m_RendererID;
 	};
 }

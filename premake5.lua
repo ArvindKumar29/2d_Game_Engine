@@ -17,6 +17,7 @@ IncludeDir["GLFW"] = "HazleEngine/external-libraries/GLFW/include"
 IncludeDir["glad"] = "HazleEngine/external-libraries/glad/include"
 IncludeDir["imgui"] = "HazleEngine/external-libraries/imgui"
 IncludeDir["glm"] = "HazleEngine/external-libraries/GLM"
+IncludeDir["stb_image"] = "HazleEngine/external-libraries/stb_image"
 
 include "HazleEngine/external-libraries/GLFW"
 include "HazleEngine/external-libraries/glad"
@@ -40,7 +41,9 @@ project "HazleEngine"
 		"%{prj.name}/src/**.cpp",
 
 		--"external-libraries/imgui/*.cpp",
-		--"external-libraries/imgui/*.h",
+		--"external-libraries/imgui/*.h",",
+		"external-libraries/stb_image/**.h",
+		"external-libraries/stb_image/**.cpp",
 	
 		--"{prj.name}/external-libraries/imgui/backends/imgui_impl_glfw.cpp",
 		--"{prj.name}/external-libraries/imgui/backends/imgui_impl_opengl3.cpp"
@@ -55,6 +58,7 @@ project "HazleEngine"
 		"%{IncludeDir.GLFW}",
 		-- "%{IncludeDir.glm}",
 		"%{IncludeDir.imgui}",
+		"%{IncludeDir.stb_image}",
 		"%{prj.name}/src/Hazle"
 	}
 
@@ -62,7 +66,8 @@ project "HazleEngine"
 		"GLFW",
 		"Glad",
 		"imgui",
-		"opengl32.lib"
+		"opengl32.lib",
+		--"stb_image"
 	}
 	
 	filter "system:windows"
