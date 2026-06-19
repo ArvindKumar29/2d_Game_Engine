@@ -44,7 +44,7 @@ public:
 		uint32_t indices2[6] = { 0, 1, 2, 1, 3, 2 };
 		Hazle::Ref<Hazle::VertexBuffer> squareVB;
 		squareVB.reset(Hazle::VertexBuffer::Create(vertices2, sizeof(vertices2)));
-		m_SquareVA->AddVertexBuffer(squareVB);
+		//m_SquareVA->AddVertexBuffer(squareVB);
 		Hazle::Ref<Hazle::IndexBuffer> squareIB;
 		squareIB.reset(Hazle::IndexBuffer::Create(indices2, sizeof(indices2) / sizeof(uint32_t)));
 		m_SquareVA->SetIndexBuffer(squareIB);
@@ -126,11 +126,12 @@ public:
 		)";
 
 		m_Shader2.reset(Hazle::Shader::Create(vertexSrc2, fragmentSrc2));
+		//m_TextureShader.reset(Hazle::Shader::Create(vertexSrc2, fragmentSrc2));
 
-		m_TextureShader.reset(Hazle::Shader::Create("assets/Shaders/Texture.glsl"));
+		m_TextureShader.reset(Hazle::Shader::Create("Assets/Shaders/Texture.glsl"));
 		
-		m_Texture = Hazle::Texture2D::Create("assets/Checkerboard.png");
-		m_ArvindSignTexture = Hazle::Texture2D::Create("assets/sign2.png");
+		m_Texture = Hazle::Texture2D::Create("Assets/Textures/Checkerboard.png");
+		m_ArvindSignTexture = Hazle::Texture2D::Create("Assets/Textures/sign2.png");
 
 		std::dynamic_pointer_cast<Hazle::OpenGLShader>(m_TextureShader)->Bind();
 		std::dynamic_pointer_cast<Hazle::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
@@ -215,8 +216,8 @@ public:
 		//glm::mat4 triangleTransform;
 		glm::mat4 squareTransform;
 
-		//std::dynamic_pointer_cast<Hazle::OpenGLShader>(m_Shader2)->Bind();
-		//std::dynamic_pointer_cast<Hazle::OpenGLShader>(m_Shader2)->UploadUniformFloat3("u_Color", m_SquareColor);
+		std::dynamic_pointer_cast<Hazle::OpenGLShader>(m_Shader2)->Bind();
+		std::dynamic_pointer_cast<Hazle::OpenGLShader>(m_Shader2)->UploadUniformFloat3("u_Color", m_SquareColor);
 
 
 		for (int i = 0; i < 10; i++)

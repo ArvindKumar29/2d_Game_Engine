@@ -99,7 +99,7 @@ namespace Hazle
 	std::string OpenGLShader::ReadFile(const std::string& path)
 	{
 		std::string result;
-		std::ifstream in(path, std::ios::in, std::ios::binary);
+		std::ifstream in(path, std::ios::in | std::ios::binary);
 		if (in)
 		{
 			in.seekg(0, std::ios::end);
@@ -111,6 +111,7 @@ namespace Hazle
 		else
 		{
 			HZ_CORE_ERROR("Could not open shader file {0}", path);
+			HZ_CORE_ASSERT(false, "Shader compilation failure!!!");
 		}
 		return result;
 	}
@@ -128,6 +129,8 @@ namespace Hazle
 			HZ_CORE_ASSERT(eol != std::string::npos, "Syntax error!!!");
 			size_t begin = pos + typeTokenLength + 1;
 			std::string type = source.substr(begin, eol - begin);
+			type.erase(std::remove_if(type.begin(), type.end(), ::isspace), type.end());
+
 			HZ_CORE_ASSERT(ShaderTypeFromString(type), "Invalid shader type specified!!!");
 			
 			size_t nextLinePos = source.find_first_not_of("\r\n", eol);
@@ -140,6 +143,8 @@ namespace Hazle
 	void OpenGLShader::compile(const std::unordered_map<GLenum, std::string>& shaderSources)
 	{
 		// CREATE AND ATTACH //
+		HZ_CORE_ASSERT(shaderSources.size() > 0, "WTF! Shader file is completely empty or #type is missing!");
+
 		GLuint program = glCreateProgram();
 		std::vector<GLenum> shaderIDs(shaderSources.size());
 
@@ -166,6 +171,8 @@ namespace Hazle
 				glDeleteShader(shader);
 				HZ_CORE_ERROR("Failed to compile {0} shader!!!", (type == GL_VERTEX_SHADER ? "vertex" : "fragment"));
 				HZ_CORE_ERROR("{0}", std::string(infoLog.data()));
+				
+				HZ_CORE_ASSERT(false, "Shader compilation failure!!!");
 				return;
 			}
 
