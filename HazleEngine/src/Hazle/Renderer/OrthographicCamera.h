@@ -15,6 +15,8 @@ namespace Hazle
 		float GetRotation() const { return m_Rotation; }
 		void SetRotation(const float rotation) { m_Rotation = rotation; RecalculateViewMatrix(); }
 
+		void SetProjection(float left, float right, float bottom, float top);
+
 		const glm::mat4& GetProjectionMatrix() const { return m_ProjectionMatrix; }
 		const glm::mat4& GetViewMatrix() const { return m_ViewMatrix; }
 		const glm::mat4& GetVPMatrix() const { return m_VPMatrix; }
@@ -25,9 +27,11 @@ namespace Hazle
 	private:
 		glm::vec3 m_Position = glm::vec3(0.0f);
 		float m_Rotation = 0.0f;
+
 		glm::mat4 m_ProjectionMatrix;
 		glm::mat4 m_ViewMatrix;
 		glm::mat4 m_VPMatrix;
 
 	};
+
 }

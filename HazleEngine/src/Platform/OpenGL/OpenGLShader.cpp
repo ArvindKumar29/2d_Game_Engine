@@ -17,19 +17,30 @@ namespace Hazle
 		return 0;
 	}
 	OpenGLShader::OpenGLShader(const std::string& path)
-	{
+	 {
 		std::string Source = ReadFile(path);
 		auto shaderSources = PreProcess(Source);
 		compile(shaderSources);
+
+		// Extract name from filepath
+		auto lastSlash = path.find_last_of("/\\");
+		lastSlash = lastSlash == std::string::npos ? 0 : lastSlash + 1;
+		auto lastDot = path.rfind('.');
+		auto count = lastDot == std::string::npos ? path.size() - lastSlash : lastDot - lastSlash;
+
+		m_Name = path.substr(lastSlash, count);
 	}
 
-	OpenGLShader::OpenGLShader(const std::string& vertexSrc, const std::string& fragmentSrc)
+	OpenGLShader::OpenGLShader(const std::string& name, const std::string& vertexSrc, const std::string& fragmentSrc)
+		: m_Name(name)
 	{
 		std::unordered_map<GLenum, std::string> sources;
 		sources[GL_VERTEX_SHADER] = vertexSrc;
 		sources[GL_FRAGMENT_SHADER] = fragmentSrc;
 		//auto shaderSources = PreProcess(sources);
 		compile(sources);
+
+		m_Name = name;
 	}
 
 	OpenGLShader::~OpenGLShader()
@@ -45,6 +56,11 @@ namespace Hazle
 	void OpenGLShader::Unbind() const
 	{
 		glUseProgram(0);
+	}
+
+	const std::string& OpenGLShader::GetName() const
+	{
+		return m_Name;
 	}
 
 	void OpenGLShader::UploadUniformInt(const std::string& name, int value)
@@ -146,7 +162,9 @@ namespace Hazle
 		HZ_CORE_ASSERT(shaderSources.size() > 0, "WTF! Shader file is completely empty or #type is missing!");
 
 		GLuint program = glCreateProgram();
-		std::vector<GLenum> shaderIDs(shaderSources.size());
+		HZ_CORE_ASSERT(shaderSources.size() <= 2, "Only support for up to 2 shaders!");
+		std::array<GLenum, 2> shaderIDs;
+		int glShaderIDIndex = 0;
 
 		for (auto& kv : shaderSources)
 		{
@@ -177,8 +195,8 @@ namespace Hazle
 			}
 
 			glAttachShader(program, shader);
-			shaderIDs.push_back(shader);
-		}
+			shaderIDs[glShaderIDIndex++] = shader;
+		} 
 		glLinkProgram(program);
 
 		// DELETE AND DETACH //

@@ -131,6 +131,7 @@
     </ClInclude>
     <ClInclude Include="src\hzpch.h" />
     <ClInclude Include="external-libraries\stb_image\stb_image.h" />
+    <ClInclude Include="src\Hazle\OrthographicCameraController.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Hazle\Application.cpp">
@@ -206,5 +207,6 @@
       <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="external-libraries\stb_image\stb_image.cpp" />
+    <ClCompile Include="src\Hazle\OrthographicCameraController.cpp" />
   </ItemGroup>
 </Project>

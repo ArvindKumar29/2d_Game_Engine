@@ -1,0 +1,39 @@
+#pragma once
+
+#include "Renderer/OrthographicCamera.h"
+#include "Core/Timestep.h"
+#include "Event/ApplicationEvent.h"
+#include "Event/MouseEvent.h"
+
+
+namespace Hazle
+{
+	class OrthographicCameraController
+	{
+	public:
+		OrthographicCameraController();
+		OrthographicCameraController(float width,float height, bool rotation = false);
+		~OrthographicCameraController();
+		
+		void OnUpdate(float ts);
+		void OnEvent(Event& e);
+
+		OrthographicCamera& GetCamera() { return m_Camera;  }
+		const OrthographicCamera& GetCamera() const { return m_Camera;  }
+
+
+	private:
+		bool OnMouseScrolled(MouseScrolledEvent& e);
+		bool OnWindowResized(WindowResizeEvent& e);
+		
+		float m_AspectRatio;
+		float m_ZoomLevel = 1.0f;
+		bool m_Rotation;
+		OrthographicCamera m_Camera;
+
+		glm::vec3 m_CameraPosition = { 0.0f, 0.0f, 0.0f };
+		float m_CameraRotation = 0.0f;
+		float m_CameraTranslationSpeed = 3.0f;
+		float m_CameraRotationSpeed = 5.0f;
+	};
+}

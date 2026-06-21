@@ -6,6 +6,7 @@
 #include <utility>
 #include <memory>
 
+#include <array>
 #include <vector>
 #include <sstream>
 #include <unordered_map>

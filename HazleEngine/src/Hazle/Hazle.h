@@ -17,6 +17,7 @@
 //==============Renderer===================
 #include "Renderer/Renderer.h"
 #include "Renderer/OrthographicCamera.h"
+#include "OrthographicCameraController.h"
 #include "Renderer/Shader.h"
 #include "Renderer/Buffer.h"
 #include "Renderer/VertexArray.h"
@@ -24,6 +25,7 @@
 #include "Renderer/RenderCommand.h"
 #include "Renderer/RendererAPI.h"
 #include "Renderer/GraphicsContext.h"
+#include "Renderer/Shader.h"
 //=========================================
 
 //==============glm========================
