@@ -21,9 +21,11 @@ namespace Hazle
 		OrthographicCamera& GetCamera() { return m_Camera;  }
 		const OrthographicCamera& GetCamera() const { return m_Camera;  }
 
+		void SetZoomLevel(float zoomLevel) { m_ZoomLevel = zoomLevel; }
+		float GetZoomLevel() const { return m_ZoomLevel; }
 
 	private:
-		bool OnMouseScrolled(MouseScrolledEvent& e);
+		bool OnMouseScrolled(MouseScrolledEvent& e); 
 		bool OnWindowResized(WindowResizeEvent& e);
 		
 		float m_AspectRatio;

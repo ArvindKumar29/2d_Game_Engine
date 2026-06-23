@@ -229,6 +229,11 @@ public:
 	void OnEvent(Hazle::Event& event) override
 	{
 		m_CameraController.OnEvent(event);
+
+		if (event.GetEventType() == Hazle::EventType::WindowResize) 
+		{
+			auto& e = (Hazle::WindowResizeEvent&)event; 
+		} 
 	}
 
 	bool OnKeyPressed(Hazle::KeyPressedEvent& event)
