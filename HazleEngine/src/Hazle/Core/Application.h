@@ -1,10 +1,10 @@
 #pragma once
-#include "core.h"
-#include "Window.h"
-#include "LayerStack.h" 
-#include "Event/ApplicationEvent.h"
-#include "ImGui/ImGuiLayer.h"
-#include "Core/Timestep.h"
+#include "Hazle/Core/core.h"
+#include "Hazle/Core/Window.h"
+#include "Hazle/Core/LayerStack.h"
+#include "Hazle/Event/ApplicationEvent.h"
+#include "Hazle/ImGui/ImGuiLayer.h"
+#include "Hazle/Core/Timestep.h"
 
 namespace Hazle
 {

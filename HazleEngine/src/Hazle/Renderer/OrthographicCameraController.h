@@ -1,9 +1,9 @@
 #pragma once
 
-#include "Renderer/OrthographicCamera.h"
-#include "Core/Timestep.h"
-#include "Event/ApplicationEvent.h"
-#include "Event/MouseEvent.h"
+#include "Hazle/Renderer/OrthographicCamera.h"
+#include "Hazle/Core/Timestep.h"
+#include "Hazle/Event/ApplicationEvent.h"
+#include "Hazle/Event/MouseEvent.h"
 
 
 namespace Hazle

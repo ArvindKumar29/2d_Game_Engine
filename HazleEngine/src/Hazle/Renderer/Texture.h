@@ -1,6 +1,6 @@
 #pragma once
-#include "Hazle/core.h"
-#include "Renderer.h"
+#include "Hazle/Core/core.h"
+#include "Hazle/Renderer/Renderer.h"
 #include <string>
 
 

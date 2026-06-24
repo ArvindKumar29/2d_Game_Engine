@@ -3,7 +3,7 @@
 
 #include "Platform/OpenGL/OpenGLShader.h"
 #include "Renderer.h"
-#include "Log.h"
+#include "Hazle/Core/Log.h"
 
 namespace Hazle
 {

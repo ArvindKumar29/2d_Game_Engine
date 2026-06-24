@@ -1,7 +1,7 @@
 #include "hzpch.h"
 #include "OrthographicCameraController.h"
-#include "Input.h"
-#include "Core/KeyCodes.h"
+#include "Hazle/Core/Input.h"
+#include "Hazle/Core/KeyCodes.h"
 
 namespace Hazle
 {

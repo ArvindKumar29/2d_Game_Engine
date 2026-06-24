@@ -1,4 +1,7 @@
-#include <Hazle/Hazle.h>
+#include <Hazle/Core/Hazle.h>
+#include "Sandbox2D.h"
+#include "Hazle/Core/EntryPoint.h"
+
 //#include "imgui.h"
 
 class ExampleLayer : public Hazle::Layer
@@ -7,7 +10,7 @@ public:
 	ExampleLayer()
 		: Layer("Example"), m_CameraController(1280.0f, 720.0f, true)
 	{
-		m_VertexArray.reset(Hazle::VertexArray::Create());
+		m_VertexArray = Hazle::VertexArray::Create();
 
 		float vertices[3 * 7] = {
 			-0.5f, -0.5f, 0.0f, 0.7f, 0.2f, 0.5f, 1.0f,
@@ -16,7 +19,7 @@ public:
 		};
 
 		Hazle::Ref<Hazle::VertexBuffer> vertexBuffer;
-		vertexBuffer.reset(Hazle::VertexBuffer::Create(vertices, sizeof(vertices)));
+		vertexBuffer = Hazle::VertexBuffer::Create(vertices, sizeof (vertices));
 
 		Hazle::BufferLayout layout = {
 			{Hazle::ShaderDataType::Float3, "a_Position"},
@@ -27,26 +30,26 @@ public:
 
 		uint32_t indices[3] = { 0, 1, 2 };
 		Hazle::Ref<Hazle::IndexBuffer> indexBuffer;
-		indexBuffer.reset(Hazle::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
+		indexBuffer = Hazle::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t));
 		m_VertexArray->SetIndexBuffer(indexBuffer);
 
 
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		///////////////////// SQUARE PART JUST TO TEST INDEX BUFFER BINDING TO DIFFERENT VERTEX ARRAY ////////////////////////////////
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		m_SquareVA.reset(Hazle::VertexArray::Create());
+		m_SquareVA = Hazle::VertexArray::Create();
 		float vertices2[5 * 4] = {
 			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
-			 0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+			 0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 
 			-0.5f,  0.5f, 0.0f, 0.0f, 1.0f,
 			 0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
 		};
 		uint32_t indices2[6] = { 0, 1, 2, 1, 3, 2 };
 		Hazle::Ref<Hazle::VertexBuffer> squareVB;
-		squareVB.reset(Hazle::VertexBuffer::Create(vertices2, sizeof(vertices2)));
+		squareVB = Hazle::VertexBuffer::Create(vertices2, sizeof(vertices2));
 		//m_SquareVA->AddVertexBuffer(squareVB);
 		Hazle::Ref<Hazle::IndexBuffer> squareIB;
-		squareIB.reset(Hazle::IndexBuffer::Create(indices2, sizeof(indices2) / sizeof(uint32_t)));
+		squareIB = Hazle::IndexBuffer::Create(indices2, sizeof(indices2) / sizeof(uint32_t));
 		m_SquareVA->SetIndexBuffer(squareIB);
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		Hazle::BufferLayout layout2 = {
@@ -191,15 +194,22 @@ public:
 		//glm::mat4 triangleTransform;
 		glm::mat4 squareTransform;
 
+		auto textureShader = m_ShaderLibrary.Get("Texture");
+		m_Texture->Bind(0);
+		Hazle::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		m_ArvindSignTexture->Bind(0);
+		Hazle::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		 
 		std::dynamic_pointer_cast<Hazle::OpenGLShader>(m_Shader2)->Bind();
 		std::dynamic_pointer_cast<Hazle::OpenGLShader>(m_Shader2)->UploadUniformFloat3("u_Color", m_SquareColor);
+
 
 
 		for (int i = 0; i < 10; i++)
 		{
 			for (int j = 0; j < 10; j++)
 			{
-				glm::vec3 pos(j * 0.11f, i * 0.11f, 0.0f);
+				glm::vec3 pos(j * 0.11f, i * 0.11f, 0.1f);
 				squareTransform = glm::translate(glm::mat4(1.0f), pos + m_SquarePosition) * scale;
 				//triangleTransform = glm::translate(glm::mat4(1.0f), pos + m_TrianglePosition) * scale;
 				Hazle::Renderer::Submit(m_Shader2, m_SquareVA, squareTransform);
@@ -208,14 +218,8 @@ public:
 			}
 		}
 
-		auto textureShader = m_ShaderLibrary.Get("Texture");
-
-		m_Texture->Bind(0); 
-		Hazle::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
-		m_ArvindSignTexture->Bind(0);
-		Hazle::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 		//triangleTransform = glm::translate(glm::mat4(1.0f), m_TrianglePosition) * scale;
-		//Hazle::Renderer::Submit(m_Shader, m_VertexArray);
+		//Hazle::Renderer::Submit(m_Shader, m_VertexArray, triangleTransform);
 		Hazle::Renderer::EndScene();
 	}
 	 
@@ -271,8 +275,9 @@ class sandbox : public Hazle::Application
 public:
 	sandbox() 
 	{
-		PushLayer(new ExampleLayer());
-	};
+		//PushLayer(new ExampleLayer());
+		PushLayer(new Sandbox2D());
+	}; 
 	~sandbox() 
 	{
 	};

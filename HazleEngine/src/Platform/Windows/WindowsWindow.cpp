@@ -1,7 +1,7 @@
 #include "hzpch.h"
 #include "WindowsWindow.h"
 
-#include "Hazle/Application.h"
+#include "Hazle/Core/Application.h"
 #include "Hazle/Event/ApplicationEvent.h"
 #include "Hazle/Event/KeyEvent.h"
 #include "Hazle/Event/MouseEvent.h"

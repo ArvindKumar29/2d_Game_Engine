@@ -1,4 +1,7 @@
 #pragma once
+#include "Hazle/Core/core.h"
+#include "Hazle/Core/Log.h"
+#include "Hazle/Core/Application.h"
 
 #ifdef HZ_PLATFORM_WINDOWS
 

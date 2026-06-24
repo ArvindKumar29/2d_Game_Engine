@@ -11,7 +11,7 @@
 #include <sstream>
 #include <unordered_map>
 #include <unordered_set>
-#include "core.h"
+#include "Hazle/Core/core.h"
 
 #ifdef HZ_PLATFORM_WINDOWS
 	#include <Windows.h>

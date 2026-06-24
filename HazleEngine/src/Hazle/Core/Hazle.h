@@ -15,29 +15,23 @@
 //-------------------------------------
 
 //==============Renderer===================
-#include "Renderer/Renderer.h"
-#include "Renderer/OrthographicCamera.h"
-#include "OrthographicCameraController.h"
-#include "Renderer/Shader.h"
-#include "Renderer/Buffer.h"
-#include "Renderer/VertexArray.h"
-#include "Renderer/Texture.h"
-#include "Renderer/RenderCommand.h"
-#include "Renderer/RendererAPI.h"
-#include "Renderer/GraphicsContext.h"
-#include "Renderer/Shader.h"
+#include "Hazle/Renderer/Renderer.h"
+#include "Hazle/Renderer/OrthographicCamera.h"
+#include "Hazle/Renderer/OrthographicCameraController.h"
+#include "Hazle/Renderer/Shader.h"
+#include "Hazle/Renderer/Buffer.h"
+#include "Hazle/Renderer/VertexArray.h"
+#include "Hazle/Renderer/Texture.h"
+#include "Hazle/Renderer/RenderCommand.h"
+#include "Hazle/Renderer/RendererAPI.h"
+#include "Hazle/Renderer/GraphicsContext.h"
+#include "Hazle/Renderer/Shader.h"
 //=========================================
 
 //==============glm========================
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-//=========================================
-
-// To be used by Hazle applications
-
-//=============Entry Point=================
-#include "Hazle/EntryPoint.h"
 //=========================================
 
 //==============Platform OpenGL============

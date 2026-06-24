@@ -1,9 +1,9 @@
 #pragma once
 
 #include "hzpch.h"
-#include "Hazle/Core.h"
+#include "Hazle/Core/core.h"
 #include "Hazle/Event/Event.h"
-#include "Hazle/log.h"
+#include "Hazle/Core/Log.h"
 
 namespace Hazle {
 	struct WindowProps {

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "core.h"
-#include "Core/Timestep.h"
-#include "Event/Event.h"
+#include "Hazle/Core/core.h"
+#include "Hazle/Core/Timestep.h"
+#include "Hazle/Event/Event.h"
 
 namespace Hazle
 {

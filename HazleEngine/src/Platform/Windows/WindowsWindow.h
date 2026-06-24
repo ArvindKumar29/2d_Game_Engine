@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Hazle/Window.h"
+#include "Hazle/Core/Window.h"
 #include <GLFW/glfw3.h>
 #include "Hazle/Renderer/GraphicsContext.h"
 #include "Platform/OpenGL/OpenGLContext.h"

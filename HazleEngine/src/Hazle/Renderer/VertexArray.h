@@ -20,7 +20,7 @@ namespace Hazle
 		virtual std::vector<Hazle::Ref<Hazle::VertexBuffer>> GetVertexBuffers() const = 0;
 		virtual Hazle::Ref<Hazle::IndexBuffer> GetIndexBuffer() const = 0;
 
-		static VertexArray* Create();
+		static Ref<Hazle::VertexArray> Create();
 
 	private:
 	};

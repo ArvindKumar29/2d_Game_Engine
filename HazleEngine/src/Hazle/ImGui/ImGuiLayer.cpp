@@ -1,6 +1,6 @@
 #include "hzpch.h"
-#include "ImGuiLayer.h"
-#include "Hazle/Application.h"
+#include "Hazle/ImGui/ImGuiLayer.h"
+#include "Hazle/Core/Application.h"
 
 #include <imgui.h>
 #include "backends/imgui_impl_opengl3.h"

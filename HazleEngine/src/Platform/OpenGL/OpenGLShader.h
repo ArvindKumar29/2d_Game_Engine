@@ -1,5 +1,5 @@
 #pragma once
-#include "Renderer/Shader.h"
+#include "Hazle/Renderer/Shader.h"
 #include "glm/glm.hpp"
 //#include "glad/glad.h"
 

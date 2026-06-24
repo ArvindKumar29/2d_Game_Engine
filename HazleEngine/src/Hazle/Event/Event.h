@@ -1,7 +1,7 @@
 #pragma once
 
 //#include "Hazle/Debug/Instrumentor.h"
-#include "Hazle/Core.h"
+#include "Hazle/Core/core.h"
 #include <string>
 #include <type_traits>
 #define FMT_HEADER_ONLY

@@ -1,6 +1,6 @@
 #include "hzpch.h"
 #include "OpenGLShader.h"
-#include "Log.h"
+#include "Hazle/Core/Log.h"
 #include "glad/glad.h"
 #include <fstream>
 

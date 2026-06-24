@@ -1,9 +1,9 @@
 #include "hzpch.h"
 
 #include "Application.h"
-#include "Log.h"
-#include "Hazle/Input.h"
-#include "Renderer/Renderer.h"
+#include "Hazle/Core/Log.h"
+#include "Hazle/Core/Input.h"
+#include "Hazle/Renderer/Renderer.h"
 #include <GLFW/glfw3.h>
 
 

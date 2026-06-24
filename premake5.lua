@@ -34,7 +34,7 @@ project "HazleEngine"
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
 	pchheader "hzpch.h"
-	pchsource "HazleEngine/src/Hazle/hzpch.cpp"
+	pchsource "HazleEngine/src/Hazle/Core/hzpch.cpp"
 
 	files{
 		"%{prj.name}/src/**.h",
@@ -42,8 +42,8 @@ project "HazleEngine"
 
 		--"external-libraries/imgui/*.cpp",
 		--"external-libraries/imgui/*.h",",
-		"external-libraries/stb_image/**.h",
-		"external-libraries/stb_image/**.cpp",
+		"%{prj.name}/external-libraries/stb_image/**.h",
+		"%{prj.name}/external-libraries/stb_image/**.cpp",
 	
 		--"{prj.name}/external-libraries/imgui/backends/imgui_impl_glfw.cpp",
 		--"{prj.name}/external-libraries/imgui/backends/imgui_impl_opengl3.cpp"

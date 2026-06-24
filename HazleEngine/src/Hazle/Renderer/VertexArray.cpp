@@ -8,14 +8,14 @@ namespace Hazle
 	VertexArray::~VertexArray()
 	{}
 
-	VertexArray* VertexArray::Create()
+	Ref<Hazle::VertexArray> VertexArray::Create()
 	{
 		switch (Renderer::GetAPI())
 		{
 		case RendererAPI::API::None:
 			HZ_CORE_ASSERT(false, "RendererAPI::None is currently not supported!"); return nullptr;
 		case RendererAPI::API::OpenGL:
-			return new OpenGLVertexArray();
+			return std::make_shared<OpenGLVertexArray>();
 		}
 		HZ_CORE_ASSERT(false, "RendererAPIError::Unknown Renderer API!!!"); return nullptr;
 

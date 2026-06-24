@@ -2,7 +2,7 @@
 
 #include "WindowsInput.h"
 #include <GLFW/glfw3.h>	
-#include "Hazle/Application.h"
+#include "Hazle/Core/Application.h"
 
 namespace Hazle
 {

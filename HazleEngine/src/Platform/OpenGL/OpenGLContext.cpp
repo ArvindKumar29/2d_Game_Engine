@@ -1,6 +1,6 @@
 #include "hzpch.h"
 #include "OpenGLContext.h"
-#include "Hazle/log.h"
+#include "Hazle/Core/Log.h"
 
 namespace Hazle
 {
