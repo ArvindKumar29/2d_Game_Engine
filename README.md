@@ -14,11 +14,14 @@
 
 
 ## ✨ Current Features
-* **Core Architecture:** Custom application layer and window abstraction.
-* **Rendering Pipeline:** OpenGL context setup, Vertex Array Objects (VAOs), Vertex Buffer Objects (VBOs), and Index Buffers (IBOs).
-* **Shaders:** Custom shader compilation and linking system (GLSL).
-* **UI Integration:** Fully integrated **ImGui** for live debugging and developer tools.
-* **Event System:** Custom event dispatcher for handling window, mouse, and keyboard inputs.
+* ***Core Architecture:*** Custom application layer and window abstraction.
+* ***Rendering Pipeline:*** OpenGL context setup, Vertex Array Objects (VAOs), Vertex Buffer Objects (VBOs), and Index Buffers (IBOs).
+* ***Shaders and Textures:*** Custom shader compilation and linking system (GLSL) with custom texture integration.
+* ***UI Integration:*** Fully integrated **ImGui** for live debugging and developer tools.
+* ***Event System:*** Custom event dispatcher for handling window, mouse, and keyboard inputs.
+* ***Performance profiling:*** It provides custom profiling tools for developers.
+* ***Fast 2D Renderer:*** A 2D renderer API for fast frame generation.
+* ***OpenGl API:*** 2D renderer completely written in OpenGL/Glad to support multiple platforms.
 
 ## 🚀 Getting Started
 
