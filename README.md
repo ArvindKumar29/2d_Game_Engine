@@ -9,7 +9,7 @@
 
 > A high-performance 2D Game Engine built from scratch using C++ and OpenGL.
 
-## 📸 Screenshots
+## 📸 Screenshots:
 <img width="1082" height="752" alt="image" src="https://github.com/user-attachments/assets/1a027861-5ed9-426b-adb7-658070814245" />
 
 
@@ -31,5 +31,7 @@ We use **Premake5** to generate the project files.
 
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/ArvindKumar29/2d_Game_Engine.git](https://github.com/ArvindKumar29/2d_Game_Engine.git)
+   git clone [https://github.com/ArvindKumar29/2d_Game_Engine.git]
+
+
    cd 2d_Game_Engine
