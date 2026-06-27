@@ -16,6 +16,7 @@
 
 //==============Renderer===================
 #include "Hazle/Renderer/Renderer.h"
+#include "Hazle/Renderer/Renderer2D.h"
 #include "Hazle/Renderer/OrthographicCamera.h"
 #include "Hazle/Renderer/OrthographicCameraController.h"
 #include "Hazle/Renderer/Shader.h"

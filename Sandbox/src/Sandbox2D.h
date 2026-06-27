@@ -18,6 +18,7 @@ private:
 	Hazle::OrthographicCameraController m_CameraController;
 	Hazle::Ref<Hazle::Texture2D> m_Texture;
 	Hazle::Ref<Hazle::VertexArray> m_SquareVA;	
+	Hazle::Ref<Hazle::Texture2D> m_CheckerboardTexture;
 
 	glm::vec4 m_SquareColor = {0.2f, 0.3f, 0.8f, 1.0f};
 };

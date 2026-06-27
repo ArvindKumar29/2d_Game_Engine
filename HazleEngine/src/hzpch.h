@@ -12,6 +12,7 @@
 #include <unordered_map>
 #include <unordered_set>
 #include "Hazle/Core/core.h"
+#include "glm/gtc/matrix_transform.hpp"
 
 #ifdef HZ_PLATFORM_WINDOWS
 	#include <Windows.h>

@@ -112,6 +112,41 @@ namespace Hazle
 		glUniformMatrix4fv(location, 1, GL_FALSE, &mat[0][0]);
 	}
 
+	void OpenGLShader::SetInt(const std::string& name, int value)
+	{
+		UploadUniformInt(name, value);
+	}
+
+	void OpenGLShader::SetFloat(const std::string & name, float value)
+	{
+		UploadUniformFloat(name, value);
+	}
+
+	void OpenGLShader::SetFloat2(const std::string & name, const glm::vec2 & values)
+	{
+		UploadUniformFloat2(name, values);
+	}
+
+	void OpenGLShader::SetFloat3(const std::string & name, const glm::vec3 & values)
+	{
+		UploadUniformFloat3(name, values);
+	}
+
+	void OpenGLShader::SetFloat4(const std::string & name, const glm::vec4 & values)
+	{
+		UploadUniformFloat4(name, values);
+	}
+
+	void OpenGLShader::SetMat3(const std::string & name, const glm::mat3 & mat)
+	{
+		UploadUniformMat3(name, mat);
+	}
+
+	void OpenGLShader::SetMat4(const std::string & name, const glm::mat4 & mat)
+	{
+		UploadUniformMat4(name, mat);
+	}
+
 	std::string OpenGLShader::ReadFile(const std::string& path)
 	{
 		std::string result;
