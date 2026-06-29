@@ -9,14 +9,18 @@ extern Hazle::Application* Hazle::createApplication();
 
 void main(int argc, char** argv) {
 	Hazle::Log::init();
-	HZ_CORE_CRITICAL("Chal raha hai matlab thik se!!!");
-	HZ_ERROR("Bahut bakchodi hai bhai ye...");
-	HZ_CORE_WARN("Pura chudne wale hai isme to!!!");
-
-	printf("Hazle Engine started!!!\n");
+	
+	HZ_PROFILE_BEGIN_SESSION("Startup", "HazleProfile-Startup.json");
 	auto app = Hazle::createApplication();
+	HZ_PROFILE_END_SESSION();
+	
+	HZ_PROFILE_BEGIN_SESSION("Runtime", "HazleProfile-Runtime.json");
 	app->run();
+	HZ_PROFILE_END_SESSION();
+	
+	HZ_PROFILE_BEGIN_SESSION("Shutdown", "HazleProfile-Shutdown.json");
 	delete app;
+	HZ_PROFILE_END_SESSION();
 }
 
 #endif

@@ -148,6 +148,7 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\Hazle\Renderer\Renderer2D.h" />
+    <ClInclude Include="src\Hazle\Debug\Instrumentor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="external-libraries\stb_image\stb_image.cpp">
