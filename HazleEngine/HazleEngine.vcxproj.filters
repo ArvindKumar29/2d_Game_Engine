@@ -16,6 +16,9 @@
     <Filter Include="src\Hazle\Core">
       <UniqueIdentifier>{285FD7B2-142D-CBB8-FDC0-3BDFE92DA71D}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Hazle\Debug">
+      <UniqueIdentifier>{469FCF0D-B22A-3DD2-BB3B-C0C6274699D2}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Hazle\Event">
       <UniqueIdentifier>{2116EB0D-8DA1-58D2-96B2-DBC602BDB4D2}</UniqueIdentifier>
     </Filter>
@@ -75,6 +78,9 @@
     <ClInclude Include="src\Hazle\Core\core.h">
       <Filter>src\Hazle\Core</Filter>
     </ClInclude>
+    <ClInclude Include="src\Hazle\Debug\Instrumentor.h">
+      <Filter>src\Hazle\Debug</Filter>
+    </ClInclude>
     <ClInclude Include="src\Hazle\Event\ApplicationEvent.h">
       <Filter>src\Hazle\Event</Filter>
     </ClInclude>
@@ -106,6 +112,9 @@
       <Filter>src\Hazle\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Hazle\Renderer\Renderer.h">
+      <Filter>src\Hazle\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazle\Renderer\Renderer2D.h">
       <Filter>src\Hazle\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Hazle\Renderer\RendererAPI.h">
@@ -147,8 +156,6 @@
     <ClInclude Include="src\hzpch.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Hazle\Renderer\Renderer2D.h" />
-    <ClInclude Include="src\Hazle\Debug\Instrumentor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="external-libraries\stb_image\stb_image.cpp">
@@ -193,6 +200,9 @@
     <ClCompile Include="src\Hazle\Renderer\Renderer.cpp">
       <Filter>src\Hazle\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Hazle\Renderer\Renderer2D.cpp">
+      <Filter>src\Hazle\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Hazle\Renderer\RendererAPI.cpp">
       <Filter>src\Hazle\Renderer</Filter>
     </ClCompile>
@@ -229,7 +239,6 @@
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="src\Hazle\Renderer\Renderer2D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="imgui.ini" />

@@ -1,6 +1,7 @@
 #include "hzpch.h"
 #include "WindowsWindow.h"
 
+//#include "Hazle/Core/Window.h"
 #include "Hazle/Core/Application.h"
 #include "Hazle/Event/ApplicationEvent.h"
 #include "Hazle/Event/KeyEvent.h"
@@ -17,9 +18,9 @@ namespace Hazle
 		HZ_CORE_ERROR("GLFW Error ({0}): {1}", error, description);
 	}
 
-	Window* Window::Create(const WindowProps& props) 
+	Scope<Window> Window::Create(const WindowProps& props) 
 	{
-		return new WindowsWindow(props);
+		return CreateScope<WindowsWindow>(props);
 	}
 	
 	void Window::Close()
@@ -29,6 +30,8 @@ namespace Hazle
 
 	WindowsWindow::WindowsWindow(const WindowProps& props)
 	{
+		HZ_PROFILE_FUNCTION();
+
 		Init(props);
 	}
 
@@ -142,6 +145,8 @@ namespace Hazle
 
 	void WindowsWindow::Shutdown()
 	{
+		HZ_PROFILE_FUNCTION();
+
 		glfwDestroyWindow(m_Window);
 	}
 

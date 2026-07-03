@@ -15,7 +15,7 @@ namespace Hazle
         long long Start, End;
         uint32_t ThreadID;
     };
-
+    
     struct InstrumentationSession
     {
         std::string Name;

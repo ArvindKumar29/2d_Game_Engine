@@ -21,9 +21,4 @@ namespace Hazle
 		HZ_CORE_ASSERT(false, "Unknown RendererAPI!");
 		return nullptr;
 	}
-
-	void RendererAPI::DrawIndexed(const Hazle::Ref<Hazle::VertexArray>& vertexArray)
-	{
-		
-	}
 }

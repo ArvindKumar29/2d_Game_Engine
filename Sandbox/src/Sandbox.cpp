@@ -35,9 +35,9 @@ public:
 
 
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		///////////////////// SQUARE PART JUST TO TEST INDEX BUFFER BINDING TO DIFFERENT VERTEX ARRAY ////////////////////////////////
+		///////////////////// Quad PART JUST TO TEST INDEX BUFFER BINDING TO DIFFERENT VERTEX ARRAY ////////////////////////////////
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		m_SquareVA = Hazle::VertexArray::Create();
+		m_QuadVA = Hazle::VertexArray::Create();
 		float vertices2[5 * 4] = {
 			-0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
 			 0.5f, -0.5f, 0.0f, 1.0f, 0.0f, 
@@ -45,19 +45,19 @@ public:
 			 0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
 		};
 		uint32_t indices2[6] = { 0, 1, 2, 1, 3, 2 };
-		Hazle::Ref<Hazle::VertexBuffer> squareVB;
-		squareVB = Hazle::VertexBuffer::Create(vertices2, sizeof(vertices2));
-		//m_SquareVA->AddVertexBuffer(squareVB);
-		Hazle::Ref<Hazle::IndexBuffer> squareIB;
-		squareIB = Hazle::IndexBuffer::Create(indices2, sizeof(indices2) / sizeof(uint32_t));
-		m_SquareVA->SetIndexBuffer(squareIB);
+		Hazle::Ref<Hazle::VertexBuffer> QuadVB;
+		QuadVB = Hazle::VertexBuffer::Create(vertices2, sizeof(vertices2));
+		//m_QuadVA->AddVertexBuffer(QuadVB);
+		Hazle::Ref<Hazle::IndexBuffer> QuadIB;
+		QuadIB = Hazle::IndexBuffer::Create(indices2, sizeof(indices2) / sizeof(uint32_t));
+		m_QuadVA->SetIndexBuffer(QuadIB);
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		Hazle::BufferLayout layout2 = {
 			{Hazle::ShaderDataType::Float3, "a_Position"},
 			{Hazle::ShaderDataType::Float2, "a_TexCoord"}
 		};
-		squareVB->SetLayout(layout2);
-		m_SquareVA->AddVertexBuffer(squareVB);
+		QuadVB->SetLayout(layout2);
+		m_QuadVA->AddVertexBuffer(QuadVB);
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -128,7 +128,7 @@ public:
 			}
 		)";
 
-		m_Shader2 = Hazle::Shader::Create("VertexPosColorSquare", vertexSrc2, fragmentSrc2);
+		m_Shader2 = Hazle::Shader::Create("VertexPosColorQuad", vertexSrc2, fragmentSrc2);
 		//m_TextureShader = Hazle::Shader::Create("Texture Shader", vertexSrc2, fragmentSrc2);
 
 		auto textureShader = m_ShaderLibrary.Load("Assets/Shaders/Texture.glsl");
@@ -140,7 +140,7 @@ public:
 		std::dynamic_pointer_cast<Hazle::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
 
 	}
-
+	
 	void OnUpdate(Hazle::Timestep ts) override
 	{
 		//HZ_CORE_TRACE("Frame time: {0}s and {1}ms", ts.GetSeconds(), ts.GetMilliseconds());
@@ -151,19 +151,19 @@ public:
 		}
 		if (Hazle::Input::IsKeyPressed(Hazle::Key::A))
 		{
-			m_SquarePosition.x -= m_SquareSpeed * ts;
+			m_QuadPosition.x -= m_QuadSpeed * ts;
 		}
 		else if (Hazle::Input::IsKeyPressed(Hazle::Key::D))
 		{
-			m_SquarePosition.x += m_SquareSpeed * ts;
+			m_QuadPosition.x += m_QuadSpeed * ts;
 		}
 		if (Hazle::Input::IsKeyPressed(Hazle::Key::W))
 		{
-			m_SquarePosition.y += m_SquareSpeed * ts;
+			m_QuadPosition.y += m_QuadSpeed * ts;
 		}
 		else if (Hazle::Input::IsKeyPressed(Hazle::Key::S))
 		{
-			m_SquarePosition.y -= m_SquareSpeed * ts;
+			m_QuadPosition.y -= m_QuadSpeed * ts;
 		}
 		if (Hazle::Input::IsKeyPressed(Hazle::Key::J))
 		{
@@ -192,16 +192,16 @@ public:
 
 		static glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 		//glm::mat4 triangleTransform;
-		glm::mat4 squareTransform;
+		glm::mat4 QuadTransform;
 
 		auto textureShader = m_ShaderLibrary.Get("Texture");
 		m_Texture->Bind(0);
-		Hazle::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		Hazle::Renderer::Submit(textureShader, m_QuadVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 		m_ArvindSignTexture->Bind(0);
-		Hazle::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+		Hazle::Renderer::Submit(textureShader, m_QuadVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 		 
 		std::dynamic_pointer_cast<Hazle::OpenGLShader>(m_Shader2)->Bind();
-		std::dynamic_pointer_cast<Hazle::OpenGLShader>(m_Shader2)->UploadUniformFloat3("u_Color", m_SquareColor);
+		std::dynamic_pointer_cast<Hazle::OpenGLShader>(m_Shader2)->UploadUniformFloat3("u_Color", m_QuadColor);
 
 
 
@@ -210,9 +210,9 @@ public:
 			for (int j = 0; j < 10; j++)
 			{
 				glm::vec3 pos(j * 0.11f, i * 0.11f, 0.1f);
-				squareTransform = glm::translate(glm::mat4(1.0f), pos + m_SquarePosition) * scale;
+				QuadTransform = glm::translate(glm::mat4(1.0f), pos + m_QuadPosition) * scale;
 				//triangleTransform = glm::translate(glm::mat4(1.0f), pos + m_TrianglePosition) * scale;
-				Hazle::Renderer::Submit(m_Shader2, m_SquareVA, squareTransform);
+				Hazle::Renderer::Submit(m_Shader2, m_QuadVA, QuadTransform);
 				//Hazle::Renderer::Submit(m_Shader, m_VertexArray, triangleTransform);
 				
 			}
@@ -226,7 +226,7 @@ public:
 	void OnImGuiRender() override
 	{
 		ImGui::Begin("Settings");
-		ImGui::ColorEdit3("Square Color", glm::value_ptr(m_SquareColor));
+		ImGui::ColorEdit3("Quad Color", glm::value_ptr(m_QuadColor));
 		ImGui::End();
 	}
 
@@ -254,18 +254,18 @@ private:
 	Hazle::Ref<Hazle::Shader> m_Shader2;
 	Hazle::Ref<Hazle::Shader> m_TextureShader;
 	Hazle::Ref<Hazle::VertexArray> m_VertexArray;
-	Hazle::Ref<Hazle::VertexArray> m_SquareVA;
+	Hazle::Ref<Hazle::VertexArray> m_QuadVA;
 	Hazle::OrthographicCameraController m_CameraController;
 
 	Hazle::Ref<Hazle::Texture2D> m_Texture, m_ArvindSignTexture;
 
-	glm::vec3 m_SquarePosition;
-	float m_SquareSpeed = 1.0f;
+	glm::vec3 m_QuadPosition;
+	float m_QuadSpeed = 1.0f;
 
 	glm::vec3 m_TrianglePosition;
 	float m_TriangleSpeed = 1.0f;
 
-	glm::vec3 m_SquareColor = {0.2f, 0.3f, 0.8f};
+	glm::vec3 m_QuadColor = {0.2f, 0.3f, 0.8f};
 
 };
 

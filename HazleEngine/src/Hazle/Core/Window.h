@@ -4,6 +4,7 @@
 #include "Hazle/Core/core.h"
 #include "Hazle/Event/Event.h"
 #include "Hazle/Core/Log.h"
+//#include "Platform/Windows/WindowsWindow.h"
 
 namespace Hazle {
 	struct WindowProps {
@@ -34,7 +35,7 @@ namespace Hazle {
 		virtual void SetVSync(bool enabled) = 0;
 		virtual bool IsVSync() const = 0;
 
-		static Window* Create(const WindowProps& props = WindowProps());
+		static Scope<Window> Create(const WindowProps& props = WindowProps());
 		static void Close();
 		// public:
 		virtual void* GetNativeWindow() const { return m_NativeWindow; }

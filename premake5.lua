@@ -117,6 +117,7 @@ project "Sandbox"
 	
 	includedirs {
 		"HazleEngine/external-libraries/spdlog/include",
+		"HazleEngine/external-libraries/GLFW/include",
 		"%{IncludeDir.glm}",
 		"HazleEngine/src",
 		"%{IncludeDir.imgui}"
