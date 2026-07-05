@@ -24,7 +24,7 @@ namespace Hazle
 		return { (float)xpos, (float)ypos };
 	}
 
-	bool WindowsInput::IsMouseButtonPressedImpl(int button)
+	bool WindowsInput::IsMouseButtonPressedImpl(MouseCode button)
 	{
 		auto window = static_cast<GLFWwindow*>(Application::Get().GetWindow().GetNativeWindow());
 		auto state = glfwGetMouseButton(window, button);

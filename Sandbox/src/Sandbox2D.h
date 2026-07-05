@@ -1,5 +1,7 @@
 #pragma once
 #include "Hazle/Core/Hazle.h"
+#include "ParticleSystem.h"
+
 
 class Sandbox2D : public Hazle::Layer
 {
@@ -15,6 +17,7 @@ public:
 private:
 	////////////////////TEMPORARY////////////////////////
 	Hazle::Ref<Hazle::Shader> m_Shader;
+	float m_SquareRotation = 0.0f;
 	Hazle::OrthographicCameraController m_CameraController;
 	Hazle::Ref<Hazle::Texture2D> m_Texture;
 	Hazle::Ref<Hazle::VertexArray> m_QuadVA;	
@@ -28,4 +31,7 @@ private:
 		float time;
 	};
 	std::vector<ProfileResult> m_ProfileResults;
+
+	ParticleProps m_Particle;
+	ParticleSystem m_ParticleSystem;
 };
