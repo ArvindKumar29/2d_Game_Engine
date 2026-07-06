@@ -23,6 +23,7 @@
 #include "Hazle/Renderer/Buffer.h"
 #include "Hazle/Renderer/VertexArray.h"
 #include "Hazle/Renderer/Texture.h"
+#include "Hazle/Renderer/SubTexture2D.h"
 #include "Hazle/Renderer/RenderCommand.h"
 #include "Hazle/Renderer/RendererAPI.h"
 #include "Hazle/Renderer/GraphicsContext.h"

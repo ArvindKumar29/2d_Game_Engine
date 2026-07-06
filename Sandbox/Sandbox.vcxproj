@@ -165,6 +165,8 @@
     <None Include="imgui.ini" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Assets\RPG_base_assets\kenney_rpg-base\Spritesheet\RPGpack_sheet.png" />
+    <Image Include="Assets\RPG_base_assets\kenney_rpg-base\Spritesheet\RPGpack_sheet_2X.png" />
     <Image Include="Assets\Textures\Checkerboard.png" />
     <Image Include="Assets\Textures\sign2.png" />
   </ItemGroup>

@@ -11,6 +11,8 @@ Sandbox2D::Sandbox2D()
 void Sandbox2D::OnAttach()
 {
 	m_CheckerboardTexture = Hazle::Texture2D::Create("Assets/Textures/checkerboard.png");
+	m_SpriteSheet = Hazle::Texture2D::Create("Assets/RPG_base_assets/kenney_rpg-base/Spritesheet/RPGpack_sheet_2X.png");
+	m_SubTexture = Hazle::SubTexture2D::CreateFromCoords(m_SpriteSheet, { 4, 1 }, { 128, 128 }, {1, 2});
 
 	// Init here
 	m_Particle.ColorBegin = { 254 / 255.0f, 212 / 255.0f, 123 / 255.0f, 1.0f };
@@ -66,7 +68,7 @@ void Sandbox2D::OnUpdate(Hazle::Timestep ts)
 		Hazle::RenderCommand::Clear();
 		Hazle::RenderCommand::SetClearColor(glm::vec4(0.1f, 0.1f, 0.1f, 1.0f));
 	}
-
+#if 0
 	{
 		HZ_PROFILE_SCOPE("Sandbox2D::OnUpdate::Rendering");
 		Hazle::Renderer2D::BeginScene(m_CameraController.GetCamera());
@@ -89,6 +91,7 @@ void Sandbox2D::OnUpdate(Hazle::Timestep ts)
 		}
 		Hazle::Renderer2D::EndScene();
 	}
+#endif
 
 	//static glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 	//glm::mat4 QuadTransform;
@@ -111,7 +114,13 @@ void Sandbox2D::OnUpdate(Hazle::Timestep ts)
 			m_ParticleSystem.Emit(m_Particle);
 		}
 	}
-		m_ParticleSystem.OnUpdate(ts);
-		m_ParticleSystem.OnRender(m_CameraController.GetCamera());
+
+
+	m_ParticleSystem.OnUpdate(ts);
+	m_ParticleSystem.OnRender(m_CameraController.GetCamera());
+
+	Hazle::Renderer2D::BeginScene(m_CameraController.GetCamera());
+	Hazle::Renderer2D::DrawQuad({ -0.25f, -0.25f, 0.5f }, glm::radians(0.0f), { 1.0f, 1.0f }, m_SubTexture, glm::vec4(1.0f));
+	Hazle::Renderer2D::EndScene();
 
 }
