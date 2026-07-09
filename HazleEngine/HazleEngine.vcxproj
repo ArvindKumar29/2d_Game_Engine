@@ -175,6 +175,7 @@
     <ClInclude Include="src\Hazle\Event\MouseEvent.h" />
     <ClInclude Include="src\Hazle\ImGui\ImGuiLayer.h" />
     <ClInclude Include="src\Hazle\Renderer\Buffer.h" />
+    <ClInclude Include="src\Hazle\Renderer\FrameBuffer.h" />
     <ClInclude Include="src\Hazle\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Hazle\Renderer\OrthographicCamera.h" />
     <ClInclude Include="src\Hazle\Renderer\OrthographicCameraController.h" />
@@ -188,6 +189,7 @@
     <ClInclude Include="src\Hazle\Renderer\VertexArray.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLFramrBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLShader.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLTexture.h" />
@@ -209,6 +211,7 @@
     <ClCompile Include="src\Hazle\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Hazle\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Hazle\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Hazle\Renderer\FrameBuffer.cpp" />
     <ClCompile Include="src\Hazle\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Hazle\Renderer\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Hazle\Renderer\RenderCommand.cpp" />
@@ -221,6 +224,7 @@
     <ClCompile Include="src\Hazle\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLFramrBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp" />
@@ -238,9 +242,6 @@
     <ProjectReference Include="external-libraries\imgui\ImGui.vcxproj">
       <Project>{C0FF640D-2C14-8DBE-F595-301E616989EF}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imgui.ini" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

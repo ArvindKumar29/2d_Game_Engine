@@ -11,7 +11,7 @@ namespace Hazle
 	class Application
 	{
 	public:
-		Application();
+		Application(const std::string name = "Hazle Engine");
 		virtual ~Application();
 		void run();
 
@@ -22,6 +22,7 @@ namespace Hazle
 
 
 		inline Window& GetWindow() { return *m_Window; }
+		void close();
 		inline static Application& Get() { return *s_Instance; }
 		void static Close();
 

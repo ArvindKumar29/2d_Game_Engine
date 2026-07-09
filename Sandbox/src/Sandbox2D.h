@@ -24,6 +24,7 @@ private:
 	Hazle::Ref<Hazle::Texture2D> m_CheckerboardTexture;
 	Hazle::Ref<Hazle::Texture2D> m_SpriteSheet;
 	Hazle::Ref<Hazle::SubTexture2D> m_SubTexture;
+	//Hazle::Ref<Hazle::FrameBuffer> m_FrameBuffer;
 
 	glm::vec4 m_QuadColor = {0.2f, 0.3f, 0.8f, 1.0f};
 
@@ -36,4 +37,7 @@ private:
 
 	ParticleProps m_Particle;
 	ParticleSystem m_ParticleSystem;
+
+	std::unordered_map<char, Hazle::Ref<Hazle::SubTexture2D>> m_TextureMap;
+	uint32_t m_MapWidth, m_MapHeight;
 };

@@ -10,7 +10,7 @@
 
 ParticleSystem::ParticleSystem()
 {
-	m_ParticlePool.resize(1000);
+	m_ParticlePool.resize(10000);
 }
 
 void ParticleSystem::OnUpdate(Hazle::Timestep ts)
@@ -75,5 +75,8 @@ void ParticleSystem::Emit(const ParticleProps& particleProps)
 	particle.SizeBegin = particleProps.SizeBegin + particleProps.SizeVariation * (Random::Float() - 0.5f);
 	particle.SizeEnd = particleProps.SizeEnd;
 
-	m_PoolIndex = --m_PoolIndex % m_ParticlePool.size();
+	if (m_PoolIndex == 0)
+		m_PoolIndex = m_ParticlePool.size() - 1;
+	else
+		m_PoolIndex--;
 }

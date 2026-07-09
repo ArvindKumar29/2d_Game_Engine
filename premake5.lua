@@ -151,3 +151,55 @@ project "Sandbox"
 		runtime "Release"
 		optimize "On"
 
+project "HazleNut"
+	location "HazleNut"
+	kind "ConsoleApp"
+	language "C++"
+	cppdialect "C++17"
+	staticruntime "On"
+
+	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
+	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+	
+	files{
+		"%{prj.name}/src/**.h",
+		"%{prj.name}/external-libraries/GLM/glm/**.h",
+		"%{prj.name}/external-libraries/GLM/glm/**.inl",
+		"%{prj.name}/src/**.cpp"
+	}
+
+	includedirs {
+		"HazleEngine/external-libraries/spdlog/include",
+		"HazleEngine/external-libraries/GLFW/include",
+		"%{IncludeDir.glm}",
+		"HazleEngine/src",
+		"%{IncludeDir.imgui}"
+	}
+	
+	links {
+		"HazleEngine"
+	}
+	
+	filter "system:windows"
+		staticruntime "On"
+		systemversion "latest"
+		buildoptions{ "/utf-8" }
+
+		defines {
+			"HZ_PLATFORM_WINDOWS",
+		}
+
+	filter "configurations:Debug" 
+		defines "HZ_DEBUG"
+		runtime "Debug"
+		symbols "On"
+
+	filter  "configurations:Release"
+		defines "HZ_RELEASE"
+		runtime "Release"
+		optimize "On"
+
+	filter  "configurations:Dist"
+		defines "HZ_DIST"
+		runtime "Release"
+		optimize "On"

@@ -156,20 +156,6 @@
       <Project>{4F24402C-BBD9-B821-44CE-B2F8B082AF25}</Project>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\Shaders\FlatColorShader.glsl" />
-    <None Include="Assets\Shaders\Texture.glsl" />
-    <None Include="HazleProfile-Runtime.json" />
-    <None Include="HazleProfile-Shutdown.json" />
-    <None Include="HazleProfile-Startup.json" />
-    <None Include="imgui.ini" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Assets\RPG_base_assets\kenney_rpg-base\Spritesheet\RPGpack_sheet.png" />
-    <Image Include="Assets\RPG_base_assets\kenney_rpg-base\Spritesheet\RPGpack_sheet_2X.png" />
-    <Image Include="Assets\Textures\Checkerboard.png" />
-    <Image Include="Assets\Textures\sign2.png" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

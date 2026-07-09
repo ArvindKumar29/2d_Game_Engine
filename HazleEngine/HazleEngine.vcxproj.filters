@@ -99,6 +99,9 @@
     <ClInclude Include="src\Hazle\Renderer\Buffer.h">
       <Filter>src\Hazle\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Hazle\Renderer\FrameBuffer.h">
+      <Filter>src\Hazle\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Hazle\Renderer\GraphicsContext.h">
       <Filter>src\Hazle\Renderer</Filter>
     </ClInclude>
@@ -123,6 +126,9 @@
     <ClInclude Include="src\Hazle\Renderer\Shader.h">
       <Filter>src\Hazle\Renderer</Filter>
     </ClInclude>
+    <ClInclude Include="src\Hazle\Renderer\SubTexture2d.h">
+      <Filter>src\Hazle\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Hazle\Renderer\Texture.h">
       <Filter>src\Hazle\Renderer</Filter>
     </ClInclude>
@@ -133,6 +139,9 @@
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\OpenGLFramrBuffer.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLRendererAPI.h">
@@ -156,7 +165,6 @@
     <ClInclude Include="src\hzpch.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Hazle\Renderer\SubTexture2d.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="external-libraries\stb_image\stb_image.cpp">
@@ -189,6 +197,9 @@
     <ClCompile Include="src\Hazle\Renderer\Buffer.cpp">
       <Filter>src\Hazle\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Hazle\Renderer\FrameBuffer.cpp">
+      <Filter>src\Hazle\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Hazle\Renderer\OrthographicCamera.cpp">
       <Filter>src\Hazle\Renderer</Filter>
     </ClCompile>
@@ -210,6 +221,9 @@
     <ClCompile Include="src\Hazle\Renderer\Shader.cpp">
       <Filter>src\Hazle\Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="src\Hazle\Renderer\SubTexture2D.cpp">
+      <Filter>src\Hazle\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Hazle\Renderer\Texture.cpp">
       <Filter>src\Hazle\Renderer</Filter>
     </ClCompile>
@@ -220,6 +234,9 @@
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLFramrBuffer.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLRendererAPI.cpp">
@@ -240,9 +257,5 @@
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="src\Hazle\Renderer\SubTexture2D.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="imgui.ini" />
   </ItemGroup>
 </Project>

@@ -9,7 +9,7 @@ struct ParticleProps
 	glm::vec2 Velocity, VelocityVariation;
 	glm::vec4 ColorBegin, ColorEnd;
 	float SizeBegin, SizeEnd, SizeVariation;
-	float LifeTime = 1.0f;
+	float LifeTime = 5.0f;
 };
 
 class Random
@@ -55,6 +55,6 @@ private:
 		bool Active = false;
 	};
 	std::vector<Particle> m_ParticlePool;
-	uint32_t m_PoolIndex = 999;
+	uint32_t m_PoolIndex = 9999;
 
 };
