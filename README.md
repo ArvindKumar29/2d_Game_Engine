@@ -10,7 +10,8 @@
 > A high-performance 2D Game Engine built from scratch using C++ and OpenGL.
 
 ## 📸 Screenshots:
-<img width="1080" height="750" alt="image" src="D:\Game Projects in C++\Hazle Engine\Sample.png" />
+<img width="1920" height="1080" alt="Sample" src="https://github.com/user-attachments/assets/0eba9f64-1cd3-4fe9-a6a6-31a9096cad22" />
+
 
 
 ## ✨ Current Features
