@@ -11,10 +11,10 @@
   </Project>
   <Project Path="HazleEngine\HazleEngine.vcxproj" Id="4F24402C-BBD9-B821-44CE-B2F8B082AF25">
   </Project>
-  <Project Path="HazleNut\HazleNut.vcxproj" Id="309F783D-1C6C-D348-4585-C1F031B108D7">
+  <Project Path="HazleNut\HazleNut.vcxproj" Id="309F783D-1C6C-D348-4585-C1F031B108D7" DefaultStartup="true">
   </Project>
   <Project Path="HazleEngine\external-libraries\imgui\ImGui.vcxproj" Id="C0FF640D-2C14-8DBE-F595-301E616989EF">
   </Project>
-  <Project Path="Sandbox\Sandbox.vcxproj" Id="F4C124E3-60A1-A37E-69B9-2E55D5170AE0" DefaultStartup="true">
+  <Project Path="Sandbox\Sandbox.vcxproj" Id="F4C124E3-60A1-A37E-69B9-2E55D5170AE0">
   </Project>
 </Solution>

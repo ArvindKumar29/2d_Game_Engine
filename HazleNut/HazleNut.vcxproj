@@ -143,16 +143,16 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HazleEngine\HazleEngine.vcxproj">
-      <Project>{4F24402C-BBD9-B821-44CE-B2F8B082AF25}</Project>
-    </ProjectReference>
+    <ClInclude Include="src\EditorLayer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\EditorLayer.cpp" />
     <ClCompile Include="src\HazleNutApp.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\EditorLayer.h" />
+    <ProjectReference Include="..\HazleEngine\HazleEngine.vcxproj">
+      <Project>{4F24402C-BBD9-B821-44CE-B2F8B082AF25}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -10,7 +10,7 @@
 > A high-performance 2D Game Engine built from scratch using C++ and OpenGL.
 
 ## 📸 Screenshots:
-<img width="1082" height="752" alt="image" src="https://github.com/user-attachments/assets/1a027861-5ed9-426b-adb7-658070814245" />
+<img width="1080" height="750" alt="image" src="D:\Game Projects in C++\Hazle Engine\Sample.png" />
 
 
 ## ✨ Current Features
@@ -22,6 +22,8 @@
 * ***Performance profiling:*** It provides custom profiling tools for developers.
 * ***Fast 2D Renderer:*** A 2D renderer API for fast frame generation.
 * ***OpenGl API:*** 2D renderer completely written in OpenGL/Glad to support multiple platforms.
+* ***HazleNut:*** The level editor of hazle to create and modify different games .
+* ***ImGui Docking:*** Docking system to dock and customize the viewport, file explorer, menu, settings etc. tabs to hazle editor.
 
 ## 🚀 Getting Started
 

@@ -132,6 +132,12 @@ namespace Hazle
 			}
 		}
 #endif
+
+		if (Input::IsKeyPressed(Key::Escape))
+		{
+			Application::Get().Close();
+		}
+
 		Hazle::Renderer2D::EndScene();
 		/*
 		m_ParticleSystem.OnUpdate(ts);
@@ -207,6 +213,7 @@ namespace Hazle
 			}
 			ImGui::EndMenuBar();
 		}
+		ImGui::End();
 
 		ImGui::Begin("Settings");
 
@@ -220,10 +227,26 @@ namespace Hazle
 		ImGui::Text("Indices: %d", stats.QuadCount * 6);
 
 		m_ProfileResults.clear();
-		uint32_t textureID = m_FrameBuffer->GetColorAttachmentRendererID();
-		ImGui::Image((void*)textureID, ImVec2{ 1280, 720 }, ImVec2(0, 1), ImVec2(1, 0));
-
 		ImGui::End();
+
+		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2{ 0, 0 });
+		ImGui::Begin("Viewport");
+		ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
+		if (m_ViewportSize != *((glm::vec2*)&viewportPanelSize))
+		{
+			m_FrameBuffer->Resize(uint32_t(viewportPanelSize.x), uint32_t(viewportPanelSize.y));
+			m_ViewportSize = { viewportPanelSize.x, viewportPanelSize.y };
+			m_CameraController.OnResize(viewportPanelSize.x, viewportPanelSize.y);
+		}
+		//HZ_CORE_WARN("Viewport Size: {0}, {1}", viewportPanelSize.x, viewportPanelSize.y);
+		uint32_t textureID = m_FrameBuffer->GetColorAttachmentRendererID();
+		ImGui::Image((void*)textureID, ImVec2{ viewportPanelSize.x, viewportPanelSize.y }, ImVec2(0, 1), ImVec2(1, 0));
+		ImGui::End();
+		ImGui::PopStyleVar();
+
+		ImGui::Begin("File Explorer");
+		ImGui::BulletText("File 1");
+		ImGui::BulletText("File 2");
 		ImGui::End();
 	}
 }

@@ -3,7 +3,7 @@
 
 namespace Hazle
 {
-	class EditorLayer : public Hazle::Layer
+	class EditorLayer : public Layer
 	{
 	public:
 		EditorLayer();
@@ -16,16 +16,17 @@ namespace Hazle
 		void OnEvent(Event& e) override;
 
 		private:
-			Hazle::Ref<Hazle::Shader> m_Shader;
 			float m_SquareRotation = 0.0f;
-			Hazle::OrthographicCameraController m_CameraController;
-			Hazle::Ref<Hazle::Texture2D> m_Texture;
-			Hazle::Ref<Hazle::VertexArray> m_QuadVA;
-			Hazle::Ref<Hazle::Texture2D> m_CheckerboardTexture;
-			Hazle::Ref<Hazle::Texture2D> m_SpriteSheet;
-			Hazle::Ref<Hazle::SubTexture2D> m_SubTexture;
-			Hazle::Ref<Hazle::FrameBuffer> m_FrameBuffer;
+			OrthographicCameraController m_CameraController;
+			Ref<Shader> m_Shader;
+			Ref<Texture2D> m_Texture;
+			Ref<VertexArray> m_QuadVA;
+			Ref<Texture2D> m_CheckerboardTexture;
+			Ref<Texture2D> m_SpriteSheet;
+			Ref<SubTexture2D> m_SubTexture;
+			Ref<FrameBuffer> m_FrameBuffer;
 
+			glm::vec2 m_ViewportSize = { 0.0f, 0.0f };
 			glm::vec4 m_QuadColor = { 0.2f, 0.3f, 0.8f, 1.0f };
 
 			struct ProfileResult
@@ -35,7 +36,7 @@ namespace Hazle
 			};
 			std::vector<ProfileResult> m_ProfileResults;
 
-			std::unordered_map<char, Hazle::Ref<Hazle::SubTexture2D>> m_TextureMap;
+			std::unordered_map<char, Ref<SubTexture2D>> m_TextureMap;
 			uint32_t m_MapWidth, m_MapHeight;
 	};
 }

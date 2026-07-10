@@ -6,7 +6,7 @@ workspace  "Hazle  Engine"
 		"Release",
 		"Dist"
 	}
-	startproject "Sandbox"
+	startproject "HazleNut"
 	-- staticruntime "Off"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
