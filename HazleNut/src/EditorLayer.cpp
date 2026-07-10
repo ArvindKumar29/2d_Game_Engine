@@ -1,5 +1,6 @@
 #include <hzpch.h>
 #include "EditorLayer.h"
+
 namespace Hazle
 {
 	EditorLayer::EditorLayer()
@@ -55,10 +56,12 @@ namespace Hazle
 		// Update
 		m_FrameBuffer->Bind();
 		{
-			HZ_PROFILE_SCOPE("EditorLayer::OnUpdate");
-			m_CameraController.OnUpdate(ts);
+			if (m_ViewportFocused)
+			{
+				HZ_PROFILE_SCOPE("EditorLayer::OnUpdate");
+				m_CameraController.OnUpdate(ts);
+			}
 		}
-
 		// Render
 		m_SquareRotation += ts * glm::radians(360.0f);
 		Hazle::Renderer2D::ResetStats();
@@ -231,6 +234,10 @@ namespace Hazle
 
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2{ 0, 0 });
 		ImGui::Begin("Viewport");
+		m_ViewportFocused = ImGui::IsWindowFocused();
+		m_ViewportHovered = ImGui::IsWindowHovered();
+		Application::Get().GetImGuiLayer()->SetBlockEvents(!m_ViewportFocused || !m_ViewportHovered);
+
 		ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
 		if (m_ViewportSize != *((glm::vec2*)&viewportPanelSize))
 		{
@@ -238,7 +245,9 @@ namespace Hazle
 			m_ViewportSize = { viewportPanelSize.x, viewportPanelSize.y };
 			m_CameraController.OnResize(viewportPanelSize.x, viewportPanelSize.y);
 		}
-		//HZ_CORE_WARN("Viewport Size: {0}, {1}", viewportPanelSize.x, viewportPanelSize.y);
+
+		HZ_CORE_WARN("Focoused: {0}", m_ViewportFocused);
+		HZ_CORE_WARN("Hovered: {0}", m_ViewportHovered);
 		uint32_t textureID = m_FrameBuffer->GetColorAttachmentRendererID();
 		ImGui::Image((void*)textureID, ImVec2{ viewportPanelSize.x, viewportPanelSize.y }, ImVec2(0, 1), ImVec2(1, 0));
 		ImGui::End();

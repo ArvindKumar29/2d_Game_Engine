@@ -38,5 +38,7 @@ namespace Hazle
 
 			std::unordered_map<char, Ref<SubTexture2D>> m_TextureMap;
 			uint32_t m_MapWidth, m_MapHeight;
+
+			bool m_ViewportFocused = false, m_ViewportHovered = false;
 	};
 }

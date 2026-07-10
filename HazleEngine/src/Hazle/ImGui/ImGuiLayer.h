@@ -16,10 +16,13 @@ namespace Hazle {
 		virtual void OnAttach() override;
 		virtual void OnDetach() override;
 		virtual void OnImGuiRender() override;
+		virtual void OnEvent(Event& e) override;
 		
+		void SetBlockEvents(bool Block) { m_blockEvents = Block; };
 		void begin();
 		void end();
 	private:
+		bool m_blockEvents = false;
 		float m_Time = 0.0f;
 	};
 
