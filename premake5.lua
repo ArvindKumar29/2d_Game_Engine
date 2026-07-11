@@ -18,6 +18,7 @@ IncludeDir["glad"] = "HazleEngine/external-libraries/glad/include"
 IncludeDir["imgui"] = "HazleEngine/external-libraries/imgui"
 IncludeDir["glm"] = "HazleEngine/external-libraries/GLM"
 IncludeDir["stb_image"] = "HazleEngine/external-libraries/stb_image"
+IncludeDir["entt"] = "HazleEngine/external-libraries/entt/include"
 
 include "HazleEngine/external-libraries/GLFW"
 include "HazleEngine/external-libraries/glad"
@@ -59,6 +60,7 @@ project "HazleEngine"
 		-- "%{IncludeDir.glm}",
 		"%{IncludeDir.imgui}",
 		"%{IncludeDir.stb_image}",
+		"%{IncludeDir.entt}",
 		"%{prj.name}/src/Hazle"
 	}
 
@@ -119,6 +121,7 @@ project "Sandbox"
 		"HazleEngine/external-libraries/spdlog/include",
 		"HazleEngine/external-libraries/GLFW/include",
 		"%{IncludeDir.glm}",
+		"%{IncludeDir.entt}",
 		"HazleEngine/src",
 		"%{IncludeDir.imgui}"
 	}
@@ -172,6 +175,7 @@ project "HazleNut"
 		"HazleEngine/external-libraries/spdlog/include",
 		"HazleEngine/external-libraries/GLFW/include",
 		"%{IncludeDir.glm}",
+		"%{IncludeDir.entt}",
 		"HazleEngine/src",
 		"%{IncludeDir.imgui}"
 	}

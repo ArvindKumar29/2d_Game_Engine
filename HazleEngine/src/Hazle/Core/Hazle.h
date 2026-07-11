@@ -14,6 +14,11 @@
 #include "Hazle/ImGui/ImGuiLayer.h"
 //-------------------------------------
 
+//================Scene====================
+#include "Hazle/Scene/Scene.h"
+#include "Hazle/Scene/Component.h"
+//=========================================
+
 //==============Renderer===================
 #include "Hazle/Renderer/Renderer.h"
 #include "Hazle/Renderer/Renderer2D.h"

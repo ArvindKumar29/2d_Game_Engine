@@ -11,9 +11,9 @@ namespace Hazle
 
 	void EditorLayer::OnAttach()
 	{
-		m_CheckerboardTexture = Hazle::Texture2D::Create("Assets/Textures/checkerboard.png");
-		m_SpriteSheet = Hazle::Texture2D::Create("Assets/RPG_base_assets/kenney_rpg-base/Spritesheet/RPGpack_sheet_2X.png");
-		m_SubTexture = Hazle::SubTexture2D::CreateFromCoords(m_SpriteSheet, { 1, 11 }, { 128, 128 }, { 1, 1 });
+		m_CheckerboardTexture = Texture2D::Create("Assets/Textures/checkerboard.png");
+		m_SpriteSheet = Texture2D::Create("Assets/RPG_base_assets/kenney_rpg-base/Spritesheet/RPGpack_sheet_2X.png");
+		m_SubTexture = SubTexture2D::CreateFromCoords(m_SpriteSheet, { 1, 11 }, { 128, 128 }, { 1, 1 });
 
 
 		/*m_MapWidth = s_MapWidth;
@@ -37,6 +37,13 @@ namespace Hazle
 		fbSpec.Width = 1280;
 		fbSpec.Height = 720;
 		m_FrameBuffer = Hazle::FrameBuffer::Create(fbSpec);
+
+		m_ActiveScene = CreateRef<Scene>();
+		auto square = m_ActiveScene->CreateEntity();
+		m_ActiveScene->Reg().emplace<CTransform>(square, glm::mat4(1.0f));
+		m_ActiveScene->Reg().emplace<CSpriteRenderer>(square, glm::vec4{0.0f, 1.0f, 0.0f, 1.0f});	
+
+		m_SquareEntity = square;
 	}
 
 	void EditorLayer::OnDetach()
@@ -62,6 +69,8 @@ namespace Hazle
 				m_CameraController.OnUpdate(ts);
 			}
 		}
+
+
 		// Render
 		m_SquareRotation += ts * glm::radians(360.0f);
 		Hazle::Renderer2D::ResetStats();
@@ -75,22 +84,14 @@ namespace Hazle
 			HZ_PROFILE_SCOPE("EditorLayer::OnUpdate::Rendering");
 			Hazle::Renderer2D::BeginScene(m_CameraController.GetCamera());
 
-			Hazle::Renderer2D::DrawQuad({ -0.5f, 0.0f }, glm::radians(0.0f), glm::vec2(1.0f), { 0.8f, 0.2f, 0.1f, 1.0f });
-			Hazle::Renderer2D::DrawQuad({ 2.0f, 0.2f }, glm::radians(45.0f), { 0.8f, 0.6f }, { 0.3f, 0.9f, 0.1f, 1.0f });
-			Hazle::Renderer2D::DrawQuad({ -2.0f, -0.2f }, glm::radians(0.0f), { 0.8f, 0.4f }, { 0.3f, 0.6f, 0.1f, 1.0f });
-			Hazle::Renderer2D::DrawQuad({ -0.25f, -0.25f, glm::radians(-0.1f) }, 0.0f, { 10.0f, 10.0f }, m_CheckerboardTexture, glm::vec4(1.0f));
-			Hazle::Renderer2D::DrawQuad({ 2.0f, -2.0f, 0.1f }, glm::radians(0.0f), { 1.0f, 1.0f }, m_CheckerboardTexture, glm::vec4(1.0f), 5.0f);
-			//Hazle::Renderer2D::EndScene();
+			// UPDATE SCENE
+			m_ActiveScene->OnUpdate(ts);
 
-			//Hazle::Renderer2D::BeginScene(m_CameraController.GetCamera());
-			for (float y = -5.0f; y < 5.0f; y += 0.5f)
-			{
-				for (float x = -5.0f; x < 5.0f; x += 0.5f)
-				{
-					glm::vec4 color = { (x + 5.0f) / 10.0f, 0.4f, (y + 5.0f) / 10.0f, 0.6f };
-					Hazle::Renderer2D::DrawQuad({ x, y }, glm::radians(0.0f), { 0.45f, 0.45f }, color);
-				}
-			}
+			//Hazle::Renderer2D::DrawQuad({ -0.5f, 0.0f }, glm::radians(0.0f), glm::vec2(1.0f), { 0.8f, 0.2f, 0.1f, 1.0f });
+			//Hazle::Renderer2D::DrawQuad({ 2.0f, 0.2f }, glm::radians(45.0f), { 0.8f, 0.6f }, { 0.3f, 0.9f, 0.1f, 1.0f });
+			//Hazle::Renderer2D::DrawQuad({ -2.0f, -0.2f }, glm::radians(0.0f), { 0.8f, 0.4f }, { 0.3f, 0.6f, 0.1f, 1.0f });
+			//Hazle::Renderer2D::DrawQuad({ -0.25f, -0.25f, glm::radians(-0.1f) }, 0.0f, { 10.0f, 10.0f }, m_CheckerboardTexture, glm::vec4(1.0f));
+			//Hazle::Renderer2D::DrawQuad({ 2.0f, -2.0f, 0.1f }, glm::radians(0.0f), { 1.0f, 1.0f }, m_CheckerboardTexture, glm::vec4(1.0f), 5.0f);
 			Hazle::Renderer2D::EndScene();
 		}
 
@@ -117,8 +118,8 @@ namespace Hazle
 			}
 		}*/
 
-#if 0
 		Hazle::Renderer2D::BeginScene(m_CameraController.GetCamera());
+#if 0
 		//Hazle::Renderer2D::DrawQuad({ -0.25f, -0.25f, 0.5f }, glm::radians(0.0f), { 1.0f, 1.0f }, m_SubTexture, glm::vec4(1.0f));
 
 		for (uint32_t y = 0; y < m_MapHeight; y++)
@@ -228,6 +229,9 @@ namespace Hazle
 		ImGui::Text("Quads: %d", stats.QuadCount);
 		ImGui::Text("Vertices: %d", stats.QuadCount * 4);
 		ImGui::Text("Indices: %d", stats.QuadCount * 6);
+
+		auto& squareColor = m_ActiveScene->Reg().get<CSpriteRenderer>(m_SquareEntity).Color;
+		ImGui::ColorEdit4("Square Color", glm::value_ptr(squareColor));
 
 		m_ProfileResults.clear();
 		ImGui::End();
