@@ -21,14 +21,36 @@ namespace Hazle
 
 	void Scene::OnUpdate(Timestep ts)
 	{
-		auto group = m_Registry.group<CTransform>(entt::get<CSpriteRenderer>);
-		for (auto entity : group)
+		Camera* mainCamera = nullptr;
+		glm::mat4* cameraTransform = nullptr;
 		{
-			HZ_CORE_WARN("ecs live to draw entity");
-			auto& [transform, sprite] = group.get<CTransform, CSpriteRenderer>(entity);
-			HZ_CORE_WARN("Position X:{0}, Y:{1}, Z:{2}", transform.Transform[3][0], transform.Transform[3][1], transform.Transform[3][2]);
+			auto group = m_Registry.group<CTransform, CCamera>();
+			for (auto entity : group)
+			{
+				auto& [transform, camera] = group.get<CTransform, CCamera>(entity);
 
-			Renderer2D::DrawQuad(transform.Transform, sprite.Color);
+				if (camera.Primary)
+				{
+					mainCamera = &camera.camera;
+					cameraTransform = &transform.Transform;
+					break;
+				}
+			}
+		}
+
+		if(mainCamera)
+		{
+			HZ_CORE_INFO("Running rendering through scene");
+			//Hazle::OrthographicCamera bypassCamera(-16.0f, 16.0f, -9.0f, 9.0f);
+			//Hazle::Renderer2D::BeginScene(bypassCamera);
+			Renderer2D::BeginScene(mainCamera->GetProjection(), *cameraTransform);
+			auto view = m_Registry.view<CTransform, CSpriteRenderer>();
+			view.each([](auto entity, auto& transform, auto& sprite)
+				{
+					//transform.Transform[3][2] = -1.0f;
+					Hazle::Renderer2D::DrawQuad(transform.Transform, sprite.Color);
+				});
+			Renderer2D::EndScene();
 		}
 	}
 }

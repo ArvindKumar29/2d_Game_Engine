@@ -1,9 +1,8 @@
 #pragma once
 
-#include "Hazle/Renderer/OrthographicCamera.h"
-#include "Hazle/Renderer/Shader.h"
+#include "Hazle/Core/Hazle.h"
 #include "Texture.h"
-#include "SubTexture2D.h"
+#include "SubTexture2d.h"
 #include "glm/glm.hpp"
 
 
@@ -14,6 +13,7 @@ namespace Hazle
 	public:
 		static void Init();
 
+		static void BeginScene(const Camera& camera, glm::mat4& transform);
 		static void BeginScene(const OrthographicCamera& camera);
 		static void EndScene();
 		static void Shutdown();

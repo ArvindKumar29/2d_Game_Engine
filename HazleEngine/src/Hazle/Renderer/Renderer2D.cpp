@@ -103,6 +103,19 @@ namespace Hazle
 		s_Data.m_QuadVertexPositions[3] = { -0.5f,  0.5f, 0.0f, 1.0f };
 	}
 
+	void Renderer2D::BeginScene(const Camera& camera, glm::mat4& transform)
+	{
+		glm::mat4 viewProj = camera.GetProjection() * glm::inverse(transform);
+		s_Data.m_TextureShader->Bind();
+		s_Data.m_TextureShader->SetMat4("u_VP", viewProj);
+		s_Data.m_WhiteTexture->Bind(0);
+		s_Data.m_QuadVertexBufferPtr = s_Data.m_QuadVertexBufferBase;
+		s_Data.m_QuadIndexCount = 0;
+		s_Data.m_TextureSlotIndex = 1;
+
+		//HZ_CORE_WARN("SCENE STARTED WITH CAMERA!!!");
+	}
+
 	void Renderer2D::BeginScene(const OrthographicCamera& camera)
 	{
 		s_Data.m_TextureShader->Bind();
@@ -266,6 +279,8 @@ namespace Hazle
 		s_Data.m_QuadIndexCount += 6;
 
 		s_Data.m_Stats.QuadCount++;
+
+		//HZ_CORE_WARN("dRAWING QUAD!!!");
 
 	}
 

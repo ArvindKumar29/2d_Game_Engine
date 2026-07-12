@@ -1,4 +1,6 @@
 #pragma once
+#include "Hazle/Core/Hazle.h"
+#include "Hazle/Renderer/Camera.h"
 
 namespace Hazle
 {
@@ -7,7 +9,7 @@ namespace Hazle
 		glm::mat4 Transform = glm::mat4(1.0f);
 
 		CTransform() = default;
-		CTransform(const CTransform&) = default;
+		CTransform(const CTransform& other) = default;
 		CTransform(const glm::mat4& transfrom)
 			:Transform(transfrom) {}
 
@@ -38,13 +40,24 @@ namespace Hazle
 			:Tag(tag) {}
 	};
 
-
-	class Component
+	struct CCamera
 	{
-	public:
-		Component();
+		Camera camera;
+		bool Primary = true;
 
-	private:
-
+		CCamera() = default;
+		CCamera(const CCamera&) = default;
+		CCamera(const glm::mat4 projection)
+			: camera(projection) {}
+	
 	};
+
+	//class Component
+	//{
+	//public:
+	//	Component();
+
+	//private:
+
+	//};
 }

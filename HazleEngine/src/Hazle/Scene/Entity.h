@@ -41,7 +41,7 @@ namespace Hazle
 			m_Scene->m_Registry.remove<T>(m_EntityManager);
 		}
 	private:
-		entt::entity m_EntityManager{0};
+		entt::entity m_EntityManager{ entt::null };
 		Scene* m_Scene = nullptr;
 	};
 }

@@ -187,6 +187,7 @@
     <ClInclude Include="src\Hazle\Renderer\SubTexture2d.h" />
     <ClInclude Include="src\Hazle\Renderer\Texture.h" />
     <ClInclude Include="src\Hazle\Renderer\VertexArray.h" />
+    <ClInclude Include="src\Hazle\Renderer\Camera.h" />
     <ClInclude Include="src\Hazle\Scene\Component.h" />
     <ClInclude Include="src\Hazle\Scene\Entity.h" />
     <ClInclude Include="src\Hazle\Scene\Scene.h" />
