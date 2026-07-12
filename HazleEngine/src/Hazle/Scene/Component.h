@@ -4,7 +4,7 @@ namespace Hazle
 {
 	struct CTransform
 	{
-		glm::mat4 Transform;
+		glm::mat4 Transform = glm::mat4(1.0f);
 
 		CTransform() = default;
 		CTransform(const CTransform&) = default;
@@ -27,6 +27,17 @@ namespace Hazle
 		CSpriteRenderer(const glm::vec4& color)
 			:Color(color) {}
 	};
+
+	struct CTag
+	{
+		std::string Tag;
+
+		CTag() = default;
+		CTag(const CTag&) = default;
+		CTag(const std::string tag)
+			:Tag(tag) {}
+	};
+
 
 	class Component
 	{

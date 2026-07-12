@@ -147,10 +147,10 @@ namespace Hazle
 	{
 		HZ_PROFILE_FUNCTION();
 
-		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) *
+		glm::mat4& transform = glm::translate(glm::mat4(1.0f), position) *
 			glm::rotate(glm::mat4(1.0f), rotation, glm::vec3(0.0f, 0.0f, 1.0f)) *
 			glm::scale(glm::mat4(1.0f), { size.x, size.y, 1.0f });
-		
+	
 		DrawQuad(transform, color);
 	}
 
@@ -237,7 +237,7 @@ namespace Hazle
 		s_Data.m_Stats.QuadCount++;
 	}
 
-	void Renderer2D::DrawQuad(const glm::mat4 transform, glm::vec4 color)
+	void Renderer2D::DrawQuad(const glm::mat4& transform, const glm::vec4& color)
 	{
 		HZ_PROFILE_FUNCTION();
 
@@ -254,39 +254,22 @@ namespace Hazle
 		const float textureIndex = 0.0f;
 		const float tilingFactor = 1.0f;
 
-
-		s_Data.m_QuadVertexBufferPtr->Position = transform * s_Data.m_QuadVertexPositions[0];
-		s_Data.m_QuadVertexBufferPtr->Color = color;
-		s_Data.m_QuadVertexBufferPtr->TexCoord = textureCoord[0];
-		s_Data.m_QuadVertexBufferPtr->TexIndex = textureIndex;
-		s_Data.m_QuadVertexBufferPtr->TilingFactor = tilingFactor;
-		s_Data.m_QuadVertexBufferPtr++;
-		s_Data.m_QuadVertexBufferPtr->Position = transform * s_Data.m_QuadVertexPositions[1];
-		s_Data.m_QuadVertexBufferPtr->Color = color;
-		s_Data.m_QuadVertexBufferPtr->TexCoord = textureCoord[1];
-		s_Data.m_QuadVertexBufferPtr->TexIndex = textureIndex;
-		s_Data.m_QuadVertexBufferPtr->TilingFactor = tilingFactor;
-		s_Data.m_QuadVertexBufferPtr++;
-		s_Data.m_QuadVertexBufferPtr->Position = transform * s_Data.m_QuadVertexPositions[2];
-		s_Data.m_QuadVertexBufferPtr->Color = color;
-		s_Data.m_QuadVertexBufferPtr->TexCoord = textureCoord[2];
-		s_Data.m_QuadVertexBufferPtr->TexIndex = textureIndex;
-		s_Data.m_QuadVertexBufferPtr->TilingFactor = tilingFactor;
-		s_Data.m_QuadVertexBufferPtr++;
-		s_Data.m_QuadVertexBufferPtr->Position = transform * s_Data.m_QuadVertexPositions[3];
-		s_Data.m_QuadVertexBufferPtr->Color = color;
-		s_Data.m_QuadVertexBufferPtr->TexCoord = textureCoord[3];
-		s_Data.m_QuadVertexBufferPtr->TexIndex = textureIndex;
-		s_Data.m_QuadVertexBufferPtr->TilingFactor = tilingFactor;
-		s_Data.m_QuadVertexBufferPtr++;
-
+		for (size_t i = 0; i < 4; i++)
+		{
+			s_Data.m_QuadVertexBufferPtr->Position = transform * s_Data.m_QuadVertexPositions[i];
+			s_Data.m_QuadVertexBufferPtr->Color = color;
+			s_Data.m_QuadVertexBufferPtr->TexCoord = textureCoord[i];
+			s_Data.m_QuadVertexBufferPtr->TexIndex = textureIndex;
+			s_Data.m_QuadVertexBufferPtr->TilingFactor = tilingFactor;
+			s_Data.m_QuadVertexBufferPtr++;
+		}
 		s_Data.m_QuadIndexCount += 6;
 
 		s_Data.m_Stats.QuadCount++;
 
 	}
 
-	void Renderer2D::DrawQuad(const glm::mat4 transform, glm::vec4 color, const Ref<Texture2D> texture, const float tilingFactor)
+	void Renderer2D::DrawQuad(const glm::mat4& transform, const glm::vec4& color, const Ref<Texture2D> texture, const float tilingFactor)
 	{
 		HZ_PROFILE_FUNCTION();
 

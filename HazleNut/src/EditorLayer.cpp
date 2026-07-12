@@ -39,11 +39,17 @@ namespace Hazle
 		m_FrameBuffer = Hazle::FrameBuffer::Create(fbSpec);
 
 		m_ActiveScene = CreateRef<Scene>();
-		auto square = m_ActiveScene->CreateEntity();
-		m_ActiveScene->Reg().emplace<CTransform>(square, glm::mat4(1.0f));
-		m_ActiveScene->Reg().emplace<CSpriteRenderer>(square, glm::vec4{0.0f, 1.0f, 0.0f, 1.0f});	
+		Entity SquareEntity = m_ActiveScene->CreateEntity("Square");
 
-		m_SquareEntity = square;
+		SquareEntity.AddComponent<CTransform>(glm::mat4(1.0f));
+		SquareEntity.AddComponent<CSpriteRenderer>(glm::vec4{ 0.0f, 1.0f, 1.0f, 1.0f });
+
+		if (SquareEntity.hasComponent<CTransform>())
+			HZ_CORE_INFO("Squar Entity has Transform");
+		else
+			HZ_CORE_INFO("Squar Entity has no Transform component");
+		
+		m_SquareEntity = SquareEntity;
 	}
 
 	void EditorLayer::OnDetach()
@@ -70,9 +76,9 @@ namespace Hazle
 			}
 		}
 
-
 		// Render
 		m_SquareRotation += ts * glm::radians(360.0f);
+
 		Hazle::Renderer2D::ResetStats();
 		{
 			HZ_PROFILE_SCOPE("EditorLayer::OnUpdate::RenderPrep");
@@ -87,6 +93,7 @@ namespace Hazle
 			// UPDATE SCENE
 			m_ActiveScene->OnUpdate(ts);
 
+			Hazle::Renderer2D::DrawQuad(glm::mat4(1.0f), {1.0f, 0.0f, 0.0f, 1.0f});
 			//Hazle::Renderer2D::DrawQuad({ -0.5f, 0.0f }, glm::radians(0.0f), glm::vec2(1.0f), { 0.8f, 0.2f, 0.1f, 1.0f });
 			//Hazle::Renderer2D::DrawQuad({ 2.0f, 0.2f }, glm::radians(45.0f), { 0.8f, 0.6f }, { 0.3f, 0.9f, 0.1f, 1.0f });
 			//Hazle::Renderer2D::DrawQuad({ -2.0f, -0.2f }, glm::radians(0.0f), { 0.8f, 0.4f }, { 0.3f, 0.6f, 0.1f, 1.0f });
@@ -221,8 +228,6 @@ namespace Hazle
 
 		ImGui::Begin("Settings");
 
-		//ImGui::ColorEdit4("Quad Color", glm::value_ptr(m_QuadColor));
-
 		auto stats = Hazle::Renderer2D::GetStats();
 		ImGui::Text("Renderer2D Stats:");
 		ImGui::Text("Draw Calls: %d", stats.DrawCalls);
@@ -230,8 +235,15 @@ namespace Hazle
 		ImGui::Text("Vertices: %d", stats.QuadCount * 4);
 		ImGui::Text("Indices: %d", stats.QuadCount * 6);
 
-		auto& squareColor = m_ActiveScene->Reg().get<CSpriteRenderer>(m_SquareEntity).Color;
-		ImGui::ColorEdit4("Square Color", glm::value_ptr(squareColor));
+		if (m_SquareEntity.hasComponent<CTag>())
+		{
+			ImGui::Separator();
+			auto tag = m_SquareEntity.getComponent<CTag>().Tag;
+			ImGui::Text("%s", tag.c_str());
+			auto& squareColor = m_SquareEntity.getComponent<CSpriteRenderer>().Color;
+			ImGui::ColorEdit4("Quad Color", glm::value_ptr(squareColor));
+			ImGui::Separator();
+		}
 
 		m_ProfileResults.clear();
 		ImGui::End();
@@ -243,15 +255,15 @@ namespace Hazle
 		Application::Get().GetImGuiLayer()->SetBlockEvents(!m_ViewportFocused || !m_ViewportHovered);
 
 		ImVec2 viewportPanelSize = ImGui::GetContentRegionAvail();
-		if (m_ViewportSize != *((glm::vec2*)&viewportPanelSize))
+		if (m_ViewportSize != *((glm::vec2*)&viewportPanelSize) && viewportPanelSize.x > 0.0f && viewportPanelSize.y > 0.0f)
 		{
 			m_FrameBuffer->Resize(uint32_t(viewportPanelSize.x), uint32_t(viewportPanelSize.y));
 			m_ViewportSize = { viewportPanelSize.x, viewportPanelSize.y };
 			m_CameraController.OnResize(viewportPanelSize.x, viewportPanelSize.y);
 		}
 
-		HZ_CORE_WARN("Focoused: {0}", m_ViewportFocused);
-		HZ_CORE_WARN("Hovered: {0}", m_ViewportHovered);
+		//HZ_CORE_WARN("Focoused: {0}", m_ViewportFocused);
+		//HZ_CORE_WARN("Hovered: {0}", m_ViewportHovered);
 		uint32_t textureID = m_FrameBuffer->GetColorAttachmentRendererID();
 		ImGui::Image((void*)textureID, ImVec2{ viewportPanelSize.x, viewportPanelSize.y }, ImVec2(0, 1), ImVec2(1, 0));
 		ImGui::End();

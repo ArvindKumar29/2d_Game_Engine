@@ -188,6 +188,7 @@
     <ClInclude Include="src\Hazle\Renderer\Texture.h" />
     <ClInclude Include="src\Hazle\Renderer\VertexArray.h" />
     <ClInclude Include="src\Hazle\Scene\Component.h" />
+    <ClInclude Include="src\Hazle\Scene\Entity.h" />
     <ClInclude Include="src\Hazle\Scene\Scene.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
@@ -223,7 +224,7 @@
     <ClCompile Include="src\Hazle\Renderer\SubTexture2D.cpp" />
     <ClCompile Include="src\Hazle\Renderer\Texture.cpp" />
     <ClCompile Include="src\Hazle\Renderer\VertexArray.cpp" />
-    <ClCompile Include="src\Hazle\Scene\Component.cpp" />
+    <ClCompile Include="src\Hazle\Scene\Entity.cpp" />
     <ClCompile Include="src\Hazle\Scene\Scene.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
