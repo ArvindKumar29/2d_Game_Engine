@@ -48,5 +48,6 @@ namespace Hazle
 	private:
 		entt::entity m_EntityManager{ entt::null };
 		Scene* m_Scene = nullptr;
+		friend class SceneHierarchyPanel;
 	};
 }

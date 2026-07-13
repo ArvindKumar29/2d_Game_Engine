@@ -82,12 +82,6 @@ namespace Hazle {
 	void ImGuiLayer::OnImGuiRender()
 	{
 		static bool show = true;
-		//ImGui::ShowDemoWindow(&show);
-
-		ImGui::Begin("Hazle Engine");
-		//ImGui::Text("Hello from ImGui!");
-		ImGui::ColorEdit4("", new float[4]);
-		ImGui::End();
 	}
 
 	void ImGuiLayer::OnEvent(Event& e)

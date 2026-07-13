@@ -22,7 +22,6 @@ namespace Hazle
 		m_ActiveScene = CreateRef<Scene>();
 		m_SquareEntity = m_ActiveScene->CreateEntity("Square");
 		m_SquareEntity.AddComponent<CTransform>(glm::mat4(1.0f));
-
 		m_SquareEntity.AddComponent<CSpriteRenderer>(glm::vec4{ 0.0f, 1.0f, 1.0f, 1.0f });		
 
 		m_CameraEntity = m_ActiveScene->CreateEntity("Camera");
