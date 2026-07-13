@@ -1,5 +1,6 @@
 #pragma once
 #include "Hazle/Core/Hazle.h"
+#include "Panels/SceneHierarchyPanel.h"
 
 namespace Hazle
 {
@@ -45,5 +46,8 @@ namespace Hazle
 			uint32_t m_MapWidth, m_MapHeight;
 
 			bool m_ViewportFocused = false, m_ViewportHovered = false;
+
+			//Panels
+			SceneHierarchyPanel m_SceneHierarchyPanel;
 	};
 }

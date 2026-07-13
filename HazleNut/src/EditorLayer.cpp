@@ -12,26 +12,6 @@ namespace Hazle
 
 	void EditorLayer::OnAttach()
 	{
-		m_CheckerboardTexture = Texture2D::Create("Assets/Textures/checkerboard.png");
-		m_SpriteSheet = Texture2D::Create("Assets/RPG_base_assets/kenney_rpg-base/Spritesheet/RPGpack_sheet_2X.png");
-		m_SubTexture = SubTexture2D::CreateFromCoords(m_SpriteSheet, { 1, 11 }, { 128, 128 }, { 1, 1 });
-
-
-		/*m_MapWidth = s_MapWidth;
-		m_MapHeight = strlen(s_MapTiles) / s_MapWidth;
-		m_TextureMap['W'] = SubTexture2D::CreateFromCoords(m_SpriteSheet, { 11, 11 }, { 128, 128 }, { 1, 1 });
-		m_TextureMap['D'] = SubTexture2D::CreateFromCoords(m_SpriteSheet, { 6, 11 }, { 128, 128 }, { 1, 1 });
-		
-
-		// Init here
-		m_Particle.ColorBegin = { 254 / 255.0f, 212 / 255.0f, 123 / 255.0f, 1.0f };
-		m_Particle.ColorEnd = { 254 / 255.0f, 109 / 255.0f, 41 / 255.0f, 1.0f };
-		m_Particle.SizeBegin = 0.5f, m_Particle.SizeVariation = 0.3f, m_Particle.SizeEnd = 0.0f;
-		m_Particle.LifeTime = 1.0f;
-		m_Particle.Velocity = { 0.0f, 0.0f };
-		m_Particle.VelocityVariation = { 3.0f, 1.0f };
-		m_Particle.Position = { 0.0f, 0.0f };*/
-
 		m_CameraController.SetZoomLevel(10.0f);
 
 		FrameBufferSpecifications fbSpec;
@@ -41,18 +21,20 @@ namespace Hazle
 
 		m_ActiveScene = CreateRef<Scene>();
 		m_SquareEntity = m_ActiveScene->CreateEntity("Square");
-
 		m_SquareEntity.AddComponent<CTransform>(glm::mat4(1.0f));
+
 		m_SquareEntity.AddComponent<CSpriteRenderer>(glm::vec4{ 0.0f, 1.0f, 1.0f, 1.0f });		
 
 		m_CameraEntity = m_ActiveScene->CreateEntity("Camera");
 		m_CameraEntity.AddComponent<CCamera>(glm::ortho(-16.0f, 16.0f, -9.0f, 9.0f, -1.0f, 1.0f));
 		m_CameraEntity.AddComponent<CTransform>(glm::mat4(1.0f));
+		m_CameraEntity.getComponent<CTransform>().Transform[3][2] = -1.0f;
 		m_PrimaryCameraptr = m_CameraEntity;
 		
-		m_SecondCamera = m_ActiveScene->CreateEntity("Camera");
+		m_SecondCamera = m_ActiveScene->CreateEntity("clip space Camera");
 		m_SecondCamera.AddComponent<CCamera>(glm::ortho(-1.0f, 1.0f, -1.0f, 1.0f, -1.0f, 1.0f));
 		m_SecondCamera.AddComponent<CTransform>(glm::mat4(1.0f));
+		m_SecondCamera.getComponent<CTransform>().Transform[3][2] = -1.0f;
 		m_SecondCamera.getComponent<CCamera>().Primary = false;
 	
 		class CameraController : public ScriptableEntity
@@ -61,7 +43,6 @@ namespace Hazle
 			void OnCreate()
 			{
 				auto& transform = getComponent<CTransform>().Transform;
-				transform[3][0] = rand() % 10 - 5.0f;
 			}
 
 			void OnDestroy()
@@ -88,6 +69,8 @@ namespace Hazle
 			}
 		};
 		m_CameraEntity.AddComponent<CNativeScript>().Bind<CameraController>();
+
+		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
 	}
 
 	void EditorLayer::OnDetach()
@@ -107,11 +90,11 @@ namespace Hazle
 		// Update
 		m_FrameBuffer->Bind();
 		
-		if (m_ViewportFocused)
-		{
-			HZ_PROFILE_SCOPE("EditorLayer::OnUpdate");
-			m_CameraController.OnUpdate(ts);
-		}
+		//if (m_ViewportFocused)
+		//{
+		//	HZ_PROFILE_SCOPE("EditorLayer::OnUpdate");
+		//	m_CameraController.OnUpdate(ts);
+		//}
 		
 		if (Input::IsKeyPressed(Key::Escape))
 		{
@@ -119,7 +102,7 @@ namespace Hazle
 		}
 
 		// Render
-		m_SquareRotation += ts * glm::radians(360.0f);
+		//m_SquareRotation += ts * glm::radians(360.0f);
 
 		Renderer2D::ResetStats();
 		RenderCommand::SetClearColor(glm::vec4(0.1f, 0.1f, 0.1f, 1.0f));
@@ -129,6 +112,15 @@ namespace Hazle
 		//Renderer2D::DrawQuad({ 1.0f, 2.0f, 1.0f }, 0.0f, { 2.0f, 2.0f }, { 1.0f, 1.0f, 0.0f, 1.0f });
 		//Renderer2D::EndScene();
 		m_ActiveScene->OnUpdate(ts);
+		
+		//if (Hazle::FrameBufferSpecifications fbspec = m_FrameBuffer->GetSpecifications();
+		//	m_ViewportSize.x > 0.0f && m_ViewportSize.y > 0.0f &&
+		//	(fbspec.Width != m_ViewportSize.x || fbspec.Height != m_ViewportSize.y))
+		//{
+		//	m_FrameBuffer->Resize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
+		//	m_CameraController.OnResize(m_ViewportSize.x, m_ViewportSize.y);
+		//}
+
 		m_FrameBuffer->Unbind();
 	}
 
@@ -201,6 +193,8 @@ namespace Hazle
 		}
 		ImGui::End();
 
+		m_SceneHierarchyPanel.OnImGuiRender();
+
 		ImGui::Begin("Settings");
 
 		auto stats = Renderer2D::GetStats();
@@ -251,10 +245,8 @@ namespace Hazle
 			m_CameraController.OnResize(viewportPanelSize.x, viewportPanelSize.y);
 		}
 
-		HZ_CORE_WARN("Focoused: {0}", m_ViewportFocused);
-		HZ_CORE_WARN("Hovered: {0}", m_ViewportHovered);
 		uint32_t textureID = m_FrameBuffer->GetColorAttachmentRendererID();
-		ImGui::Image((void*)textureID, ImVec2{ viewportPanelSize.x, viewportPanelSize.y }, ImVec2(0, 1), ImVec2(1, 0));
+		ImGui::Image((void*)(intptr_t)textureID, ImVec2{ viewportPanelSize.x, viewportPanelSize.y }, ImVec2(0, 1), ImVec2(1, 0));
 		ImGui::End();
 		ImGui::PopStyleVar();
 

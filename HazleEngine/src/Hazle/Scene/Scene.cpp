@@ -17,8 +17,9 @@ namespace Hazle
 	{
 		Entity entity = { m_Registry.create(), this };
 		entity.AddComponent<CTag>();
-		auto tag = entity.getComponent<CTag>();
+		auto& tag = entity.getComponent<CTag>();
 		tag.Tag = name.empty() ? "Entity" : name;
+		HZ_CORE_TRACE("Entity added: {}", tag.Tag);
 		return entity;
 	}
 

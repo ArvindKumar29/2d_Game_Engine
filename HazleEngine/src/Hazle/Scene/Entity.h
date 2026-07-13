@@ -2,6 +2,7 @@
 
 #include "entt.hpp"
 #include "Scene.h"
+#include "Hazle/Core/core.h"
 
 namespace Hazle
 {
@@ -39,6 +40,11 @@ namespace Hazle
 			HZ_CORE_ASSERT(hasComponent<T>(), "Entity does not has component!");
 			m_Scene->m_Registry.remove<T>(m_EntityManager);
 		}
+
+		operator uint32_t() const {	return (uint32_t)m_EntityManager; }
+		bool operator==(const Entity& other) const { return m_EntityManager == other.m_EntityManager && m_Scene == other.m_Scene; }
+		bool operator!=(const Entity& other) const { return *this == other; }
+
 	private:
 		entt::entity m_EntityManager{ entt::null };
 		Scene* m_Scene = nullptr;
