@@ -1,9 +1,9 @@
 #pragma once
-#include "Hazle/Core/Hazle.h"
 #include "Hazle/Renderer/Camera.h"
 
 namespace Hazle
 {
+	class ScriptableEntity;
 	struct CTransform
 	{
 		glm::mat4 Transform = glm::mat4(1.0f);
@@ -52,12 +52,20 @@ namespace Hazle
 	
 	};
 
-	//class Component
-	//{
-	//public:
-	//	Component();
+	struct CNativeScript
+	{
+		ScriptableEntity* Instance = nullptr;
 
-	//private:
+		
 
-	//};
+		ScriptableEntity*(*InstantiateScript)();
+		void (*DestroyScript)(CNativeScript*);
+
+		template<typename T>
+		void Bind()
+		{
+			InstantiateScript = []() { return static_cast<ScriptableEntity*>(new T()); };
+			DestroyScript = [](CNativeScript* nsc) { delete nsc->Instance; nsc->Instance = nullptr; };
+		}
+	};
 }

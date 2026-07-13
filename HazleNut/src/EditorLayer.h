@@ -28,6 +28,7 @@ namespace Hazle
 			Ref<Scene> m_ActiveScene;
 			Entity m_SquareEntity;
 			Entity m_CameraEntity, m_SecondCamera;
+			Entity m_PrimaryCameraptr;
 			bool m_PrimaryCamera = true;
 
 			glm::vec2 m_ViewportSize = { 0.0f, 0.0f };

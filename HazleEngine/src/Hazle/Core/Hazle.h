@@ -18,6 +18,7 @@
 #include "Hazle/Scene/Scene.h"
 #include "Hazle/Scene/Component.h"
 #include "Hazle/Scene/Entity.h"
+#include "Hazle/Scene/ScriptableEntity.h"
 //=========================================
 
 //==============Renderer===================

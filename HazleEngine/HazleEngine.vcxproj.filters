@@ -166,6 +166,7 @@
     <ClInclude Include="src\Hazle\Scene\Component.h" />
     <ClInclude Include="src\Hazle\Scene\Entity.h" />
     <ClInclude Include="src\Hazle\Renderer\Camera.h" />
+    <ClInclude Include="src\Hazle\Scene\ScriptableEntity.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="external-libraries\stb_image\stb_image.cpp">
@@ -258,7 +259,7 @@
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="src\Hazle\Scene\Scene.cpp" />
     <ClCompile Include="src\Hazle\Scene\Entity.cpp" />
+    <ClCompile Include="src\Hazle\Scene\Scene.cpp" />
   </ItemGroup>
 </Project>

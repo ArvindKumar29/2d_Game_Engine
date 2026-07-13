@@ -2,7 +2,6 @@
 
 #include "entt.hpp"
 #include "Scene.h"
-#include "Hazle/Core/Hazle.h"
 
 namespace Hazle
 {
@@ -21,10 +20,10 @@ namespace Hazle
 		}
 
 		template<typename T ,typename... Args>
-		void AddComponent(Args&&... args)
+		T& AddComponent(Args&&... args)
 		{
 			HZ_CORE_ASSERT(!hasComponent<T>(), "Entity already has component!");
-			m_Scene->m_Registry.emplace<T>(m_EntityManager, std::forward<Args>(args)...);
+			return m_Scene->m_Registry.emplace<T>(m_EntityManager, std::forward<Args>(args)...);
 		}
 
 		template<typename T>

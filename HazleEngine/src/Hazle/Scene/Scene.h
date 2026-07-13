@@ -1,6 +1,5 @@
 #pragma once
 #include <entt.hpp>
-#include "glm/glm.hpp"
 #include "Hazle/Core/Timestep.h"
 
 namespace Hazle
@@ -13,11 +12,12 @@ namespace Hazle
 		~Scene();
 
 		Entity CreateEntity(const std::string& name = std::string());
-		//TEMP
+		void OnViewportResize(uint32_t width, uint32_t height);
 		void OnUpdate(Timestep ts);
 
 	private:
 		entt::registry m_Registry;
+		uint32_t m_ViewportWidth, m_ViewportHeight;
 		friend class Entity;
 	};
 }

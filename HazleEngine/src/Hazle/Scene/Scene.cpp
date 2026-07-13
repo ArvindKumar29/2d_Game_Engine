@@ -2,11 +2,14 @@
 
 #include "Scene.h"
 #include "Entity.h"
-
+#include "Component.h"
+#include "ScriptableEntity.h"
+#include "Hazle/Renderer/Renderer2D.h"
 namespace Hazle
 {
 	Scene::Scene()
 	{}
+
 	Scene::~Scene()
 	{}
 
@@ -14,20 +17,35 @@ namespace Hazle
 	{
 		Entity entity = { m_Registry.create(), this };
 		entity.AddComponent<CTag>();
-		auto& tag = entity.getComponent<CTag>();
+		auto tag = entity.getComponent<CTag>();
 		tag.Tag = name.empty() ? "Entity" : name;
 		return entity;
 	}
 
 	void Scene::OnUpdate(Timestep ts)
 	{
+		// Update Scripts
+		{
+			m_Registry.view<CNativeScript>().each([=](auto entity, auto& nsc)
+				{
+					if (!nsc.Instance)
+					{
+						nsc.Instance = nsc.InstantiateScript();
+						nsc.Instance->m_Entity = Entity{ entity, this };
+						nsc.Instance->OnCreate();
+					}
+					nsc.Instance->OnUpdate(ts);
+				});
+		}
+
+		// Render2D
 		Camera* mainCamera = nullptr;
 		glm::mat4* cameraTransform = nullptr;
 		{
 			auto group = m_Registry.group<CTransform, CCamera>();
 			for (auto entity : group)
 			{
-				auto& [transform, camera] = group.get<CTransform, CCamera>(entity);
+				auto [transform, camera] = group.get<CTransform, CCamera>(entity);
 
 				if (camera.Primary)
 				{
@@ -38,11 +56,8 @@ namespace Hazle
 			}
 		}
 
-		if(mainCamera)
+		if (mainCamera)
 		{
-			HZ_CORE_INFO("Running rendering through scene");
-			//Hazle::OrthographicCamera bypassCamera(-16.0f, 16.0f, -9.0f, 9.0f);
-			//Hazle::Renderer2D::BeginScene(bypassCamera);
 			Renderer2D::BeginScene(mainCamera->GetProjection(), *cameraTransform);
 			auto view = m_Registry.view<CTransform, CSpriteRenderer>();
 			view.each([](auto entity, auto& transform, auto& sprite)
@@ -52,5 +67,19 @@ namespace Hazle
 				});
 			Renderer2D::EndScene();
 		}
+	}
+
+	void Scene::OnViewportResize(uint32_t width, uint32_t height)
+	{
+		//m_ViewportWidth = width;
+		//m_ViewportHeight = height;
+
+		//auto view = m_Registry.view<CCamera>();
+		//for (auto entity : view)
+		//{
+		//	auto& cameraComponent = view.get<CCamera>(entity);
+		//	if (!cameraComponent.FixedAspectRatio)
+		//		cameraComponent.Camera.SetViewportSize(width, height);
+		//}
 	}
 }

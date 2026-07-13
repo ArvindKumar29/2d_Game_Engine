@@ -1,5 +1,6 @@
 #include <hzpch.h>
 #include "EditorLayer.h"
+#include "Hazle/Core/Hazle.h"
 
 namespace Hazle
 {
@@ -39,26 +40,54 @@ namespace Hazle
 		m_FrameBuffer = FrameBuffer::Create(fbSpec);
 
 		m_ActiveScene = CreateRef<Scene>();
-		Entity SquareEntity = m_ActiveScene->CreateEntity("Square");
+		m_SquareEntity = m_ActiveScene->CreateEntity("Square");
 
-		SquareEntity.AddComponent<CTransform>(glm::mat4(1.0f));
-		SquareEntity.AddComponent<CSpriteRenderer>(glm::vec4{ 0.0f, 1.0f, 1.0f, 1.0f });
-
-		if (SquareEntity.hasComponent<CTransform>())
-			HZ_CORE_INFO("Squar Entity has Transform");
-		else
-			HZ_CORE_INFO("Squar Entity has no Transform component");
-		
-		m_SquareEntity = SquareEntity;
+		m_SquareEntity.AddComponent<CTransform>(glm::mat4(1.0f));
+		m_SquareEntity.AddComponent<CSpriteRenderer>(glm::vec4{ 0.0f, 1.0f, 1.0f, 1.0f });		
 
 		m_CameraEntity = m_ActiveScene->CreateEntity("Camera");
 		m_CameraEntity.AddComponent<CCamera>(glm::ortho(-16.0f, 16.0f, -9.0f, 9.0f, -1.0f, 1.0f));
-		m_CameraEntity.AddComponent<CTransform>();
+		m_CameraEntity.AddComponent<CTransform>(glm::mat4(1.0f));
+		m_PrimaryCameraptr = m_CameraEntity;
 		
 		m_SecondCamera = m_ActiveScene->CreateEntity("Camera");
 		m_SecondCamera.AddComponent<CCamera>(glm::ortho(-1.0f, 1.0f, -1.0f, 1.0f, -1.0f, 1.0f));
-		m_SecondCamera.AddComponent<CTransform>();
+		m_SecondCamera.AddComponent<CTransform>(glm::mat4(1.0f));
 		m_SecondCamera.getComponent<CCamera>().Primary = false;
+	
+		class CameraController : public ScriptableEntity
+		{
+		public:
+			void OnCreate()
+			{
+				auto& transform = getComponent<CTransform>().Transform;
+				transform[3][0] = rand() % 10 - 5.0f;
+			}
+
+			void OnDestroy()
+			{}
+
+			void OnUpdate(Timestep ts)
+			{
+				auto& transform = getComponent<CTransform>().Transform;
+				float speed = 5.0f;
+
+				if (Input::IsKeyPressed(Key::A))
+					transform[3][0] -= speed * ts;
+				if (Input::IsKeyPressed(Key::D))
+					transform[3][0] += speed * ts;
+				if (Input::IsKeyPressed(Key::S))
+					transform[3][1] -= speed * ts;
+				if (Input::IsKeyPressed(Key::W))
+					transform[3][1] += speed * ts;
+				if (Input::IsKeyPressed(Key::E))
+					transform[3][2] -= speed * ts;
+				if (Input::IsKeyPressed(Key::F))
+					transform[3][2] += speed * ts;
+				
+			}
+		};
+		m_CameraEntity.AddComponent<CNativeScript>().Bind<CameraController>();
 	}
 
 	void EditorLayer::OnDetach()
@@ -192,14 +221,18 @@ namespace Hazle
 		}
 
 		ImGui::DragFloat3("Camera Trasnform: ",
-			glm::value_ptr(m_CameraEntity.getComponent<CTransform>().Transform[3]));
-
+			glm::value_ptr(m_PrimaryCameraptr.getComponent<CTransform>().Transform[3]));
+		ImGui::Separator();
 		if (ImGui::Checkbox("Camera A: ", &m_PrimaryCamera))
 		{
 			m_CameraEntity.getComponent<CCamera>().Primary = m_PrimaryCamera;
 			m_SecondCamera.getComponent<CCamera>().Primary = !m_PrimaryCamera;
+			if (m_PrimaryCamera)
+				m_PrimaryCameraptr = m_CameraEntity;
+			else
+				m_PrimaryCameraptr = m_SecondCamera;
 		}
-
+		ImGui::Separator();
 		m_ProfileResults.clear();
 		ImGui::End();
 
