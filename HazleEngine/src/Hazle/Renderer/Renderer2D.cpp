@@ -1,4 +1,4 @@
-#include "hzpch.h"
+#include <hzpch.h>
 #include "Renderer2D.h"
 #include "VertexArray.h"
 #include "Hazle/Core/Log.h"
@@ -275,12 +275,11 @@ namespace Hazle
 			s_Data.m_QuadVertexBufferPtr->TexIndex = textureIndex;
 			s_Data.m_QuadVertexBufferPtr->TilingFactor = tilingFactor;
 			s_Data.m_QuadVertexBufferPtr++;
+			//HZ_CORE_WARN("dRAWING QUAD!!!");
 		}
 		s_Data.m_QuadIndexCount += 6;
 
 		s_Data.m_Stats.QuadCount++;
-
-		//HZ_CORE_WARN("dRAWING QUAD!!!");
 
 	}
 

@@ -1,12 +1,12 @@
 #pragma once
-#include "Hazle/Renderer/Camera.h"
+#include "SceneCamera.h"
 
 namespace Hazle
 {
 	class ScriptableEntity;
 	struct CTransform
 	{
-		glm::mat4 Transform = glm::mat4(1.0f);
+		glm::mat4 Transform{ 1.0f };
 
 		CTransform() = default;
 		CTransform(const CTransform& other) = default;
@@ -22,7 +22,8 @@ namespace Hazle
 
 	struct CSpriteRenderer
 	{
-		glm::vec4 Color;
+		glm::vec4 Color = {0.0f, 1.0f, 1.0f, 1.0f};
+		//Ref<MaterialInstance> m_MaterialInstance;
 
 		CSpriteRenderer() = default;
 		CSpriteRenderer(const CSpriteRenderer&) = default;
@@ -42,21 +43,20 @@ namespace Hazle
 
 	struct CCamera
 	{
-		Camera camera;
+		SceneCamera camera;
 		bool Primary = true;
+		bool FixedAspectRatio = false;
 
 		CCamera() = default;
 		CCamera(const CCamera&) = default;
 		CCamera(const glm::mat4 projection)
-			: camera(projection) {}
+			: camera() {}
 	
 	};
 
 	struct CNativeScript
 	{
 		ScriptableEntity* Instance = nullptr;
-
-		
 
 		ScriptableEntity*(*InstantiateScript)();
 		void (*DestroyScript)(CNativeScript*);

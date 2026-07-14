@@ -1,4 +1,4 @@
-#include "hzpch.h"
+#include <hzpch.h>
 #include "OrthographicCameraController.h"
 #include "Hazle/Core/Input.h"
 #include "Hazle/Core/KeyCodes.h"

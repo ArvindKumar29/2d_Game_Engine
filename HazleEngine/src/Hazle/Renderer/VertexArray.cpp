@@ -1,4 +1,4 @@
-#include "hzpch.h"
+#include <hzpch.h>
 #include "VertexArray.h"
 #include "Platform/OpenGL/OpenGLVertexArray.h"
 

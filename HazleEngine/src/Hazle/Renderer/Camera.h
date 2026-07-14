@@ -7,6 +7,7 @@ namespace Hazle
 	class Camera
 	{
 	public:
+		Camera() {};
 		Camera(glm::mat4 projection)
 			: m_Projection(projection) {}
 
@@ -14,5 +15,6 @@ namespace Hazle
 
 	private:
 		glm::mat4 m_Projection;
+		friend class SceneCamera;
 	};
 }

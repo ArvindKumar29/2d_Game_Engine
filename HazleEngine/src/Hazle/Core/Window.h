@@ -1,6 +1,6 @@
 #pragma once
 
-#include "hzpch.h"
+#include <hzpch.h>
 #include "Hazle/Core/core.h"
 #include "Hazle/Event/Event.h"
 #include "Hazle/Core/Log.h"

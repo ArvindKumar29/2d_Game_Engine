@@ -1,4 +1,4 @@
-#include "hzpch.h"
+#include <hzpch.h>
 
 #include "Hazle/Core/Input.h"
 #include <GLFW/glfw3.h>	

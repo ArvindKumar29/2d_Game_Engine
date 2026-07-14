@@ -26,7 +26,7 @@ namespace Hazle
 			Entity entity{ entityID, m_Context.get() };
 			DrawEntityNode(entity);	
 		}
-
+		 
 		if (ImGui::IsMouseDown(0) && ImGui::IsWindowHovered())
 			m_SelectionContext = {};
 
@@ -80,6 +80,80 @@ namespace Hazle
 			{
 				auto& transform = entity.getComponent<CTransform>().Transform;
 				ImGui::DragFloat3("Position", glm::value_ptr(transform[3]), 0.1f);
+				ImGui::TreePop();
+			}
+		}
+
+		if (entity.hasComponent<CCamera>())
+		{
+			if (ImGui::TreeNodeEx((void*)typeid(CCamera).hash_code(), ImGuiTreeNodeFlags_DefaultOpen, "Camera"))
+			{
+				auto& cameraComponent = entity.getComponent<CCamera>();
+				auto& camera = cameraComponent.camera;
+
+				const char* projectionTypeString[] = { "Perspective", "Orthographic" };
+				const char* currentProjectionTypeString = projectionTypeString[(int)camera.GetProjectionType()];
+				if (ImGui::BeginCombo("Projection", currentProjectionTypeString))
+				{
+					for (int i = 0; i < 2; i++)
+					{
+						bool isSelected = currentProjectionTypeString == projectionTypeString[i];
+						if (ImGui::Selectable(projectionTypeString[i], isSelected))
+						{
+							currentProjectionTypeString = projectionTypeString[i];
+							camera.SetProjectionType((SceneCamera::ProjectionType)i);
+						}
+						if (isSelected)
+						{
+							ImGui::SetItemDefaultFocus();
+						}
+
+					}
+					ImGui::EndCombo();
+				}
+
+				if (camera.GetProjectionType() == SceneCamera::ProjectionType::Perspective)
+				{
+
+					float persFOV = glm::degrees(camera.GetPerspectiveVerticleFOV());
+					if(ImGui::DragFloat("FOV", &persFOV))
+						camera.SetPerspectiveVerticleFOV(glm::radians(persFOV));
+					
+					float persNear = camera.GetPerspectiveNearClip();
+					if(ImGui::DragFloat("Near", &persNear))
+						camera.SetPerspectiveNearClip(persNear);
+					
+					float persFar = camera.GetPerspectiveFarClip();
+					if(ImGui::DragFloat("Far", &persFar))
+						camera.SetPerspectiveFarClip(persFar);
+				}
+				
+				if (camera.GetProjectionType() == SceneCamera::ProjectionType::Orthographic)
+				{
+					float orthoSize = camera.GetOrthographicSize();
+					if(ImGui::DragFloat("Size", &orthoSize))
+						camera.SetOrthographicSize(orthoSize);
+					
+					float orthoNear = camera.GetOrthographicNearClip();
+					if(ImGui::DragFloat("Near", &orthoNear))
+						camera.SetOrthographicNearClip(orthoNear);
+					
+					float orthoFar = camera.GetOrthographicFarClip();
+					if(ImGui::DragFloat("Far", &orthoFar))
+						camera.SetOrthographicFarClip(orthoFar);
+				}
+
+
+				ImGui::TreePop();
+			}
+		}
+
+		if (entity.hasComponent<CSpriteRenderer>())
+		{
+			if (ImGui::TreeNodeEx((void*)typeid(CSpriteRenderer).hash_code(), ImGuiTreeNodeFlags_DefaultOpen, "Sprite Renderer"))
+			{
+				auto& sprite = entity.getComponent<CSpriteRenderer>();
+				ImGui::ColorEdit4("Color", glm::value_ptr(sprite.Color));
 				ImGui::TreePop();
 			}
 		}

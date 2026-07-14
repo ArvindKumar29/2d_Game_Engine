@@ -1,4 +1,4 @@
-#include "hzpch.h"
+#include <hzpch.h>
 #include "Log.h"
 
 namespace Hazle

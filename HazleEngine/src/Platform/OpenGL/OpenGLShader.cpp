@@ -1,4 +1,4 @@
-#include "hzpch.h"
+#include <hzpch.h>
 #include "OpenGLShader.h"
 #include "Hazle/Core/Log.h"
 #include "glad/glad.h"

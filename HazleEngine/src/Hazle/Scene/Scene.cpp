@@ -5,6 +5,11 @@
 #include "Component.h"
 #include "ScriptableEntity.h"
 #include "Hazle/Renderer/Renderer2D.h"
+#include "Hazle/Core/Log.h"
+
+#define GLM_ENABLE_EXPERIMENTAL
+#include <glm/gtx/string_cast.hpp>
+
 namespace Hazle
 {
 	Scene::Scene()
@@ -42,45 +47,44 @@ namespace Hazle
 		// Render2D
 		Camera* mainCamera = nullptr;
 		glm::mat4* cameraTransform = nullptr;
+		auto view = m_Registry.view<CTransform, CCamera>();
+		for (auto entity : view)
 		{
-			auto group = m_Registry.group<CTransform, CCamera>();
-			for (auto entity : group)
+			auto& transform = view.get<CTransform>(entity);
+			auto& camera = view.get<CCamera>(entity);
+			if (camera.Primary)
 			{
-				auto [transform, camera] = group.get<CTransform, CCamera>(entity);
-
-				if (camera.Primary)
-				{
-					mainCamera = &camera.camera;
-					cameraTransform = &transform.Transform;
-					break;
-				}
+				mainCamera = &camera.camera;
+				cameraTransform = &transform.Transform;
+				break;
 			}
 		}
 
 		if (mainCamera)
 		{
-			Renderer2D::BeginScene(mainCamera->GetProjection(), *cameraTransform);
+			//HZ_CORE_INFO("PROJECTION: {0}", glm::to_string(mainCamera->GetProjection()));
+			//HZ_CORE_INFO("VIEW: {0}", glm::to_string(glm::inverse(*cameraTransform)));
+			Renderer2D::BeginScene(*mainCamera, *cameraTransform);
 			auto view = m_Registry.view<CTransform, CSpriteRenderer>();
-			view.each([](auto entity, auto& transform, auto& sprite)
-				{
-					//transform.Transform[3][2] = -1.0f;
-					Hazle::Renderer2D::DrawQuad(transform.Transform, sprite.Color);
-				});
+			for (auto entity : view)
+			{
+				auto& transform = view.get<CTransform>(entity);
+				auto& sprite = view.get<CSpriteRenderer>(entity);
+				Hazle::Renderer2D::DrawQuad(transform.Transform, sprite.Color);
+				HZ_CORE_INFO("Drawing!!! {0} {1} {2}, {3}", transform.Transform[3][0], transform.Transform[3][1], transform.Transform[3][2], glm::to_string(sprite.Color));
+			}
 			Renderer2D::EndScene();
 		}
 	}
 
 	void Scene::OnViewportResize(uint32_t width, uint32_t height)
 	{
-		//m_ViewportWidth = width;
-		//m_ViewportHeight = height;
-
-		//auto view = m_Registry.view<CCamera>();
-		//for (auto entity : view)
-		//{
-		//	auto& cameraComponent = view.get<CCamera>(entity);
-		//	if (!cameraComponent.FixedAspectRatio)
-		//		cameraComponent.Camera.SetViewportSize(width, height);
-		//}
+		auto view = m_Registry.view<CCamera>();
+		for (auto entity : view)
+		{
+			auto& cameraComponent = view.get<CCamera>(entity);
+			if(!cameraComponent.FixedAspectRatio)
+				cameraComponent.camera.SetViewportSize(width, height);
+		}
 	}
 }
