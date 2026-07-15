@@ -45,7 +45,7 @@ namespace Hazle
 		public:
 			void OnCreate()
 			{
-				auto& transform = getComponent<CTransform>().Transform;
+				auto& transform = getComponent<CTransform>().GetTransform();
 			}
 
 			void OnDestroy()
@@ -53,21 +53,21 @@ namespace Hazle
 
 			void OnUpdate(Timestep ts)
 			{
-				auto& transform = getComponent<CTransform>().Transform;
+				auto& translation = getComponent<CTransform>().Translation;
 				float speed = 5.0f;
 
 				if (Input::IsKeyPressed(Key::A))
-					transform[3][0] -= speed * ts;
+					translation.x -= speed * ts;
 				if (Input::IsKeyPressed(Key::D))
-					transform[3][0] += speed * ts;
+					translation.x += speed * ts;
 				if (Input::IsKeyPressed(Key::S))
-					transform[3][1] -= speed * ts;
+					translation.y -= speed * ts;
 				if (Input::IsKeyPressed(Key::W))
-					transform[3][1] += speed * ts;
+					translation.y += speed * ts;
 				if (Input::IsKeyPressed(Key::E))
-					transform[3][2] -= speed * ts;
+					translation.z -= speed * ts;
 				if (Input::IsKeyPressed(Key::F))
-					transform[3][2] += speed * ts;
+					translation.z += speed * ts;
 				
 			}
 		};
@@ -213,7 +213,7 @@ namespace Hazle
 		}
 
 		ImGui::DragFloat3("Camera Trasnform: ",
-			glm::value_ptr(m_PrimaryCameraptr.getComponent<CTransform>().Transform[3]));
+			glm::value_ptr(m_PrimaryCameraptr.getComponent<CTransform>().Translation));
 		ImGui::Separator();
 		if (ImGui::Checkbox("Camera A: ", &m_PrimaryCamera))
 		{

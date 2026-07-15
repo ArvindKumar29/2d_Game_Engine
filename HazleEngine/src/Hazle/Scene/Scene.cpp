@@ -46,7 +46,7 @@ namespace Hazle
 
 		// Render2D
 		Camera* mainCamera = nullptr;
-		glm::mat4* cameraTransform = nullptr;
+		glm::mat4 cameraTransform;
 		auto view = m_Registry.view<CTransform, CCamera>();
 		for (auto entity : view)
 		{
@@ -55,7 +55,7 @@ namespace Hazle
 			if (camera.Primary)
 			{
 				mainCamera = &camera.camera;
-				cameraTransform = &transform.Transform;
+				cameraTransform = transform.GetTransform();
 				break;
 			}
 		}
@@ -64,14 +64,14 @@ namespace Hazle
 		{
 			//HZ_CORE_INFO("PROJECTION: {0}", glm::to_string(mainCamera->GetProjection()));
 			//HZ_CORE_INFO("VIEW: {0}", glm::to_string(glm::inverse(*cameraTransform)));
-			Renderer2D::BeginScene(*mainCamera, *cameraTransform);
+			Renderer2D::BeginScene(*mainCamera, cameraTransform);
 			auto view = m_Registry.view<CTransform, CSpriteRenderer>();
 			for (auto entity : view)
 			{
 				auto& transform = view.get<CTransform>(entity);
 				auto& sprite = view.get<CSpriteRenderer>(entity);
-				Hazle::Renderer2D::DrawQuad(transform.Transform, sprite.Color);
-				HZ_CORE_INFO("Drawing!!! {0} {1} {2}, {3}", transform.Transform[3][0], transform.Transform[3][1], transform.Transform[3][2], glm::to_string(sprite.Color));
+				Hazle::Renderer2D::DrawQuad(transform.GetTransform(), sprite.Color);
+				//HZ_CORE_INFO("Drawing!!! {0} {1} {2}, {3}", transform.Transform[3][0], transform.Transform[3][1], transform.Transform[3][2], glm::to_string(sprite.Color));
 			}
 			Renderer2D::EndScene();
 		}

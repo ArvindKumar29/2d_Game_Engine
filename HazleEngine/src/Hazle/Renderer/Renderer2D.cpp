@@ -129,7 +129,7 @@ namespace Hazle
 	void Renderer2D::EndScene()
 	{
 		HZ_PROFILE_FUNCTION();
-		uint32_t dataSize = (uint8_t*)s_Data.m_QuadVertexBufferPtr - (uint8_t*)s_Data.m_QuadVertexBufferBase;
+		uint32_t dataSize = (uint32_t)((uint8_t*)s_Data.m_QuadVertexBufferPtr - (uint8_t*)s_Data.m_QuadVertexBufferBase);
 		s_Data.m_QuadBuffer->SetData(s_Data.m_QuadVertexBufferBase, dataSize);
 		Flush();
 	}
@@ -211,7 +211,7 @@ namespace Hazle
 
 		if (textureIndex == 0.0f)
 		{
-			textureIndex = s_Data.m_TextureSlotIndex;
+			textureIndex = (float)s_Data.m_TextureSlotIndex;
 			s_Data.m_TextureSlots[s_Data.m_TextureSlotIndex] = texture;
 			s_Data.m_TextureSlotIndex++;
 		}
@@ -301,7 +301,7 @@ namespace Hazle
 
 		if (textureIndex == 0.0f)
 		{
-			textureIndex = s_Data.m_TextureSlotIndex;
+			textureIndex = (float)s_Data.m_TextureSlotIndex;
 			s_Data.m_TextureSlots[s_Data.m_TextureSlotIndex] = texture;
 			s_Data.m_TextureSlotIndex++;
 		}

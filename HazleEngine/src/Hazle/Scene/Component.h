@@ -1,20 +1,36 @@
 #pragma once
 #include "SceneCamera.h"
+#include "glm/glm.hpp"
+#include "glm/gtc/matrix_transform.hpp"
 
 namespace Hazle
 {
 	class ScriptableEntity;
+
 	struct CTransform
 	{
-		glm::mat4 Transform{ 1.0f };
+		//glm::mat4 Transform{ 1.0f };
+		glm::vec3 Translation	= { 0.0f, 0.0f, 0.0f };
+		glm::vec3 Rotation		= { 0.0f, 0.0f, 0.0f };
+		glm::vec3 Scale			= { 0.0f, 0.0f, 0.0f };
+		glm::mat4 Tarnsform;
 
 		CTransform() = default;
 		CTransform(const CTransform& other) = default;
-		CTransform(const glm::mat4& transfrom)
-			:Transform(transfrom) {}
+		CTransform(const glm::vec3& translation)
+			:Translation(translation) {}
 
-		operator glm::mat4& () { return Transform; }
-		operator const glm::mat4& () { return Transform; }
+		glm::mat4 GetTransform() const
+		{
+			glm::mat4 rotation = glm::rotate(glm::mat4(1.0f), Rotation.x, { 1, 0, 0 })
+				* glm::rotate(glm::mat4(1.0f), Rotation.x, { 1, 0, 0 })
+				* glm::rotate(glm::mat4(1.0f), Rotation.x, { 1, 0, 0 });
+
+			return  glm::translate(glm::mat4(1.0f), Translation)
+				* rotation
+				* glm::scale(glm::mat4(1.0f), Scale);
+		}
+
 	};
 
 	struct CMesh

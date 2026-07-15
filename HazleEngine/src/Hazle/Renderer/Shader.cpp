@@ -41,7 +41,7 @@ namespace Hazle
 			return std::make_shared<OpenGLShader>(name, vertexSrc, fragmentSrc);
 		}
 		HZ_CORE_ERROR("Unknown RendererAPI!!!");
-
+		return nullptr;
 	}	
 	void ShaderLibrary::Add(const Ref<Shader>& shader)
 	{
