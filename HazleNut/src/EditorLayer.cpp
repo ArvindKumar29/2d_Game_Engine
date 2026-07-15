@@ -28,9 +28,13 @@ namespace Hazle
 		redSquare.AddComponent<CTransform>();
 		redSquare.AddComponent<CSpriteRenderer>(glm::vec4{1.0f, 0.0f, 0.0f, 1.0f});
 
-		m_CameraEntity = m_ActiveScene->CreateEntity("Camera");
+		m_CameraEntity = m_ActiveScene->CreateEntity("Camera A");
 		m_CameraEntity.AddComponent<CCamera>(glm::ortho(-16.0f, 16.0f, -9.0f, 9.0f, -1.0f, 1.0f));
 		m_CameraEntity.AddComponent<CTransform>();
+		
+		m_SecondCamera = m_ActiveScene->CreateEntity("Camera B");
+		m_SecondCamera.AddComponent<CCamera>(glm::ortho(-16.0f, 16.0f, -9.0f, 9.0f, -1.0f, 1.0f));
+		m_SecondCamera.AddComponent<CTransform>();
 
 		
 		
@@ -109,6 +113,9 @@ namespace Hazle
 
 		//Update Scene
 		m_ActiveScene->OnUpdate(ts);
+		//Renderer2D::BeginScene(m_CameraController.GetCamera());
+		//Renderer2D::DrawQuad({ 0.0f, 0.0f, 0.0f }, 0.0f, { 1.0f, 1.0f }, { 1.0f, 0.0f, 0.0f, 1.0f });
+		//Renderer2D::EndScene();
 
 		m_FrameBuffer->Unbind();
 		
@@ -161,11 +168,16 @@ namespace Hazle
 
 		// Submit the DockSpace
 		ImGuiIO& io = ImGui::GetIO();
+		ImGuiStyle& style = ImGui::GetStyle();
+		float minwinsize = style.WindowMinSize.x;
+		style.WindowMinSize.x = 370.0f;
 		if (io.ConfigFlags & ImGuiConfigFlags_DockingEnable)
 		{
 			ImGuiID dockspace_id = ImGui::GetID("MyDockSpace");
 			ImGui::DockSpace(dockspace_id, ImVec2(0.0f, 0.0f), dockspace_flags);
 		}
+		style.WindowMinSize.x = style.WindowMinSize.x;
+
 
 		if (ImGui::BeginMenuBar())
 		{

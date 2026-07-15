@@ -9,7 +9,7 @@ namespace Hazle
 		OpenGLFrameBuffer(const FrameBufferSpecifications& spec);
 		~OpenGLFrameBuffer();
 
-		virtual FrameBufferSpecifications& GetSpecifications() const override { return m_Specifications; }
+		virtual const FrameBufferSpecifications GetSpecifications() const override { return m_Specifications; }
 		virtual uint32_t GetColorAttachmentRendererID() const override { return m_ColorAttachment; }
 		void Invalidate();
 
@@ -20,7 +20,7 @@ namespace Hazle
 
 	private:
 		uint32_t m_RendererID = 0, m_ColorAttachment = 0, m_DepthAttachment = 0;
-		FrameBufferSpecifications& m_Specifications;
+		FrameBufferSpecifications m_Specifications;
 	
 	};
 }

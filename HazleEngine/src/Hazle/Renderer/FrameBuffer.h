@@ -19,7 +19,7 @@ namespace Hazle
 		virtual void Unbind() = 0;
 		static Ref<FrameBuffer> Create(const FrameBufferSpecifications& spec);
 
-		virtual const FrameBufferSpecifications& GetSpecifications() const = 0;
+		virtual const FrameBufferSpecifications GetSpecifications() const = 0;
 		virtual uint32_t GetColorAttachmentRendererID() const = 0;
 
 		virtual void Resize(uint32_t width, uint32_t height) = 0;

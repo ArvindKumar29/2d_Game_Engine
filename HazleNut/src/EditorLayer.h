@@ -21,7 +21,7 @@ namespace Hazle
 			Ref<FrameBuffer> m_FrameBuffer;
 			Ref<Scene> m_ActiveScene;
 			Entity m_SquareEntity;
-			Entity m_CameraEntity;
+			Entity m_CameraEntity, m_SecondCamera;
 
 			glm::vec2 m_ViewportSize = { 1.0f, 1.0f };
 			struct ProfileResult

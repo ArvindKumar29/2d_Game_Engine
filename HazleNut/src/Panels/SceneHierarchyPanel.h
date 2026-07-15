@@ -15,7 +15,7 @@ namespace Hazle
 		void OnImGuiRender();
 	private:
 		void DrawEntityNode(Entity entity);
-		void DrawComponent(Entity entity);
+		void Draw_Component(Entity entity);
 		Ref<Scene> m_Context;
 		Entity m_SelectionContext;
 	};

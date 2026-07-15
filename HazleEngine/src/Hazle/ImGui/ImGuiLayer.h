@@ -21,6 +21,8 @@ namespace Hazle {
 		void SetBlockEvents(bool Block) { m_blockEvents = Block; };
 		void begin();
 		void end();
+
+		void SetDarkThemeColors();
 	private:
 		bool m_blockEvents = false;
 		float m_Time = 0.0f;
