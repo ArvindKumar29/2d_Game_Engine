@@ -6,7 +6,6 @@ namespace Hazle
 	/////// VERTEX BUFFER //////////
 	OpenGLVertexBuffer::OpenGLVertexBuffer(uint32_t size)
 	{
-		HZ_PROFILE_FUNCTION();
 		glCreateBuffers(1, &m_RendererID);
 		glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
 		glBufferData(GL_ARRAY_BUFFER, size, nullptr, GL_DYNAMIC_DRAW);
@@ -14,7 +13,6 @@ namespace Hazle
 	
 	OpenGLVertexBuffer::OpenGLVertexBuffer(float* vertices, uint32_t size)
 	{
-		HZ_PROFILE_FUNCTION();
 		glCreateBuffers(1, &m_RendererID);
 		//glGenBuffers(1, &m_RendererID);
 		glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
@@ -23,19 +21,16 @@ namespace Hazle
 	
 	OpenGLVertexBuffer::~OpenGLVertexBuffer()
 	{
-		HZ_PROFILE_FUNCTION();
 		glDeleteBuffers(1, &m_RendererID);
 	}
 	
 	void OpenGLVertexBuffer::Bind() const
 	{
-		HZ_PROFILE_FUNCTION();
 		glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
 	}
 	
 	void OpenGLVertexBuffer::Unbind() const
 	{
-		HZ_PROFILE_FUNCTION();
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
 
@@ -50,7 +45,6 @@ namespace Hazle
 	OpenGLIndexBuffer::OpenGLIndexBuffer(uint32_t* indices, uint32_t count)
 		: m_Count(count)
 	{
-		HZ_PROFILE_FUNCTION();
 		glCreateBuffers(1, &m_RendererID);
 		//glGenBuffers(1, &m_RendererID);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_RendererID);
@@ -59,19 +53,16 @@ namespace Hazle
 	
 	OpenGLIndexBuffer::~OpenGLIndexBuffer()
 	{
-		HZ_PROFILE_FUNCTION();
 		glDeleteBuffers(1, &m_RendererID);
 	}
 	
 	void OpenGLIndexBuffer::Bind() const
 	{
-		HZ_PROFILE_FUNCTION();
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_RendererID);
 	}
 	
 	void OpenGLIndexBuffer::Unbind() const
 	{
-		HZ_PROFILE_FUNCTION();
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 	}
 }

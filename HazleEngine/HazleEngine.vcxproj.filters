@@ -78,9 +78,6 @@
     <ClInclude Include="src\Hazle\Core\core.h">
       <Filter>src\Hazle\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Hazle\Debug\Instrumentor.h">
-      <Filter>src\Hazle\Debug</Filter>
-    </ClInclude>
     <ClInclude Include="src\Hazle\Event\ApplicationEvent.h">
       <Filter>src\Hazle\Event</Filter>
     </ClInclude>
@@ -168,6 +165,7 @@
     <ClInclude Include="src\Hazle\Renderer\Camera.h" />
     <ClInclude Include="src\Hazle\Scene\ScriptableEntity.h" />
     <ClInclude Include="src\Hazle\Scene\SceneCamera.h" />
+    <ClInclude Include="src\Hazle\Debug\Instrumentor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Hazle\Core\Application.cpp">

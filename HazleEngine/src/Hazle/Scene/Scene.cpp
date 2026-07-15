@@ -24,8 +24,12 @@ namespace Hazle
 		entity.AddComponent<CTag>();
 		auto& tag = entity.getComponent<CTag>();
 		tag.Tag = name.empty() ? "Entity" : name;
-		HZ_CORE_TRACE("Entity added: {}", tag.Tag);
 		return entity;
+	}
+
+	void Scene::DestroyEntity(Entity entity)
+	{
+		m_Registry.destroy(entity);
 	}
 
 	void Scene::OnUpdate(Timestep ts)
@@ -47,11 +51,11 @@ namespace Hazle
 		// Render2D
 		Camera* mainCamera = nullptr;
 		glm::mat4 cameraTransform;
-		auto view = m_Registry.view<CTransform, CCamera>();
-		for (auto entity : view)
+		auto& group = m_Registry.group<CTransform, CCamera>();
+		for (auto& entity : group)
 		{
-			auto& transform = view.get<CTransform>(entity);
-			auto& camera = view.get<CCamera>(entity);
+			auto& transform = group.get<CTransform>(entity);
+			auto& camera = group.get<CCamera>(entity);
 			if (camera.Primary)
 			{
 				mainCamera = &camera.camera;
@@ -65,11 +69,11 @@ namespace Hazle
 			//HZ_CORE_INFO("PROJECTION: {0}", glm::to_string(mainCamera->GetProjection()));
 			//HZ_CORE_INFO("VIEW: {0}", glm::to_string(glm::inverse(*cameraTransform)));
 			Renderer2D::BeginScene(*mainCamera, cameraTransform);
-			auto view = m_Registry.view<CTransform, CSpriteRenderer>();
-			for (auto entity : view)
+			auto& group = m_Registry.view<CTransform, CSpriteRenderer>();
+			for (auto& entity : group)
 			{
-				auto& transform = view.get<CTransform>(entity);
-				auto& sprite = view.get<CSpriteRenderer>(entity);
+				auto& transform = group.get<CTransform>(entity);
+				auto& sprite = group.get<CSpriteRenderer>(entity);
 				Hazle::Renderer2D::DrawQuad(transform.GetTransform(), sprite.Color);
 				//HZ_CORE_INFO("Drawing!!! {0} {1} {2}, {3}", transform.Transform[3][0], transform.Transform[3][1], transform.Transform[3][2], glm::to_string(sprite.Color));
 			}
@@ -79,7 +83,10 @@ namespace Hazle
 
 	void Scene::OnViewportResize(uint32_t width, uint32_t height)
 	{
-		auto view = m_Registry.view<CCamera>();
+		m_ViewportWidth = width;
+		m_ViewportHeight = height;
+
+		auto& view = m_Registry.view<CCamera>();
 		for (auto entity : view)
 		{
 			auto& cameraComponent = view.get<CCamera>(entity);
@@ -87,4 +94,32 @@ namespace Hazle
 				cameraComponent.camera.SetViewportSize(width, height);
 		}
 	}
+
+	template<typename T>
+	void Scene::OnComponentAdded(Entity entity, T& component)
+	{
+		static_assert(sizeof(T) == 0, "Unknown Component Added");
+	}
+
+	template<>
+	void Scene::OnComponentAdded<CTransform>(Entity entity, CTransform& component)
+	{}
+	
+	template<>
+	void Scene::OnComponentAdded<CCamera>(Entity entity, CCamera& component)
+	{
+		component.camera.SetViewportSize(m_ViewportWidth, m_ViewportHeight);
+	}
+	
+	template<>
+	void Hazle::Scene::OnComponentAdded<CSpriteRenderer>(Entity entity, CSpriteRenderer& component)
+	{}
+	
+	template<>
+	void Hazle::Scene::OnComponentAdded<CTag>(Entity entity, CTag& component)
+	{}
+	
+	template<>
+	void Hazle::Scene::OnComponentAdded<CNativeScript>(Entity entity, CNativeScript& component)
+	{}
 }

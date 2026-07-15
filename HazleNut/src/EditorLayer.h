@@ -17,24 +17,13 @@ namespace Hazle
 		void OnEvent(Event& e) override;
 
 		private:
-			float m_SquareRotation = 0.0f;
 			OrthographicCameraController m_CameraController;
-			Ref<Shader> m_Shader;
-			Ref<Texture2D> m_Texture;
-			Ref<VertexArray> m_QuadVA;
-			Ref<Texture2D> m_CheckerboardTexture;
-			Ref<Texture2D> m_SpriteSheet;
-			Ref<SubTexture2D> m_SubTexture;
 			Ref<FrameBuffer> m_FrameBuffer;
 			Ref<Scene> m_ActiveScene;
 			Entity m_SquareEntity;
-			Entity m_CameraEntity, m_SecondCamera;
-			Entity m_PrimaryCameraptr;
-			bool m_PrimaryCamera = true;
+			Entity m_CameraEntity;
 
-			glm::vec2 m_ViewportSize = { 0.0f, 0.0f };
-			glm::vec4 m_QuadColor = { 0.2f, 0.3f, 0.8f, 1.0f };
-
+			glm::vec2 m_ViewportSize = { 1.0f, 1.0f };
 			struct ProfileResult
 			{
 				const char* name;

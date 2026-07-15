@@ -33,12 +33,15 @@ namespace Hazle
 
 	};
 
-	struct CMesh
-	{};
+	//struct CMesh
+	//{
+	//	CMesh() = default;
+	//	CMesh(const CMesh& other) = default;
+	//};
 
 	struct CSpriteRenderer
 	{
-		glm::vec4 Color = {0.0f, 1.0f, 1.0f, 1.0f};
+		glm::vec4 Color = {1.0f, 1.0f, 1.0f, 1.0f};
 		//Ref<MaterialInstance> m_MaterialInstance;
 
 		CSpriteRenderer() = default;

@@ -42,7 +42,6 @@ namespace Hazle
 
 	void Renderer2D::Init()
 	{
-		HZ_PROFILE_FUNCTION();
 
 		s_Data.m_QuadVA = VertexArray::Create();
 
@@ -128,7 +127,6 @@ namespace Hazle
 
 	void Renderer2D::EndScene()
 	{
-		HZ_PROFILE_FUNCTION();
 		uint32_t dataSize = (uint32_t)((uint8_t*)s_Data.m_QuadVertexBufferPtr - (uint8_t*)s_Data.m_QuadVertexBufferBase);
 		s_Data.m_QuadBuffer->SetData(s_Data.m_QuadVertexBufferBase, dataSize);
 		Flush();
@@ -136,7 +134,6 @@ namespace Hazle
 
 	void Renderer2D::Flush()
 	{
-		HZ_PROFILE_FUNCTION();
 		for (uint32_t i = 0; i < s_Data.m_TextureSlotIndex; i++)
 			s_Data.m_TextureSlots[i]->Bind(i);
 
@@ -158,7 +155,6 @@ namespace Hazle
 
 	void Renderer2D::DrawQuad(const glm::vec3& position, const float rotation, const glm::vec2& size, const glm::vec4& color)
 	{
-		HZ_PROFILE_FUNCTION();
 
 		glm::mat4& transform = glm::translate(glm::mat4(1.0f), position) *
 			glm::rotate(glm::mat4(1.0f), rotation, glm::vec3(0.0f, 0.0f, 1.0f)) *
@@ -174,7 +170,6 @@ namespace Hazle
 
 	void Renderer2D::DrawQuad(const glm::vec3& position, const float rotation, const glm::vec2& size, const Ref<Texture2D> texture, const glm::vec4& color, const float tilingFactor)
 	{
-		HZ_PROFILE_FUNCTION();
 
 		glm::mat4 transform = glm::translate(glm::mat4(1.0f), position) *
 			glm::rotate(glm::mat4(1.0f), rotation, glm::vec3(0.0f, 0.0f, 1.0f)) *
@@ -190,7 +185,6 @@ namespace Hazle
 	}
 	void Renderer2D::DrawQuad(const glm::vec3 & position, const float rotation, const glm::vec2 & size, const Ref<SubTexture2D> subTexture, const glm::vec4 & color, const float tilingFactor)
 	{
-		HZ_PROFILE_FUNCTION();
 
 		const glm::vec2* textureCoord = subTexture->GetTexCoords();
 		const Ref<Texture2D> texture = subTexture->GetTexture();
@@ -252,8 +246,6 @@ namespace Hazle
 
 	void Renderer2D::DrawQuad(const glm::mat4& transform, const glm::vec4& color)
 	{
-		HZ_PROFILE_FUNCTION();
-
 		constexpr glm::vec2 textureCoord[] = {
 			{0.0f, 0.0f},
 			{1.0f, 0.0f},
@@ -285,8 +277,6 @@ namespace Hazle
 
 	void Renderer2D::DrawQuad(const glm::mat4& transform, const glm::vec4& color, const Ref<Texture2D> texture, const float tilingFactor)
 	{
-		HZ_PROFILE_FUNCTION();
-
 		constexpr glm::vec2 textureCoord[] = {
 			{0.0f, 0.0f},
 			{1.0f, 0.0f},

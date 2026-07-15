@@ -15,8 +15,8 @@ namespace Hazle
 		m_CameraController.SetZoomLevel(10.0f);
 
 		FrameBufferSpecifications fbSpec;
-		fbSpec.Width = 1280;
-		fbSpec.Height = 720;
+		fbSpec.Width = 1920;
+		fbSpec.Height = 1080;
 		m_FrameBuffer = FrameBuffer::Create(fbSpec);
 
 		m_ActiveScene = CreateRef<Scene>();
@@ -33,13 +33,7 @@ namespace Hazle
 		m_CameraEntity.AddComponent<CTransform>();
 
 		
-		m_PrimaryCameraptr = m_CameraEntity;
 		
-		m_SecondCamera = m_ActiveScene->CreateEntity("clip space Camera");
-		m_SecondCamera.AddComponent<CCamera>(glm::ortho(-1.0f, 1.0f, -1.0f, 1.0f, -1.0f, 1.0f));
-		m_SecondCamera.AddComponent<CTransform>();
-		m_SecondCamera.getComponent<CCamera>().Primary = false;
-	
 		class CameraController : public ScriptableEntity
 		{
 		public:
@@ -71,7 +65,7 @@ namespace Hazle
 				
 			}
 		};
-		m_CameraEntity.AddComponent<CNativeScript>().Bind<CameraController>();
+		//m_CameraEntity.AddComponent<CNativeScript>().Bind<CameraController>();
 
 		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
 	}
@@ -89,37 +83,35 @@ namespace Hazle
 
 	void EditorLayer::OnUpdate(Timestep ts)
 	{
-		HZ_PROFILE_FUNCTION();
-		// Update
-		m_FrameBuffer->Bind();
-		Renderer2D::BeginScene(m_CameraController.GetCamera());
 
-		Renderer2D::DrawQuad(glm::mat4(1.0f), {0.0f, 1.0f, 0.0f, 1.0f});
-		//HZ_CORE_ERROR("Drawing Normal Quad");
-		Renderer2D::EndScene();
-		
-		//if (m_ViewportFocused)
-		//{
-		//	HZ_PROFILE_SCOPE("EditorLayer::OnUpdate");
-		//	m_CameraController.OnUpdate(ts);
-		//}
-		
-
-		// Render
-		//m_SquareRotation += ts * glm::radians(360.0f);
-
-		Renderer2D::ResetStats();
-		RenderCommand::SetClearColor(glm::vec4(0.1f, 0.1f, 0.1f, 1.0f));
-		RenderCommand::Clear();
-
-		m_ActiveScene->OnUpdate(ts);
-
-		m_FrameBuffer->Unbind();
-		
 		if (Input::IsKeyPressed(Key::Escape))
 		{
 			Application::Get().Close();
 		}
+
+		//Resize
+		FrameBufferSpecifications spec = m_FrameBuffer->GetSpecifications();
+		if (m_ViewportSize.x > 0.0f && m_ViewportSize.y > 0.0f && (spec.Width != m_ViewportSize.x || spec.Height != m_ViewportSize.y))
+		{
+			m_FrameBuffer->Resize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
+			m_CameraController.OnResize(m_ViewportSize.x, m_ViewportSize.y);
+
+			m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
+		}
+		if (m_ViewportFocused)
+			m_CameraController.OnUpdate(ts);
+
+		// Render
+		Renderer2D::ResetStats();
+		m_FrameBuffer->Bind();
+		RenderCommand::SetClearColor(glm::vec4(0.1f, 0.1f, 0.1f, 1.0f));
+		RenderCommand::Clear();
+
+		//Update Scene
+		m_ActiveScene->OnUpdate(ts);
+
+		m_FrameBuffer->Unbind();
+		
 	}
 
 
@@ -202,29 +194,10 @@ namespace Hazle
 		ImGui::Text("Vertices: %d", stats.QuadCount * 4);
 		ImGui::Text("Indices: %d", stats.QuadCount * 6);
 
-		if (m_SquareEntity.hasComponent<CTag>())
-		{
-			ImGui::Separator();
-			auto tag = m_SquareEntity.getComponent<CTag>().Tag;
-			ImGui::Text("%s", tag.c_str());
-			auto& squareColor = m_SquareEntity.getComponent<CSpriteRenderer>().Color;
-			ImGui::ColorEdit4("Quad Color", glm::value_ptr(squareColor));
-			ImGui::Separator();
-		}
+		//ImGui::DragFloat3("Camera Trasnform: ",
+		//	glm::value_ptr(m_PrimaryCameraptr.getComponent<CTransform>().Translation));
+		ImGui::Separator();
 
-		ImGui::DragFloat3("Camera Trasnform: ",
-			glm::value_ptr(m_PrimaryCameraptr.getComponent<CTransform>().Translation));
-		ImGui::Separator();
-		if (ImGui::Checkbox("Camera A: ", &m_PrimaryCamera))
-		{
-			m_CameraEntity.getComponent<CCamera>().Primary = m_PrimaryCamera;
-			m_SecondCamera.getComponent<CCamera>().Primary = !m_PrimaryCamera;
-			if (m_PrimaryCamera)
-				m_PrimaryCameraptr = m_CameraEntity;
-			else
-				m_PrimaryCameraptr = m_SecondCamera;
-		}
-		ImGui::Separator();
 		m_ProfileResults.clear();
 		ImGui::End();
 

@@ -30,7 +30,6 @@ namespace Hazle
 
 	WindowsWindow::WindowsWindow(const WindowProps& props)
 	{
-		HZ_PROFILE_FUNCTION();
 
 		Init(props);
 	}
@@ -145,8 +144,6 @@ namespace Hazle
 
 	void WindowsWindow::Shutdown()
 	{
-		HZ_PROFILE_FUNCTION();
-
 		glfwDestroyWindow(m_Window);
 	}
 

@@ -15,7 +15,7 @@ namespace Hazle
         long long Start, End;
         uint32_t ThreadID;
     };
-    
+
     struct InstrumentationSession
     {
         std::string Name;
@@ -125,13 +125,13 @@ namespace Hazle
 }
 #define HZ_PROFILE 1
 #if HZ_PROFILE
-    #define HZ_PROFILE_BEGIN_SESSION(name, filepath)  ::Hazle::Instrumentor::Get().BeginSession(name, filepath)
-    #define HZ_PROFILE_END_SESSION()                  ::Hazle::Instrumentor::Get().EndSession()
-    #define HZ_PROFILE_SCOPE(name)                    ::Hazle::InstrumentationTimer timer##__LINE__(name);
-    #define HZ_PROFILE_FUNCTION()                     HZ_PROFILE_SCOPE(__FUNCSIG__)
+#define HZ_PROFILE_BEGIN_SESSION(name, filepath)  ::Hazle::Instrumentor::Get().BeginSession(name, filepath)
+#define HZ_PROFILE_END_SESSION()                  ::Hazle::Instrumentor::Get().EndSession()
+#define HZ_PROFILE_SCOPE(name)                    ::Hazle::InstrumentationTimer timer##__LINE__(name);
+#define HZ_PROFILE_FUNCTION()                     HZ_PROFILE_SCOPE(__FUNCSIG__)
 #else
-    #define HZ_PROFILE_BEGIN_SESSION(name, filepath)
-    #define HZ_PROFILE_END_SESSION()
-    #define HZ_PROFILE_FUNCTION()
-    #define HZ_PROFILE_SCOPE(name)
+#define HZ_PROFILE_BEGIN_SESSION(name, filepath)
+#define HZ_PROFILE_END_SESSION()
+#define HZ_PROFILE_FUNCTION()
+#define HZ_PROFILE_SCOPE(name)
 #endif

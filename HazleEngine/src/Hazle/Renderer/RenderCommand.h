@@ -12,8 +12,6 @@ namespace Hazle
 		inline static void Clear(){ s_RendererAPI->Clear(); };
 		inline static void Init()
 		{
-			HZ_PROFILE_FUNCTION();
-
 			s_RendererAPI->Init(); 
 		};
 		inline static void DrawIndexed(const Hazle::Ref<Hazle::VertexArray>& vertexArray, uint32_t indexCount = 0) {
