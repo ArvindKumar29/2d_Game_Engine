@@ -10,9 +10,10 @@
 > A high-performance 2D Game Engine built from scratch using C++ and OpenGL.
 
 ## 📸 Screenshots:
-<img width="1920" height="1080" alt="Sample" src="https://github.com/user-attachments/assets/0eba9f64-1cd3-4fe9-a6a6-31a9096cad22" />
-
-
+#2D: Orthographic Camera
+<img width="1442" height="952" alt="Orthographic Camera 2D view" src="https://github.com/user-attachments/assets/d2837a58-7626-4ab3-a2d0-cb8476d99304" />
+#3D: Perspective Camera
+<img width="1442" height="952" alt="Perspective Camera 3D view" src="https://github.com/user-attachments/assets/602417ae-777e-49bd-93a2-ce775a12bf5a" />
 
 ## ✨ Current Features
 * ***Core Architecture:*** Custom application layer and window abstraction.
@@ -25,6 +26,7 @@
 * ***OpenGl API:*** 2D renderer completely written in OpenGL/Glad to support multiple platforms.
 * ***HazleNut:*** The level editor of hazle to create and modify different games .
 * ***ImGui Docking:*** Docking system to dock and customize the viewport, file explorer, menu, settings etc. tabs to hazle editor.
+* ***ECS:*** It has support of modern ECS architecture and uses EnTT library for that.
 
 ## 🚀 Getting Started
 
