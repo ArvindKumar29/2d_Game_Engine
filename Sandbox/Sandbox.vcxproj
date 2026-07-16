@@ -79,7 +79,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>HZ_PLATFORM_WINDOWS;HZ_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\HazleEngine\external-libraries\spdlog\include;..\HazleEngine\external-libraries\GLFW\include;..\HazleEngine\external-libraries\GLM;..\HazleEngine\external-libraries\entt\include;..\HazleEngine\src;..\HazleEngine\external-libraries\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\HazleEngine\external-libraries\spdlog\include;..\HazleEngine\external-libraries\GLFW\include;..\HazleEngine\external-libraries\GLM;..\HazleEngine\external-libraries\entt\include;..\HazleEngine\external-libraries\yamlcpp\include;..\HazleEngine\src;..\HazleEngine\external-libraries\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -99,7 +99,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>HZ_PLATFORM_WINDOWS;HZ_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\HazleEngine\external-libraries\spdlog\include;..\HazleEngine\external-libraries\GLFW\include;..\HazleEngine\external-libraries\GLM;..\HazleEngine\external-libraries\entt\include;..\HazleEngine\src;..\HazleEngine\external-libraries\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\HazleEngine\external-libraries\spdlog\include;..\HazleEngine\external-libraries\GLFW\include;..\HazleEngine\external-libraries\GLM;..\HazleEngine\external-libraries\entt\include;..\HazleEngine\external-libraries\yamlcpp\include;..\HazleEngine\src;..\HazleEngine\external-libraries\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -123,7 +123,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>HZ_PLATFORM_WINDOWS;HZ_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\HazleEngine\external-libraries\spdlog\include;..\HazleEngine\external-libraries\GLFW\include;..\HazleEngine\external-libraries\GLM;..\HazleEngine\external-libraries\entt\include;..\HazleEngine\src;..\HazleEngine\external-libraries\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\HazleEngine\external-libraries\spdlog\include;..\HazleEngine\external-libraries\GLFW\include;..\HazleEngine\external-libraries\GLM;..\HazleEngine\external-libraries\entt\include;..\HazleEngine\external-libraries\yamlcpp\include;..\HazleEngine\src;..\HazleEngine\external-libraries\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>

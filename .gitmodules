@@ -13,3 +13,6 @@
 [submodule "HazleEngine/external-libraries/GLM"]
 	path = HazleEngine/external-libraries/GLM
 	url = https://github.com/g-truc/glm
+[submodule "HazleEngine/external-libraries/yamlcpp"]
+	path = HazleEngine/external-libraries/yamlcpp
+	url = https://github.com/TheCherno/yaml-cpp

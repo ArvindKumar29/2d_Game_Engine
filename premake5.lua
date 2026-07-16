@@ -19,10 +19,14 @@ IncludeDir["imgui"] = "HazleEngine/external-libraries/imgui"
 IncludeDir["glm"] = "HazleEngine/external-libraries/GLM"
 IncludeDir["stb_image"] = "HazleEngine/external-libraries/stb_image"
 IncludeDir["entt"] = "HazleEngine/external-libraries/entt/include"
+IncludeDir["yaml_cpp"] = "HazleEngine/external-libraries/yamlcpp/include"
 
-include "HazleEngine/external-libraries/GLFW"
-include "HazleEngine/external-libraries/glad"
-include "HazleEngine/external-libraries/imgui"
+group "Dependencies"
+	include "HazleEngine/external-libraries/GLFW"
+	include "HazleEngine/external-libraries/glad"
+	include "HazleEngine/external-libraries/imgui"
+	include "HazleEngine/external-libraries/yamlcpp"
+group ""
 
 project "HazleEngine"
 	location "HazleEngine"
@@ -41,26 +45,26 @@ project "HazleEngine"
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
 
-		--"external-libraries/imgui/*.cpp",
-		--"external-libraries/imgui/*.h",",
 		"%{prj.name}/external-libraries/stb_image/**.h",
 		"%{prj.name}/external-libraries/stb_image/**.cpp",
-	
-		--"{prj.name}/external-libraries/imgui/backends/imgui_impl_glfw.cpp",
-		--"{prj.name}/external-libraries/imgui/backends/imgui_impl_opengl3.cpp"
+	}
+
+	defines{
+		"_CRT_SECURE_NO_WARNINGS",
+		"GLFW_INCLUDE_NONE",
+		"YAML_CPP_STATIC_DEFINE"
 	}
 
 	includedirs {
 		"%{prj.name}/external-libraries/spdlog/include",
 		"%{prj.name}/external-libraries/glad/include",
-		-- "%{prj.name}/external-libraries/imgui",
 		"%{prj.name}/external-libraries/glm",
 		"%{prj.name}/src",
 		"%{IncludeDir.GLFW}",
-		-- "%{IncludeDir.glm}",
 		"%{IncludeDir.imgui}",
 		"%{IncludeDir.stb_image}",
 		"%{IncludeDir.entt}",
+		"%{IncludeDir.yaml_cpp}",
 		"%{prj.name}/src/Hazle"
 	}
 
@@ -69,7 +73,7 @@ project "HazleEngine"
 		"Glad",
 		"imgui",
 		"opengl32.lib",
-		--"stb_image"
+		"yaml-cpp"
 	}
 	
 	filter "system:windows"
@@ -122,6 +126,7 @@ project "Sandbox"
 		"HazleEngine/external-libraries/GLFW/include",
 		"%{IncludeDir.glm}",
 		"%{IncludeDir.entt}",
+		"%{IncludeDir.yaml_cpp}",
 		"HazleEngine/src",
 		"%{IncludeDir.imgui}"
 	}
@@ -171,11 +176,16 @@ project "HazleNut"
 		"%{prj.name}/src/**.cpp"
 	}
 
+	defines{
+		"YAML_CPP_STATIC_DEFINE"
+	}
+
 	includedirs {
 		"HazleEngine/external-libraries/spdlog/include",
 		"HazleEngine/external-libraries/GLFW/include",
 		"%{IncludeDir.glm}",
 		"%{IncludeDir.entt}",
+		"%{IncludeDir.yaml_cpp}",
 		"HazleEngine/src",
 		"%{IncludeDir.imgui}"
 	}

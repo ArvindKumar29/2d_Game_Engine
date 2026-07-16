@@ -23,6 +23,7 @@ namespace Hazle {
 		void end();
 
 		void SetDarkThemeColors();
+		void SetLightThemeColors();
 	private:
 		bool m_blockEvents = false;
 		float m_Time = 0.0f;

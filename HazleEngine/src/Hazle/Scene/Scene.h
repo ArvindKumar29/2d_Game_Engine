@@ -1,6 +1,7 @@
 #pragma once
 #include <entt.hpp>
 #include "Hazle/Core/Timestep.h"
+#include "SceneCamera.h"
 
 namespace Hazle
 {
@@ -25,5 +26,6 @@ namespace Hazle
 
 		friend class Entity;
 		friend class SceneHierarchyPanel;
+		friend class SceneSerializer;
 	};
 }

@@ -78,8 +78,8 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>HZ_PLATFORM_WINDOWS;HZ_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\HazleEngine\external-libraries\spdlog\include;..\HazleEngine\external-libraries\GLFW\include;..\HazleEngine\external-libraries\GLM;..\HazleEngine\external-libraries\entt\include;..\HazleEngine\src;..\HazleEngine\external-libraries\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>YAML_CPP_STATIC_DEFINE;HZ_PLATFORM_WINDOWS;HZ_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\HazleEngine\external-libraries\spdlog\include;..\HazleEngine\external-libraries\GLFW\include;..\HazleEngine\external-libraries\GLM;..\HazleEngine\external-libraries\entt\include;..\HazleEngine\external-libraries\yamlcpp\include;..\HazleEngine\src;..\HazleEngine\external-libraries\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -98,8 +98,8 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>HZ_PLATFORM_WINDOWS;HZ_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\HazleEngine\external-libraries\spdlog\include;..\HazleEngine\external-libraries\GLFW\include;..\HazleEngine\external-libraries\GLM;..\HazleEngine\external-libraries\entt\include;..\HazleEngine\src;..\HazleEngine\external-libraries\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>YAML_CPP_STATIC_DEFINE;HZ_PLATFORM_WINDOWS;HZ_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\HazleEngine\external-libraries\spdlog\include;..\HazleEngine\external-libraries\GLFW\include;..\HazleEngine\external-libraries\GLM;..\HazleEngine\external-libraries\entt\include;..\HazleEngine\external-libraries\yamlcpp\include;..\HazleEngine\src;..\HazleEngine\external-libraries\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -122,8 +122,8 @@
     <ClCompile>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>HZ_PLATFORM_WINDOWS;HZ_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\HazleEngine\external-libraries\spdlog\include;..\HazleEngine\external-libraries\GLFW\include;..\HazleEngine\external-libraries\GLM;..\HazleEngine\external-libraries\entt\include;..\HazleEngine\src;..\HazleEngine\external-libraries\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>YAML_CPP_STATIC_DEFINE;HZ_PLATFORM_WINDOWS;HZ_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>..\HazleEngine\external-libraries\spdlog\include;..\HazleEngine\external-libraries\GLFW\include;..\HazleEngine\external-libraries\GLM;..\HazleEngine\external-libraries\entt\include;..\HazleEngine\external-libraries\yamlcpp\include;..\HazleEngine\src;..\HazleEngine\external-libraries\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -157,11 +157,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Font Include="Assets\Fonts\Kameron-Bold.ttf" />
-    <Font Include="Assets\Fonts\Kameron-Medium.ttf" />
-    <Font Include="Assets\Fonts\Kameron-Regular.ttf" />
-    <Font Include="Assets\Fonts\Kameron-SemiBold.ttf" />
-    <Font Include="Assets\Fonts\MontenegrinGothicOne-Regular.ttf" />
+    <None Include="Assets\Scenes\Example.hz" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

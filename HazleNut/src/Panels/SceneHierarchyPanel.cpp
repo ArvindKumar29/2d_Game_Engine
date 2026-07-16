@@ -277,6 +277,7 @@ namespace Hazle
 
 			ImGui::Checkbox("Primary", &component.Primary);
 
+
 			const char* projectionTypeString[] = { "Perspective", "Orthographic" };
 			const char* currentProjectionTypeString = projectionTypeString[(int)camera.GetProjectionType()];
 			if (ImGui::BeginCombo("Projection", currentProjectionTypeString))

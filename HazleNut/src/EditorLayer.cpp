@@ -1,6 +1,7 @@
 #include <hzpch.h>
 #include "EditorLayer.h"
 #include "Hazle/Core/Hazle.h"
+#include "Hazle/Scene/SceneSerializer.h"
 
 namespace Hazle
 {
@@ -19,7 +20,11 @@ namespace Hazle
 		fbSpec.Height = 1080;
 		m_FrameBuffer = FrameBuffer::Create(fbSpec);
 
+		//SCENE
 		m_ActiveScene = CreateRef<Scene>();
+
+//#if 0
+		//ENTITIES
 		m_SquareEntity = m_ActiveScene->CreateEntity("Square");
 		m_SquareEntity.AddComponent<CTransform>();
 		m_SquareEntity.AddComponent<CSpriteRenderer>();
@@ -30,6 +35,7 @@ namespace Hazle
 
 		m_CameraEntity = m_ActiveScene->CreateEntity("Camera A");
 		m_CameraEntity.AddComponent<CCamera>(glm::ortho(-16.0f, 16.0f, -9.0f, 9.0f, -1.0f, 1.0f));
+		m_CameraEntity.getComponent<CCamera>().Primary = true;
 		m_CameraEntity.AddComponent<CTransform>();
 		
 		m_SecondCamera = m_ActiveScene->CreateEntity("Camera B");
@@ -69,15 +75,18 @@ namespace Hazle
 				
 			}
 		};
-		//m_CameraEntity.AddComponent<CNativeScript>().Bind<CameraController>();
+		m_CameraEntity.AddComponent<CNativeScript>().Bind<CameraController>();
+		m_SecondCamera.AddComponent<CNativeScript>().Bind<CameraController>();
+//#endif
 
 		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
+
+		//SceneSerializer serializer(m_ActiveScene);
+		//serializer.DeSerialize("Assets/Scenes/Example.hz");
 	}
 
 	void EditorLayer::OnDetach()
-	{
-
-	}
+	{}
 
 
 	void EditorLayer::OnEvent(Event& e)
@@ -169,14 +178,17 @@ namespace Hazle
 		// Submit the DockSpace
 		ImGuiIO& io = ImGui::GetIO();
 		ImGuiStyle& style = ImGui::GetStyle();
-		float minwinsize = style.WindowMinSize.x;
-		style.WindowMinSize.x = 370.0f;
+		float minwinsizex = style.WindowMinSize.x;
+		float minwinsizey = style.WindowMinSize.y;
+		style.WindowMinSize.x = 250.0f;
+		style.WindowMinSize.y = 250.0f;
 		if (io.ConfigFlags & ImGuiConfigFlags_DockingEnable)
 		{
 			ImGuiID dockspace_id = ImGui::GetID("MyDockSpace");
 			ImGui::DockSpace(dockspace_id, ImVec2(0.0f, 0.0f), dockspace_flags);
 		}
-		style.WindowMinSize.x = style.WindowMinSize.x;
+		style.WindowMinSize.x = minwinsizex;
+		style.WindowMinSize.y = minwinsizey;
 
 
 		if (ImGui::BeginMenuBar())
@@ -185,6 +197,18 @@ namespace Hazle
 			{
 				// Disabling fullscreen would allow the window to be moved to the front of other windows,
 				// which we can't undo at the moment without finer window depth/z control.
+				if (ImGui::MenuItem("Serialize"))
+				{
+					SceneSerializer serializer(m_ActiveScene);
+					serializer.Serialize("Assets/Scenes/Example.hz");
+				}
+				
+				if (ImGui::MenuItem("Deserialize"))
+				{
+					SceneSerializer serializer(m_ActiveScene);
+					serializer.DeSerialize("Assets/Scenes/Example.hz");
+				}
+
 				if (ImGui::MenuItem("Exit"))
 				{
 					Application::Get().close();
