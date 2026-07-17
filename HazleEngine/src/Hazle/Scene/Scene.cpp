@@ -81,6 +81,29 @@ namespace Hazle
 		}
 	}
 
+	bool Scene::HasPrimaryCameraEntity()
+	{
+		auto view = m_Registry.view<CCamera>();
+		for (auto entity : view)
+		{
+			if (view.get<CCamera>(entity).Primary)
+				return true;
+		}
+		return false;
+	}
+
+	Entity Scene::GetPrimaryCameraEntity()
+	{
+		auto view = m_Registry.view<CCamera>();
+		for (auto entity : view)
+		{
+			const auto& camera = view.get<CCamera>(entity);
+			if (camera.Primary)
+				return Entity{ entity, this };
+		}
+		return {};
+	}
+
 	void Scene::OnViewportResize(uint32_t width, uint32_t height)
 	{
 		m_ViewportWidth = width;

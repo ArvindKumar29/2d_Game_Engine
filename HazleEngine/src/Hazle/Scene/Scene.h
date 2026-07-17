@@ -17,6 +17,8 @@ namespace Hazle
 		void OnViewportResize(uint32_t width, uint32_t height);
 		void OnUpdate(Timestep ts);
 
+		Entity GetPrimaryCameraEntity();
+		bool HasPrimaryCameraEntity();
 	private:
 		template<typename T>
 		void OnComponentAdded(Entity entity, T& component);

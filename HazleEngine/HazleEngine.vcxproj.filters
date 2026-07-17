@@ -4,6 +4,9 @@
     <Filter Include="external-libraries">
       <UniqueIdentifier>{723CB9AD-5E20-7A03-C780-7456B3836485}</UniqueIdentifier>
     </Filter>
+    <Filter Include="external-libraries\imguizmo">
+      <UniqueIdentifier>{527FBA7D-BE8C-E863-4773-E44EB37FB41A}</UniqueIdentifier>
+    </Filter>
     <Filter Include="external-libraries\stb_image">
       <UniqueIdentifier>{8CA37783-785E-672F-2116-E0790DB0B1BF}</UniqueIdentifier>
     </Filter>
@@ -31,6 +34,9 @@
     <Filter Include="src\Hazle\Scene">
       <UniqueIdentifier>{ED01DE0E-598D-4BD3-629E-CEC7CEA8A7D3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Hazle\utils">
+      <UniqueIdentifier>{50A64E11-BC31-BCD5-C542-3FCA314D18D6}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Platform">
       <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
     </Filter>
@@ -42,6 +48,9 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="external-libraries\imguizmo\ImGuizmo.h">
+      <Filter>external-libraries\imguizmo</Filter>
+    </ClInclude>
     <ClInclude Include="external-libraries\stb_image\stb_image.h">
       <Filter>external-libraries\stb_image</Filter>
     </ClInclude>
@@ -159,6 +168,9 @@
     <ClInclude Include="src\Hazle\Scene\ScriptableEntity.h">
       <Filter>src\Hazle\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="src\Hazle\utils\PlatformUtils.h">
+      <Filter>src\Hazle\utils</Filter>
+    </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
@@ -186,8 +198,12 @@
     <ClInclude Include="src\hzpch.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\Hazle\Math\Math.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="external-libraries\imguizmo\ImGuizmo.cpp">
+      <Filter>external-libraries\imguizmo</Filter>
+    </ClCompile>
     <ClCompile Include="external-libraries\stb_image\stb_image.cpp">
       <Filter>external-libraries\stb_image</Filter>
     </ClCompile>
@@ -281,11 +297,15 @@
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowPlatformUtils.cpp">
+      <Filter>src\Platform\Windows</Filter>
+    </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
+    <ClCompile Include="src\Hazle\Math\Math.cpp" />
   </ItemGroup>
 </Project>

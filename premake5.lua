@@ -7,7 +7,7 @@ workspace  "Hazle  Engine"
 		"Dist"
 	}
 	startproject "HazleNut"
-	-- staticruntime "Off"
+	staticruntime "On"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
@@ -20,6 +20,7 @@ IncludeDir["glm"] = "HazleEngine/external-libraries/GLM"
 IncludeDir["stb_image"] = "HazleEngine/external-libraries/stb_image"
 IncludeDir["entt"] = "HazleEngine/external-libraries/entt/include"
 IncludeDir["yaml_cpp"] = "HazleEngine/external-libraries/yamlcpp/include"
+IncludeDir["imguizmo"] = "HazleEngine/external-libraries/imguizmo"
 
 group "Dependencies"
 	include "HazleEngine/external-libraries/GLFW"
@@ -44,9 +45,10 @@ project "HazleEngine"
 	files{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
-
 		"%{prj.name}/external-libraries/stb_image/**.h",
 		"%{prj.name}/external-libraries/stb_image/**.cpp",
+		"%{prj.name}/external-libraries/imguizmo/ImGuizmo.h",
+		"%{prj.name}/external-libraries/imguizmo/ImGuizmo.cpp"
 	}
 
 	defines{
@@ -65,6 +67,7 @@ project "HazleEngine"
 		"%{IncludeDir.stb_image}",
 		"%{IncludeDir.entt}",
 		"%{IncludeDir.yaml_cpp}",
+		"%{IncludeDir.imguizmo}",
 		"%{prj.name}/src/Hazle"
 	}
 
@@ -76,6 +79,9 @@ project "HazleEngine"
 		"yaml-cpp"
 	}
 	
+	filter "files:HazleEngine/external-libraries/imguizmo/**.cpp"
+	flags {"NoPCH"}
+
 	filter "system:windows"
 		staticruntime "On"
 		systemversion "latest"
@@ -186,6 +192,7 @@ project "HazleNut"
 		"%{IncludeDir.glm}",
 		"%{IncludeDir.entt}",
 		"%{IncludeDir.yaml_cpp}",
+		"%{IncludeDir.imguizmo}",
 		"HazleEngine/src",
 		"%{IncludeDir.imgui}"
 	}

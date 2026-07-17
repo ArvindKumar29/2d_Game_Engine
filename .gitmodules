@@ -16,3 +16,6 @@
 [submodule "HazleEngine/external-libraries/yamlcpp"]
 	path = HazleEngine/external-libraries/yamlcpp
 	url = https://github.com/TheCherno/yaml-cpp
+[submodule "HazleEngine/external-libraries/imguizmo"]
+	path = HazleEngine/external-libraries/imguizmo
+	url = https://github.com/thecherno/imguizmo

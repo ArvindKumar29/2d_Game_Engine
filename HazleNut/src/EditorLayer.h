@@ -16,27 +16,35 @@ namespace Hazle
 		virtual void OnImGuiRender() override;
 		void OnEvent(Event& e) override;
 
-		private:
-			OrthographicCameraController m_CameraController;
-			Ref<FrameBuffer> m_FrameBuffer;
-			Ref<Scene> m_ActiveScene;
-			Entity m_SquareEntity;
-			Entity m_CameraEntity, m_SecondCamera;
+	private:
+		bool OnKeyPresedEvent(KeyPressedEvent& e);
+		void NewScene();
+		void OpenScene();
+		void SaveSceneAs();
 
-			glm::vec2 m_ViewportSize = { 1.0f, 1.0f };
-			struct ProfileResult
-			{
-				const char* name;
-				float time;
-			};
-			std::vector<ProfileResult> m_ProfileResults;
 
-			std::unordered_map<char, Ref<SubTexture2D>> m_TextureMap;
-			uint32_t m_MapWidth, m_MapHeight;
+		OrthographicCameraController m_CameraController;
+		Ref<FrameBuffer> m_FrameBuffer;
+		Ref<Scene> m_ActiveScene;
+		Entity m_SquareEntity;
+		Entity m_CameraEntity, m_SecondCamera;
 
-			bool m_ViewportFocused = false, m_ViewportHovered = false;
+		glm::vec2 m_ViewportSize = { 1.0f, 1.0f };
+		struct ProfileResult
+		{
+			const char* name;
+			float time;
+		};
+		std::vector<ProfileResult> m_ProfileResults;
 
-			//Panels
-			SceneHierarchyPanel m_SceneHierarchyPanel;
+		std::unordered_map<char, Ref<SubTexture2D>> m_TextureMap;
+		uint32_t m_MapWidth, m_MapHeight;
+
+		bool m_ViewportFocused = false, m_ViewportHovered = false;
+
+		int m_GizmoType = -1;
+
+		//Panels
+		SceneHierarchyPanel m_SceneHierarchyPanel;
 	};
 }

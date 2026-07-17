@@ -78,7 +78,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DisableSpecificWarnings>4005;4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <PreprocessorDefinitions>YAML_CPP_STATIC_DEFINE;HZ_PLATFORM_WINDOWS;HZ_BUILD_DLL;GLFW_INCLUDE_NONE;IMGUI_IMPL_OPENGL_LOADER_GLAD;_CRT_SECURE_NO_WARNINGS;HZ_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>external-libraries\spdlog\include;external-libraries\glad\include;external-libraries\glm;src;external-libraries\GLFW\include;external-libraries\imgui;external-libraries\stb_image;external-libraries\entt\include;external-libraries\yamlcpp\include;src\Hazle;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>external-libraries\spdlog\include;external-libraries\glad\include;external-libraries\glm;src;external-libraries\GLFW\include;external-libraries\imgui;external-libraries\stb_image;external-libraries\entt\include;external-libraries\yamlcpp\include;external-libraries\imguizmo;src\Hazle;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -103,7 +103,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DisableSpecificWarnings>4005;4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <PreprocessorDefinitions>YAML_CPP_STATIC_DEFINE;HZ_PLATFORM_WINDOWS;HZ_BUILD_DLL;GLFW_INCLUDE_NONE;IMGUI_IMPL_OPENGL_LOADER_GLAD;_CRT_SECURE_NO_WARNINGS;HZ_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>external-libraries\spdlog\include;external-libraries\glad\include;external-libraries\glm;src;external-libraries\GLFW\include;external-libraries\imgui;external-libraries\stb_image;external-libraries\entt\include;external-libraries\yamlcpp\include;src\Hazle;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>external-libraries\spdlog\include;external-libraries\glad\include;external-libraries\glm;src;external-libraries\GLFW\include;external-libraries\imgui;external-libraries\stb_image;external-libraries\entt\include;external-libraries\yamlcpp\include;external-libraries\imguizmo;src\Hazle;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -132,7 +132,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DisableSpecificWarnings>4005;4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <PreprocessorDefinitions>YAML_CPP_STATIC_DEFINE;HZ_PLATFORM_WINDOWS;HZ_BUILD_DLL;GLFW_INCLUDE_NONE;IMGUI_IMPL_OPENGL_LOADER_GLAD;_CRT_SECURE_NO_WARNINGS;HZ_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>external-libraries\spdlog\include;external-libraries\glad\include;external-libraries\glm;src;external-libraries\GLFW\include;external-libraries\imgui;external-libraries\stb_image;external-libraries\entt\include;external-libraries\yamlcpp\include;src\Hazle;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>external-libraries\spdlog\include;external-libraries\glad\include;external-libraries\glm;src;external-libraries\GLFW\include;external-libraries\imgui;external-libraries\stb_image;external-libraries\entt\include;external-libraries\yamlcpp\include;external-libraries\imguizmo;src\Hazle;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -155,6 +155,7 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="external-libraries\imguizmo\ImGuizmo.h" />
     <ClInclude Include="external-libraries\stb_image\stb_image.h" />
     <ClInclude Include="src\Hazle\Core\Application.h" />
     <ClInclude Include="src\Hazle\Core\EntryPoint.h" />
@@ -174,6 +175,7 @@
     <ClInclude Include="src\Hazle\Event\KeyEvent.h" />
     <ClInclude Include="src\Hazle\Event\MouseEvent.h" />
     <ClInclude Include="src\Hazle\ImGui\ImGuiLayer.h" />
+    <ClInclude Include="src\Hazle\Math\Math.h" />
     <ClInclude Include="src\Hazle\Renderer\Buffer.h" />
     <ClInclude Include="src\Hazle\Renderer\Camera.h" />
     <ClInclude Include="src\Hazle\Renderer\FrameBuffer.h" />
@@ -194,6 +196,7 @@
     <ClInclude Include="src\Hazle\Scene\SceneCamera.h" />
     <ClInclude Include="src\Hazle\Scene\SceneSerializer.h" />
     <ClInclude Include="src\Hazle\Scene\ScriptableEntity.h" />
+    <ClInclude Include="src\Hazle\utils\PlatformUtils.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLFramrBuffer.h" />
@@ -205,6 +208,9 @@
     <ClInclude Include="src\hzpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="external-libraries\imguizmo\ImGuizmo.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="external-libraries\stb_image\stb_image.cpp" />
     <ClCompile Include="src\Hazle\Core\Application.cpp" />
     <ClCompile Include="src\Hazle\Core\Layer.cpp" />
@@ -215,6 +221,7 @@
     </ClCompile>
     <ClCompile Include="src\Hazle\ImGui\ImGuiBuild.cpp" />
     <ClCompile Include="src\Hazle\ImGui\ImGuiLayer.cpp" />
+    <ClCompile Include="src\Hazle\Math\Math.cpp" />
     <ClCompile Include="src\Hazle\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Hazle\Renderer\FrameBuffer.cpp" />
     <ClCompile Include="src\Hazle\Renderer\OrthographicCamera.cpp" />
@@ -238,6 +245,7 @@
     <ClCompile Include="src\Platform\OpenGL\OpenGLShader.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLTexture.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
+    <ClCompile Include="src\Platform\Windows\WindowPlatformUtils.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
   </ItemGroup>

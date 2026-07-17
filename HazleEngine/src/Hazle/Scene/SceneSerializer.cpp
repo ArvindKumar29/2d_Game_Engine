@@ -102,12 +102,12 @@ namespace Hazle
 			out << YAML::Key << "Camera" << YAML::Value;
 			out << YAML::BeginMap;								// Camera Type
 			out << YAML::Key << "ProjectionType"	<< YAML::Value << (int)camera.GetProjectionType();
-			out << YAML::Key << "Perspective FOV"	<< YAML::Value << (int)camera.GetPerspectiveVerticleFOV();
-			out << YAML::Key << "Perspective Near"	<< YAML::Value << (int)camera.GetPerspectiveNearClip();
-			out << YAML::Key << "Perspective Far"	<< YAML::Value << (int)camera.GetPerspectiveFarClip();
-			out << YAML::Key << "Orthographic Size"	<< YAML::Value << (int)camera.GetOrthographicSize();
-			out << YAML::Key << "Orthographic Near" << YAML::Value << (int)camera.GetOrthographicNearClip();
-			out << YAML::Key << "Orthographic Far"	<< YAML::Value << (int)camera.GetOrthographicFarClip();
+			out << YAML::Key << "Perspective FOV"	<< YAML::Value << camera.GetPerspectiveVerticleFOV();
+			out << YAML::Key << "Perspective Near"	<< YAML::Value << camera.GetPerspectiveNearClip();
+			out << YAML::Key << "Perspective Far"	<< YAML::Value << camera.GetPerspectiveFarClip();
+			out << YAML::Key << "Orthographic Size"	<< YAML::Value << camera.GetOrthographicSize();
+			out << YAML::Key << "Orthographic Near" << YAML::Value << camera.GetOrthographicNearClip();
+			out << YAML::Key << "Orthographic Far"	<< YAML::Value << camera.GetOrthographicFarClip();
 			out << YAML::EndMap;								// Camera Type
 
 

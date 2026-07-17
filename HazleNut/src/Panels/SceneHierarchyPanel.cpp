@@ -14,7 +14,8 @@ namespace Hazle
 
 	void SceneHierarchyPanel::SetContext(const Ref<Scene>& context)
 	{
-		m_Context = context;
+		m_SelectionContext = {};
+		m_Context = context; 
 	}
 
 	void SceneHierarchyPanel::OnImGuiRender()
