@@ -2,6 +2,7 @@
 
 #include "Hazle/Event/Event.h"
 #include "Hazle/Core/MouseCodes.h"
+#include <sstream>
 
 namespace Hazle {
 

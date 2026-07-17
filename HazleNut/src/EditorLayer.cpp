@@ -26,6 +26,8 @@ namespace Hazle
 		//SCENE
 		m_ActiveScene = CreateRef<Scene>();
 
+		m_EditorCamera = EditorCamera(30.0f, 1.778f, 0.1f, 1000.0f);
+
 #if 0
 		//ENTITIES
 		m_SquareEntity = m_ActiveScene->CreateEntity("Square");
@@ -95,6 +97,7 @@ namespace Hazle
 	void EditorLayer::OnEvent(Event& e)
 	{
 		m_CameraController.OnEvent(e);
+		m_EditorCamera.OnEvent(e);
 
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<KeyPressedEvent>(HZ_BIND_EVENT_FN(EditorLayer::OnKeyPresedEvent));
@@ -159,11 +162,16 @@ namespace Hazle
 		{
 			m_FrameBuffer->Resize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 			m_CameraController.OnResize(m_ViewportSize.x, m_ViewportSize.y);
-
+			m_EditorCamera.SetViewportSize(m_ViewportSize.x, m_ViewportSize.y);
 			m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 		}
+		
+		// Update
 		if (m_ViewportFocused)
+		{
 			m_CameraController.OnUpdate(ts);
+		}
+		m_EditorCamera.OnUpdate(ts);
 
 		// Render
 		Renderer2D::ResetStats();
@@ -172,7 +180,7 @@ namespace Hazle
 		RenderCommand::Clear();
 
 		//Update Scene
-		m_ActiveScene->OnUpdate(ts);
+		m_ActiveScene->OnUpdateEditor(ts, m_EditorCamera);
 		//Renderer2D::BeginScene(m_CameraController.GetCamera());
 		//Renderer2D::DrawQuad({ 0.0f, 0.0f, 0.0f }, 0.0f, { 1.0f, 1.0f }, { 1.0f, 0.0f, 0.0f, 1.0f });
 		//Renderer2D::EndScene();
@@ -303,6 +311,7 @@ namespace Hazle
 			m_FrameBuffer->Resize(uint32_t(viewportPanelSize.x), uint32_t(viewportPanelSize.y));
 			m_ViewportSize = { viewportPanelSize.x, viewportPanelSize.y };
 			m_CameraController.OnResize(viewportPanelSize.x, viewportPanelSize.y);
+			m_EditorCamera.SetViewportSize(viewportPanelSize.x, viewportPanelSize.y);
 
 			m_ActiveScene->OnViewportResize((uint32_t)viewportPanelSize.x, (uint32_t)viewportPanelSize.y);
 		}
@@ -310,68 +319,80 @@ namespace Hazle
 		uint32_t textureID = m_FrameBuffer->GetColorAttachmentRendererID();
 		ImGui::Image((void*)(intptr_t)textureID, ImVec2{ viewportPanelSize.x, viewportPanelSize.y }, ImVec2(0, 1), ImVec2(1, 0));
 		
+		ImGuizmo::BeginFrame();
 		// Gizmos
 		Entity selectedEntity = m_SceneHierarchyPanel.GetSelectedEntity();
 		if (selectedEntity && m_GizmoType != -1)
 		{
-			ImGuizmo::BeginFrame();
+			ImGuizmo::SetDrawlist();
 
+			ImVec2 windowPos	 = ImGui::GetWindowPos();
+			ImVec2 minRegion	 = ImGui::GetWindowContentRegionMin();
+			ImVec2 maxRegion	 = ImGui::GetWindowContentRegionMax();
 
-			float windowWidth = (float)ImGui::GetWindowWidth();
-			float windowHeight = (float)ImGui::GetWindowHeight();
-			ImGuizmo::SetRect(ImGui::GetWindowPos().x, ImGui::GetWindowPos().y, windowWidth, windowHeight);
+			float viewportX		 = windowPos.x + minRegion.x;
+			float viewportY		 = windowPos.y + minRegion.y;
+			float viewportWidth  = maxRegion.x - minRegion.x;
+			float viewportHeight = maxRegion.y - minRegion.y;
+			ImGuizmo::SetRect(viewportX, viewportY, viewportWidth, viewportHeight);
 
-			Entity cameraEntity;
-			if (m_ActiveScene->HasPrimaryCameraEntity())
-				cameraEntity = m_ActiveScene->GetPrimaryCameraEntity();
-			if(cameraEntity)
+			// CAMERA
+			glm::mat4 cameraProjection;
+			glm::mat4 cameraView;
+			 
+			// Runtime Camera from entity
+			Entity cameraEntity = m_ActiveScene->GetPrimaryCameraEntity();
+			if(cameraEntity && cameraEntity.hasComponent<CCamera>())
 			{
 				// Entity Camera
 				const auto& camera = cameraEntity.getComponent<CCamera>();
 				
 				bool isOrthographic = camera.camera.GetProjectionType() == SceneCamera::ProjectionType::Orthographic;
 				ImGuizmo::SetOrthographic(isOrthographic);
-				ImGuizmo::SetDrawlist();
 
-				const glm::mat4& cameraProjection = camera.camera.GetProjection();
-				glm::mat4 cameraView = glm::inverse(cameraEntity.getComponent<CTransform>().GetTransform());
-
-				if(selectedEntity.hasComponent<CTransform>())
-				{
-					// Entity TransfoSrm
-					auto& tc = selectedEntity.getComponent<CTransform>();
-					glm::mat4 transform = tc.GetTransform();
-
-					// snapping
-					bool snap = Input::IsKeyPressed(Key::LeftControl);
-					float snapValue = 0.5f;
-					if (m_GizmoType == ImGuizmo::OPERATION::ROTATE)
-						snapValue = 45.0f;
-
-					float snapValues[3] = { snapValue, snapValue, snapValue };
-
-					ImGuizmo::Manipulate(glm::value_ptr(cameraView), glm::value_ptr(cameraProjection),
-						(ImGuizmo::OPERATION)m_GizmoType, ImGuizmo::LOCAL, glm::value_ptr(transform),
-						nullptr, snap ? snapValues : nullptr);
-					
-					if (ImGuizmo::IsUsing())
-					{
-						glm::vec3 translation, rotation, scale;
-						bool decomposedTransform = Math::DecomposeTransform(transform, translation, rotation, scale);
-						
-						glm::vec3 deltaRotation = rotation - tc.Rotation;
-
-						tc.Translation = translation;
-						tc.Rotation += deltaRotation;
-						tc.Scale = scale;
-					}
-				}
-
+				cameraProjection = camera.camera.GetProjection();
+				cameraView = glm::inverse(cameraEntity.getComponent<CTransform>().GetTransform());
 			}
-			
+			else
+			{
+				//bool isOrthographic = m_EditorCamera.GetProjectionType();
+				ImGuizmo::SetOrthographic(false);				
+				cameraProjection = m_EditorCamera.GetProjection();
+				cameraView = m_EditorCamera.GetViewMatrix();
+			}
+
+			if (selectedEntity.hasComponent<CTransform>())
+			{
+				// Entity TransfoSrm
+				auto& tc = selectedEntity.getComponent<CTransform>();
+				glm::mat4 transform = tc.GetTransform();
+
+				// snapping
+				bool snap = Input::IsKeyPressed(Key::LeftControl);
+				float snapValue = 0.5f;
+				if (m_GizmoType == ImGuizmo::OPERATION::ROTATE)
+					snapValue = 45.0f;
+
+				float snapValues[3] = { snapValue, snapValue, snapValue };
+
+				ImGuizmo::Manipulate(glm::value_ptr(cameraView), glm::value_ptr(cameraProjection),
+					(ImGuizmo::OPERATION)m_GizmoType, ImGuizmo::LOCAL, glm::value_ptr(transform),
+					nullptr, snap ? snapValues : nullptr);
+
+				if (ImGuizmo::IsUsing())
+				{
+					glm::vec3 translation, rotation, scale;
+					bool decomposedTransform = Math::DecomposeTransform(transform, translation, rotation, scale);
+
+					glm::vec3 deltaRotation = rotation - tc.Rotation;
+
+					tc.Translation = translation;
+					tc.Rotation += deltaRotation;
+					tc.Scale = scale;
+				}
+			}
 		}
 
-		
 		ImGui::End();
 		ImGui::PopStyleVar();
 

@@ -7,8 +7,8 @@
 namespace Hazle::Math
 {
 	bool DecomposeTransform(glm::mat4& transform, 
-		glm::vec3& translation, 
-		glm::vec3& rotation, 
+		glm::vec3& translation,
+		glm::vec3& rotation,
 		glm::vec3& scale)
 	{
 		using namespace glm;

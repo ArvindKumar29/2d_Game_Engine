@@ -199,6 +199,7 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\Hazle\Math\Math.h" />
+    <ClInclude Include="src\Hazle\Renderer\EditorCamera.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="external-libraries\imguizmo\ImGuizmo.cpp">
@@ -307,5 +308,6 @@
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Hazle\Math\Math.cpp" />
+    <ClCompile Include="src\Hazle\Renderer\EditorCamera.cpp" />
   </ItemGroup>
 </Project>

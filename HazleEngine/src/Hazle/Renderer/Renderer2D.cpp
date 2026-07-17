@@ -119,10 +119,18 @@ namespace Hazle
 	{
 		s_Data.m_TextureShader->Bind();
 		s_Data.m_TextureShader->SetMat4("u_VP", camera.GetVPMatrix());
-		s_Data.m_WhiteTexture->Bind(0);
-		s_Data.m_QuadVertexBufferPtr = s_Data.m_QuadVertexBufferBase;
-		s_Data.m_QuadIndexCount = 0;
-		s_Data.m_TextureSlotIndex = 1; 
+		
+		StartBatch();
+	}
+
+	void Renderer2D::BeginScene(const EditorCamera& camera)
+	{
+		glm::mat4 viewProj = camera.GetViewProjection();
+
+		s_Data.m_TextureShader->Bind();
+		s_Data.m_TextureShader->SetMat4("u_VP", viewProj);
+
+		StartBatch();
 	}
 
 	void Renderer2D::EndScene()
@@ -141,6 +149,14 @@ namespace Hazle
 			return;
 		RenderCommand::DrawIndexed(s_Data.m_QuadVA, s_Data.m_QuadIndexCount);
 		s_Data.m_Stats.DrawCalls++;
+	}
+
+	void Renderer2D::StartBatch()
+	{
+		s_Data.m_WhiteTexture->Bind(0);
+		s_Data.m_QuadVertexBufferPtr = s_Data.m_QuadVertexBufferBase;
+		s_Data.m_QuadIndexCount = 0;
+		s_Data.m_TextureSlotIndex = 1;
 	}
 
 	void Renderer2D::Shutdown()

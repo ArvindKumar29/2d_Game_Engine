@@ -2,6 +2,7 @@
 #include <entt.hpp>
 #include "Hazle/Core/Timestep.h"
 #include "SceneCamera.h"
+#include "Hazle/Renderer/EditorCamera.h"
 
 namespace Hazle
 {
@@ -15,7 +16,8 @@ namespace Hazle
 		Entity CreateEntity(const std::string& name);
 		void DestroyEntity(Entity entity);
 		void OnViewportResize(uint32_t width, uint32_t height);
-		void OnUpdate(Timestep ts);
+		void OnUpdateEditor(Timestep ts, EditorCamera& camera);
+		void OnUpdateRuntime(Timestep ts);
 
 		Entity GetPrimaryCameraEntity();
 		bool HasPrimaryCameraEntity();

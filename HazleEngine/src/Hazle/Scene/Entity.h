@@ -46,6 +46,7 @@ namespace Hazle
 
 		operator uint32_t() const {	return (uint32_t)m_EntityManager; }
 		operator entt::entity() const {	return m_EntityManager; }
+		operator bool() const { return m_EntityManager != entt::null; }
 		bool operator==(const Entity& other) const { return m_EntityManager == other.m_EntityManager && m_Scene == other.m_Scene; }
 		bool operator!=(const Entity& other) const { return *this == other; }
 

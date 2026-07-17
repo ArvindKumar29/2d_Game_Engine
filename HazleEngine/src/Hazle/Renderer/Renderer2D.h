@@ -4,6 +4,7 @@
 #include "Texture.h"
 #include "SubTexture2d.h"
 #include "glm/glm.hpp"
+#include "EditorCamera.h"
 
 
 namespace Hazle
@@ -15,10 +16,12 @@ namespace Hazle
 
 		static void BeginScene(const Camera& camera, glm::mat4& transform);
 		static void BeginScene(const OrthographicCamera& camera);
+		static void BeginScene(const EditorCamera& camera);
 		static void EndScene();
 		static void Shutdown();
 		static void Flush();
-		
+		static void StartBatch();
+
 		// Primitives
 
 		static void DrawQuad(const glm::vec2& position, const float rotation, const glm::vec2& size, const glm::vec4& color);

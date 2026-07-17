@@ -178,6 +178,7 @@
     <ClInclude Include="src\Hazle\Math\Math.h" />
     <ClInclude Include="src\Hazle\Renderer\Buffer.h" />
     <ClInclude Include="src\Hazle\Renderer\Camera.h" />
+    <ClInclude Include="src\Hazle\Renderer\EditorCamera.h" />
     <ClInclude Include="src\Hazle\Renderer\FrameBuffer.h" />
     <ClInclude Include="src\Hazle\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Hazle\Renderer\OrthographicCamera.h" />
@@ -223,6 +224,7 @@
     <ClCompile Include="src\Hazle\ImGui\ImGuiLayer.cpp" />
     <ClCompile Include="src\Hazle\Math\Math.cpp" />
     <ClCompile Include="src\Hazle\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Hazle\Renderer\EditorCamera.cpp" />
     <ClCompile Include="src\Hazle\Renderer\FrameBuffer.cpp" />
     <ClCompile Include="src\Hazle\Renderer\OrthographicCamera.cpp" />
     <ClCompile Include="src\Hazle\Renderer\OrthographicCameraController.cpp" />

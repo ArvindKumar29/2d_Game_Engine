@@ -1,6 +1,7 @@
 #pragma once
 #include "Hazle/Core/Hazle.h"
 #include "Panels/SceneHierarchyPanel.h"
+#include "Hazle/Renderer/EditorCamera.h"
 
 namespace Hazle
 {
@@ -28,6 +29,8 @@ namespace Hazle
 		Ref<Scene> m_ActiveScene;
 		Entity m_SquareEntity;
 		Entity m_CameraEntity, m_SecondCamera;
+
+		EditorCamera m_EditorCamera;
 
 		glm::vec2 m_ViewportSize = { 1.0f, 1.0f };
 		struct ProfileResult

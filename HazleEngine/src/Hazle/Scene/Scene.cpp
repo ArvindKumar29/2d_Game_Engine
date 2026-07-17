@@ -32,7 +32,23 @@ namespace Hazle
 		m_Registry.destroy(entity);
 	}
 
-	void Scene::OnUpdate(Timestep ts)
+	void Scene::OnUpdateEditor(Timestep ts, EditorCamera& camera)
+	{
+		Renderer2D::BeginScene(camera);
+
+		auto group = m_Registry.group<CTransform, CSpriteRenderer>();
+		for (auto entity : group)
+		{
+			auto& transform = group.get<CTransform>(entity);
+			auto& sprite = group.get<CSpriteRenderer>(entity);
+			Renderer2D::DrawQuad(transform.GetTransform(), sprite.Color);
+		}
+		Renderer2D::EndScene();
+	}
+
+
+
+	void Scene::OnUpdateRuntime(Timestep ts)
 	{
 		// Update Scripts
 		{
@@ -69,7 +85,7 @@ namespace Hazle
 			//HZ_CORE_INFO("PROJECTION: {0}", glm::to_string(mainCamera->GetProjection()));
 			//HZ_CORE_INFO("VIEW: {0}", glm::to_string(glm::inverse(*cameraTransform)));
 			Renderer2D::BeginScene(*mainCamera, cameraTransform);
-			auto& group = m_Registry.view<CTransform, CSpriteRenderer>();
+			auto& group = m_Registry.group<CTransform, CSpriteRenderer>();
 			for (auto& entity : group)
 			{
 				auto& transform = group.get<CTransform>(entity);
@@ -79,17 +95,6 @@ namespace Hazle
 			}
 			Renderer2D::EndScene();
 		}
-	}
-
-	bool Scene::HasPrimaryCameraEntity()
-	{
-		auto view = m_Registry.view<CCamera>();
-		for (auto entity : view)
-		{
-			if (view.get<CCamera>(entity).Primary)
-				return true;
-		}
-		return false;
 	}
 
 	Entity Scene::GetPrimaryCameraEntity()
