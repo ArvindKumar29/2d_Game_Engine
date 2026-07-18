@@ -19,6 +19,7 @@ namespace Hazle
 		m_CameraController.SetZoomLevel(10.0f);
 
 		FrameBufferSpecifications fbSpec;
+		fbSpec.Attachements = { FramebufferTextureFormat::RGBA8, FramebufferTextureFormat::RED_INTEGER, FramebufferTextureFormat::Depth };
 		fbSpec.Width = 1920;
 		fbSpec.Height = 1080;
 		m_FrameBuffer = FrameBuffer::Create(fbSpec);
@@ -115,6 +116,8 @@ namespace Hazle
 			{
 				if (controlPressed && shiftPressed)
 					SaveSceneAs();
+				else if (controlPressed)
+					SaveScene();
 				break;
 			}
 			case Key::N:
@@ -179,16 +182,32 @@ namespace Hazle
 		RenderCommand::SetClearColor(glm::vec4(0.1f, 0.1f, 0.1f, 1.0f));
 		RenderCommand::Clear();
 
+		// Clear our entity ID attachment to -1
+		m_FrameBuffer->ClearColorAttachments(1, -1);
+
 		//Update Scene
 		m_ActiveScene->OnUpdateEditor(ts, m_EditorCamera);
 		//Renderer2D::BeginScene(m_CameraController.GetCamera());
 		//Renderer2D::DrawQuad({ 0.0f, 0.0f, 0.0f }, 0.0f, { 1.0f, 1.0f }, { 1.0f, 0.0f, 0.0f, 1.0f });
 		//Renderer2D::EndScene();
 
+		auto [mx, my] = ImGui::GetMousePos();
+		mx -= m_ViewportBounds[0].x;
+		my -= m_ViewportBounds[0].y;
+		auto viewportSize = m_ViewportBounds[1] - m_ViewportBounds[0];
+		my = viewportSize.y - my;
+		int mouseX = (int)mx;
+		int mouseY = (int)my;
+
+		if(mouseX >= 0 && mouseY >= 0 && mouseX < (int)viewportSize.x && mouseY < (int)viewportSize.y)
+		{
+			int pixelData = m_FrameBuffer->ReadPixel(1, mouseX, mouseY);
+			m_HoveredEntity = pixelData == -1 ? Entity() : Entity((entt::entity)pixelData, m_ActiveScene.get());
+		}
+		
 		m_FrameBuffer->Unbind();
 		
 	}
-
 
 	void EditorLayer::OnImGuiRender()
 	{
@@ -260,9 +279,14 @@ namespace Hazle
 				{
 					NewScene();
 				}
+				
 				if (ImGui::MenuItem("Save As..." , "Ctrl+Shift+S"))
 				{
 					SaveSceneAs();
+				}
+				if (ImGui::MenuItem("Save..." , "Ctrl+S"))
+				{
+					SaveScene();
 				}
 				
 				if (ImGui::MenuItem("Open...", "Ctrl+O"))
@@ -284,6 +308,11 @@ namespace Hazle
 
 		ImGui::Begin("Settings");
 
+		std::string name = "None";
+		if (m_HoveredEntity && m_HoveredEntity.hasComponent<CTag>())
+			name = m_HoveredEntity.getComponent<CTag>().Tag;
+		ImGui::Text("Hovered Entity: %s", name.c_str());
+
 		auto stats = Renderer2D::GetStats();
 		ImGui::Text("Renderer2D Stats:");
 		ImGui::Text("Draw Calls: %d", stats.DrawCalls);
@@ -301,6 +330,10 @@ namespace Hazle
 		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2{ 0, 0 });
 
 		ImGui::Begin("Viewport");
+
+		auto viewportOffset = ImGui::GetCursorPos(); // Include tab bar
+
+
 		m_ViewportFocused = ImGui::IsWindowFocused();
 		m_ViewportHovered = ImGui::IsWindowHovered();
 		Application::Get().GetImGuiLayer()->SetBlockEvents(!m_ViewportFocused && !m_ViewportHovered);
@@ -318,6 +351,16 @@ namespace Hazle
 
 		uint32_t textureID = m_FrameBuffer->GetColorAttachmentRendererID();
 		ImGui::Image((void*)(intptr_t)textureID, ImVec2{ viewportPanelSize.x, viewportPanelSize.y }, ImVec2(0, 1), ImVec2(1, 0));
+		
+		auto windowSize = ImGui::GetWindowSize();
+		ImVec2 minBound = ImGui::GetWindowPos();
+		minBound.x += viewportOffset.x;
+		minBound.y += viewportOffset.y;
+
+		ImVec2 maxBound = { minBound.x + windowSize.x, minBound.y + windowSize.y };
+		m_ViewportBounds[0] = { minBound.x, minBound.y };
+		m_ViewportBounds[1] = { maxBound.x, maxBound.y };
+
 		
 		ImGuizmo::BeginFrame();
 		// Gizmos
@@ -384,11 +427,14 @@ namespace Hazle
 					glm::vec3 translation, rotation, scale;
 					bool decomposedTransform = Math::DecomposeTransform(transform, translation, rotation, scale);
 
-					glm::vec3 deltaRotation = rotation - tc.Rotation;
+					if(decomposedTransform)
+					{
+						//glm::vec3 deltaRotation = rotation - tc.Rotation;
 
-					tc.Translation = translation;
-					tc.Rotation += deltaRotation;
-					tc.Scale = scale;
+						tc.Translation = translation;
+						tc.Rotation = rotation;
+						tc.Scale = scale;
+					}
 				}
 			}
 		}
@@ -420,6 +466,8 @@ namespace Hazle
 
 			SceneSerializer serializer(m_ActiveScene);
 			serializer.DeSerialize(filepath);
+
+			currentPath = filepath;
 		}
 	}
 
@@ -430,6 +478,19 @@ namespace Hazle
 		{
 			SceneSerializer seriazlizer(m_ActiveScene);
 			seriazlizer.Serialize(filepath);
+		}
+	}
+	
+	void EditorLayer::SaveScene()
+	{
+		std::string filepath = currentPath; // Hazle Scene (.hz) this will show up upto first \0 and .hz is the actual file type from first \0 to second \0
+		if (!filepath.empty())
+		{
+			SceneSerializer seriazlizer(m_ActiveScene);
+			seriazlizer.Serialize(filepath);
+
+			//ImGui::BeginPopup("Scene Saved!!!");
+			//ImGui::EndPopup();
 		}
 	}
 }

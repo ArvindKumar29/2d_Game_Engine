@@ -24,6 +24,7 @@ namespace Hazle
 
 		const glm::mat4& GetViewMatrix() const { return m_ViewMatrix; }
 		glm::mat4& GetViewProjection() const { return m_Projection * m_ViewMatrix; }
+		const glm::mat4& GetProjection() const { return m_Projection; }
 
 		glm::vec3 GetUpDirection() const;
 		glm::vec3 GetRightDirection() const;
@@ -64,6 +65,4 @@ namespace Hazle
 
 		float m_ViewportWidth, m_ViewportHeight;
 	};
-
 }
-

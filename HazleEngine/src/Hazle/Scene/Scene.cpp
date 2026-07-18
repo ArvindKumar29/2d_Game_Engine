@@ -41,7 +41,8 @@ namespace Hazle
 		{
 			auto& transform = group.get<CTransform>(entity);
 			auto& sprite = group.get<CSpriteRenderer>(entity);
-			Renderer2D::DrawQuad(transform.GetTransform(), sprite.Color);
+			//Renderer2D::DrawQuad(transform.GetTransform(), sprite.Color);
+			Renderer2D::DrawSprite(transform.GetTransform(), sprite, (int)entity);
 		}
 		Renderer2D::EndScene();
 	}

@@ -104,10 +104,12 @@ namespace Hazle {
 
 	void ImGuiLayer::SetDarkThemeColors()
 	{
+		ImGui::StyleColorsDark();
+
 		auto& colors = ImGui::GetStyle().Colors;
 
 		//BG
-		colors[ ImGuiCol_WindowBg ]			= ImVec4{ 0.1f, 0.105f, 0.11f, 1.0f };
+		colors[ ImGuiCol_WindowBg ]			= ImVec4{ 0.1f, 0.105f, 0.1f, 1.0f };
 
 		//Headers
 		colors[ ImGuiCol_Header ]				= ImVec4{ 0.2f, 0.205f, 0.21f, 1.0f };
@@ -139,37 +141,43 @@ namespace Hazle {
 
 	void ImGuiLayer::SetLightThemeColors()
 	{
+		ImGui::StyleColorsLight();
 		auto& colors = ImGui::GetStyle().Colors;
 
 		// BG
-		colors[ImGuiCol_WindowBg]			= ImVec4{ 0.5f, 0.605f, 0.7f, 1.0f };
+		colors[ImGuiCol_WindowBg]			= ImVec4{ 0.94f, 0.94f, 0.94f, 1.0f };
+		colors[ImGuiCol_WindowBg]			= ImVec4{ 1.0f, 1.0f, 1.0f, 1.0f };
+
+		//
+		colors[ImGuiCol_Text]				= ImVec4{ 0.10f, 0.10f, 0.10f, 1.0f };
+		colors[ImGuiCol_TextDisabled]		= ImVec4{ 0.50f, 0.50f, 0.50f, 1.0f };
 
 		//Headers
-		colors[ImGuiCol_Header]				= ImVec4{ 0.2f, 0.7f, 0.21f, 1.0f };
-		colors[ImGuiCol_HeaderHovered]		= ImVec4{ 0.3f, 0.75f, 0.31f, 1.0f };
-		colors[ImGuiCol_HeaderActive]		= ImVec4{ 0.15f, 0.7f, 0.7f, 1.0f };
+		colors[ImGuiCol_Header]				= ImVec4{ 0.8f, 0.8f, 0.8f, 1.0f };
+		colors[ImGuiCol_HeaderHovered]		= ImVec4{ 0.7f, 0.7f, 0.7f, 1.0f };
+		colors[ImGuiCol_HeaderActive]		= ImVec4{ 0.5f, 0.5f, 0.5f, 1.0f };
 
 		//Buttons
-		colors[ImGuiCol_Button]				= ImVec4{ 0.7f, 0.205f, 0.21f, 1.0f };
-		colors[ImGuiCol_ButtonHovered]		= ImVec4{ 0.9f, 0.305f, 0.31f, 1.0f };
-		colors[ImGuiCol_ButtonActive]		= ImVec4{ 0.7f, 0.1505f, 0.151f, 0.7f };
+		colors[ImGuiCol_Button]				= ImVec4{ 0.85f, 0.85f, 0.85f, 1.0f };
+		colors[ImGuiCol_ButtonHovered]		= ImVec4{ 0.75f, 0.75f, 0.75f, 1.0f };
+		colors[ImGuiCol_ButtonActive]		= ImVec4{ 0.55f, 0.55f, 0.55f, 0.7f };
 
 		//FrameBG
-		colors[ImGuiCol_FrameBg]			= ImVec4{ 0.7f -0.2f, 0.7f - 0.205f, 0.7f - 0.21f, 0.7f };
-		colors[ImGuiCol_FrameBgHovered]		= ImVec4{ 0.7f -0.3f, 0.7f - 0.305f, 0.7f - 0.31f, 0.7f };
-		colors[ImGuiCol_FrameBgActive]		= ImVec4{ 0.7f -0.15f,0.7f -  0.1505f, 0.7f - 0.151f, 0.7f };
+		colors[ImGuiCol_FrameBg]			= ImVec4{ 0.8f, 0.8f, 0.8f, 1.0f };
+		colors[ImGuiCol_FrameBgHovered]		= ImVec4{ 0.75f, 0.75f, 0.75f, 1.0f };
+		colors[ImGuiCol_FrameBgActive]		= ImVec4{ 0.9f, 0.9f, 0.9f, 1.0f };
 
 		//Tabs
-		colors[ImGuiCol_Tab]				= ImVec4{ 0.7f -0.15f,0.7f -  0.1505f, 0.7f - 0.151f, 0.7f };
-		colors[ImGuiCol_TabHovered]			= ImVec4{ 0.7f -0.38f,0.7f -  0.3805f, 0.7f - 0.381f, 0.7f };
-		colors[ImGuiCol_TabActive]			= ImVec4{ 0.7f -0.28f,0.7f -  0.2805f, 0.7f - 0.281f, 0.7f };
-		colors[ImGuiCol_TabUnfocused]		= ImVec4{ 0.7f -0.15f,0.7f -  0.1505f, 0.7f - 0.151f, 0.7f };
-		colors[ImGuiCol_TabUnfocusedActive] = ImVec4{ 0.7f -0.2f, 0.7f - 0.205f, 0.7f - 0.21f, 0.7f };
+		colors[ImGuiCol_Tab]				= ImVec4{ 0.8f, 0.8f, 0.8f, 1.0f };
+		colors[ImGuiCol_TabHovered]			= ImVec4{ 0.9f, 0.9f, 0.9f, 1.0f };
+		colors[ImGuiCol_TabActive]			= ImVec4{ 1.0f, 1.0f, 1.0f, 1.0f };
+		colors[ImGuiCol_TabUnfocused]		= ImVec4{ 0.85f, 0.85f, 0.85f, 1.0f };
+		colors[ImGuiCol_TabUnfocusedActive] = ImVec4{ 0.95f, 0.95f, 0.95f, 1.0f };
 
 		//Titles
-		colors[ImGuiCol_TitleBg]			= ImVec4{ 0.7f -0.15f,0.7f -  0.1505f, 0.7f - 0.151f, 0.7f };
-		colors[ImGuiCol_TitleBgActive]		= ImVec4{ 0.7f -0.15f,0.7f -  0.1505f, 0.7f - 0.151f, 0.7f };
-		colors[ImGuiCol_TitleBgCollapsed]	= ImVec4{ 0.7f -0.95f,0.7f -  0.1505f, 0.7f - 0.951f, 0.7f };
+		colors[ImGuiCol_TitleBg]			= ImVec4{ 0.85f, 0.85f, 0.85f, 1.0f };
+		colors[ImGuiCol_TitleBgActive]		= ImVec4{ 0.75f, 0.75f, 0.75f, 1.0f };
+		colors[ImGuiCol_TitleBgCollapsed]	= ImVec4{ 0.9f,  0.9f, 0.9f, 1.0f };
 	}
 
 }

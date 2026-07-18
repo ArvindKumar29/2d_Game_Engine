@@ -2,22 +2,22 @@ Scene: Name
 Entities:
   - Entity: 1234567890
     TagComponent:
-      Tag: Camera B
+      Tag: Square
     TransformComponent:
-      Translation: [0, 0, 17.1000004]
+      Translation: [5, -0.300000012, -9.60000038]
       Rotation: [0, 0, 0]
-      Scale: [1, 1, 1]
-    CameraComponent:
-      Camera:
-        ProjectionType: 0
-        Perspective FOV: 0.785398185
-        Perspective Near: 0.100000001
-        Perspective Far: 1000
-        Orthographic Size: 10
-        Orthographic Near: -1
-        Orthographic Far: 10
-      Primary: false
-      FixedAspectRatio: false
+      Scale: [13.6000004, 10.6999998, 1]
+    SpriteRendrerComponent:
+      Color: [0.501960814, 1, 0, 0.580392182]
+  - Entity: 1234567890
+    TagComponent:
+      Tag: RedSquare
+    TransformComponent:
+      Translation: [-0.699999988, 0.5, -5]
+      Rotation: [0, 0.0663225129, 0]
+      Scale: [9, 7.80000019, 1]
+    SpriteRendrerComponent:
+      Color: [1, 0, 0, 0.592156887]
   - Entity: 1234567890
     TagComponent:
       Tag: Camera A
@@ -38,19 +38,19 @@ Entities:
       FixedAspectRatio: false
   - Entity: 1234567890
     TagComponent:
-      Tag: RedSquare
+      Tag: Camera B
     TransformComponent:
-      Translation: [-0.699999988, 0.100000001, -5]
-      Rotation: [0, 0.0663225129, 0]
-      Scale: [9, 7.80000019, 1]
-    SpriteRendrerComponent:
-      Color: [1, 0, 0, 0.592156887]
-  - Entity: 1234567890
-    TagComponent:
-      Tag: Square
-    TransformComponent:
-      Translation: [5, -0.300000012, -9.60000038]
+      Translation: [0, 0, 17.1000004]
       Rotation: [0, 0, 0]
-      Scale: [13.6000004, 10.6999998, 1]
-    SpriteRendrerComponent:
-      Color: [0.501960814, 1, 0, 0.580392182]
+      Scale: [1, 1, 1]
+    CameraComponent:
+      Camera:
+        ProjectionType: 0
+        Perspective FOV: 0.785398185
+        Perspective Near: 0.100000001
+        Perspective Far: 1000
+        Orthographic Size: 10
+        Orthographic Near: -1
+        Orthographic Far: 10
+      Primary: false
+      FixedAspectRatio: false

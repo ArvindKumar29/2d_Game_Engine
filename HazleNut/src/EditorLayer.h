@@ -22,7 +22,9 @@ namespace Hazle
 		void NewScene();
 		void OpenScene();
 		void SaveSceneAs();
+		void SaveScene();
 
+		std::string currentPath;
 
 		OrthographicCameraController m_CameraController;
 		Ref<FrameBuffer> m_FrameBuffer;
@@ -33,6 +35,8 @@ namespace Hazle
 		EditorCamera m_EditorCamera;
 
 		glm::vec2 m_ViewportSize = { 1.0f, 1.0f };
+		glm::vec2 m_ViewportBounds[2];
+
 		struct ProfileResult
 		{
 			const char* name;
@@ -46,6 +50,7 @@ namespace Hazle
 		bool m_ViewportFocused = false, m_ViewportHovered = false;
 
 		int m_GizmoType = -1;
+		Entity m_HoveredEntity;
 
 		//Panels
 		SceneHierarchyPanel m_SceneHierarchyPanel;

@@ -21,7 +21,8 @@ namespace Hazle
 
 	private:
 		uint32_t m_RendererID;
-		std::vector<Hazle::Ref<Hazle::VertexBuffer>> m_VertexBuffers;
-		Hazle::Ref<Hazle::IndexBuffer> m_IndexBuffer;
+		uint32_t m_VertexBufferIndex = 0;
+		std::vector<Ref<Hazle::VertexBuffer>> m_VertexBuffers;
+		Ref<IndexBuffer> m_IndexBuffer;
 	};
 }
