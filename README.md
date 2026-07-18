@@ -14,6 +14,7 @@
 <img width="1442" height="952" alt="Orthographic Camera 2D view" src="https://github.com/user-attachments/assets/d2837a58-7626-4ab3-a2d0-cb8476d99304" />
 #3D: Perspective Camera
 <img width="1442" height="952" alt="Perspective Camera 3D view" src="https://github.com/user-attachments/assets/602417ae-777e-49bd-93a2-ce775a12bf5a" />
+check other media files in the actual repo
 
 ## ✨ Current Features
 * ***Core Architecture:*** Custom application layer and window abstraction.
