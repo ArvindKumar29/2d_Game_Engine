@@ -20,6 +20,7 @@ namespace Hazle
 
 	private:
 		bool OnKeyPresedEvent(KeyPressedEvent& e);
+		bool OnMouseButtonPresedEvent(MouseButtonPressedEvent& e);
 		void NewScene();
 		void OpenScene();
 		void OpenScene(const std::filesystem::path& path);

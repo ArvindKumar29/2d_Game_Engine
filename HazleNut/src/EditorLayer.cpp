@@ -105,6 +105,7 @@ namespace Hazle
 
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<KeyPressedEvent>(HZ_BIND_EVENT_FN(EditorLayer::OnKeyPresedEvent));
+		dispatcher.Dispatch<MouseButtonPressedEvent>(HZ_BIND_EVENT_FN(EditorLayer::OnMouseButtonPresedEvent));
 	}
 
 	bool EditorLayer::OnKeyPresedEvent(KeyPressedEvent& e)
@@ -152,6 +153,16 @@ namespace Hazle
 				break;
 		}
 		return true;
+	}
+
+	bool EditorLayer::OnMouseButtonPresedEvent(MouseButtonPressedEvent& e)
+	{
+		if (e.GetMouseButton() == Mouse::ButtonLeft)
+		{
+			if(m_ViewportHovered && !ImGuizmo::IsOver()  && !Input::IsKeyPressed(Key::LeftAlt))
+				m_SceneHierarchyPanel.SetSelectedEntity(m_HoveredEntity);
+		}
+		return false;
 	}
 
 	void EditorLayer::OnUpdate(Timestep ts)

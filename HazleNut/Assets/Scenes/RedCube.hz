@@ -2,13 +2,13 @@ Scene: Name
 Entities:
   - Entity: 1234567890
     TagComponent:
-      Tag: Left
+      Tag: Top
     TransformComponent:
-      Translation: [0, 0, 0]
-      Rotation: [0, 1.57079637, 0]
+      Translation: [0.5, 0.5, 0]
+      Rotation: [-1.5707964, 0, 0]
       Scale: [1, 1, 1]
     SpriteRendrerComponent:
-      Color: [1, 0, 0, 1]
+      Color: [1, 0.28166354, 0.28166354, 1]
   - Entity: 1234567890
     TagComponent:
       Tag: Front
@@ -17,13 +17,13 @@ Entities:
       Rotation: [0, 0, 0]
       Scale: [1, 1, 1]
     SpriteRendrerComponent:
-      Color: [0.988657832, 0.181285113, 0.181285113, 1]
+      Color: [0.98865783, 0.18128511, 0.18128511, 1]
   - Entity: 1234567890
     TagComponent:
-      Tag: Top
+      Tag: Left
     TransformComponent:
-      Translation: [0.5, 0.5, 0]
-      Rotation: [1.57079637, 0, 0]
+      Translation: [0, 0, 0]
+      Rotation: [0, 1.5707964, 0]
       Scale: [1, 1, 1]
     SpriteRendrerComponent:
-      Color: [1, 0.281663537, 0.281663537, 1]
+      Color: [1, 0, 0, 1]
