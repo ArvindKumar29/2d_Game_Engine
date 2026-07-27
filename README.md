@@ -70,5 +70,5 @@
 
 1. **Clone the repository along with its submodules:**
    ```bash
-   git clone --recursive [https://github.com/ArvindKumar29/2d_Game_Engine.git](https://github.com/ArvindKumar29/2d_Game_Engine.git)
+   git clone --recursive https://github.com/ArvindKumar29/2d_Game_Engine.git
    cd 2d_Game_Engine
