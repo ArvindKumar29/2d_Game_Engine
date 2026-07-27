@@ -1,4 +1,4 @@
-# 🌰 HazleEngine (2D Game Engine & HazleNut Editor)
+# HazleEngine (2D Game Engine & HazleNut Editor)
 
 ![C++](https://img.shields.io/badge/Language-C++20-00599C?style=for-the-badge&logo=c%2B%2B)
 ![OpenGL](https://img.shields.io/badge/Renderer-OpenGL%204.5-5586A4?style=for-the-badge&logo=opengl)
