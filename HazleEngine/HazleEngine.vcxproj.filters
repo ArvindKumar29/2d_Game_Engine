@@ -1,15 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="external-libraries">
-      <UniqueIdentifier>{723CB9AD-5E20-7A03-C780-7456B3836485}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="external-libraries\imguizmo">
-      <UniqueIdentifier>{527FBA7D-BE8C-E863-4773-E44EB37FB41A}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="external-libraries\stb_image">
-      <UniqueIdentifier>{8CA37783-785E-672F-2116-E0790DB0B1BF}</UniqueIdentifier>
-    </Filter>
     <Filter Include="src">
       <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
     </Filter>
@@ -27,6 +18,9 @@
     </Filter>
     <Filter Include="src\Hazle\ImGui">
       <UniqueIdentifier>{FA092E0E-6695-9BD2-6FA6-1EC7DBB0F7D2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Hazle\Math">
+      <UniqueIdentifier>{A99FDCB2-956D-D0B8-7E01-41DF6A6EAC1D}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Hazle\Renderer">
       <UniqueIdentifier>{76662ACD-624A-EB22-CBAA-E575B7ADD5A4}</UniqueIdentifier>
@@ -46,14 +40,20 @@
     <Filter Include="src\Platform\Windows">
       <UniqueIdentifier>{5B054582-4794-CE4B-F0B2-E246DC20DFF1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="vendor">
+      <UniqueIdentifier>{B3738122-9F15-ACF8-88D0-BF4C74113349}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\imguizmo">
+      <UniqueIdentifier>{B36F5F1F-1FFB-CCE3-280C-50D8941629E4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\imguizmo\src">
+      <UniqueIdentifier>{4ACF419C-B630-1FAA-3F9E-655CABFE5569}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vendor\stb_image">
+      <UniqueIdentifier>{0DA0BA59-F998-D9AB-22CB-BE300E23B9B7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="external-libraries\imguizmo\ImGuizmo.h">
-      <Filter>external-libraries\imguizmo</Filter>
-    </ClInclude>
-    <ClInclude Include="external-libraries\stb_image\stb_image.h">
-      <Filter>external-libraries\stb_image</Filter>
-    </ClInclude>
     <ClInclude Include="src\Hazle\Core\Application.h">
       <Filter>src\Hazle\Core</Filter>
     </ClInclude>
@@ -108,10 +108,16 @@
     <ClInclude Include="src\Hazle\ImGui\ImGuiLayer.h">
       <Filter>src\Hazle\ImGui</Filter>
     </ClInclude>
+    <ClInclude Include="src\Hazle\Math\Math.h">
+      <Filter>src\Hazle\Math</Filter>
+    </ClInclude>
     <ClInclude Include="src\Hazle\Renderer\Buffer.h">
       <Filter>src\Hazle\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Hazle\Renderer\Camera.h">
+      <Filter>src\Hazle\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Hazle\Renderer\EditorCamera.h">
       <Filter>src\Hazle\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Hazle\Renderer\FrameBuffer.h">
@@ -198,16 +204,14 @@
     <ClInclude Include="src\hzpch.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Hazle\Math\Math.h" />
-    <ClInclude Include="src\Hazle\Renderer\EditorCamera.h" />
+    <ClInclude Include="vendor\imguizmo\src\ImGuizmo.h">
+      <Filter>vendor\imguizmo\src</Filter>
+    </ClInclude>
+    <ClInclude Include="vendor\stb_image\stb_image.h">
+      <Filter>vendor\stb_image</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="external-libraries\imguizmo\ImGuizmo.cpp">
-      <Filter>external-libraries\imguizmo</Filter>
-    </ClCompile>
-    <ClCompile Include="external-libraries\stb_image\stb_image.cpp">
-      <Filter>external-libraries\stb_image</Filter>
-    </ClCompile>
     <ClCompile Include="src\Hazle\Core\Application.cpp">
       <Filter>src\Hazle\Core</Filter>
     </ClCompile>
@@ -229,7 +233,13 @@
     <ClCompile Include="src\Hazle\ImGui\ImGuiLayer.cpp">
       <Filter>src\Hazle\ImGui</Filter>
     </ClCompile>
+    <ClCompile Include="src\Hazle\Math\Math.cpp">
+      <Filter>src\Hazle\Math</Filter>
+    </ClCompile>
     <ClCompile Include="src\Hazle\Renderer\Buffer.cpp">
+      <Filter>src\Hazle\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Hazle\Renderer\EditorCamera.cpp">
       <Filter>src\Hazle\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Hazle\Renderer\FrameBuffer.cpp">
@@ -307,7 +317,11 @@
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>src\Platform\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="src\Hazle\Math\Math.cpp" />
-    <ClCompile Include="src\Hazle\Renderer\EditorCamera.cpp" />
+    <ClCompile Include="vendor\imguizmo\src\ImGuizmo.cpp">
+      <Filter>vendor\imguizmo\src</Filter>
+    </ClCompile>
+    <ClCompile Include="vendor\stb_image\stb_image.cpp">
+      <Filter>vendor\stb_image</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

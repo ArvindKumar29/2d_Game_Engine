@@ -332,7 +332,10 @@ namespace Hazle
 
 	void Renderer2D::DrawSprite(const glm::mat4& transform, CSpriteRenderer& sprite, int entityID)
 	{
-		DrawQuad(transform, sprite.Color, entityID);
+		if (sprite.Texture)
+			DrawQuad(transform, sprite.Color, sprite.Texture, sprite.TilingFactor, entityID);
+		else
+			DrawQuad(transform, sprite.Color, entityID);
 	}
 
 	void Renderer2D::FlushAndReset()

@@ -30,7 +30,7 @@ namespace Hazle
 
 		static void DrawQuad(const glm::vec2& position, const float rotation, const glm::vec2& size, const Ref<Texture2D> texture, const glm::vec4& color = {1.0f, 1.0f, 1.0f, 1.0f}, const float tilingFactor = 1.0f);
 		static void DrawQuad(const glm::vec3& position, const float rotation, const glm::vec2& size, const Ref<Texture2D> texture, const glm::vec4& color = {1.0f, 1.0f, 1.0f, 1.0f}, const float tilingFactor = 1.0f);
-
+		
 		static void DrawQuad(const glm::vec2& position, const float rotation, const glm::vec2& size, const Ref<SubTexture2D> subTexture, const glm::vec4& color = {1.0f, 1.0f, 1.0f, 1.0f}, const float tilingFactor = 1.0f);
 		static void DrawQuad(const glm::vec3& position, const float rotation, const glm::vec2& size, const Ref<SubTexture2D> subTexture, const glm::vec4& color = {1.0f, 1.0f, 1.0f, 1.0f}, const float tilingFactor = 1.0f);
 

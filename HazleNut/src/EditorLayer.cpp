@@ -8,6 +8,9 @@
 
 namespace Hazle
 {
+	extern const std::filesystem::path g_AssetPath;
+
+
 	EditorLayer::EditorLayer()
 		:Layer("EditorLayer"),
 		m_CameraController(1280.0f, 720.0f, true)
@@ -305,6 +308,7 @@ namespace Hazle
 		ImGui::End();
 
 		m_SceneHierarchyPanel.OnImGuiRender();
+		m_ContentBrowserPanel.OnImGuiRender();
 
 		ImGui::Begin("Settings");
 
@@ -352,6 +356,18 @@ namespace Hazle
 		uint32_t textureID = m_FrameBuffer->GetColorAttachmentRendererID();
 		ImGui::Image((void*)(intptr_t)textureID, ImVec2{ viewportPanelSize.x, viewportPanelSize.y }, ImVec2(0, 1), ImVec2(1, 0));
 		
+		if (ImGui::BeginDragDropTarget())
+		{
+			if(const ImGuiPayload* payload = ImGui::AcceptDragDropPayload("CONTENT_BROWSER_ITEM"))
+			{
+				const wchar_t* path = (const wchar_t*)payload->Data;
+
+				OpenScene(std::filesystem::path(g_AssetPath) / path);
+			}
+
+			ImGui::EndDragDropTarget();
+		}
+
 		auto windowSize = ImGui::GetWindowSize();
 		ImVec2 minBound = ImGui::GetWindowPos();
 		minBound.x += viewportOffset.x;
@@ -441,11 +457,6 @@ namespace Hazle
 
 		ImGui::End();
 		ImGui::PopStyleVar();
-
-		ImGui::Begin("File Explorer");
-		ImGui::BulletText("File 1");
-		ImGui::BulletText("File 2");
-		ImGui::End();
 	}
 
 	void EditorLayer::NewScene()
@@ -455,19 +466,24 @@ namespace Hazle
 		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
 	}
 
+	void EditorLayer::OpenScene(const std::filesystem::path& path)
+	{
+		m_ActiveScene = CreateRef<Scene>();
+		m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
+		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
+
+		SceneSerializer serializer(m_ActiveScene);
+		serializer.DeSerialize(path.string());
+
+		currentPath = path.string();
+	}
+
 	void EditorLayer::OpenScene()
 	{
 		std::string filepath = FileDialogs::OpenFile("Hazle Scene (*.hz)\0*.hz\0"); // Hazle Scene (.hz) this will show up upto first \0 and .hz is the actual file type from first \0 to second \0
 		if (!filepath.empty())
 		{
-			m_ActiveScene = CreateRef<Scene>();
-			m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
-			m_SceneHierarchyPanel.SetContext(m_ActiveScene);
-
-			SceneSerializer serializer(m_ActiveScene);
-			serializer.DeSerialize(filepath);
-
-			currentPath = filepath;
+			OpenScene(filepath);
 		}
 	}
 

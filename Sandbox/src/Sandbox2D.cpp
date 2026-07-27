@@ -64,10 +64,8 @@ void Sandbox2D::OnEvent(Hazle::Event & e)
 
 void Sandbox2D::OnUpdate(Hazle::Timestep ts)
 {
-	_FUNCTION();
 	// Update
 	{
-		_SCOPE("Sandbox2D::OnUpdate");
 		m_CameraController.OnUpdate(ts);
 	}
 	
@@ -75,13 +73,11 @@ void Sandbox2D::OnUpdate(Hazle::Timestep ts)
 	m_SquareRotation += ts * glm::radians(360.0f);
 	Hazle::Renderer2D::ResetStats();
 	{
-		_SCOPE("Sandbox2D::OnUpdate::RenderPrep");
 		Hazle::RenderCommand::Clear();
 		Hazle::RenderCommand::SetClearColor(glm::vec4(0.1f, 0.1f, 0.1f, 1.0f));
 	}
 
 	{
-		_SCOPE("Sandbox2D::OnUpdate::Rendering");
 		Hazle::Renderer2D::BeginScene(m_CameraController.GetCamera());
 
 		Hazle::Renderer2D::DrawQuad({ -0.5f, 0.0f }, glm::radians(0.0f),glm::vec2(1.0f), { 0.8f, 0.2f, 0.1f, 1.0f });

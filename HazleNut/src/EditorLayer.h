@@ -1,6 +1,7 @@
 #pragma once
 #include "Hazle/Core/Hazle.h"
 #include "Panels/SceneHierarchyPanel.h"
+#include "Panels/ContentBrowserPanel.h"
 #include "Hazle/Renderer/EditorCamera.h"
 
 namespace Hazle
@@ -21,6 +22,7 @@ namespace Hazle
 		bool OnKeyPresedEvent(KeyPressedEvent& e);
 		void NewScene();
 		void OpenScene();
+		void OpenScene(const std::filesystem::path& path);
 		void SaveSceneAs();
 		void SaveScene();
 
@@ -54,5 +56,6 @@ namespace Hazle
 
 		//Panels
 		SceneHierarchyPanel m_SceneHierarchyPanel;
+		ContentBrowserPanel m_ContentBrowserPanel;
 	};
 }

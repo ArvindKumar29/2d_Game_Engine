@@ -2,6 +2,7 @@
 #include "SceneCamera.h"
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
+#include "Hazle/Renderer/Texture.h"
 
 #define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/quaternion.hpp>
@@ -37,7 +38,8 @@ namespace Hazle
 	struct CSpriteRenderer
 	{
 		glm::vec4 Color = {1.0f, 1.0f, 1.0f, 1.0f};
-		//Ref<MaterialInstance> m_MaterialInstance;
+		Ref<Texture2D> Texture;
+		float TilingFactor = 1.0f;
 
 		CSpriteRenderer() = default;
 		CSpriteRenderer(const CSpriteRenderer&) = default;

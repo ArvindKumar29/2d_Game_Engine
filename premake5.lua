@@ -1,32 +1,32 @@
 workspace  "Hazle  Engine"
 	architecture "x64"
+	startproject "HazleNut"
+	staticruntime "on"
 
 	configurations {
 		"Debug",
 		"Release",
 		"Dist"
 	}
-	startproject "HazleNut"
-	staticruntime "On"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 -- Include directories relative to root folder (solution directory)
 IncludeDir = {}
-IncludeDir["GLFW"] = "HazleEngine/external-libraries/GLFW/include"
-IncludeDir["glad"] = "HazleEngine/external-libraries/glad/include"
-IncludeDir["imgui"] = "HazleEngine/external-libraries/imgui"
-IncludeDir["glm"] = "HazleEngine/external-libraries/GLM"
-IncludeDir["stb_image"] = "HazleEngine/external-libraries/stb_image"
-IncludeDir["entt"] = "HazleEngine/external-libraries/entt/include"
-IncludeDir["yaml_cpp"] = "HazleEngine/external-libraries/yamlcpp/include"
-IncludeDir["imguizmo"] = "HazleEngine/external-libraries/imguizmo"
-
+IncludeDir["GLFW"]		= "HazleEngine/vendor/GLFW/include"
+IncludeDir["glad"]		= "HazleEngine/vendor/glad/include"
+IncludeDir["imgui"]		= "HazleEngine/vendor/imgui"
+IncludeDir["glm"]		= "HazleEngine/vendor/GLM"
+IncludeDir["stb_image"] = "HazleEngine/vendor/stb_image"
+IncludeDir["entt"]		= "HazleEngine/vendor/entt/include"
+IncludeDir["yaml_cpp"]	= "HazleEngine/vendor/yamlcpp/include"
+IncludeDir["imguizmo"]	= "HazleEngine/vendor/imguizmo/src"
 group "Dependencies"
-	include "HazleEngine/external-libraries/GLFW"
-	include "HazleEngine/external-libraries/glad"
-	include "HazleEngine/external-libraries/imgui"
-	include "HazleEngine/external-libraries/yamlcpp"
+	include "HazleEngine/vendor/GLFW"
+	include "HazleEngine/vendor/glad"
+	include "HazleEngine/vendor/imgui"
+	include "HazleEngine/vendor/yamlcpp"
+
 group ""
 
 project "HazleEngine"
@@ -34,7 +34,8 @@ project "HazleEngine"
 	kind "StaticLib"
 	language "C++"
 	cppdialect "C++17"
-	staticruntime "On"
+	staticruntime "on"
+
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -45,10 +46,10 @@ project "HazleEngine"
 	files{
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
-		"%{prj.name}/external-libraries/stb_image/**.h",
-		"%{prj.name}/external-libraries/stb_image/**.cpp",
-		"%{prj.name}/external-libraries/imguizmo/ImGuizmo.h",
-		"%{prj.name}/external-libraries/imguizmo/ImGuizmo.cpp"
+		"%{prj.name}/vendor/stb_image/**.h",
+		"%{prj.name}/vendor/stb_image/**.cpp",
+		"%{prj.name}/vendor/imguizmo/src/ImGuizmo.h",
+		"%{prj.name}/vendor/imguizmo/src/ImGuizmo.cpp"
 	}
 
 	defines{
@@ -58,9 +59,9 @@ project "HazleEngine"
 	}
 
 	includedirs {
-		"%{prj.name}/external-libraries/spdlog/include",
-		"%{prj.name}/external-libraries/glad/include",
-		"%{prj.name}/external-libraries/glm",
+		"%{prj.name}/vendor/spdlog/include",
+		"%{prj.name}/vendor/glad/include",
+		"%{prj.name}/vendor/glm",
 		"%{prj.name}/src",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.imgui}",
@@ -79,7 +80,7 @@ project "HazleEngine"
 		"yaml-cpp"
 	}
 	
-	filter "files:HazleEngine/external-libraries/imguizmo/**.cpp"
+	filter "files:HazleEngine/vendor/imguizmo/**.cpp"
 	flags {"NoPCH"}
 
 	filter "system:windows"
@@ -115,21 +116,22 @@ project "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
 	cppdialect "C++17"
-	staticruntime "On"
+	staticruntime "on"
+
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 	
 	files{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/external-libraries/GLM/glm/**.h",
-		"%{prj.name}/external-libraries/GLM/glm/**.inl",
+		"%{prj.name}/vendor/GLM/glm/**.h",
+		"%{prj.name}/vendor/GLM/glm/**.inl",
 		"%{prj.name}/src/**.cpp"
 	}
 	
 	includedirs {
-		"HazleEngine/external-libraries/spdlog/include",
-		"HazleEngine/external-libraries/GLFW/include",
+		"HazleEngine/vendor/spdlog/include",
+		"HazleEngine/vendor/GLFW/include",
 		"%{IncludeDir.glm}",
 		"%{IncludeDir.entt}",
 		"%{IncludeDir.yaml_cpp}",
@@ -170,15 +172,16 @@ project "HazleNut"
 	kind "ConsoleApp"
 	language "C++"
 	cppdialect "C++17"
-	staticruntime "On"
+	staticruntime "on"
+
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 	
 	files{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/external-libraries/GLM/glm/**.h",
-		"%{prj.name}/external-libraries/GLM/glm/**.inl",
+		"%{prj.name}/vendor/GLM/glm/**.h",
+		"%{prj.name}/vendor/GLM/glm/**.inl",
 		"%{prj.name}/src/**.cpp"
 	}
 
@@ -187,8 +190,8 @@ project "HazleNut"
 	}
 
 	includedirs {
-		"HazleEngine/external-libraries/spdlog/include",
-		"HazleEngine/external-libraries/GLFW/include",
+		"HazleEngine/vendor/spdlog/include",
+		"HazleEngine/vendor/GLFW/include",
 		"%{IncludeDir.glm}",
 		"%{IncludeDir.entt}",
 		"%{IncludeDir.yaml_cpp}",

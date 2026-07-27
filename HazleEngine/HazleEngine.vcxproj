@@ -78,7 +78,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DisableSpecificWarnings>4005;4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <PreprocessorDefinitions>YAML_CPP_STATIC_DEFINE;HZ_PLATFORM_WINDOWS;HZ_BUILD_DLL;GLFW_INCLUDE_NONE;IMGUI_IMPL_OPENGL_LOADER_GLAD;_CRT_SECURE_NO_WARNINGS;HZ_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>external-libraries\spdlog\include;external-libraries\glad\include;external-libraries\glm;src;external-libraries\GLFW\include;external-libraries\imgui;external-libraries\stb_image;external-libraries\entt\include;external-libraries\yamlcpp\include;external-libraries\imguizmo;src\Hazle;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>vendor\spdlog\include;vendor\glad\include;vendor\glm;src;vendor\GLFW\include;vendor\imgui;vendor\stb_image;vendor\entt\include;vendor\yamlcpp\include;vendor\imguizmo\src;src\Hazle;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -103,7 +103,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DisableSpecificWarnings>4005;4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <PreprocessorDefinitions>YAML_CPP_STATIC_DEFINE;HZ_PLATFORM_WINDOWS;HZ_BUILD_DLL;GLFW_INCLUDE_NONE;IMGUI_IMPL_OPENGL_LOADER_GLAD;_CRT_SECURE_NO_WARNINGS;HZ_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>external-libraries\spdlog\include;external-libraries\glad\include;external-libraries\glm;src;external-libraries\GLFW\include;external-libraries\imgui;external-libraries\stb_image;external-libraries\entt\include;external-libraries\yamlcpp\include;external-libraries\imguizmo;src\Hazle;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>vendor\spdlog\include;vendor\glad\include;vendor\glm;src;vendor\GLFW\include;vendor\imgui;vendor\stb_image;vendor\entt\include;vendor\yamlcpp\include;vendor\imguizmo\src;src\Hazle;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -132,7 +132,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DisableSpecificWarnings>4005;4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <PreprocessorDefinitions>YAML_CPP_STATIC_DEFINE;HZ_PLATFORM_WINDOWS;HZ_BUILD_DLL;GLFW_INCLUDE_NONE;IMGUI_IMPL_OPENGL_LOADER_GLAD;_CRT_SECURE_NO_WARNINGS;HZ_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>external-libraries\spdlog\include;external-libraries\glad\include;external-libraries\glm;src;external-libraries\GLFW\include;external-libraries\imgui;external-libraries\stb_image;external-libraries\entt\include;external-libraries\yamlcpp\include;external-libraries\imguizmo;src\Hazle;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>vendor\spdlog\include;vendor\glad\include;vendor\glm;src;vendor\GLFW\include;vendor\imgui;vendor\stb_image;vendor\entt\include;vendor\yamlcpp\include;vendor\imguizmo\src;src\Hazle;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -155,8 +155,6 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="external-libraries\imguizmo\ImGuizmo.h" />
-    <ClInclude Include="external-libraries\stb_image\stb_image.h" />
     <ClInclude Include="src\Hazle\Core\Application.h" />
     <ClInclude Include="src\Hazle\Core\EntryPoint.h" />
     <ClInclude Include="src\Hazle\Core\Hazle.h" />
@@ -207,12 +205,10 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\hzpch.h" />
+    <ClInclude Include="vendor\imguizmo\src\ImGuizmo.h" />
+    <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="external-libraries\imguizmo\ImGuizmo.cpp">
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="external-libraries\stb_image\stb_image.cpp" />
     <ClCompile Include="src\Hazle\Core\Application.cpp" />
     <ClCompile Include="src\Hazle\Core\Layer.cpp" />
     <ClCompile Include="src\Hazle\Core\LayerStack.cpp" />
@@ -250,18 +246,22 @@
     <ClCompile Include="src\Platform\Windows\WindowPlatformUtils.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
+    <ClCompile Include="vendor\imguizmo\src\ImGuizmo.cpp">
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="vendor\stb_image\stb_image.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="external-libraries\GLFW\GLFW.vcxproj">
+    <ProjectReference Include="vendor\GLFW\GLFW.vcxproj">
       <Project>{154B857C-0182-860D-AA6E-6C109684020F}</Project>
     </ProjectReference>
-    <ProjectReference Include="external-libraries\glad\Glad.vcxproj">
+    <ProjectReference Include="vendor\glad\Glad.vcxproj">
       <Project>{BDD6857C-A90D-870D-52FA-6C103E10030F}</Project>
     </ProjectReference>
-    <ProjectReference Include="external-libraries\imgui\ImGui.vcxproj">
+    <ProjectReference Include="vendor\imgui\ImGui.vcxproj">
       <Project>{C0FF640D-2C14-8DBE-F595-301E616989EF}</Project>
     </ProjectReference>
-    <ProjectReference Include="external-libraries\yamlcpp\yaml-cpp.vcxproj">
+    <ProjectReference Include="vendor\yamlcpp\yaml-cpp.vcxproj">
       <Project>{88F1A057-74BE-FB62-9DD7-E90A890331F1}</Project>
     </ProjectReference>
   </ItemGroup>

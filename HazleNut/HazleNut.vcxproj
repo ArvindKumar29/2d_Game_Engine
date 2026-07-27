@@ -79,7 +79,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>YAML_CPP_STATIC_DEFINE;HZ_PLATFORM_WINDOWS;HZ_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\HazleEngine\external-libraries\spdlog\include;..\HazleEngine\external-libraries\GLFW\include;..\HazleEngine\external-libraries\GLM;..\HazleEngine\external-libraries\entt\include;..\HazleEngine\external-libraries\yamlcpp\include;..\HazleEngine\external-libraries\imguizmo;..\HazleEngine\src;..\HazleEngine\external-libraries\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\HazleEngine\vendor\spdlog\include;..\HazleEngine\vendor\GLFW\include;..\HazleEngine\vendor\GLM;..\HazleEngine\vendor\entt\include;..\HazleEngine\vendor\yamlcpp\include;..\HazleEngine\vendor\imguizmo\src;..\HazleEngine\src;..\HazleEngine\vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -99,7 +99,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>YAML_CPP_STATIC_DEFINE;HZ_PLATFORM_WINDOWS;HZ_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\HazleEngine\external-libraries\spdlog\include;..\HazleEngine\external-libraries\GLFW\include;..\HazleEngine\external-libraries\GLM;..\HazleEngine\external-libraries\entt\include;..\HazleEngine\external-libraries\yamlcpp\include;..\HazleEngine\external-libraries\imguizmo;..\HazleEngine\src;..\HazleEngine\external-libraries\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\HazleEngine\vendor\spdlog\include;..\HazleEngine\vendor\GLFW\include;..\HazleEngine\vendor\GLM;..\HazleEngine\vendor\entt\include;..\HazleEngine\vendor\yamlcpp\include;..\HazleEngine\vendor\imguizmo\src;..\HazleEngine\src;..\HazleEngine\vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -123,7 +123,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>YAML_CPP_STATIC_DEFINE;HZ_PLATFORM_WINDOWS;HZ_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\HazleEngine\external-libraries\spdlog\include;..\HazleEngine\external-libraries\GLFW\include;..\HazleEngine\external-libraries\GLM;..\HazleEngine\external-libraries\entt\include;..\HazleEngine\external-libraries\yamlcpp\include;..\HazleEngine\external-libraries\imguizmo;..\HazleEngine\src;..\HazleEngine\external-libraries\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\HazleEngine\vendor\spdlog\include;..\HazleEngine\vendor\GLFW\include;..\HazleEngine\vendor\GLM;..\HazleEngine\vendor\entt\include;..\HazleEngine\vendor\yamlcpp\include;..\HazleEngine\vendor\imguizmo\src;..\HazleEngine\src;..\HazleEngine\vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -143,10 +143,12 @@
     </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Panels\ContentBrowserPanel.h" />
     <ClInclude Include="src\EditorLayer.h" />
     <ClInclude Include="src\Panels\SceneHierarchyPanel.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\Panels\ContentBrowserPanel.cpp" />
     <ClCompile Include="src\EditorLayer.cpp" />
     <ClCompile Include="src\HazleNutApp.cpp" />
     <ClCompile Include="src\Panels\SceneHierarchyPanel.cpp" />
@@ -155,10 +157,6 @@
     <ProjectReference Include="..\HazleEngine\HazleEngine.vcxproj">
       <Project>{4F24402C-BBD9-B821-44CE-B2F8B082AF25}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\Shaders\FlatColorShader.glsl" />
-    <None Include="Assets\Shaders\Texture.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
