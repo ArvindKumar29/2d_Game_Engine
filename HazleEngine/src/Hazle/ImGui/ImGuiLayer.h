@@ -7,7 +7,7 @@
 
 namespace Hazle {
 
-	class HAZLE_API ImGuiLayer : public Layer
+	class ImGuiLayer : public Layer
 	{
 	public:
 		ImGuiLayer();
@@ -22,8 +22,8 @@ namespace Hazle {
 		void begin();
 		void end();
 
-		void SetDarkThemeColors();
-		void SetLightThemeColors();
+		static void SetDarkThemeColors();
+		static void SetLightThemeColors();
 	private:
 		bool m_blockEvents = false;
 		float m_Time = 0.0f;

@@ -102,82 +102,154 @@ namespace Hazle {
 		}
 	}
 
+	//void ImGuiLayer::SetDarkThemeColors()
+	//{
+	//	ImGui::StyleColorsDark();
+
+	//	auto& colors = ImGui::GetStyle().Colors;
+
+	//	//BG
+	//	colors[ ImGuiCol_WindowBg ]			= ImVec4{ 0.1f, 0.105f, 0.1f, 1.0f };
+
+	//	//Headers
+	//	colors[ ImGuiCol_Header ]				= ImVec4{ 0.2f, 0.205f, 0.21f, 1.0f };
+	//	colors[ ImGuiCol_HeaderHovered ]		= ImVec4{ 0.3f, 0.305f, 0.31f, 1.0f };
+	//	colors[ ImGuiCol_HeaderActive ]			= ImVec4{ 0.15f, 0.1505f, 0.151f, 1.0f };
+	//	
+	//	//Buttons
+	//	colors[ ImGuiCol_Button ]				= ImVec4{ 0.2f, 0.205f, 0.21f, 1.0f };
+	//	colors[ ImGuiCol_ButtonHovered ]		= ImVec4{ 0.3f, 0.305f, 0.31f, 1.0f };
+	//	colors[ ImGuiCol_ButtonActive ]			= ImVec4{ 0.15f, 0.1505f, 0.151f, 1.0f };
+	//
+	//	//FrameBG
+	//	colors[ ImGuiCol_FrameBg ]				= ImVec4{ 0.2f, 0.205f, 0.21f, 1.0f };
+	//	colors[ ImGuiCol_FrameBgHovered ]		= ImVec4{ 0.3f, 0.305f, 0.31f, 1.0f };
+	//	colors[ ImGuiCol_FrameBgActive ]		= ImVec4{ 0.15f, 0.1505f, 0.151f, 1.0f };
+
+	//	//Tabs
+	//	colors[ ImGuiCol_Tab ]					= ImVec4{ 0.15f, 0.1505f, 0.151f, 1.0f };
+	//	colors[ ImGuiCol_TabHovered ]			= ImVec4{ 0.38f, 0.3805f, 0.381f, 1.0f };
+	//	colors[ ImGuiCol_TabActive ]			= ImVec4{ 0.28f, 0.2805f, 0.281f, 1.0f };
+	//	colors[ ImGuiCol_TabUnfocused ]			= ImVec4{ 0.15f, 0.1505f, 0.151f, 1.0f };
+	//	colors[ ImGuiCol_TabUnfocusedActive ]	= ImVec4{ 0.2f, 0.205f, 0.21f, 1.0f };
+
+	//	//Titles
+	//	colors[ ImGuiCol_TitleBg ]				= ImVec4{ 0.15f, 0.1505f, 0.151f, 1.0f };
+	//	colors[ ImGuiCol_TitleBgActive ]		= ImVec4{ 0.15f, 0.1505f, 0.151f, 1.0f };
+	//	colors[ ImGuiCol_TitleBgCollapsed ]		= ImVec4{ 0.95f, 0.1505f, 0.951f, 1.0f };
+	//}
+
 	void ImGuiLayer::SetDarkThemeColors()
 	{
 		ImGui::StyleColorsDark();
-
 		auto& colors = ImGui::GetStyle().Colors;
 
-		//BG
-		colors[ ImGuiCol_WindowBg ]			= ImVec4{ 0.1f, 0.105f, 0.1f, 1.0f };
+		// BG - Deep cool obsidian slate (Icons ekdum pop karenge)
+		colors[ImGuiCol_WindowBg] = ImVec4{ 0.08f, 0.09f, 0.11f, 1.0f };
 
-		//Headers
-		colors[ ImGuiCol_Header ]				= ImVec4{ 0.2f, 0.205f, 0.21f, 1.0f };
-		colors[ ImGuiCol_HeaderHovered ]		= ImVec4{ 0.3f, 0.305f, 0.31f, 1.0f };
-		colors[ ImGuiCol_HeaderActive ]			= ImVec4{ 0.15f, 0.1505f, 0.151f, 1.0f };
-		
-		//Buttons
-		colors[ ImGuiCol_Button ]				= ImVec4{ 0.2f, 0.205f, 0.21f, 1.0f };
-		colors[ ImGuiCol_ButtonHovered ]		= ImVec4{ 0.3f, 0.305f, 0.31f, 1.0f };
-		colors[ ImGuiCol_ButtonActive ]			= ImVec4{ 0.15f, 0.1505f, 0.151f, 1.0f };
-	
-		//FrameBG
-		colors[ ImGuiCol_FrameBg ]				= ImVec4{ 0.2f, 0.205f, 0.21f, 1.0f };
-		colors[ ImGuiCol_FrameBgHovered ]		= ImVec4{ 0.3f, 0.305f, 0.31f, 1.0f };
-		colors[ ImGuiCol_FrameBgActive ]		= ImVec4{ 0.15f, 0.1505f, 0.151f, 1.0f };
+		// Headers - Cool dark slate with subtle purple-violet hover
+		colors[ImGuiCol_Header] = ImVec4{ 0.14f, 0.15f, 0.19f, 1.0f };
+		colors[ImGuiCol_HeaderHovered] = ImVec4{ 0.24f, 0.20f, 0.35f, 1.0f }; // Matches folder pink/purple
+		colors[ImGuiCol_HeaderActive] = ImVec4{ 0.20f, 0.18f, 0.30f, 1.0f };
 
-		//Tabs
-		colors[ ImGuiCol_Tab ]					= ImVec4{ 0.15f, 0.1505f, 0.151f, 1.0f };
-		colors[ ImGuiCol_TabHovered ]			= ImVec4{ 0.38f, 0.3805f, 0.381f, 1.0f };
-		colors[ ImGuiCol_TabActive ]			= ImVec4{ 0.28f, 0.2805f, 0.281f, 1.0f };
-		colors[ ImGuiCol_TabUnfocused ]			= ImVec4{ 0.15f, 0.1505f, 0.151f, 1.0f };
-		colors[ ImGuiCol_TabUnfocusedActive ]	= ImVec4{ 0.2f, 0.205f, 0.21f, 1.0f };
+		// Buttons - Sleek slate with violet synthwave hover tint
+		colors[ImGuiCol_Button] = ImVec4{ 0.15f, 0.16f, 0.20f, 1.0f };
+		colors[ImGuiCol_ButtonHovered] = ImVec4{ 0.28f, 0.22f, 0.40f, 1.0f }; // Vibrant purple glow
+		colors[ImGuiCol_ButtonActive] = ImVec4{ 0.20f, 0.18f, 0.30f, 1.0f };
 
-		//Titles
-		colors[ ImGuiCol_TitleBg ]				= ImVec4{ 0.15f, 0.1505f, 0.151f, 1.0f };
-		colors[ ImGuiCol_TitleBgActive ]		= ImVec4{ 0.15f, 0.1505f, 0.151f, 1.0f };
-		colors[ ImGuiCol_TitleBgCollapsed ]		= ImVec4{ 0.95f, 0.1505f, 0.951f, 1.0f };
+		// FrameBg - Recessed deep dark box for inputs/checkboxes
+		colors[ImGuiCol_FrameBg] = ImVec4{ 0.06f, 0.06f, 0.08f, 1.0f };
+		colors[ImGuiCol_FrameBgHovered] = ImVec4{ 0.14f, 0.15f, 0.19f, 1.0f };
+		colors[ImGuiCol_FrameBgActive] = ImVec4{ 0.18f, 0.19f, 0.25f, 1.0f };
+
+		// Tabs - Active tab blends smoothly, hovered gets violet hint
+		colors[ImGuiCol_Tab] = ImVec4{ 0.11f, 0.12f, 0.15f, 1.0f };
+		colors[ImGuiCol_TabHovered] = ImVec4{ 0.30f, 0.22f, 0.45f, 1.0f }; // Neon purple accent
+		colors[ImGuiCol_TabActive] = ImVec4{ 0.18f, 0.19f, 0.24f, 1.0f };
+		colors[ImGuiCol_TabUnfocused] = ImVec4{ 0.09f, 0.10f, 0.12f, 1.0f };
+		colors[ImGuiCol_TabUnfocusedActive] = ImVec4{ 0.14f, 0.15f, 0.19f, 1.0f };
+
+		// Titles - Sleek dark top bars
+		colors[ImGuiCol_TitleBg] = ImVec4{ 0.08f, 0.09f, 0.11f, 1.0f };
+		colors[ImGuiCol_TitleBgActive] = ImVec4{ 0.12f, 0.13f, 0.17f, 1.0f };
+		colors[ImGuiCol_TitleBgCollapsed] = ImVec4{ 0.08f, 0.09f, 0.11f, 1.0f };
 	}
+
+	//void ImGuiLayer::SetLightThemeColors()
+	//{
+	//	ImGui::StyleColorsLight();
+	//	auto& colors = ImGui::GetStyle().Colors;
+
+	//	// BG
+	//	colors[ImGuiCol_WindowBg]			= ImVec4{ 0.94f, 0.94f, 0.94f, 1.0f };
+	//	colors[ImGuiCol_WindowBg]			= ImVec4{ 1.0f, 1.0f, 1.0f, 1.0f };
+
+	//	//
+	//	colors[ImGuiCol_Text]				= ImVec4{ 0.10f, 0.10f, 0.10f, 1.0f };
+	//	colors[ImGuiCol_TextDisabled]		= ImVec4{ 0.50f, 0.50f, 0.50f, 1.0f };
+
+	//	//Headers
+	//	colors[ImGuiCol_Header]				= ImVec4{ 0.8f, 0.8f, 0.8f, 1.0f };
+	//	colors[ImGuiCol_HeaderHovered]		= ImVec4{ 0.7f, 0.7f, 0.7f, 1.0f };
+	//	colors[ImGuiCol_HeaderActive]		= ImVec4{ 0.5f, 0.5f, 0.5f, 1.0f };
+
+	//	//Buttons
+	//	colors[ImGuiCol_Button]				= ImVec4{ 0.85f, 0.85f, 0.85f, 1.0f };
+	//	colors[ImGuiCol_ButtonHovered]		= ImVec4{ 0.75f, 0.75f, 0.75f, 1.0f };
+	//	colors[ImGuiCol_ButtonActive]		= ImVec4{ 0.55f, 0.55f, 0.55f, 0.7f };
+
+	//	//FrameBG
+	//	colors[ImGuiCol_FrameBg]			= ImVec4{ 0.8f, 0.8f, 0.8f, 1.0f };
+	//	colors[ImGuiCol_FrameBgHovered]		= ImVec4{ 0.75f, 0.75f, 0.75f, 1.0f };
+	//	colors[ImGuiCol_FrameBgActive]		= ImVec4{ 0.9f, 0.9f, 0.9f, 1.0f };
+
+	//	//Tabs
+	//	colors[ImGuiCol_Tab]				= ImVec4{ 0.8f, 0.8f, 0.8f, 1.0f };
+	//	colors[ImGuiCol_TabHovered]			= ImVec4{ 0.9f, 0.9f, 0.9f, 1.0f };
+	//	colors[ImGuiCol_TabActive]			= ImVec4{ 1.0f, 1.0f, 1.0f, 1.0f };
+	//	colors[ImGuiCol_TabUnfocused]		= ImVec4{ 0.85f, 0.85f, 0.85f, 1.0f };
+	//	colors[ImGuiCol_TabUnfocusedActive] = ImVec4{ 0.95f, 0.95f, 0.95f, 1.0f };
+
+	//	//Titles
+	//	colors[ImGuiCol_TitleBg]			= ImVec4{ 0.85f, 0.85f, 0.85f, 1.0f };
+	//	colors[ImGuiCol_TitleBgActive]		= ImVec4{ 0.75f, 0.75f, 0.75f, 1.0f };
+	//	colors[ImGuiCol_TitleBgCollapsed]	= ImVec4{ 0.9f,  0.9f, 0.9f, 1.0f };
+	//}
 
 	void ImGuiLayer::SetLightThemeColors()
 	{
 		ImGui::StyleColorsLight();
 		auto& colors = ImGui::GetStyle().Colors;
 
-		// BG
-		colors[ImGuiCol_WindowBg]			= ImVec4{ 0.94f, 0.94f, 0.94f, 1.0f };
-		colors[ImGuiCol_WindowBg]			= ImVec4{ 1.0f, 1.0f, 1.0f, 1.0f };
+		// BG - Crisp modern ice-slate gray
+		colors[ImGuiCol_WindowBg] = ImVec4{ 0.94f, 0.95f, 0.97f, 1.0f };
 
-		//
-		colors[ImGuiCol_Text]				= ImVec4{ 0.10f, 0.10f, 0.10f, 1.0f };
-		colors[ImGuiCol_TextDisabled]		= ImVec4{ 0.50f, 0.50f, 0.50f, 1.0f };
+		// Headers - Clean slate with soft pastel violet hover
+		colors[ImGuiCol_Header] = ImVec4{ 0.86f, 0.88f, 0.92f, 1.0f };
+		colors[ImGuiCol_HeaderHovered] = ImVec4{ 0.78f, 0.82f, 0.95f, 1.0f }; // Soft violet-blue
+		colors[ImGuiCol_HeaderActive] = ImVec4{ 0.72f, 0.76f, 0.90f, 1.0f };
 
-		//Headers
-		colors[ImGuiCol_Header]				= ImVec4{ 0.8f, 0.8f, 0.8f, 1.0f };
-		colors[ImGuiCol_HeaderHovered]		= ImVec4{ 0.7f, 0.7f, 0.7f, 1.0f };
-		colors[ImGuiCol_HeaderActive]		= ImVec4{ 0.5f, 0.5f, 0.5f, 1.0f };
+		// Buttons - Ice gray with soft cyan/purple hover feedback
+		colors[ImGuiCol_Button] = ImVec4{ 0.88f, 0.90f, 0.94f, 1.0f };
+		colors[ImGuiCol_ButtonHovered] = ImVec4{ 0.80f, 0.84f, 0.96f, 1.0f };
+		colors[ImGuiCol_ButtonActive] = ImVec4{ 0.74f, 0.78f, 0.92f, 1.0f };
 
-		//Buttons
-		colors[ImGuiCol_Button]				= ImVec4{ 0.85f, 0.85f, 0.85f, 1.0f };
-		colors[ImGuiCol_ButtonHovered]		= ImVec4{ 0.75f, 0.75f, 0.75f, 1.0f };
-		colors[ImGuiCol_ButtonActive]		= ImVec4{ 0.55f, 0.55f, 0.55f, 0.7f };
+		// FrameBg - Pure white input boxes make text look super sharp!
+		colors[ImGuiCol_FrameBg] = ImVec4{ 1.00f, 1.00f, 1.00f, 1.0f };
+		colors[ImGuiCol_FrameBgHovered] = ImVec4{ 0.92f, 0.94f, 0.98f, 1.0f };
+		colors[ImGuiCol_FrameBgActive] = ImVec4{ 0.86f, 0.90f, 0.96f, 1.0f };
 
-		//FrameBG
-		colors[ImGuiCol_FrameBg]			= ImVec4{ 0.8f, 0.8f, 0.8f, 1.0f };
-		colors[ImGuiCol_FrameBgHovered]		= ImVec4{ 0.75f, 0.75f, 0.75f, 1.0f };
-		colors[ImGuiCol_FrameBgActive]		= ImVec4{ 0.9f, 0.9f, 0.9f, 1.0f };
+		// Tabs - Clean hierarchy
+		colors[ImGuiCol_Tab] = ImVec4{ 0.88f, 0.90f, 0.94f, 1.0f };
+		colors[ImGuiCol_TabHovered] = ImVec4{ 0.76f, 0.80f, 0.95f, 1.0f };
+		colors[ImGuiCol_TabActive] = ImVec4{ 0.94f, 0.95f, 0.97f, 1.0f }; // Blends into WindowBg
+		colors[ImGuiCol_TabUnfocused] = ImVec4{ 0.88f, 0.90f, 0.94f, 1.0f };
+		colors[ImGuiCol_TabUnfocusedActive] = ImVec4{ 0.92f, 0.93f, 0.95f, 1.0f };
 
-		//Tabs
-		colors[ImGuiCol_Tab]				= ImVec4{ 0.8f, 0.8f, 0.8f, 1.0f };
-		colors[ImGuiCol_TabHovered]			= ImVec4{ 0.9f, 0.9f, 0.9f, 1.0f };
-		colors[ImGuiCol_TabActive]			= ImVec4{ 1.0f, 1.0f, 1.0f, 1.0f };
-		colors[ImGuiCol_TabUnfocused]		= ImVec4{ 0.85f, 0.85f, 0.85f, 1.0f };
-		colors[ImGuiCol_TabUnfocusedActive] = ImVec4{ 0.95f, 0.95f, 0.95f, 1.0f };
-
-		//Titles
-		colors[ImGuiCol_TitleBg]			= ImVec4{ 0.85f, 0.85f, 0.85f, 1.0f };
-		colors[ImGuiCol_TitleBgActive]		= ImVec4{ 0.75f, 0.75f, 0.75f, 1.0f };
-		colors[ImGuiCol_TitleBgCollapsed]	= ImVec4{ 0.9f,  0.9f, 0.9f, 1.0f };
+		// Titles
+		colors[ImGuiCol_TitleBg] = ImVec4{ 0.88f, 0.90f, 0.94f, 1.0f };
+		colors[ImGuiCol_TitleBgActive] = ImVec4{ 0.82f, 0.85f, 0.91f, 1.0f };
+		colors[ImGuiCol_TitleBgCollapsed] = ImVec4{ 0.88f, 0.90f, 0.94f, 1.0f };
 	}
 
 }

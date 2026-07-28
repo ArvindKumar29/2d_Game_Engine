@@ -5,6 +5,8 @@
 
 namespace Hazle
 {
+	//Timestep Renderer2D::ts;
+
 	struct QuadVertex
 	{
 		glm::vec3 Position;
@@ -36,7 +38,7 @@ namespace Hazle
 		uint32_t m_TextureSlotIndex = 1; // 0 = white texture
 
 		glm::vec4 m_QuadVertexPositions[4];
-
+		
 		Renderer2D::Statistics m_Stats;
 	};
 
@@ -346,6 +348,15 @@ namespace Hazle
 		s_Data.m_TextureSlotIndex = 1;
 	}
 
+	//void Renderer2D::CalculateStats(Timestep ts)
+	//{
+	//	s_Data.m_Stats.currentFrameTime = ts.GetMilliseconds();
+	//	s_Data.m_Stats.FrameCalculateTime = s_Data.m_Stats.currentFrameTime - s_Data.m_Stats.lastFrameTime;
+	//	s_Data.m_Stats.FPS = 1000.0f / s_Data.m_Stats.FrameCalculateTime;
+
+	//	HZ_CORE_WARN("Frame Time and FPS: {0}, {1}, {2}", s_Data.m_Stats.FrameCalculateTime, s_Data.m_Stats.FPS, ts.GetMilliseconds());
+	//}
+
 	void Renderer2D::ResetStats()
 	{
 		memset(&s_Data.m_Stats, 0, sizeof(Statistics));
@@ -353,6 +364,7 @@ namespace Hazle
 
 	Renderer2D::Statistics Renderer2D::GetStats()
 	{
+		//CalculateStats(Hazle::Renderer2D::ts);
 		return s_Data.m_Stats;
 	}
 }

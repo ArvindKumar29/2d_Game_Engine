@@ -68,11 +68,11 @@ namespace Hazle
 		// Render2D
 		Camera* mainCamera = nullptr;
 		glm::mat4 cameraTransform;
-		auto& group = m_Registry.group<CTransform, CCamera>();
-		for (auto& entity : group)
+		auto& view = m_Registry.view<CTransform, CCamera>();
+		for (auto& entity : view)
 		{
-			auto& transform = group.get<CTransform>(entity);
-			auto& camera = group.get<CCamera>(entity);
+			auto& transform = view.get<CTransform>(entity);
+			auto& camera = view.get<CCamera>(entity);
 			if (camera.Primary)
 			{
 				mainCamera = &camera.camera;

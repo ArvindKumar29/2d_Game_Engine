@@ -6,6 +6,7 @@
 #include "glm/glm.hpp"
 #include "EditorCamera.h"
 #include "Hazle/Scene/Component.h"
+#include "Hazle/Core/Timestep.h"
 
 
 namespace Hazle
@@ -40,12 +41,21 @@ namespace Hazle
 		
 		static void DrawSprite(const glm::mat4& transform, CSpriteRenderer& sprite, int entityID);
 
+		//static void CalculateStats(Timestep ts);
+
 		struct Statistics
 		{
 			uint32_t DrawCalls = 0;
 			uint32_t QuadCount = 0;
+
+			//float lastFrameTime = 0;
+			//float currentFrameTime = 0;
+			//float FrameCalculateTime = 0;
+
+			//uint32_t FPS = 0;
 		};
-		
+		//static Timestep ts;
+
 		static void ResetStats();
 		static Statistics GetStats(); 
 	private:

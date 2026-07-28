@@ -18,6 +18,11 @@ namespace Hazle
 		virtual void OnImGuiRender() override;
 		void OnEvent(Event& e) override;
 
+		//UI Panels
+		void UI_Toolbar();
+		void OnScenePlay();
+		void OnSceneStop();
+
 	private:
 		bool OnKeyPresedEvent(KeyPressedEvent& e);
 		bool OnMouseButtonPresedEvent(MouseButtonPressedEvent& e);
@@ -58,5 +63,23 @@ namespace Hazle
 		//Panels
 		SceneHierarchyPanel m_SceneHierarchyPanel;
 		ContentBrowserPanel m_ContentBrowserPanel;
+
+
+		enum class SceneState
+		{
+			Edit,
+			Play
+		};
+
+		SceneState m_SceneState = SceneState::Edit;
+		enum class EditorTheme
+		{
+			Dark,
+			Light
+		};
+		EditorTheme m_EditorTheme = EditorTheme::Dark;
+
+		Ref<Texture2D> m_IconPlay, m_IconStop, m_IconSun, m_IconMoon;
+		
 	};
 }

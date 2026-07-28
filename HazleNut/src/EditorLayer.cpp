@@ -5,6 +5,7 @@
 #include "Hazle/utils/PlatformUtils.h"
 #include "imguizmo.h"
 #include "Hazle/Math/Math.h"
+#include "Hazle/ImGui/ImGuiLayer.h"
 
 namespace Hazle
 {
@@ -27,6 +28,10 @@ namespace Hazle
 		fbSpec.Height = 1080;
 		m_FrameBuffer = FrameBuffer::Create(fbSpec);
 
+		m_IconPlay = Texture2D::Create("assets/textures/play.png");
+		m_IconStop = Texture2D::Create("assets/textures/stop.png");
+		m_IconSun = Texture2D::Create("assets/textures/sun.png");
+		m_IconMoon = Texture2D::Create("assets/textures/moon.png");
 		//SCENE
 		m_ActiveScene = CreateRef<Scene>();
 
@@ -97,6 +102,63 @@ namespace Hazle
 	void EditorLayer::OnDetach()
 	{}
 
+	void EditorLayer::UI_Toolbar()
+	{
+		//ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 2));
+		//ImGui::PushStyleVar(ImGuiStyleVar_ItemInnerSpacing, ImVec2(0, 0));
+		//ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0, 0, 0, 0));
+		//auto& colors = ImGui::GetStyle().Colors;
+		//ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.3f, 0.305f, 0.31f, 0.5f));
+		//ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(0.3f, 0.305f, 0.31f, 0.5f));
+
+		ImGui::Begin("##toolbar", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse);
+		float size = ImGui::GetWindowHeight() - 4.0f;
+
+		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0, 0, 0, 0));
+		// ADDING THEME CHANGE BUTTON...
+		Ref<Texture2D> icon = m_EditorTheme == EditorTheme::Dark ? m_IconSun : m_IconMoon;
+		ImGui::SameLine(ImGui::GetContentRegionAvail().x - size - 5.0f);
+		if (ImGui::ImageButton((ImTextureID)(uint64_t)icon->GetRendererID(), { size, size }, { 0, 1 }, { 1, 0 }))
+		{
+			if (m_EditorTheme == EditorTheme::Dark)
+			{
+				Hazle::ImGuiLayer::SetLightThemeColors();
+				m_EditorTheme = EditorTheme::Light;
+			}
+			else if (m_EditorTheme == EditorTheme::Light)
+			{
+				Hazle::ImGuiLayer::SetDarkThemeColors();
+				m_EditorTheme = EditorTheme::Dark;
+			}
+		}
+		
+		// ADDING PLAY AND PAUSE BUTTON...
+		icon = m_SceneState == SceneState::Edit ? m_IconPlay : m_IconStop;
+		ImGui::SameLine((ImGui::GetContentRegionAvail().x - size) * 0.5f);
+		if (ImGui::ImageButton((ImTextureID)(uint64_t)icon->GetRendererID(), { size, size }, { 0, 1 }, { 1, 0 }))
+		{
+			if (m_SceneState == SceneState::Edit)
+				OnScenePlay();
+			else if (m_SceneState == SceneState::Play)
+				OnSceneStop();
+		}
+
+		
+
+		ImGui::PopStyleColor();
+		//ImGui::PopStyleVar(2);
+		ImGui::End();
+	}
+	void EditorLayer::OnScenePlay()
+	{
+		m_SceneState = SceneState::Play;
+	}
+	
+	
+	void EditorLayer::OnSceneStop()
+	{
+		m_SceneState = SceneState::Edit;
+	}
 
 	void EditorLayer::OnEvent(Event& e)
 	{
@@ -107,6 +169,7 @@ namespace Hazle
 		dispatcher.Dispatch<KeyPressedEvent>(HZ_BIND_EVENT_FN(EditorLayer::OnKeyPresedEvent));
 		dispatcher.Dispatch<MouseButtonPressedEvent>(HZ_BIND_EVENT_FN(EditorLayer::OnMouseButtonPresedEvent));
 	}
+
 
 	bool EditorLayer::OnKeyPresedEvent(KeyPressedEvent& e)
 	{
@@ -183,24 +246,40 @@ namespace Hazle
 			m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 		}
 		
-		// Update
-		if (m_ViewportFocused)
-		{
-			m_CameraController.OnUpdate(ts);
-		}
-		m_EditorCamera.OnUpdate(ts);
+		
 
 		// Render
 		Renderer2D::ResetStats();
 		m_FrameBuffer->Bind();
-		RenderCommand::SetClearColor(glm::vec4(0.1f, 0.1f, 0.1f, 1.0f));
+		RenderCommand::SetClearColor(glm::vec4(0.15f, 0.15f, 0.15f, 1.0f));
 		RenderCommand::Clear();
+
+		// Update
+		switch (m_SceneState)
+		{
+			case SceneState::Edit:
+			{
+				if (m_ViewportFocused)
+					m_CameraController.OnUpdate(ts);
+				m_EditorCamera.OnUpdate(ts);
+				m_ActiveScene->OnUpdateEditor(ts, m_EditorCamera);
+				break;
+			}
+			case SceneState::Play:
+			{
+				m_ActiveScene->OnUpdateRuntime(ts);
+				break;
+			}
+		}
+
+
+
 
 		// Clear our entity ID attachment to -1
 		m_FrameBuffer->ClearColorAttachments(1, -1);
 
 		//Update Scene
-		m_ActiveScene->OnUpdateEditor(ts, m_EditorCamera);
+		//m_ActiveScene->OnUpdateEditor(ts, m_EditorCamera);
 		//Renderer2D::BeginScene(m_CameraController.GetCamera());
 		//Renderer2D::DrawQuad({ 0.0f, 0.0f, 0.0f }, 0.0f, { 1.0f, 1.0f }, { 1.0f, 0.0f, 0.0f, 1.0f });
 		//Renderer2D::EndScene();
@@ -273,7 +352,7 @@ namespace Hazle
 		float minwinsizex = style.WindowMinSize.x;
 		float minwinsizey = style.WindowMinSize.y;
 		style.WindowMinSize.x = 200.0f;
-		style.WindowMinSize.y = 200.0f;
+		style.WindowMinSize.y = 25.0f;
 		if (io.ConfigFlags & ImGuiConfigFlags_DockingEnable)
 		{
 			ImGuiID dockspace_id = ImGui::GetID("MyDockSpace");
@@ -321,7 +400,7 @@ namespace Hazle
 		m_SceneHierarchyPanel.OnImGuiRender();
 		m_ContentBrowserPanel.OnImGuiRender();
 
-		ImGui::Begin("Settings");
+		ImGui::Begin("Engine Statistics");
 
 		std::string name = "None";
 		if (m_HoveredEntity && m_HoveredEntity.hasComponent<CTag>())
@@ -334,6 +413,8 @@ namespace Hazle
 		ImGui::Text("Quads: %d", stats.QuadCount);
 		ImGui::Text("Vertices: %d", stats.QuadCount * 4);
 		ImGui::Text("Indices: %d", stats.QuadCount * 6);
+		
+		ImGui::Separator();
 
 		//ImGui::DragFloat3("Camera Trasnform: ",
 		//	glm::value_ptr(m_PrimaryCameraptr.getComponent<CTransform>().Translation));
@@ -465,6 +546,8 @@ namespace Hazle
 				}
 			}
 		}
+
+		UI_Toolbar();
 
 		ImGui::End();
 		ImGui::PopStyleVar();
