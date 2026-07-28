@@ -1,0 +1,77 @@
+Scene: Name
+Entities:
+  - Entity: 1234567890
+    TagComponent:
+      Tag: Green Collider Square
+    TransformComponent:
+      Translation: [0, 6, 0]
+      Rotation: [0, 0, 4.91512]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0, 1, 0, 1]
+    RigidBodyComponent:
+      BodyType: Dynamic
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 1234567890
+    TagComponent:
+      Tag: Runtime Camera
+    TransformComponent:
+      Translation: [0, 0, 15]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    CameraComponent:
+      Camera:
+        ProjectionType: 0
+        Perspective FOV: 1.0471976
+        Perspective Near: 0.01
+        Perspective Far: 1000
+        Orthographic Size: 10
+        Orthographic Near: -1
+        Orthographic Far: 10
+      Primary: true
+      FixedAspectRatio: false
+  - Entity: 1234567890
+    TagComponent:
+      Tag: Platform Blue
+    TransformComponent:
+      Translation: [0, 0, 0]
+      Rotation: [0, 0, 0.47123888]
+      Scale: [11.2, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0, 0, 1, 1]
+    RigidBodyComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5
+  - Entity: 1234567890
+    TagComponent:
+      Tag: Platform Red
+    TransformComponent:
+      Translation: [-5.3206205, -0.40963504, 0]
+      Rotation: [0, -0, 1.2116576]
+      Scale: [0.8940613, 8.667912, 1]
+    SpriteRendrerComponent:
+      Color: [1, 0, 0, 1]
+    RigidBodyComponent:
+      BodyType: Static
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0
+      RestitutionThreshold: 0.5

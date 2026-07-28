@@ -7,11 +7,29 @@
 #include "Hazle/Renderer/Renderer2D.h"
 #include "Hazle/Core/Log.h"
 
+// BOX2D PHYSICS
+#include "box2d/b2_world.h"
+#include "box2d/b2_body.h"
+#include "box2d/b2_fixture.h"
+#include "box2d/b2_polygon_shape.h"
+
 #define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/string_cast.hpp>
 
 namespace Hazle
 {
+	static b2BodyType RigidBody2DTypeToBox2DBodyType(CRigidBody2D::BodyType bodyType)
+	{
+		switch (bodyType)
+		{
+			case CRigidBody2D::BodyType::Static:	return b2BodyType::b2_staticBody;
+			case CRigidBody2D::BodyType::Dynamic:	return b2BodyType::b2_dynamicBody;
+			case CRigidBody2D::BodyType::Kinamatic: return b2BodyType::b2_kinematicBody;
+		}
+		HZ_CORE_ASSERT(false, "Unknown body type!!!");
+		return b2_staticBody;
+	}
+
 	Scene::Scene()
 	{}
 
@@ -30,6 +48,52 @@ namespace Hazle
 	void Scene::DestroyEntity(Entity entity)
 	{
 		m_Registry.destroy(entity);
+	}
+
+	void Scene::OnRuntimeStart()
+	{
+		m_PhysicsWorld = new b2World({0.0f, -9.8f});
+		auto view = m_Registry.view<CRigidBody2D>();
+		for (auto e : view)
+		{
+			Entity entity = { e, this };
+			auto& transform = entity.getComponent<CTransform>();
+			auto& rb2d = entity.getComponent<CRigidBody2D>();
+
+			b2BodyDef bodyDef;
+			bodyDef.type = RigidBody2DTypeToBox2DBodyType(rb2d.Type);
+			bodyDef.position.Set(transform.Translation.x, transform.Translation.y);
+			bodyDef.angle = transform.Rotation.z;
+
+			b2Body* body = m_PhysicsWorld->CreateBody(&bodyDef);
+			body->SetFixedRotation(rb2d.FixedRotation);
+			rb2d.RuntimeBody = body;
+
+			if (entity.hasComponent<CBoxCollider2D>())
+			{
+				auto& bc2d = entity.getComponent<CBoxCollider2D>();
+
+				b2PolygonShape boxShape;
+				boxShape.SetAsBox(bc2d.Size.x * transform.Scale.x, bc2d.Size.y * transform.Scale.y);
+
+				b2FixtureDef fixtureDef;
+				fixtureDef.shape				= &boxShape;
+				fixtureDef.density				= bc2d.Density;
+				fixtureDef.friction				= bc2d.Friction;
+				fixtureDef.restitution			= bc2d.Restitution;
+				fixtureDef.restitutionThreshold = bc2d.RestitutionThreshold;
+
+				body->CreateFixture(&fixtureDef);
+			}
+		}
+
+	}
+	
+	
+	void Scene::OnRuntimeStop()
+	{
+		delete m_PhysicsWorld;
+		m_PhysicsWorld = nullptr;
 	}
 
 	void Scene::OnUpdateEditor(Timestep ts, EditorCamera& camera)
@@ -65,6 +129,29 @@ namespace Hazle
 				});
 		}
 
+		//Physics (Scripts->Physics->Render everyone is linked and uses updated before it...)
+		{
+			const int32_t velocityIterations = 6;
+			const int32_t positionIterations = 2;
+			m_PhysicsWorld->Step(ts, velocityIterations, positionIterations);
+
+			//Retrieve Transform from Box2D
+			auto view = m_Registry.view<CRigidBody2D>();
+			for (auto e : view)
+			{
+				Entity entity = { e, this };
+				auto& transform = entity.getComponent<CTransform>();
+				auto& rb2d = entity.getComponent<CRigidBody2D>();
+
+				b2Body* body = (b2Body*)rb2d.RuntimeBody;
+				const auto& position = body->GetPosition();
+				transform.Translation.x = position.x;
+				transform.Translation.y = position.y;
+				transform.Rotation.z	= body->GetAngle();
+			}
+		}
+
+
 		// Render2D
 		Camera* mainCamera = nullptr;
 		glm::mat4 cameraTransform;
@@ -91,7 +178,11 @@ namespace Hazle
 			{
 				auto& transform = group.get<CTransform>(entity);
 				auto& sprite = group.get<CSpriteRenderer>(entity);
-				Hazle::Renderer2D::DrawQuad(transform.GetTransform(), sprite.Color);
+				if(sprite.Texture)
+					Hazle::Renderer2D::DrawQuad(transform.GetTransform(), sprite.Color, sprite.Texture);
+				else
+					Hazle::Renderer2D::DrawQuad(transform.GetTransform(), sprite.Color);
+
 				//HZ_CORE_INFO("Drawing!!! {0} {1} {2}, {3}", transform.Transform[3][0], transform.Transform[3][1], transform.Transform[3][2], glm::to_string(sprite.Color));
 			}
 			Renderer2D::EndScene();
@@ -150,5 +241,13 @@ namespace Hazle
 	
 	template<>
 	void Hazle::Scene::OnComponentAdded<CNativeScript>(Entity entity, CNativeScript& component)
+	{}
+	
+	template<>
+	void Hazle::Scene::OnComponentAdded<CRigidBody2D>(Entity entity, CRigidBody2D& component)
+	{}
+	
+	template<>
+	void Hazle::Scene::OnComponentAdded<CBoxCollider2D>(Entity entity, CBoxCollider2D& component)
 	{}
 }

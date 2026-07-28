@@ -37,3 +37,6 @@
 [submodule "HazleEngine/vendor/yamlcpp"]
 	path = HazleEngine/vendor/yamlcpp
 	url = https://github.com/jbeder/yaml-cpp.git
+[submodule "HazleEngine/vendor/Box2D"]
+	path = HazleEngine/vendor/Box2D
+	url = https://github.com/thecherno/box2d

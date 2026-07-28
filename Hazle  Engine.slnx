@@ -12,6 +12,8 @@
   <Project Path="Sandbox\Sandbox.vcxproj" Id="F4C124E3-60A1-A37E-69B9-2E55D5170AE0">
   </Project>
   <Folder Name="/Dependencies/">
+    <Project Path="HazleEngine\vendor\Box2D\Box2D.vcxproj" Id="A434E80C-1049-10BE-D9CA-B31D459E0CEF">
+    </Project>
     <Project Path="HazleEngine\vendor\glad\Glad.vcxproj" Id="BDD6857C-A90D-870D-52FA-6C103E10030F">
     </Project>
     <Project Path="HazleEngine\vendor\GLFW\GLFW.vcxproj" Id="154B857C-0182-860D-AA6E-6C109684020F">

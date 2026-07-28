@@ -84,4 +84,36 @@ namespace Hazle
 			DestroyScript = [](CNativeScript* nsc) { delete nsc->Instance; nsc->Instance = nullptr; };
 		}
 	};
+
+	//Physics related stuff here
+	struct CRigidBody2D
+	{
+		enum class BodyType { Static, Kinamatic, Dynamic  };
+		BodyType Type = BodyType::Static;
+		bool FixedRotation = false;
+
+		void* RuntimeBody = nullptr;
+
+		CRigidBody2D() = default;
+		CRigidBody2D( const CRigidBody2D& ) = default;
+
+	};
+	
+	
+	struct CBoxCollider2D
+	{
+		glm::vec2 Offset = { 0.0f, 0.0f };
+		glm::vec2 Size = { 0.5f, 0.5f };
+
+		float Density = 1.0f;
+		float Friction = 0.5f;
+		float Restitution = 0.0f;
+		float RestitutionThreshold = 0.5f;
+
+		void* RuntimeFixture = nullptr;
+
+		CBoxCollider2D() = default;
+		CBoxCollider2D( const CBoxCollider2D& ) = default;
+
+	};
 }

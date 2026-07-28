@@ -21,11 +21,14 @@ IncludeDir["stb_image"] = "HazleEngine/vendor/stb_image"
 IncludeDir["entt"]		= "HazleEngine/vendor/entt/include"
 IncludeDir["yaml_cpp"]	= "HazleEngine/vendor/yamlcpp/include"
 IncludeDir["imguizmo"]	= "HazleEngine/vendor/imguizmo/src"
+IncludeDir["Box2D"]	= "HazleEngine/vendor/Box2D/include"
+
 group "Dependencies"
 	include "HazleEngine/vendor/GLFW"
 	include "HazleEngine/vendor/glad"
 	include "HazleEngine/vendor/imgui"
 	include "HazleEngine/vendor/yamlcpp"
+	include "HazleEngine/vendor/Box2D"
 
 group ""
 
@@ -69,6 +72,7 @@ project "HazleEngine"
 		"%{IncludeDir.entt}",
 		"%{IncludeDir.yaml_cpp}",
 		"%{IncludeDir.imguizmo}",
+		"%{IncludeDir.Box2D}",
 		"%{prj.name}/src/Hazle"
 	}
 
@@ -76,6 +80,7 @@ project "HazleEngine"
 		"GLFW",
 		"Glad",
 		"imgui",
+		"Box2D",
 		"opengl32.lib",
 		"yaml-cpp"
 	}
@@ -135,6 +140,7 @@ project "Sandbox"
 		"%{IncludeDir.glm}",
 		"%{IncludeDir.entt}",
 		"%{IncludeDir.yaml_cpp}",
+		"%{IncludeDir.Box2D}",
 		"HazleEngine/src",
 		"%{IncludeDir.imgui}"
 	}
@@ -195,6 +201,7 @@ project "HazleNut"
 		"%{IncludeDir.glm}",
 		"%{IncludeDir.entt}",
 		"%{IncludeDir.yaml_cpp}",
+		"%{IncludeDir.Box2D}",
 		"%{IncludeDir.imguizmo}",
 		"HazleEngine/src",
 		"%{IncludeDir.imgui}"
