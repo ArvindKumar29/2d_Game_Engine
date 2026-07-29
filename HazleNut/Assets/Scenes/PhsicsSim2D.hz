@@ -1,8 +1,8 @@
 Scene: Name
 Entities:
-  - Entity: 1234567890
+  - Entity: 515656282
     TagComponent:
-      Tag: Green Collider Square
+      Tag: Green Collider Square 1
     TransformComponent:
       Translation: [0, 6, 0]
       Rotation: [0, 0, 4.91512]
@@ -17,9 +17,28 @@ Entities:
       Size: [0.5, 0.5]
       Density: 1
       Friction: 0.5
-      Restitution: 0
+      Restitution: 0.5
       RestitutionThreshold: 0.5
-  - Entity: 1234567890
+  - Entity: 220084373
+    TagComponent:
+      Tag: Green Collider Square 2
+    TransformComponent:
+      Translation: [-4.9651856, 6.588807, 0]
+      Rotation: [-4.2632568e-14, 1.1175897e-07, -2.5058994]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0, 1, 0, 1]
+    RigidBodyComponent:
+      BodyType: Dynamic
+      FixedRotation: false
+    BoxCollider2DComponent:
+      Offset: [0, 0]
+      Size: [0.5, 0.5]
+      Density: 1
+      Friction: 0.5
+      Restitution: 0.5
+      RestitutionThreshold: 0.5
+  - Entity: 401265620
     TagComponent:
       Tag: Runtime Camera
     TransformComponent:
@@ -37,7 +56,7 @@ Entities:
         Orthographic Far: 10
       Primary: true
       FixedAspectRatio: false
-  - Entity: 1234567890
+  - Entity: 544413115
     TagComponent:
       Tag: Platform Blue
     TransformComponent:
@@ -56,7 +75,7 @@ Entities:
       Friction: 0.5
       Restitution: 0
       RestitutionThreshold: 0.5
-  - Entity: 1234567890
+  - Entity: 1599598190
     TagComponent:
       Tag: Platform Red
     TransformComponent:

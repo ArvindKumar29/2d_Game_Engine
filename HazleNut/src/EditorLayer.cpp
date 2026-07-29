@@ -28,10 +28,14 @@ namespace Hazle
 		fbSpec.Height = 1080;
 		m_FrameBuffer = FrameBuffer::Create(fbSpec);
 
+		// Loading HazleUI Icons
 		m_IconPlay = Texture2D::Create("assets/textures/play.png");
 		m_IconStop = Texture2D::Create("assets/textures/stop.png");
 		m_IconSun = Texture2D::Create("assets/textures/sun.png");
 		m_IconMoon = Texture2D::Create("assets/textures/moon.png");
+		m_IconSave = Texture2D::Create("assets/textures/save.png");
+
+
 		//SCENE
 		m_ActiveScene = CreateRef<Scene>();
 
@@ -40,21 +44,21 @@ namespace Hazle
 #if 0
 		//ENTITIES
 		m_SquareEntity = m_ActiveScene->CreateEntity("Square");
-		m_SquareEntity.AddComponent<CTransform>();
-		m_SquareEntity.AddComponent<CSpriteRenderer>();
+		m_SquareEntity.AddOrReplaceComponent<CTransform>();
+		m_SquareEntity.AddOrReplaceComponent<CSpriteRenderer>();
 
 		Entity redSquare = m_ActiveScene->CreateEntity("RedSquare");
-		redSquare.AddComponent<CTransform>();
-		redSquare.AddComponent<CSpriteRenderer>(glm::vec4{1.0f, 0.0f, 0.0f, 1.0f});
+		redSquare.AddOrReplaceComponent<CTransform>();
+		redSquare.AddOrReplaceComponent<CSpriteRenderer>(glm::vec4{1.0f, 0.0f, 0.0f, 1.0f});
 
 		m_CameraEntity = m_ActiveScene->CreateEntity("Camera A");
-		m_CameraEntity.AddComponent<CCamera>(glm::ortho(-16.0f, 16.0f, -9.0f, 9.0f, -1.0f, 1.0f));
+		m_CameraEntity.AddOrReplaceComponent<CCamera>(glm::ortho(-16.0f, 16.0f, -9.0f, 9.0f, -1.0f, 1.0f));
 		m_CameraEntity.getComponent<CCamera>().Primary = true;
-		m_CameraEntity.AddComponent<CTransform>();
+		m_CameraEntity.AddOrReplaceComponent<CTransform>();
 		
 		m_SecondCamera = m_ActiveScene->CreateEntity("Camera B");
-		m_SecondCamera.AddComponent<CCamera>(glm::ortho(-16.0f, 16.0f, -9.0f, 9.0f, -1.0f, 1.0f));
-		m_SecondCamera.AddComponent<CTransform>();
+		m_SecondCamera.AddOrReplaceComponent<CCamera>(glm::ortho(-16.0f, 16.0f, -9.0f, 9.0f, -1.0f, 1.0f));
+		m_SecondCamera.AddOrReplaceComponent<CTransform>();
 
 		
 		
@@ -89,8 +93,8 @@ namespace Hazle
 				
 			}
 		};
-		m_CameraEntity.AddComponent<CNativeScript>().Bind<CameraController>();
-		m_SecondCamera.AddComponent<CNativeScript>().Bind<CameraController>();
+		m_CameraEntity.AddOrReplaceComponent<CNativeScript>().Bind<CameraController>();
+		m_SecondCamera.AddOrReplaceComponent<CNativeScript>().Bind<CameraController>();
 #endif
 
 		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
@@ -115,6 +119,7 @@ namespace Hazle
 		float size = ImGui::GetWindowHeight() - 4.0f;
 
 		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0, 0, 0, 0));
+
 		// ADDING THEME CHANGE BUTTON...
 		Ref<Texture2D> icon = m_EditorTheme == EditorTheme::Dark ? m_IconSun : m_IconMoon;
 		ImGui::SameLine(ImGui::GetContentRegionAvail().x - size - 5.0f);
@@ -149,10 +154,16 @@ namespace Hazle
 		//ImGui::PopStyleVar(2);
 		ImGui::End();
 	}
+
 	void EditorLayer::OnScenePlay()
 	{
 		m_SceneState = SceneState::Play;
-		m_ActiveScene->OnRuntimeStart();
+
+		m_RuntimeScene = Scene::Copy(m_EditorScene);
+		m_RuntimeScene->OnRuntimeStart();
+
+		m_ActiveScene = m_RuntimeScene;
+		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
 	}
 	
 	
@@ -160,6 +171,11 @@ namespace Hazle
 	{
 		m_SceneState = SceneState::Edit;
 		m_ActiveScene->OnRuntimeStop();
+		m_RuntimeScene = nullptr;
+
+		m_ActiveScene = m_EditorScene;
+		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
+
 	}
 
 	void EditorLayer::OnEvent(Event& e)
@@ -170,6 +186,15 @@ namespace Hazle
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<KeyPressedEvent>(HZ_BIND_EVENT_FN(EditorLayer::OnKeyPresedEvent));
 		dispatcher.Dispatch<MouseButtonPressedEvent>(HZ_BIND_EVENT_FN(EditorLayer::OnMouseButtonPresedEvent));
+	}
+
+	void EditorLayer::OnDuplicateEntity()
+	{
+		if (m_SceneState != SceneState::Edit)
+			return;
+		Entity selectedEntity = m_SceneHierarchyPanel.GetSelectedEntity();
+		if (selectedEntity)
+			m_EditorScene->DuplicateEntity(selectedEntity);
 	}
 
 
@@ -201,21 +226,36 @@ namespace Hazle
 					OpenScene();
 				break;
 			}
+			case Key::D:
+			{
+				if (controlPressed)
+					OnDuplicateEntity();
+				break;
+			}
+
 			case Key::Q:
+			{
 				m_GizmoType = -1;
 				break;
+			}
 			
 			case Key::W:
+			{
 				m_GizmoType = ImGuizmo::OPERATION::TRANSLATE;
 				break;
+			}
 			
 			case Key::E:
+			{
 				m_GizmoType = ImGuizmo::OPERATION::SCALE;
 				break;
+			}
 			
 			case Key::R:
+			{
 				m_GizmoType = ImGuizmo::OPERATION::ROTATE;
 				break;
+			}
 		}
 		return true;
 	}
@@ -256,6 +296,9 @@ namespace Hazle
 		RenderCommand::SetClearColor(glm::vec4(0.15f, 0.15f, 0.15f, 1.0f));
 		RenderCommand::Clear();
 
+		// Clear our entity ID attachment to -1 before updating scene
+		m_FrameBuffer->ClearColorAttachments(1, -1);
+
 		// Update
 		switch (m_SceneState)
 		{
@@ -273,18 +316,6 @@ namespace Hazle
 				break;
 			}
 		}
-
-
-
-
-		// Clear our entity ID attachment to -1
-		m_FrameBuffer->ClearColorAttachments(1, -1);
-
-		//Update Scene
-		//m_ActiveScene->OnUpdateEditor(ts, m_EditorCamera);
-		//Renderer2D::BeginScene(m_CameraController.GetCamera());
-		//Renderer2D::DrawQuad({ 0.0f, 0.0f, 0.0f }, 0.0f, { 1.0f, 1.0f }, { 1.0f, 0.0f, 0.0f, 1.0f });
-		//Renderer2D::EndScene();
 
 		auto [mx, my] = ImGui::GetMousePos();
 		mx -= m_ViewportBounds[0].x;
@@ -557,6 +588,9 @@ namespace Hazle
 
 	void EditorLayer::NewScene()
 	{
+		if (m_SceneState != SceneState::Edit)
+			OnSceneStop();
+
 		m_ActiveScene = CreateRef<Scene>();
 		m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
 		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
@@ -564,23 +598,33 @@ namespace Hazle
 
 	void EditorLayer::OpenScene(const std::filesystem::path& path)
 	{
-		m_ActiveScene = CreateRef<Scene>();
-		m_ActiveScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
-		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
+		if (m_SceneState != SceneState::Edit)
+			OnSceneStop();
 
-		SceneSerializer serializer(m_ActiveScene);
-		serializer.DeSerialize(path.string());
+		if (path.extension().string() != ".hz")
+		{
+			HZ_CORE_WARN("Could not load {0} - not a hazle scene file", path.filename().string());
+			return;
+		}
+
+		m_EditorScene = CreateRef<Scene>();
+		m_EditorScene->OnViewportResize((uint32_t)m_ViewportSize.x, (uint32_t)m_ViewportSize.y);
+		m_SceneHierarchyPanel.SetContext(m_EditorScene);
+		SceneSerializer serializer(m_EditorScene);
+		if (serializer.DeSerialize(path.string()))
+			m_ActiveScene = m_EditorScene;
 
 		currentPath = path.string();
 	}
 
 	void EditorLayer::OpenScene()
 	{
+		if (m_SceneState != SceneState::Edit)
+			OnSceneStop();
+
 		std::string filepath = FileDialogs::OpenFile("Hazle Scene (*.hz)\0*.hz\0"); // Hazle Scene (.hz) this will show up upto first \0 and .hz is the actual file type from first \0 to second \0
 		if (!filepath.empty())
-		{
 			OpenScene(filepath);
-		}
 	}
 
 	void EditorLayer::SaveSceneAs()
@@ -591,6 +635,7 @@ namespace Hazle
 			SceneSerializer seriazlizer(m_ActiveScene);
 			seriazlizer.Serialize(filepath);
 		}
+		//ImGui::Image((ImTextureID)(uint64_t)m_IconSave->GetRendererID(), { 20.0f, 20.0f }, { 1, 0 }, { 0, 1 });
 	}
 	
 	void EditorLayer::SaveScene()
@@ -604,5 +649,7 @@ namespace Hazle
 			//ImGui::BeginPopup("Scene Saved!!!");
 			//ImGui::EndPopup();
 		}
+		//ImGui::Image((ImTextureID)(uint64_t)m_IconSave->GetRendererID(), { 20.0f, 20.0f }, { 1, 0 }, { 0, 1 });
+
 	}
 }

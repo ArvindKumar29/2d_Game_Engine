@@ -1,6 +1,6 @@
 Scene: Name
 Entities:
-  - Entity: 1234567890
+  - Entity: 941252283
     TagComponent:
       Tag: Camera B
     TransformComponent:
@@ -18,7 +18,7 @@ Entities:
         Orthographic Far: 10
       Primary: true
       FixedAspectRatio: false
-  - Entity: 1234567890
+  - Entity: 1084137977
     TagComponent:
       Tag: RedSquare
     TransformComponent:
@@ -27,7 +27,7 @@ Entities:
       Scale: [9, 7.8, 1]
     SpriteRendrerComponent:
       Color: [1, 0, 0, 0.5921569]
-  - Entity: 1234567890
+  - Entity: 179850635
     TagComponent:
       Tag: Square
     TransformComponent:

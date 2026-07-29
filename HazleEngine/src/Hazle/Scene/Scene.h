@@ -1,6 +1,7 @@
 #pragma once
 #include <entt.hpp>
 #include "Hazle/Core/Timestep.h"
+#include "Hazle/Core/UUID.h"
 #include "SceneCamera.h"
 #include "Hazle/Renderer/EditorCamera.h"
 
@@ -16,6 +17,7 @@ namespace Hazle
 		~Scene();
 
 		Entity CreateEntity(const std::string& name);
+		Entity CreateEntityWithUUID(UUID uuid, const std::string& name);
 		void DestroyEntity(Entity entity);
 
 		void OnRuntimeStart();
@@ -25,8 +27,11 @@ namespace Hazle
 		void OnUpdateEditor(Timestep ts, EditorCamera& camera);
 		void OnUpdateRuntime(Timestep ts);
 
+		void DuplicateEntity(Entity entity);
+
 		Entity GetPrimaryCameraEntity();
-		bool HasPrimaryCameraEntity();
+
+		static Ref<Scene> Copy(Ref<Scene> other);
 	private:
 		template<typename T>
 		void OnComponentAdded(Entity entity, T& component);

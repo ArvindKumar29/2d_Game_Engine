@@ -18,6 +18,8 @@ namespace Hazle
 		virtual void OnImGuiRender() override;
 		void OnEvent(Event& e) override;
 
+		void OnDuplicateEntity();
+
 		//UI Panels
 		void UI_Toolbar();
 		void OnScenePlay();
@@ -37,6 +39,7 @@ namespace Hazle
 		OrthographicCameraController m_CameraController;
 		Ref<FrameBuffer> m_FrameBuffer;
 		Ref<Scene> m_ActiveScene;
+		Ref<Scene> m_EditorScene, m_RuntimeScene;
 		Entity m_SquareEntity;
 		Entity m_CameraEntity, m_SecondCamera;
 
@@ -79,7 +82,8 @@ namespace Hazle
 		};
 		EditorTheme m_EditorTheme = EditorTheme::Dark;
 
-		Ref<Texture2D> m_IconPlay, m_IconStop, m_IconSun, m_IconMoon;
+		// HazleUI Icons
+		Ref<Texture2D> m_IconPlay, m_IconStop, m_IconSun, m_IconMoon, m_IconSave;
 		
 	};
 }

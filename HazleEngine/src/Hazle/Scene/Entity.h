@@ -2,7 +2,9 @@
 
 #include "entt.hpp"
 #include "Scene.h"
+#include "Component.h"
 #include "Hazle/Core/core.h"
+#include "Hazle/Core/UUID.h"
 
 namespace Hazle
 {
@@ -21,10 +23,10 @@ namespace Hazle
 		}
 
 		template<typename T ,typename... Args>
-		T& AddComponent(Args&&... args)
+		T& AddOrReplaceComponent(Args&&... args)
 		{
 			HZ_CORE_ASSERT(!hasComponent<T>(), "Entity already has component!");
-			T& component = m_Scene->m_Registry.emplace<T>(m_EntityManager, std::forward<Args>(args)...);
+			T& component = m_Scene->m_Registry.emplace_or_replace<T>(m_EntityManager, std::forward<Args>(args)...);
 			m_Scene->OnComponentAdded<T>(*this, component);
 
 			return component;
@@ -49,6 +51,9 @@ namespace Hazle
 		operator bool() const { return m_EntityManager != entt::null; }
 		bool operator==(const Entity& other) const { return m_EntityManager == other.m_EntityManager && m_Scene == other.m_Scene; }
 		bool operator!=(const Entity& other) const { return *this == other; }
+
+		UUID GetUUID() { return getComponent<CID>().ID; }
+		const std::string&  GetName() { return getComponent<CTag>().Tag; }
 
 	private:
 		entt::entity m_EntityManager{ entt::null };

@@ -38,8 +38,15 @@ namespace Hazle
 
 	Entity Scene::CreateEntity(const std::string& name)
 	{
+		Entity  entity = CreateEntityWithUUID(UUID(), name);
+		return entity;
+	}
+
+	Entity Scene::CreateEntityWithUUID(UUID uuid, const std::string& name)
+	{
 		Entity entity = { m_Registry.create(), this };
-		entity.AddComponent<CTag>();
+		entity.AddOrReplaceComponent<CID>(uuid);
+		entity.AddOrReplaceComponent<CTag>();
 		auto& tag = entity.getComponent<CTag>();
 		tag.Tag = name.empty() ? "Entity" : name;
 		return entity;
@@ -130,6 +137,7 @@ namespace Hazle
 		}
 
 		//Physics (Scripts->Physics->Render everyone is linked and uses updated before it...)
+		if(m_PhysicsWorld)
 		{
 			const int32_t velocityIterations = 6;
 			const int32_t positionIterations = 2;
@@ -216,11 +224,85 @@ namespace Hazle
 	}
 
 	template<typename T>
+	static void CopyComponent(entt::registry& dst, entt::registry& src, std::unordered_map<UUID, entt::entity>& enttMap)
+	{
+		auto view = src.view<T>();
+		for (auto e : view)
+		{
+			UUID uuid = src.get<CID>(e).ID;
+			entt::entity dstEnttID = enttMap.at(uuid);
+			auto& component = src.get<T>(e);
+
+			dst.emplace_or_replace<T>(dstEnttID, component);
+		}
+	}
+
+	template<typename T>
+	static void CopyComponentIfExists(Entity dst, Entity src)
+	{
+		if (src.hasComponent<T>())
+			dst.AddOrReplaceComponent<T>(src.getComponent<T>());
+	}
+
+	void Scene::DuplicateEntity(Entity entity)
+	{
+		std::string name = entity.GetName();
+		Entity newEntity = CreateEntity(name);
+
+
+		//Copy Components except tag and ID
+		CopyComponentIfExists<CTransform>(newEntity, entity);
+		CopyComponentIfExists<CCamera>(newEntity, entity);
+		CopyComponentIfExists<CSpriteRenderer>(newEntity, entity);
+		CopyComponentIfExists<CNativeScript>(newEntity, entity);
+		CopyComponentIfExists<CRigidBody2D>(newEntity, entity);
+		CopyComponentIfExists<CBoxCollider2D>(newEntity, entity);
+	}
+
+
+
+	Ref<Scene> Scene::Copy(Ref<Scene> other)
+	{
+		Ref<Scene> newScene = CreateRef<Scene>();
+		newScene->m_ViewportWidth  = other->m_ViewportWidth;
+		newScene->m_ViewportHeight = other->m_ViewportHeight;
+
+		std::unordered_map<UUID, entt::entity> enttMap;
+
+		auto& srcSceneReg = other->m_Registry;
+		auto& dstSceneReg = newScene->m_Registry;
+
+		//Create Entities in newScene and copy tag and ID components
+		auto idView = srcSceneReg.view<CID>();
+		for (auto e : idView)
+		{
+			UUID uuid = srcSceneReg.get<CID>(e).ID;
+			const auto& name = srcSceneReg.get<CTag>(e).Tag;
+			Entity newEntity = newScene->CreateEntityWithUUID(uuid, name);
+			enttMap[uuid] = newEntity;
+		}
+
+		// Copy components except ID and Tag
+		CopyComponent<CTransform>		(dstSceneReg, srcSceneReg, enttMap);
+		CopyComponent<CCamera>			(dstSceneReg, srcSceneReg, enttMap);
+		CopyComponent<CSpriteRenderer>	(dstSceneReg, srcSceneReg, enttMap);
+		CopyComponent<CNativeScript>	(dstSceneReg, srcSceneReg, enttMap);
+		CopyComponent<CRigidBody2D>		(dstSceneReg, srcSceneReg, enttMap);
+		CopyComponent<CBoxCollider2D>	(dstSceneReg, srcSceneReg, enttMap);
+
+		return newScene;
+	}
+
+	template<typename T>
 	void Scene::OnComponentAdded(Entity entity, T& component)
 	{
 		static_assert(sizeof(T) == 0, "Unknown Component Added");
 	}
-
+	
+	template<>
+	void Scene::OnComponentAdded<CID>(Entity entity, CID& component)
+	{}
+	
 	template<>
 	void Scene::OnComponentAdded<CTransform>(Entity entity, CTransform& component)
 	{}
@@ -250,4 +332,5 @@ namespace Hazle
 	template<>
 	void Hazle::Scene::OnComponentAdded<CBoxCollider2D>(Entity entity, CBoxCollider2D& component)
 	{}
+	
 }

@@ -114,8 +114,10 @@ namespace Hazle
 	
 	static void SerializeEntity(YAML::Emitter& out, Entity entity)
 	{
-		out << YAML::BeginMap;									// Entity
-		out << YAML::Key << "Entity" << YAML::Value << "1234567890"; // EntityID goes here///
+		HZ_CORE_ASSERT(entity.hasComponent<CID>(), "NO ENTITY ID FOUND");
+
+		out << YAML::BeginMap;										 // Entity
+		out << YAML::Key << "Entity" << YAML::Value << entity.GetUUID();
 
 		if (entity.hasComponent<CTag>())
 		{
@@ -259,7 +261,7 @@ namespace Hazle
 		{
 			for (auto entity : entities)
 			{
-				uint32_t uuid = entity["Entity"].as<uint32_t>();
+				uint64_t uuid = entity["Entity"].as<uint64_t>();
 
 				std::string name;
 				auto tagComponent = entity["TagComponent"];
@@ -268,13 +270,13 @@ namespace Hazle
 			
 				HZ_CORE_ASSERT("Deserialized entity with ID = {0}, name = {1}", uuid, name);
 
-				Entity deserializedEntity = m_Scene->CreateEntity(name);
+				Entity deserializedEntity = m_Scene->CreateEntityWithUUID(uuid, name);
 
 				auto transformComponent = entity["TransformComponent"];
 				if (transformComponent)
 				{
 					if (!deserializedEntity.hasComponent<CTransform>())
-						deserializedEntity.AddComponent<CTransform>();
+						deserializedEntity.AddOrReplaceComponent<CTransform>();
 					auto& tc = deserializedEntity.getComponent<CTransform>();
 					tc.Translation	= transformComponent["Translation"].as<glm::vec3>();
 					tc.Rotation		= transformComponent["Rotation"].as<glm::vec3>();
@@ -284,7 +286,7 @@ namespace Hazle
 				auto cameraComponent = entity["CameraComponent"];
 				if (cameraComponent)
 				{
-					auto& cc = deserializedEntity.AddComponent<CCamera>();
+					auto& cc = deserializedEntity.AddOrReplaceComponent<CCamera>();
 					auto& cameraProps = cameraComponent["Camera"];
 
 					cc.camera.SetProjectionType((SceneCamera::ProjectionType)cameraProps["ProjectionType"].as<int>());
@@ -304,14 +306,14 @@ namespace Hazle
 				auto spriteRendererComponent = entity["SpriteRendrerComponent"];
 				if (spriteRendererComponent)
 				{
-					auto& sprite = deserializedEntity.AddComponent<CSpriteRenderer>();
+					auto& sprite = deserializedEntity.AddOrReplaceComponent<CSpriteRenderer>();
 					sprite.Color = spriteRendererComponent["Color"].as<glm::vec4>();
 				}
 				
 				auto RigidBodyComponent = entity["RigidBodyComponent"];
 				if (RigidBodyComponent)
 				{
-					auto& rb2d = deserializedEntity.AddComponent<CRigidBody2D>();
+					auto& rb2d = deserializedEntity.AddOrReplaceComponent<CRigidBody2D>();
 					rb2d.Type = StringToRigidBodyType(RigidBodyComponent["BodyType"].as<std::string>());
 					rb2d.FixedRotation = RigidBodyComponent["FixedRotation"].as<bool>();
 				}
@@ -319,7 +321,7 @@ namespace Hazle
 				auto BoxColliderComponent = entity["BoxCollider2DComponent"];
 				if (BoxColliderComponent)
 				{
-					auto& bc2d = deserializedEntity.AddComponent<CBoxCollider2D>();
+					auto& bc2d = deserializedEntity.AddOrReplaceComponent<CBoxCollider2D>();
 					bc2d.Offset = BoxColliderComponent["Offset"].as<glm::vec2>();
 					bc2d.Size = BoxColliderComponent["Size"].as<glm::vec2>();
 				

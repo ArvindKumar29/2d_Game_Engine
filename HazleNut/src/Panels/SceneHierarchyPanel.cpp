@@ -24,26 +24,28 @@ namespace Hazle
 	void SceneHierarchyPanel::OnImGuiRender()
 	{
 		ImGui::Begin("Scene Hierarchy");
-
-		auto view = m_Context->m_Registry.view<CTag>();
-		for (auto& entityID : view)
+		if (m_Context)
 		{
-			Entity entity{ entityID, m_Context.get() };
-			DrawEntityNode(entity);
-		}
-
-		if (ImGui::IsMouseDown(0) && ImGui::IsWindowHovered())
-			m_SelectionContext = {};
-
-		if (ImGui::BeginPopupContextWindow(0, ImGuiPopupFlags_MouseButtonRight | ImGuiPopupFlags_NoOpenOverItems))
-		{
-			if (ImGui::MenuItem("Create Empty Entity"))
+			auto view = m_Context->m_Registry.view<CTag>();
+			for (auto& entityID : view)
 			{
-				m_Context->CreateEntity("Empty Entity");
+				Entity entity{ entityID, m_Context.get() };
+				DrawEntityNode(entity);
 			}
-			ImGui::EndPopup();
-		}
 
+			if (ImGui::IsMouseDown(0) && ImGui::IsWindowHovered())
+				m_SelectionContext = {};
+
+			if (ImGui::BeginPopupContextWindow(0, ImGuiPopupFlags_MouseButtonRight | ImGuiPopupFlags_NoOpenOverItems))
+			{
+				if (ImGui::MenuItem("Create Empty Entity"))
+				{
+					m_Context->CreateEntity("Empty Entity");
+				}
+				ImGui::EndPopup();
+			}
+
+		}
 		ImGui::End();
 
 
@@ -231,41 +233,41 @@ namespace Hazle
 		///ADDING THE ADD COMPONENT BUTTON///
 		/////////////////////////////////////
 		if (ImGui::Button("Add component"))
-			ImGui::OpenPopup("AddComponent");
-		if (ImGui::BeginPopup("AddComponent"))
+			ImGui::OpenPopup("AddOrReplaceComponent");
+		if (ImGui::BeginPopup("AddOrReplaceComponent"))
 		{
 			if(!m_SelectionContext.hasComponent<CTransform>())
 				if (ImGui::MenuItem("Transform"))
 				{
-					m_SelectionContext.AddComponent<CTransform>();
+					m_SelectionContext.AddOrReplaceComponent<CTransform>();
 					ImGui::CloseCurrentPopup();
 				}
 
 			if(!m_SelectionContext.hasComponent<CSpriteRenderer>())
 				if (ImGui::MenuItem("Sprite"))
 				{
-					m_SelectionContext.AddComponent<CSpriteRenderer>();
+					m_SelectionContext.AddOrReplaceComponent<CSpriteRenderer>();
 					ImGui::CloseCurrentPopup();
 				}
 
 			if(!m_SelectionContext.hasComponent<CCamera>())
 				if (ImGui::MenuItem("Camera"))
 				{
-					m_SelectionContext.AddComponent<CCamera>();
+					m_SelectionContext.AddOrReplaceComponent<CCamera>();
 					ImGui::CloseCurrentPopup();
 				}
 			
 			if(!m_SelectionContext.hasComponent<CRigidBody2D>())
 				if (ImGui::MenuItem("Rigid Body"))
 				{
-					m_SelectionContext.AddComponent<CRigidBody2D>();
+					m_SelectionContext.AddOrReplaceComponent<CRigidBody2D>();
 					ImGui::CloseCurrentPopup();
 				}
 			
 			if(!m_SelectionContext.hasComponent<CBoxCollider2D>())
 				if (ImGui::MenuItem("Box Collider"))
 				{
-					m_SelectionContext.AddComponent<CBoxCollider2D>();
+					m_SelectionContext.AddOrReplaceComponent<CBoxCollider2D>();
 					ImGui::CloseCurrentPopup();
 				}
 			ImGui::EndPopup();

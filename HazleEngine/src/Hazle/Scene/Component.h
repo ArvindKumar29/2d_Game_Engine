@@ -1,15 +1,23 @@
 #pragma once
 #include "SceneCamera.h"
+#include "Hazle/Renderer/Texture.h"
+#include "Hazle/Core/UUID.h"
+
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
-#include "Hazle/Renderer/Texture.h"
-
 #define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/quaternion.hpp>
 
 namespace Hazle
 {
-	class ScriptableEntity;
+	struct CID
+	{
+		UUID ID;
+
+		CID() = default;
+		CID(const CID& other) = default;
+
+	};
 
 	struct CTransform
 	{
@@ -70,6 +78,7 @@ namespace Hazle
 	
 	};
 
+	class ScriptableEntity;
 	struct CNativeScript
 	{
 		ScriptableEntity* Instance = nullptr;
