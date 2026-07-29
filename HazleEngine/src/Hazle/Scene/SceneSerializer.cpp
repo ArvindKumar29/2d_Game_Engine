@@ -178,6 +178,20 @@ namespace Hazle
 
 			out << YAML::EndMap;								// Sprite Renderer Component
 		}
+		
+		if (entity.hasComponent<CCircleRenderer>())
+		{
+			out << YAML::Key << "CircleRendererComponent";
+			out << YAML::BeginMap;								// Circle Renderer Component
+
+			auto& circle = entity.getComponent<CCircleRenderer>();
+			out << YAML::Key << "Color" << YAML::Flow << YAML::BeginSeq
+				<< circle.Color.x << circle.Color.y << circle.Color.z << circle.Color.a << YAML::EndSeq;
+			out << YAML::Key << "Thickness" << YAML::Value << circle.Thickness;
+			out << YAML::Key << "Fade" << YAML::Value << circle.Fade;
+
+			out << YAML::EndMap;								// Circle Renderer Component
+		}
 
 		if (entity.hasComponent<CRigidBody2D>())
 		{
@@ -308,6 +322,15 @@ namespace Hazle
 				{
 					auto& sprite = deserializedEntity.AddOrReplaceComponent<CSpriteRenderer>();
 					sprite.Color = spriteRendererComponent["Color"].as<glm::vec4>();
+				}
+				
+				auto CircleRendererComponent = entity["CircleRendererComponent"];
+				if (CircleRendererComponent)
+				{
+					auto& circle = deserializedEntity.AddOrReplaceComponent<CCircleRenderer>();
+					circle.Color = CircleRendererComponent["Color"].as<glm::vec4>();
+					circle.Thickness = CircleRendererComponent["Thickness"].as<float>();
+					circle.Fade = CircleRendererComponent["Fade"].as<float>();
 				}
 				
 				auto RigidBodyComponent = entity["RigidBodyComponent"];

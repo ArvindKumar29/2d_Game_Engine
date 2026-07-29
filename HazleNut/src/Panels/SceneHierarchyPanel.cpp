@@ -232,9 +232,9 @@ namespace Hazle
 		/////////////////////////////////////
 		///ADDING THE ADD COMPONENT BUTTON///
 		/////////////////////////////////////
-		if (ImGui::Button("Add component"))
-			ImGui::OpenPopup("AddOrReplaceComponent");
-		if (ImGui::BeginPopup("AddOrReplaceComponent"))
+		if (ImGui::Button("Add +"))
+			ImGui::OpenPopup("AddComponent");
+		if (ImGui::BeginPopup("AddComponent"))
 		{
 			if(!m_SelectionContext.hasComponent<CTransform>())
 				if (ImGui::MenuItem("Transform"))
@@ -247,6 +247,13 @@ namespace Hazle
 				if (ImGui::MenuItem("Sprite"))
 				{
 					m_SelectionContext.AddOrReplaceComponent<CSpriteRenderer>();
+					ImGui::CloseCurrentPopup();
+				}
+			
+			if(!m_SelectionContext.hasComponent<CCircleRenderer>())
+				if (ImGui::MenuItem("Circle"))
+				{
+					m_SelectionContext.AddOrReplaceComponent<CCircleRenderer>();
 					ImGui::CloseCurrentPopup();
 				}
 
@@ -308,6 +315,18 @@ namespace Hazle
 			}
 
 			ImGui::DragFloat("Tiling Factor", &component.TilingFactor, 0.1f, 0.0f, 100.0f);
+		});
+		
+		//////////////////
+		//CIRCLE COMPONENT
+		//////////////////
+		DrawComponent<CCircleRenderer>("Circle Renderer", entity, [](auto& component)
+		{	
+			ImGui::ColorEdit4("Color", glm::value_ptr(component.Color));
+
+			ImGui::DragFloat("Radius", &component.Radius, 0.1f, 0.0f, 100.0f);
+			ImGui::DragFloat("Thickness", &component.Thickness, 0.025f, 0.0f, 1.0f);
+			ImGui::DragFloat("Fade", &component.Fade, 0.00025f, 0.0f, 1.0f);
 		});
 
 

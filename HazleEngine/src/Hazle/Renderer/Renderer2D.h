@@ -39,6 +39,8 @@ namespace Hazle
 		static void DrawQuad(const glm::mat4& transform, const glm::vec4& color, const Ref<Texture2D> texture, const float tilingFactor = 1.0f, int entityID = -1);
 		static void DrawQuad(const glm::mat4& transform, const Ref<SubTexture2D> subTexture, const glm::vec4& color = {1.0f, 1.0f, 1.0f, 1.0f}, const float tilingFactor = 1.0f, int entityID = -1);
 		
+		static void DrawCircle(const glm::mat4& transform, const glm::vec4& color, float thickness = 1.0f, float fade = 0.001f, int entityID = -1);
+
 		static void DrawSprite(const glm::mat4& transform, CSpriteRenderer& sprite, int entityID);
 
 		//static void CalculateStats(Timestep ts);

@@ -18,6 +18,18 @@ namespace Hazle
 		//Edirtor Only
 		int EntityID;
 	};
+	
+	struct CircleVertex
+	{
+		glm::vec3 WorldPosition;
+		glm::vec3 LocalPosition;
+		glm::vec4 Color;
+		float Thickness;
+		float Fade;
+
+		//Edirtor Only
+		int EntityID;
+	};
 
 	struct Renderer2DData {
 		const uint32_t MaxQuads = 1000000;
@@ -30,9 +42,17 @@ namespace Hazle
 		Ref<Shader> m_TextureShader;
 		Ref<Texture2D> m_WhiteTexture;
 
+		Ref<VertexArray> m_CircleVA;
+		Ref<VertexBuffer> m_CircleBuffer;
+		Ref<Shader> m_CircleShader;
+
 		uint32_t m_QuadIndexCount = 0;
 		QuadVertex* m_QuadVertexBufferBase = nullptr;
 		QuadVertex* m_QuadVertexBufferPtr = nullptr;
+		
+		uint32_t m_CircleIndexCount = 0;
+		CircleVertex* m_CircleVertexBufferBase = nullptr;
+		CircleVertex* m_CircleVertexBufferPtr = nullptr;
 
 		std::array<Ref<Texture2D>, MaxTextureSlots> m_TextureSlots;
 		uint32_t m_TextureSlotIndex = 1; // 0 = white texture
@@ -47,10 +67,19 @@ namespace Hazle
 
 	void Renderer2D::Init()
 	{
-
+		// Quads
 		s_Data.m_QuadVA = VertexArray::Create();
-
 		s_Data.m_QuadBuffer = VertexBuffer::Create(s_Data.MaxVertices * sizeof(QuadVertex));
+		s_Data.m_QuadBuffer->SetLayout({
+			{ShaderDataType::Float3, "a_Position"    },
+			{ShaderDataType::Float2, "a_TexCoord"    },
+			{ShaderDataType::Float4, "a_Color"       },
+			{ShaderDataType::Float,  "a_TexIndex"    },
+			{ShaderDataType::Float,  "a_TilingFactor"},
+			{ShaderDataType::Int,    "a_EntityID"    }
+			});
+		s_Data.m_QuadVA->AddVertexBuffer(s_Data.m_QuadBuffer);
+		s_Data.m_QuadVertexBufferBase = new QuadVertex[s_Data.MaxVertices];
 
 		uint32_t* QuadIndices = new uint32_t[s_Data.MaxIndices];
 
@@ -73,28 +102,32 @@ namespace Hazle
 		s_Data.m_QuadVA->SetIndexBuffer(QuadIB);
 		delete[] QuadIndices;
 
+		// Circles
+		s_Data.m_CircleVA = VertexArray::Create();
+		s_Data.m_CircleBuffer = VertexBuffer::Create(s_Data.MaxVertices * sizeof(CircleVertex));
+		s_Data.m_CircleBuffer->SetLayout({
+			{ShaderDataType::Float3, "a_WorldPosition" },
+			{ShaderDataType::Float3, "a_LocalPosition" },
+			{ShaderDataType::Float4, "a_Color"		   },
+			{ShaderDataType::Float,  "a_Thickness"	   },
+			{ShaderDataType::Float,  "a_Fade"		   },
+			{ShaderDataType::Int,    "a_EntityID"	   }
+			});
+		s_Data.m_CircleVA->AddVertexBuffer(s_Data.m_CircleBuffer);
+		s_Data.m_CircleVA->SetIndexBuffer(QuadIB); // Use quadIB as it has the same parameters
+		s_Data.m_CircleVertexBufferBase = new CircleVertex[s_Data.MaxVertices];
+
 		s_Data.m_WhiteTexture = Texture2D::Create(1, 1);
 		uint32_t whitePixel = 0xffffffff;
 		s_Data.m_WhiteTexture->SetData(&whitePixel, sizeof(whitePixel));
 
-		BufferLayout layout2 = {
-			{ShaderDataType::Float3, "a_Position"    },
-			{ShaderDataType::Float2, "a_TexCoord"    },
-			{ShaderDataType::Float4, "a_Color"       },
-			{ShaderDataType::Float,  "a_TexIndex"    },
-			{ShaderDataType::Float,  "a_TilingFactor"},
-			{ShaderDataType::Int,    "a_EntityID"    }
-		};
-
-		s_Data.m_QuadBuffer->SetLayout(layout2);
-		s_Data.m_QuadVA->AddVertexBuffer(s_Data.m_QuadBuffer);
-		s_Data.m_QuadVertexBufferBase = new QuadVertex[s_Data.MaxVertices];
 
 		int32_t samplers[s_Data.MaxTextureSlots];
 		for (uint32_t i = 0; i < s_Data.MaxTextureSlots; i++)
 			samplers[i] = i;
 
-		s_Data.m_TextureShader = Shader::Create("Assets/Shaders/Texture.glsl");
+		s_Data.m_TextureShader = Shader::Create("Assets/Shaders/Quad.glsl");
+		s_Data.m_CircleShader = Shader::Create("Assets/Shaders/Circle.glsl");
 		s_Data.m_TextureShader->Bind();
 		s_Data.m_TextureShader->SetIntArray("u_Texture", samplers, s_Data.MaxTextureSlots);
 
@@ -111,20 +144,29 @@ namespace Hazle
 	void Renderer2D::BeginScene(const Camera& camera, glm::mat4& transform)
 	{
 		glm::mat4 viewProj = camera.GetProjection() * glm::inverse(transform);
+
+		//Quads
 		s_Data.m_TextureShader->Bind();
 		s_Data.m_TextureShader->SetMat4("u_VP", viewProj);
-		s_Data.m_WhiteTexture->Bind(0);
-		s_Data.m_QuadVertexBufferPtr = s_Data.m_QuadVertexBufferBase;
-		s_Data.m_QuadIndexCount = 0;
-		s_Data.m_TextureSlotIndex = 1;
+		
+		//Circles
+		s_Data.m_CircleShader->Bind();
+		s_Data.m_CircleShader->SetMat4("u_VP", viewProj);
+		
+		StartBatch();
 
 		//HZ_CORE_WARN("SCENE STARTED WITH CAMERA!!!");
 	}
 
 	void Renderer2D::BeginScene(const OrthographicCamera& camera)
 	{
+		//Quads
 		s_Data.m_TextureShader->Bind();
 		s_Data.m_TextureShader->SetMat4("u_VP", camera.GetVPMatrix());
+		
+		//Circles
+		s_Data.m_CircleShader->Bind();
+		s_Data.m_CircleShader->SetMat4("u_VP", camera.GetVPMatrix());
 		
 		StartBatch();
 	}
@@ -133,8 +175,13 @@ namespace Hazle
 	{
 		glm::mat4 viewProj = camera.GetViewProjection();
 
+		//Quads
 		s_Data.m_TextureShader->Bind();
 		s_Data.m_TextureShader->SetMat4("u_VP", viewProj);
+
+		//Circles
+		s_Data.m_CircleShader->Bind();
+		s_Data.m_CircleShader->SetMat4("u_VP", viewProj);
 
 		StartBatch();
 	}
@@ -148,20 +195,40 @@ namespace Hazle
 
 	void Renderer2D::Flush()
 	{
-		for (uint32_t i = 0; i < s_Data.m_TextureSlotIndex; i++)
-			s_Data.m_TextureSlots[i]->Bind(i);
+		if (s_Data.m_QuadIndexCount)
+		{
+			uint32_t dataSize = (uint32_t)((uint8_t*)s_Data.m_QuadVertexBufferPtr - (uint8_t*)s_Data.m_QuadVertexBufferBase);
+			s_Data.m_QuadBuffer->SetData(s_Data.m_QuadVertexBufferBase, dataSize);
+			
+			for (uint32_t i = 0; i < s_Data.m_TextureSlotIndex; i++)
+				s_Data.m_TextureSlots[i]->Bind(i);
 
-		if (s_Data.m_QuadIndexCount == 0)
-			return;
-		RenderCommand::DrawIndexed(s_Data.m_QuadVA, s_Data.m_QuadIndexCount);
-		s_Data.m_Stats.DrawCalls++;
+			s_Data.m_TextureShader->Bind();
+			RenderCommand::DrawIndexed(s_Data.m_QuadVA, s_Data.m_QuadIndexCount);
+			s_Data.m_Stats.DrawCalls++;
+		}
+
+		if (s_Data.m_CircleIndexCount)
+		{
+			uint32_t dataSize = (uint32_t)((uint8_t*)s_Data.m_CircleVertexBufferPtr - (uint8_t*)s_Data.m_CircleVertexBufferBase);
+			s_Data.m_CircleBuffer->SetData(s_Data.m_CircleVertexBufferBase, dataSize);
+			
+			s_Data.m_CircleShader->Bind();
+			RenderCommand::DrawIndexed(s_Data.m_CircleVA, s_Data.m_CircleIndexCount);
+			s_Data.m_Stats.DrawCalls++;
+		}
 	}
 
 	void Renderer2D::StartBatch()
 	{
 		s_Data.m_WhiteTexture->Bind(0);
-		s_Data.m_QuadVertexBufferPtr = s_Data.m_QuadVertexBufferBase;
+		
 		s_Data.m_QuadIndexCount = 0;
+		s_Data.m_QuadVertexBufferPtr = s_Data.m_QuadVertexBufferBase;
+		
+		s_Data.m_CircleIndexCount = 0;
+		s_Data.m_CircleVertexBufferPtr = s_Data.m_CircleVertexBufferBase;
+
 		s_Data.m_TextureSlotIndex = 1;
 	}
 
@@ -328,6 +395,37 @@ namespace Hazle
 		}
 
 		s_Data.m_QuadIndexCount += 6;
+
+		s_Data.m_Stats.QuadCount++;
+	}
+
+	void Renderer2D::DrawCircle(const glm::mat4& transform, const glm::vec4& color, float thickness, float fade, int entityID)
+	{
+		//TODO: TO BE REMOVED OR KEPT FOR CIRCLES AND WILL BE DECIDED LATER
+		//constexpr glm::vec2 textureCoord[] = {
+		//	{0.0f, 0.0f},
+		//	{1.0f, 0.0f},
+		//	{1.0f, 1.0f},
+		//	{0.0f, 1.0f}
+		//};
+
+		// TODO: TO BE IMPLEMENTED FOR CIRCLES SEPERATELY
+		if (s_Data.m_QuadIndexCount >= s_Data.MaxIndices)
+			FlushAndReset();
+
+
+		for (size_t i = 0; i < 4; i++)
+		{
+			s_Data.m_CircleVertexBufferPtr->WorldPosition = transform * s_Data.m_QuadVertexPositions[i];
+			s_Data.m_CircleVertexBufferPtr->LocalPosition = s_Data.m_QuadVertexPositions[i] * 2.0f;
+			s_Data.m_CircleVertexBufferPtr->Color = color;
+			s_Data.m_CircleVertexBufferPtr->Thickness = thickness;
+			s_Data.m_CircleVertexBufferPtr->Fade = fade;
+			s_Data.m_CircleVertexBufferPtr->EntityID = entityID;
+			s_Data.m_CircleVertexBufferPtr++;
+			//HZ_CORE_WARN("dRAWING Circle!!!");
+		}
+		s_Data.m_CircleIndexCount += 6;
 
 		s_Data.m_Stats.QuadCount++;
 	}

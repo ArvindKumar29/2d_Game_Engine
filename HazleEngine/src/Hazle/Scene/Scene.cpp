@@ -106,14 +106,27 @@ namespace Hazle
 	void Scene::OnUpdateEditor(Timestep ts, EditorCamera& camera)
 	{
 		Renderer2D::BeginScene(camera);
-
-		auto group = m_Registry.group<CTransform, CSpriteRenderer>();
-		for (auto entity : group)
 		{
-			auto& transform = group.get<CTransform>(entity);
-			auto& sprite = group.get<CSpriteRenderer>(entity);
-			//Renderer2D::DrawQuad(transform.GetTransform(), sprite.Color);
-			Renderer2D::DrawSprite(transform.GetTransform(), sprite, (int)entity);
+
+			auto view = m_Registry.view<CTransform, CSpriteRenderer>();
+			for (auto entity : view)
+			{
+				auto& transform = view.get<CTransform>(entity);
+				auto& sprite = view.get<CSpriteRenderer>(entity);
+				//Renderer2D::DrawQuad(transform.GetTransform(), sprite.Color);
+				Renderer2D::DrawSprite(transform.GetTransform(), sprite, (int)entity);
+			}
+		}
+
+		{
+			auto view = m_Registry.view<CTransform, CCircleRenderer>();
+			for (auto entity : view)
+			{
+				auto& transform = view.get<CTransform>(entity);
+				auto& circle = view.get<CCircleRenderer>(entity);
+				//Renderer2D::DrawQuad(transform.GetTransform(), sprite.Color);
+				Renderer2D::DrawCircle(transform.GetTransform(), circle.Color, circle.Thickness, circle.Fade, (int)entity);
+			}
 		}
 		Renderer2D::EndScene();
 	}
@@ -180,18 +193,36 @@ namespace Hazle
 		{
 			//HZ_CORE_INFO("PROJECTION: {0}", glm::to_string(mainCamera->GetProjection()));
 			//HZ_CORE_INFO("VIEW: {0}", glm::to_string(glm::inverse(*cameraTransform)));
-			Renderer2D::BeginScene(*mainCamera, cameraTransform);
-			auto& group = m_Registry.group<CTransform, CSpriteRenderer>();
-			for (auto& entity : group)
-			{
-				auto& transform = group.get<CTransform>(entity);
-				auto& sprite = group.get<CSpriteRenderer>(entity);
-				if(sprite.Texture)
-					Hazle::Renderer2D::DrawQuad(transform.GetTransform(), sprite.Color, sprite.Texture);
-				else
-					Hazle::Renderer2D::DrawQuad(transform.GetTransform(), sprite.Color);
 
-				//HZ_CORE_INFO("Drawing!!! {0} {1} {2}, {3}", transform.Transform[3][0], transform.Transform[3][1], transform.Transform[3][2], glm::to_string(sprite.Color));
+			//Draw sprites/Quads
+			Renderer2D::BeginScene(*mainCamera, cameraTransform);
+			{
+				auto& view = m_Registry.view<CTransform, CSpriteRenderer>();
+				for (auto& entity : view)
+				{
+					auto& transform = view.get<CTransform>(entity);
+					auto& sprite = view.get<CSpriteRenderer>(entity);
+					if (sprite.Texture)
+						Hazle::Renderer2D::DrawQuad(transform.GetTransform(), sprite.Color, sprite.Texture);
+					else
+						Hazle::Renderer2D::DrawQuad(transform.GetTransform(), sprite.Color);
+
+					//HZ_CORE_INFO("Drawing!!! {0} {1} {2}, {3}", transform.Transform[3][0], transform.Transform[3][1], transform.Transform[3][2], glm::to_string(sprite.Color));
+				}
+			}
+
+			// Draw Circles
+			{
+				auto& view = m_Registry.view<CTransform, CCircleRenderer>();
+				for (auto& entity : view)
+				{
+					auto& transform = view.get<CTransform>(entity);
+					auto& circle = view.get<CCircleRenderer>(entity);
+					
+					Hazle::Renderer2D::DrawCircle(transform.GetTransform(), circle.Color, circle.Thickness, circle.Fade, (int)entity);
+
+					//HZ_CORE_INFO("Drawing!!! {0} {1} {2}, {3}", transform.Transform[3][0], transform.Transform[3][1], transform.Transform[3][2], glm::to_string(sprite.Color));
+				}
 			}
 			Renderer2D::EndScene();
 		}
@@ -254,6 +285,7 @@ namespace Hazle
 		CopyComponentIfExists<CTransform>(newEntity, entity);
 		CopyComponentIfExists<CCamera>(newEntity, entity);
 		CopyComponentIfExists<CSpriteRenderer>(newEntity, entity);
+		CopyComponentIfExists<CCircleRenderer>(newEntity, entity);
 		CopyComponentIfExists<CNativeScript>(newEntity, entity);
 		CopyComponentIfExists<CRigidBody2D>(newEntity, entity);
 		CopyComponentIfExists<CBoxCollider2D>(newEntity, entity);
@@ -286,6 +318,7 @@ namespace Hazle
 		CopyComponent<CTransform>		(dstSceneReg, srcSceneReg, enttMap);
 		CopyComponent<CCamera>			(dstSceneReg, srcSceneReg, enttMap);
 		CopyComponent<CSpriteRenderer>	(dstSceneReg, srcSceneReg, enttMap);
+		CopyComponent<CCircleRenderer>	(dstSceneReg, srcSceneReg, enttMap);
 		CopyComponent<CNativeScript>	(dstSceneReg, srcSceneReg, enttMap);
 		CopyComponent<CRigidBody2D>		(dstSceneReg, srcSceneReg, enttMap);
 		CopyComponent<CBoxCollider2D>	(dstSceneReg, srcSceneReg, enttMap);
@@ -315,6 +348,10 @@ namespace Hazle
 	
 	template<>
 	void Hazle::Scene::OnComponentAdded<CSpriteRenderer>(Entity entity, CSpriteRenderer& component)
+	{}
+	
+	template<>
+	void Hazle::Scene::OnComponentAdded<CCircleRenderer>(Entity entity, CCircleRenderer& component)
 	{}
 	
 	template<>
