@@ -12,6 +12,7 @@
 #include "box2d/b2_body.h"
 #include "box2d/b2_fixture.h"
 #include "box2d/b2_polygon_shape.h"
+#include "box2d/b2_circle_shape.h"
 
 #define GLM_ENABLE_EXPERIMENTAL
 #include <glm/gtx/string_cast.hpp>
@@ -92,6 +93,24 @@ namespace Hazle
 
 				body->CreateFixture(&fixtureDef);
 			}
+
+			if (entity.hasComponent<CCircleCollider2D>())
+			{
+				auto& cc2d = entity.getComponent<CCircleCollider2D>();
+
+				b2CircleShape circleShape;
+				circleShape.m_p.Set(cc2d.Offset.x, cc2d.Offset.y);
+				circleShape.m_radius = transform.Scale.x * cc2d.Radius;
+
+				b2FixtureDef fixtureDef;
+				fixtureDef.shape				= &circleShape;
+				fixtureDef.density				= cc2d.Density;
+				fixtureDef.friction				= cc2d.Friction;
+				fixtureDef.restitution			= cc2d.Restitution;
+				fixtureDef.restitutionThreshold = cc2d.RestitutionThreshold;
+
+				body->CreateFixture(&fixtureDef);
+			}
 		}
 
 	}
@@ -114,7 +133,8 @@ namespace Hazle
 				auto& transform = view.get<CTransform>(entity);
 				auto& sprite = view.get<CSpriteRenderer>(entity);
 				//Renderer2D::DrawQuad(transform.GetTransform(), sprite.Color);
-				Renderer2D::DrawSprite(transform.GetTransform(), sprite, (int)entity);
+				Renderer2D::DrawSprite(transform.GetTransform(), sprite, (int)entity); // draw actual sprites
+				//Renderer2D::DrawRect(transform.GetTransform(), {1.0f, 1.0f, 0.0f, 1.0f}, (int)entity); // draw wireframe of the entities
 			}
 		}
 
@@ -128,6 +148,11 @@ namespace Hazle
 				Renderer2D::DrawCircle(transform.GetTransform(), circle.Color, circle.Thickness, circle.Fade, (int)entity);
 			}
 		}
+
+		// USE FOR DUBUG ONLY
+		//Renderer2D::DrawLine(glm::vec3(0.0f), glm::vec3(2.0f, 2.0f, 0.0f), { 0.0f, 1.0f, 1.0f, 1.0f });
+		//Renderer2D::DrawRect(glm::vec3(0.0f), {5.0f, 5.0f},  { 1.0f, 0.0f, 1.0f, 1.0f });
+
 		Renderer2D::EndScene();
 	}
 
@@ -224,6 +249,12 @@ namespace Hazle
 					//HZ_CORE_INFO("Drawing!!! {0} {1} {2}, {3}", transform.Transform[3][0], transform.Transform[3][1], transform.Transform[3][2], glm::to_string(sprite.Color));
 				}
 			}
+			
+
+			// USE FOR DEBUG ONLY
+			//Renderer2D::DrawLine(glm::vec3(0.0f, 0.0f, 0.0f), glm::vec3(5.0f, 5.0f, 0.0f), { 0.0f, 1.0f, 1.0f, 1.0f });
+			//Renderer2D::DrawRect(glm::vec3(2.0f), glm::vec2(5.0f), { 0.0f, 1.0f, 1.0f, 1.0f });
+
 			Renderer2D::EndScene();
 		}
 	}
@@ -282,13 +313,14 @@ namespace Hazle
 
 
 		//Copy Components except tag and ID
-		CopyComponentIfExists<CTransform>(newEntity, entity);
-		CopyComponentIfExists<CCamera>(newEntity, entity);
-		CopyComponentIfExists<CSpriteRenderer>(newEntity, entity);
-		CopyComponentIfExists<CCircleRenderer>(newEntity, entity);
-		CopyComponentIfExists<CNativeScript>(newEntity, entity);
-		CopyComponentIfExists<CRigidBody2D>(newEntity, entity);
-		CopyComponentIfExists<CBoxCollider2D>(newEntity, entity);
+		CopyComponentIfExists<CTransform>		(newEntity, entity);
+		CopyComponentIfExists<CCamera>			(newEntity, entity);
+		CopyComponentIfExists<CSpriteRenderer>	(newEntity, entity);
+		CopyComponentIfExists<CCircleRenderer>	(newEntity, entity);
+		CopyComponentIfExists<CNativeScript>	(newEntity, entity);
+		CopyComponentIfExists<CRigidBody2D>		(newEntity, entity);
+		CopyComponentIfExists<CBoxCollider2D>	(newEntity, entity);
+		CopyComponentIfExists<CCircleCollider2D>(newEntity, entity);
 	}
 
 
@@ -322,6 +354,7 @@ namespace Hazle
 		CopyComponent<CNativeScript>	(dstSceneReg, srcSceneReg, enttMap);
 		CopyComponent<CRigidBody2D>		(dstSceneReg, srcSceneReg, enttMap);
 		CopyComponent<CBoxCollider2D>	(dstSceneReg, srcSceneReg, enttMap);
+		CopyComponent<CCircleCollider2D>(dstSceneReg, srcSceneReg, enttMap);
 
 		return newScene;
 	}
@@ -368,6 +401,10 @@ namespace Hazle
 	
 	template<>
 	void Hazle::Scene::OnComponentAdded<CBoxCollider2D>(Entity entity, CBoxCollider2D& component)
+	{}
+	
+	template<>
+	void Hazle::Scene::OnComponentAdded<CCircleCollider2D>(Entity entity, CCircleCollider2D& component)
 	{}
 	
 }

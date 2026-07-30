@@ -28,6 +28,8 @@ namespace Hazle
 	private:
 		bool OnKeyPresedEvent(KeyPressedEvent& e);
 		bool OnMouseButtonPresedEvent(MouseButtonPressedEvent& e);
+		void OnOverlayRender();
+
 		void NewScene();
 		void OpenScene();
 		void OpenScene(const std::filesystem::path& path);
@@ -67,6 +69,7 @@ namespace Hazle
 		SceneHierarchyPanel m_SceneHierarchyPanel;
 		ContentBrowserPanel m_ContentBrowserPanel;
 
+		bool m_ShowPhysicsColliders = false;
 
 		enum class SceneState
 		{

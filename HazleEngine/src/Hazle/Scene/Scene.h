@@ -31,6 +31,12 @@ namespace Hazle
 
 		Entity GetPrimaryCameraEntity();
 
+		template<typename... T>
+		auto GetAllEntitiesWith()
+		{
+			return m_Registry.view<T...>();
+		}
+
 		static Ref<Scene> Copy(Ref<Scene> other);
 	private:
 		template<typename T>

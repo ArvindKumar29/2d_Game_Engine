@@ -6,7 +6,7 @@ Entities:
     TransformComponent:
       Translation: [-2, 3.4, 0]
       Rotation: [0, -0, 0]
-      Scale: [1, 1, 1]
+      Scale: [5, 5, 1]
     CircleRendererComponent:
       Color: [1, 0.294896, 0, 1]
       Thickness: 1
@@ -14,20 +14,20 @@ Entities:
     RigidBodyComponent:
       BodyType: Dynamic
       FixedRotation: false
-    BoxCollider2DComponent:
+    CircleCollider2DComponent:
       Offset: [0, 0]
-      Size: [0.5, 0.5]
+      Radius: 0.5
       Density: 1
       Friction: 0.5
-      Restitution: 0.41
+      Restitution: 0
       RestitutionThreshold: 0.5
   - Entity: 1599598190
     TagComponent:
       Tag: Platform Red
     TransformComponent:
-      Translation: [-5.3206205, -0.40963504, 0]
-      Rotation: [0, -0, 1.2116576]
-      Scale: [0.8940613, 8.667912, 1]
+      Translation: [-7.9170966, -0.87269926, 0]
+      Rotation: [0, -0, 0.9332921]
+      Scale: [0.894062, 8.667918, 1]
     SpriteRendrerComponent:
       Color: [1, 0, 0, 1]
     RigidBodyComponent:
@@ -44,9 +44,9 @@ Entities:
     TagComponent:
       Tag: Platform Blue
     TransformComponent:
-      Translation: [0, 0, 0]
-      Rotation: [0, 0, 0.47123888]
-      Scale: [11.2, 1, 1]
+      Translation: [0.50168777, -1.7740293, 0]
+      Rotation: [0, -0, 0.2755992]
+      Scale: [11.200019, 0.9999999, 1]
     SpriteRendrerComponent:
       Color: [0, 0, 1, 1]
     RigidBodyComponent:
@@ -79,13 +79,13 @@ Entities:
       FixedAspectRatio: false
   - Entity: 220084373
     TagComponent:
-      Tag: Green Collider Square 2
+      Tag: Cyan Collider Square 2
     TransformComponent:
       Translation: [-4.9651856, 6.588807, 0]
       Rotation: [-4.2632568e-14, 1.1175897e-07, -2.5058994]
       Scale: [1, 1, 1]
     SpriteRendrerComponent:
-      Color: [0, 1, 0, 1]
+      Color: [0, 0.9829869, 1, 1]
     RigidBodyComponent:
       BodyType: Dynamic
       FixedRotation: false
@@ -98,13 +98,13 @@ Entities:
       RestitutionThreshold: 0.5
   - Entity: 515656282
     TagComponent:
-      Tag: Green Collider Square 1
+      Tag: Cyan Collider Square 1
     TransformComponent:
-      Translation: [0, 6, 0]
-      Rotation: [0, 0, 4.91512]
+      Translation: [-0.60484207, 8.82293, 0]
+      Rotation: [0, -0, -1.3680654]
       Scale: [1, 1, 1]
     SpriteRendrerComponent:
-      Color: [0, 1, 0, 1]
+      Color: [0, 0.9843137, 1, 1]
     RigidBodyComponent:
       BodyType: Dynamic
       FixedRotation: false
@@ -112,6 +112,6 @@ Entities:
       Offset: [0, 0]
       Size: [0.5, 0.5]
       Density: 1
-      Friction: 0.5
-      Restitution: 0.5
-      RestitutionThreshold: 0.5
+      Friction: 0.09
+      Restitution: 0.6
+      RestitutionThreshold: 0.6

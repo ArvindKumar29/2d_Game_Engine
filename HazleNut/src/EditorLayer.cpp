@@ -270,6 +270,60 @@ namespace Hazle
 		return false;
 	}
 
+	void EditorLayer::OnOverlayRender()
+	{
+		if (m_SceneState == SceneState::Play)
+		{
+			Entity camera = m_ActiveScene->GetPrimaryCameraEntity();
+			Renderer2D::BeginScene(camera.getComponent<CCamera>().camera, camera.getComponent<CTransform>().GetTransform());
+		}
+		else
+		{
+			Renderer2D::BeginScene(m_EditorCamera);
+		}
+
+		if (m_ShowPhysicsColliders)
+		{
+			//CIRCLE COLLIDERS
+			{
+				auto view = m_ActiveScene->GetAllEntitiesWith<CTransform, CCircleCollider2D>();
+				for (auto entity : view)
+				{
+					auto transform = view.get<CTransform>(entity);
+					auto cc2d = view.get<CCircleCollider2D>(entity);
+
+					glm::vec3 translation = transform.Translation + glm::vec3(cc2d.Offset, 0.001f);
+					glm::vec3 scale = transform.Scale * glm::vec3(cc2d.Radius * 2.0f);
+
+
+					glm::mat4 trans = glm::translate(glm::mat4(1.0f), translation)
+						* glm::scale(glm::mat4(1.0f), scale);
+					Renderer2D::DrawCircle(trans, glm::vec4(0, 1, 0, 1), 0.05f);
+				}
+			}
+
+			//BOX COLLIDERS
+			{
+				auto view = m_ActiveScene->GetAllEntitiesWith<CTransform, CBoxCollider2D>();
+				for (auto entity : view)
+				{
+					auto transform = view.get<CTransform>(entity);
+					auto bc2d = view.get<CBoxCollider2D>(entity);
+
+					glm::vec3 translation = transform.Translation + glm::vec3(bc2d.Offset, 0.001f);
+					glm::vec3 scale = transform.Scale * glm::vec3(bc2d.Size * 2.0f, 1.0f);
+					float rotation = transform.Rotation.z;
+
+					glm::mat4 trans = glm::translate(glm::mat4(1.0f), translation)
+						* glm::rotate(glm::mat4(1.0f), rotation, glm::vec3(0.0f, 0.0f, 1.0f))
+						* glm::scale(glm::mat4(1.0f), scale);
+					Renderer2D::DrawRect(trans, glm::vec4(0, 1, 0, 1));
+				}
+			}
+		}
+		Renderer2D::EndScene();
+	}
+
 	void EditorLayer::OnUpdate(Timestep ts)
 	{
 
@@ -331,6 +385,9 @@ namespace Hazle
 			m_HoveredEntity = pixelData == -1 ? Entity() : Entity((entt::entity)pixelData, m_ActiveScene.get());
 		}
 		
+		OnOverlayRender();
+
+
 		m_FrameBuffer->Unbind();
 		
 	}
@@ -449,6 +506,7 @@ namespace Hazle
 		
 		ImGui::Separator();
 
+		ImGui::Checkbox("Show Physics Colliders", &m_ShowPhysicsColliders);
 		//ImGui::DragFloat3("Camera Trasnform: ",
 		//	glm::value_ptr(m_PrimaryCameraptr.getComponent<CTransform>().Translation));
 		ImGui::Separator();

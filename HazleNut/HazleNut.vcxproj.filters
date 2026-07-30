@@ -28,5 +28,6 @@
     <None Include="Assets\Shaders\Circle.glsl" />
     <None Include="Assets\Shaders\FlatColorShader.glsl" />
     <None Include="Assets\Shaders\Quad.glsl" />
+    <None Include="Assets\Shaders\Line.glsl" />
   </ItemGroup>
 </Project>

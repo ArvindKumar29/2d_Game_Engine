@@ -161,6 +161,7 @@
   <ItemGroup>
     <None Include="Assets\Shaders\Circle.glsl" />
     <None Include="Assets\Shaders\FlatColorShader.glsl" />
+    <None Include="Assets\Shaders\Line.glsl" />
     <None Include="Assets\Shaders\Quad.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

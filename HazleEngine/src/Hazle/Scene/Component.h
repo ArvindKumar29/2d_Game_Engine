@@ -136,4 +136,21 @@ namespace Hazle
 		CBoxCollider2D( const CBoxCollider2D& ) = default;
 
 	};
+	
+	struct CCircleCollider2D
+	{
+		glm::vec2 Offset = { 0.0f, 0.0f };
+		float Radius = 0.5f;
+
+		float Density = 1.0f;
+		float Friction = 0.5f;
+		float Restitution = 0.0f;
+		float RestitutionThreshold = 0.5f;
+
+		void* RuntimeFixture = nullptr;
+
+		CCircleCollider2D() = default;
+		CCircleCollider2D( const CCircleCollider2D& ) = default;
+
+	};
 }

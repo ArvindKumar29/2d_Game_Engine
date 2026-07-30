@@ -30,6 +30,15 @@ namespace Hazle
 		//Edirtor Only
 		int EntityID;
 	};
+	
+	struct LineVertex
+	{
+		glm::vec3 Position;
+		glm::vec4 Color;
+		
+		//Edirtor Only
+		int EntityID;
+	};
 
 	struct Renderer2DData {
 		const uint32_t MaxQuads = 1000000;
@@ -37,22 +46,32 @@ namespace Hazle
 		const uint32_t MaxIndices = MaxQuads * 6;
 		static const uint32_t MaxTextureSlots = 32; //TODO: RenderCaps
 
+		//Quads
 		Ref<VertexArray> m_QuadVA;
 		Ref<VertexBuffer> m_QuadBuffer;
 		Ref<Shader> m_TextureShader;
 		Ref<Texture2D> m_WhiteTexture;
-
-		Ref<VertexArray> m_CircleVA;
-		Ref<VertexBuffer> m_CircleBuffer;
-		Ref<Shader> m_CircleShader;
-
 		uint32_t m_QuadIndexCount = 0;
 		QuadVertex* m_QuadVertexBufferBase = nullptr;
 		QuadVertex* m_QuadVertexBufferPtr = nullptr;
 		
+		//Circles
+		Ref<VertexArray> m_CircleVA;
+		Ref<VertexBuffer> m_CircleBuffer;
+		Ref<Shader> m_CircleShader;
 		uint32_t m_CircleIndexCount = 0;
 		CircleVertex* m_CircleVertexBufferBase = nullptr;
 		CircleVertex* m_CircleVertexBufferPtr = nullptr;
+		
+		//Lines
+		Ref<VertexArray> m_LineVA;
+		Ref<VertexBuffer> m_LineBuffer;
+		Ref<Shader> m_LineShader;
+		uint32_t m_LineVertexCount = 0;
+		LineVertex* m_LineVertexBufferBase = nullptr;
+		LineVertex* m_LineVertexBufferPtr = nullptr;
+		float thickness = 2.0f;
+
 
 		std::array<Ref<Texture2D>, MaxTextureSlots> m_TextureSlots;
 		uint32_t m_TextureSlotIndex = 1; // 0 = white texture
@@ -116,6 +135,18 @@ namespace Hazle
 		s_Data.m_CircleVA->AddVertexBuffer(s_Data.m_CircleBuffer);
 		s_Data.m_CircleVA->SetIndexBuffer(QuadIB); // Use quadIB as it has the same parameters
 		s_Data.m_CircleVertexBufferBase = new CircleVertex[s_Data.MaxVertices];
+		
+		// Lines
+		s_Data.m_LineVA = VertexArray::Create();
+		s_Data.m_LineBuffer = VertexBuffer::Create(s_Data.MaxVertices * sizeof(LineVertex));
+		s_Data.m_LineBuffer->SetLayout({
+			{ShaderDataType::Float3, "a_Position" },
+			{ShaderDataType::Float4, "a_Color"	  },
+			{ShaderDataType::Int,    "a_EntityID" }
+			});
+		s_Data.m_LineVA->AddVertexBuffer(s_Data.m_LineBuffer);
+		//s_Data.m_LineVA->SetIndexBuffer(QuadIB); // Use quadIB as it has the same parameters
+		s_Data.m_LineVertexBufferBase = new LineVertex[s_Data.MaxVertices];
 
 		s_Data.m_WhiteTexture = Texture2D::Create(1, 1);
 		uint32_t whitePixel = 0xffffffff;
@@ -128,6 +159,7 @@ namespace Hazle
 
 		s_Data.m_TextureShader = Shader::Create("Assets/Shaders/Quad.glsl");
 		s_Data.m_CircleShader = Shader::Create("Assets/Shaders/Circle.glsl");
+		s_Data.m_LineShader = Shader::Create("Assets/Shaders/Line.glsl");
 		s_Data.m_TextureShader->Bind();
 		s_Data.m_TextureShader->SetIntArray("u_Texture", samplers, s_Data.MaxTextureSlots);
 
@@ -153,6 +185,10 @@ namespace Hazle
 		s_Data.m_CircleShader->Bind();
 		s_Data.m_CircleShader->SetMat4("u_VP", viewProj);
 		
+		//Lines
+		s_Data.m_LineShader->Bind();
+		s_Data.m_LineShader->SetMat4("u_VP", viewProj);
+		
 		StartBatch();
 
 		//HZ_CORE_WARN("SCENE STARTED WITH CAMERA!!!");
@@ -168,6 +204,10 @@ namespace Hazle
 		s_Data.m_CircleShader->Bind();
 		s_Data.m_CircleShader->SetMat4("u_VP", camera.GetVPMatrix());
 		
+		//Lines
+		s_Data.m_LineShader->Bind();
+		s_Data.m_LineShader->SetMat4("u_VP", camera.GetVPMatrix());
+		
 		StartBatch();
 	}
 
@@ -182,6 +222,10 @@ namespace Hazle
 		//Circles
 		s_Data.m_CircleShader->Bind();
 		s_Data.m_CircleShader->SetMat4("u_VP", viewProj);
+		
+		//Lines
+		s_Data.m_LineShader->Bind();
+		s_Data.m_LineShader->SetMat4("u_VP", viewProj);
 
 		StartBatch();
 	}
@@ -217,6 +261,17 @@ namespace Hazle
 			RenderCommand::DrawIndexed(s_Data.m_CircleVA, s_Data.m_CircleIndexCount);
 			s_Data.m_Stats.DrawCalls++;
 		}
+		
+		if (s_Data.m_LineVertexCount)
+		{
+			uint32_t dataSize = (uint32_t)((uint8_t*)s_Data.m_LineVertexBufferPtr - (uint8_t*)s_Data.m_LineVertexBufferBase);
+			s_Data.m_LineBuffer->SetData(s_Data.m_LineVertexBufferBase, dataSize);
+			
+			s_Data.m_LineShader->Bind();
+			RenderCommand::SetLineWidth(s_Data.thickness);
+			RenderCommand::DrawLines(s_Data.m_LineVA, s_Data.m_LineVertexCount);
+			s_Data.m_Stats.DrawCalls++;
+		}
 	}
 
 	void Renderer2D::StartBatch()
@@ -228,6 +283,9 @@ namespace Hazle
 		
 		s_Data.m_CircleIndexCount = 0;
 		s_Data.m_CircleVertexBufferPtr = s_Data.m_CircleVertexBufferBase;
+		
+		s_Data.m_LineVertexCount = 0;
+		s_Data.m_LineVertexBufferPtr = s_Data.m_LineVertexBufferBase;
 
 		s_Data.m_TextureSlotIndex = 1;
 	}
@@ -401,14 +459,6 @@ namespace Hazle
 
 	void Renderer2D::DrawCircle(const glm::mat4& transform, const glm::vec4& color, float thickness, float fade, int entityID)
 	{
-		//TODO: TO BE REMOVED OR KEPT FOR CIRCLES AND WILL BE DECIDED LATER
-		//constexpr glm::vec2 textureCoord[] = {
-		//	{0.0f, 0.0f},
-		//	{1.0f, 0.0f},
-		//	{1.0f, 1.0f},
-		//	{0.0f, 1.0f}
-		//};
-
 		// TODO: TO BE IMPLEMENTED FOR CIRCLES SEPERATELY
 		if (s_Data.m_QuadIndexCount >= s_Data.MaxIndices)
 			FlushAndReset();
@@ -428,6 +478,56 @@ namespace Hazle
 		s_Data.m_CircleIndexCount += 6;
 
 		s_Data.m_Stats.QuadCount++;
+	}
+
+	void Renderer2D::DrawLine(const glm::vec3& p0, const glm::vec3& p1, const glm::vec4& color, int entityID)
+	{
+		s_Data.m_LineVertexBufferPtr->Position	= p0;
+		s_Data.m_LineVertexBufferPtr->Color		= color;
+		s_Data.m_LineVertexBufferPtr->EntityID	= entityID;
+		s_Data.m_LineVertexBufferPtr++;
+		
+		s_Data.m_LineVertexBufferPtr->Position	= p1;
+		s_Data.m_LineVertexBufferPtr->Color		= color;
+		s_Data.m_LineVertexBufferPtr->EntityID	= entityID;
+		s_Data.m_LineVertexBufferPtr++;
+
+		s_Data.m_LineVertexCount += 2;
+	}
+
+	void Renderer2D::DrawRect(const glm::mat4& transform, const glm::vec4& color, int entityID)
+	{
+		glm::vec3 lineVertex[4];
+		for (size_t i = 0; i < 4; i++)
+			lineVertex[i] = transform * s_Data.m_QuadVertexPositions[i];
+
+		DrawLine(lineVertex[0], lineVertex[1], color);
+		DrawLine(lineVertex[1], lineVertex[2], color);
+		DrawLine(lineVertex[2], lineVertex[3], color);
+		DrawLine(lineVertex[3], lineVertex[0], color);
+	}
+
+	void Renderer2D::DrawRect(const glm::vec3& position, glm::vec2 size, const glm::vec4& color, int entityID)
+	{
+		glm::vec3 p0 = glm::vec3(position.x - size.x * 0.5f, position.y - size.y * 0.5f, position.z);
+		glm::vec3 p1 = glm::vec3(position.x - size.x * 0.5f, position.y + size.y * 0.5f, position.z);
+		glm::vec3 p2 = glm::vec3(position.x + size.x * 0.5f, position.y + size.y * 0.5f, position.z);
+		glm::vec3 p3 = glm::vec3(position.x + size.x * 0.5f, position.y - size.y * 0.5f, position.z);
+
+		DrawLine(p0, p1, color);
+		DrawLine(p1, p2, color);
+		DrawLine(p2, p3, color);
+		DrawLine(p3, p0, color);
+	}
+
+	float Renderer2D::GetLineWidth()
+	{
+		return s_Data.thickness;
+	}
+
+	void Renderer2D::SetLineWidth(float thickness)
+	{
+		s_Data.thickness = thickness;
 	}
 
 	void Renderer2D::DrawSprite(const glm::mat4& transform, CSpriteRenderer& sprite, int entityID)
