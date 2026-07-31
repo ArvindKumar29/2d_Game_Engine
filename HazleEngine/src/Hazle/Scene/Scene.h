@@ -22,10 +22,13 @@ namespace Hazle
 
 		void OnRuntimeStart();
 		void OnRuntimeStop();
+		void OnSimulationStart();
+		void OnSimulationStop();
 
 		void OnViewportResize(uint32_t width, uint32_t height);
 		void OnUpdateEditor(Timestep ts, EditorCamera& camera);
 		void OnUpdateRuntime(Timestep ts);
+		void OnUpdateSimulation(EditorCamera& camera, Timestep ts);
 
 		void DuplicateEntity(Entity entity);
 
@@ -41,6 +44,10 @@ namespace Hazle
 	private:
 		template<typename T>
 		void OnComponentAdded(Entity entity, T& component);
+		void OnPhysicsStart();
+		void OnPhysicsStop();
+
+		void RenderScene(EditorCamera& camera);
 
 		entt::registry m_Registry;
 		uint32_t m_ViewportWidth, m_ViewportHeight;

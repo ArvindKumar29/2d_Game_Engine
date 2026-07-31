@@ -60,100 +60,28 @@ namespace Hazle
 
 	void Scene::OnRuntimeStart()
 	{
-		m_PhysicsWorld = new b2World({0.0f, -9.8f});
-		auto view = m_Registry.view<CRigidBody2D>();
-		for (auto e : view)
-		{
-			Entity entity = { e, this };
-			auto& transform = entity.getComponent<CTransform>();
-			auto& rb2d = entity.getComponent<CRigidBody2D>();
-
-			b2BodyDef bodyDef;
-			bodyDef.type = RigidBody2DTypeToBox2DBodyType(rb2d.Type);
-			bodyDef.position.Set(transform.Translation.x, transform.Translation.y);
-			bodyDef.angle = transform.Rotation.z;
-
-			b2Body* body = m_PhysicsWorld->CreateBody(&bodyDef);
-			body->SetFixedRotation(rb2d.FixedRotation);
-			rb2d.RuntimeBody = body;
-
-			if (entity.hasComponent<CBoxCollider2D>())
-			{
-				auto& bc2d = entity.getComponent<CBoxCollider2D>();
-
-				b2PolygonShape boxShape;
-				boxShape.SetAsBox(bc2d.Size.x * transform.Scale.x, bc2d.Size.y * transform.Scale.y);
-
-				b2FixtureDef fixtureDef;
-				fixtureDef.shape				= &boxShape;
-				fixtureDef.density				= bc2d.Density;
-				fixtureDef.friction				= bc2d.Friction;
-				fixtureDef.restitution			= bc2d.Restitution;
-				fixtureDef.restitutionThreshold = bc2d.RestitutionThreshold;
-
-				body->CreateFixture(&fixtureDef);
-			}
-
-			if (entity.hasComponent<CCircleCollider2D>())
-			{
-				auto& cc2d = entity.getComponent<CCircleCollider2D>();
-
-				b2CircleShape circleShape;
-				circleShape.m_p.Set(cc2d.Offset.x, cc2d.Offset.y);
-				circleShape.m_radius = transform.Scale.x * cc2d.Radius;
-
-				b2FixtureDef fixtureDef;
-				fixtureDef.shape				= &circleShape;
-				fixtureDef.density				= cc2d.Density;
-				fixtureDef.friction				= cc2d.Friction;
-				fixtureDef.restitution			= cc2d.Restitution;
-				fixtureDef.restitutionThreshold = cc2d.RestitutionThreshold;
-
-				body->CreateFixture(&fixtureDef);
-			}
-		}
-
+		OnPhysicsStart();
 	}
 	
 	
 	void Scene::OnRuntimeStop()
 	{
-		delete m_PhysicsWorld;
-		m_PhysicsWorld = nullptr;
+		OnPhysicsStop();
+	}
+
+	void Scene::OnSimulationStart()
+	{
+		OnPhysicsStart();
+	}
+
+	void Scene::OnSimulationStop()
+	{
+		OnPhysicsStop();
 	}
 
 	void Scene::OnUpdateEditor(Timestep ts, EditorCamera& camera)
 	{
-		Renderer2D::BeginScene(camera);
-		{
-
-			auto view = m_Registry.view<CTransform, CSpriteRenderer>();
-			for (auto entity : view)
-			{
-				auto& transform = view.get<CTransform>(entity);
-				auto& sprite = view.get<CSpriteRenderer>(entity);
-				//Renderer2D::DrawQuad(transform.GetTransform(), sprite.Color);
-				Renderer2D::DrawSprite(transform.GetTransform(), sprite, (int)entity); // draw actual sprites
-				//Renderer2D::DrawRect(transform.GetTransform(), {1.0f, 1.0f, 0.0f, 1.0f}, (int)entity); // draw wireframe of the entities
-			}
-		}
-
-		{
-			auto view = m_Registry.view<CTransform, CCircleRenderer>();
-			for (auto entity : view)
-			{
-				auto& transform = view.get<CTransform>(entity);
-				auto& circle = view.get<CCircleRenderer>(entity);
-				//Renderer2D::DrawQuad(transform.GetTransform(), sprite.Color);
-				Renderer2D::DrawCircle(transform.GetTransform(), circle.Color, circle.Thickness, circle.Fade, (int)entity);
-			}
-		}
-
-		// USE FOR DUBUG ONLY
-		//Renderer2D::DrawLine(glm::vec3(0.0f), glm::vec3(2.0f, 2.0f, 0.0f), { 0.0f, 1.0f, 1.0f, 1.0f });
-		//Renderer2D::DrawRect(glm::vec3(0.0f), {5.0f, 5.0f},  { 1.0f, 0.0f, 1.0f, 1.0f });
-
-		Renderer2D::EndScene();
+		RenderScene(camera);
 	}
 
 
@@ -259,6 +187,35 @@ namespace Hazle
 		}
 	}
 
+	void Scene::OnUpdateSimulation(EditorCamera& camera, Timestep ts)
+	{
+		//Update Physics Simulation
+		if (m_PhysicsWorld)
+		{
+			const int32_t velocityIterations = 6;
+			const int32_t positionIterations = 2;
+			m_PhysicsWorld->Step(ts, velocityIterations, positionIterations);
+
+			//Retrieve Transform from Box2D
+			auto view = m_Registry.view<CRigidBody2D>();
+			for (auto e : view)
+			{
+				Entity entity = { e, this };
+				auto& transform = entity.getComponent<CTransform>();
+				auto& rb2d = entity.getComponent<CRigidBody2D>();
+
+				b2Body* body = (b2Body*)rb2d.RuntimeBody;
+				const auto& position = body->GetPosition();
+				transform.Translation.x = position.x;
+				transform.Translation.y = position.y;
+				transform.Rotation.z = body->GetAngle();
+			}
+		}
+
+		//Render
+		RenderScene(camera);
+	}
+
 	Entity Scene::GetPrimaryCameraEntity()
 	{
 		auto view = m_Registry.view<CCamera>();
@@ -357,6 +314,103 @@ namespace Hazle
 		CopyComponent<CCircleCollider2D>(dstSceneReg, srcSceneReg, enttMap);
 
 		return newScene;
+	}
+
+	void Scene::OnPhysicsStart()
+	{
+		m_PhysicsWorld = new b2World({ 0.0f, -9.8f });
+		auto view = m_Registry.view<CRigidBody2D>();
+		for (auto e : view)
+		{
+			Entity entity = { e, this };
+			auto& transform = entity.getComponent<CTransform>();
+			auto& rb2d = entity.getComponent<CRigidBody2D>();
+
+			b2BodyDef bodyDef;
+			bodyDef.type = RigidBody2DTypeToBox2DBodyType(rb2d.Type);
+			bodyDef.position.Set(transform.Translation.x, transform.Translation.y);
+			bodyDef.angle = transform.Rotation.z;
+
+			b2Body* body = m_PhysicsWorld->CreateBody(&bodyDef);
+			body->SetFixedRotation(rb2d.FixedRotation);
+			rb2d.RuntimeBody = body;
+
+			if (entity.hasComponent<CBoxCollider2D>())
+			{
+				auto& bc2d = entity.getComponent<CBoxCollider2D>();
+
+				b2PolygonShape boxShape;
+				boxShape.SetAsBox(bc2d.Size.x * transform.Scale.x, bc2d.Size.y * transform.Scale.y);
+
+				b2FixtureDef fixtureDef;
+				fixtureDef.shape = &boxShape;
+				fixtureDef.density = bc2d.Density;
+				fixtureDef.friction = bc2d.Friction;
+				fixtureDef.restitution = bc2d.Restitution;
+				fixtureDef.restitutionThreshold = bc2d.RestitutionThreshold;
+
+				body->CreateFixture(&fixtureDef);
+			}
+
+			if (entity.hasComponent<CCircleCollider2D>())
+			{
+				auto& cc2d = entity.getComponent<CCircleCollider2D>();
+
+				b2CircleShape circleShape;
+				circleShape.m_p.Set(cc2d.Offset.x, cc2d.Offset.y);
+				circleShape.m_radius = transform.Scale.x * cc2d.Radius;
+
+				b2FixtureDef fixtureDef;
+				fixtureDef.shape = &circleShape;
+				fixtureDef.density = cc2d.Density;
+				fixtureDef.friction = cc2d.Friction;
+				fixtureDef.restitution = cc2d.Restitution;
+				fixtureDef.restitutionThreshold = cc2d.RestitutionThreshold;
+
+				body->CreateFixture(&fixtureDef);
+			}
+		}
+	}
+
+	void Scene::OnPhysicsStop()
+	{
+		delete m_PhysicsWorld;
+		m_PhysicsWorld = nullptr;
+	}
+
+	void Scene::RenderScene(EditorCamera& camera)
+	{
+		Renderer2D::BeginScene(camera);
+		{
+			//DRAW QUADS
+			auto view = m_Registry.view<CTransform, CSpriteRenderer>();
+			for (auto entity : view)
+			{
+				auto& transform = view.get<CTransform>(entity);
+				auto& sprite = view.get<CSpriteRenderer>(entity);
+				//Renderer2D::DrawQuad(transform.GetTransform(), sprite.Color);
+				Renderer2D::DrawSprite(transform.GetTransform(), sprite, (int)entity); // draw actual sprites
+				//Renderer2D::DrawRect(transform.GetTransform(), {1.0f, 1.0f, 0.0f, 1.0f}, (int)entity); // draw wireframe of the entities
+			}
+		}
+
+		//DRAW CIRCLES
+		{
+			auto view = m_Registry.view<CTransform, CCircleRenderer>();
+			for (auto entity : view)
+			{
+				auto& transform = view.get<CTransform>(entity);
+				auto& circle = view.get<CCircleRenderer>(entity);
+				//Renderer2D::DrawQuad(transform.GetTransform(), sprite.Color);
+				Renderer2D::DrawCircle(transform.GetTransform(), circle.Color, circle.Thickness, circle.Fade, (int)entity);
+			}
+		}
+
+		// USE FOR DUBUG ONLY
+		//Renderer2D::DrawLine(glm::vec3(0.0f), glm::vec3(2.0f, 2.0f, 0.0f), { 0.0f, 1.0f, 1.0f, 1.0f });
+		//Renderer2D::DrawRect(glm::vec3(0.0f), {5.0f, 5.0f},  { 1.0f, 0.0f, 1.0f, 1.0f });
+
+		Renderer2D::EndScene();
 	}
 
 	template<typename T>

@@ -29,11 +29,12 @@ namespace Hazle
 		m_FrameBuffer = FrameBuffer::Create(fbSpec);
 
 		// Loading HazleUI Icons
-		m_IconPlay = Texture2D::Create("assets/textures/play.png");
-		m_IconStop = Texture2D::Create("assets/textures/stop.png");
-		m_IconSun = Texture2D::Create("assets/textures/sun.png");
-		m_IconMoon = Texture2D::Create("assets/textures/moon.png");
-		m_IconSave = Texture2D::Create("assets/textures/save.png");
+		m_IconPlay		= Texture2D::Create("assets/textures/play.png");
+		m_IconStop		= Texture2D::Create("assets/textures/stop.png");
+		m_IconSimulate	= Texture2D::Create("assets/textures/simulate.png");
+		m_IconSun		= Texture2D::Create("assets/textures/sun.png");
+		m_IconMoon		= Texture2D::Create("assets/textures/moon.png");
+		m_IconSave		= Texture2D::Create("assets/textures/save.png");
 
 
 		//SCENE
@@ -108,13 +109,6 @@ namespace Hazle
 
 	void EditorLayer::UI_Toolbar()
 	{
-		//ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 2));
-		//ImGui::PushStyleVar(ImGuiStyleVar_ItemInnerSpacing, ImVec2(0, 0));
-		//ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0, 0, 0, 0));
-		//auto& colors = ImGui::GetStyle().Colors;
-		//ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0.3f, 0.305f, 0.31f, 0.5f));
-		//ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(0.3f, 0.305f, 0.31f, 0.5f));
-
 		ImGui::Begin("##toolbar", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse);
 		float size = ImGui::GetWindowHeight() - 4.0f;
 
@@ -125,6 +119,7 @@ namespace Hazle
 		ImGui::SameLine(ImGui::GetContentRegionAvail().x - size - 5.0f);
 		if (ImGui::ImageButton((ImTextureID)(uint64_t)icon->GetRendererID(), { size, size }, { 0, 1 }, { 1, 0 }))
 		{
+			
 			if (m_EditorTheme == EditorTheme::Dark)
 			{
 				Hazle::ImGuiLayer::SetLightThemeColors();
@@ -135,20 +130,48 @@ namespace Hazle
 				Hazle::ImGuiLayer::SetDarkThemeColors();
 				m_EditorTheme = EditorTheme::Dark;
 			}
+			
 		}
 		
 		// ADDING PLAY AND PAUSE BUTTON...
-		icon = m_SceneState == SceneState::Edit ? m_IconPlay : m_IconStop;
-		ImGui::SameLine((ImGui::GetContentRegionAvail().x - size) * 0.5f);
+		icon = m_SceneState != SceneState::Play ? m_IconPlay : m_IconStop;
+		ImGui::SameLine((ImGui::GetContentRegionAvail().x - size) * 0.5f - size);
 		if (ImGui::ImageButton((ImTextureID)(uint64_t)icon->GetRendererID(), { size, size }, { 0, 1 }, { 1, 0 }))
 		{
-			if (m_SceneState == SceneState::Edit)
-				OnScenePlay();
-			else if (m_SceneState == SceneState::Play)
-				OnSceneStop();
+			if (m_ActiveScene)
+			{
+				if (m_SceneState == SceneState::Edit)
+					OnScenePlay();
+				else if (m_SceneState == SceneState::Simulate)
+				{
+					OnSceneStop();
+					OnScenePlay();
+				}
+				else
+					OnSceneStop();
+
+			}
 		}
 
-		
+		//ADDING SIMULATE BUTTON
+		icon = m_SceneState != SceneState::Simulate ? m_IconSimulate : m_IconStop;
+		ImGui::SameLine((ImGui::GetContentRegionAvail().x - size) * 0.5f + size);
+		if (ImGui::ImageButton((ImTextureID)(uint64_t)icon->GetRendererID(), { size, size }, { 0, 1 }, { 1, 0 }))
+		{
+			if(m_ActiveScene)
+			{
+
+				if (m_SceneState == SceneState::Edit)
+					OnSceneSimulate();
+				else if (m_SceneState == SceneState::Play)
+				{
+					OnSceneStop();
+					OnSceneSimulate();
+				}
+				else
+					OnSceneStop();
+			}
+		}
 
 		ImGui::PopStyleColor();
 		//ImGui::PopStyleVar(2);
@@ -166,17 +189,34 @@ namespace Hazle
 		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
 	}
 	
-	
+	void EditorLayer::OnSceneSimulate()
+	{
+		m_SceneState = SceneState::Simulate;
+
+		m_ActiveScene = Scene::Copy(m_EditorScene);
+		m_ActiveScene->OnSimulationStart();
+
+		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
+	}
+
 	void EditorLayer::OnSceneStop()
 	{
-		m_SceneState = SceneState::Edit;
-		m_ActiveScene->OnRuntimeStop();
-		m_RuntimeScene = nullptr;
+		HZ_CORE_ASSERT(m_SceneState == SceneState::Play || m_SceneState == SceneState::Simulate);
+		if (m_SceneState == SceneState::Play)
+		{
+			m_ActiveScene->OnRuntimeStop();
+			m_RuntimeScene = nullptr;
+		}
+		else if (m_SceneState == SceneState::Simulate)
+			m_ActiveScene->OnSimulationStop();
+		
 
+		m_SceneState = SceneState::Edit;
 		m_ActiveScene = m_EditorScene;
 		m_SceneHierarchyPanel.SetContext(m_ActiveScene);
 
 	}
+
 
 	void EditorLayer::OnEvent(Event& e)
 	{
@@ -368,6 +408,10 @@ namespace Hazle
 			{
 				m_ActiveScene->OnUpdateRuntime(ts);
 				break;
+			}
+			case SceneState::Simulate:
+			{
+				m_ActiveScene->OnUpdateSimulation(m_EditorCamera, ts);
 			}
 		}
 

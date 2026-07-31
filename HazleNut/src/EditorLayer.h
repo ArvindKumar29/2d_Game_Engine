@@ -24,6 +24,7 @@ namespace Hazle
 		void UI_Toolbar();
 		void OnScenePlay();
 		void OnSceneStop();
+		void OnSceneSimulate();
 
 	private:
 		bool OnKeyPresedEvent(KeyPressedEvent& e);
@@ -74,7 +75,8 @@ namespace Hazle
 		enum class SceneState
 		{
 			Edit,
-			Play
+			Play,
+			Simulate
 		};
 
 		SceneState m_SceneState = SceneState::Edit;
@@ -86,7 +88,7 @@ namespace Hazle
 		EditorTheme m_EditorTheme = EditorTheme::Dark;
 
 		// HazleUI Icons
-		Ref<Texture2D> m_IconPlay, m_IconStop, m_IconSun, m_IconMoon, m_IconSave;
+		Ref<Texture2D> m_IconPlay, m_IconStop, m_IconSun, m_IconMoon, m_IconSave, m_IconSimulate;
 		
 	};
 }
