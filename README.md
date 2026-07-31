@@ -10,7 +10,7 @@
 ---
 
 ![HazleNut Level Editor Workspace]
-<img width="1920" height="1080" alt="Editor Camera View" src="https://github.com/user-attachments/assets/af12ad32-c943-4509-8bba-6b241f5efd58" />
+<img width="1920" height="1080" alt="Editor Camera View Dark Theme" src="https://github.com/user-attachments/assets/11d810de-5c9f-4edb-ac20-1bf043af66c9" />
 
 ---
 
@@ -34,13 +34,12 @@
 * **Play-In-Editor (PIE) Mode:** Instant in-memory scene duplication allowing seamless switching between `Editor` (design) and `Runtime` (simulation) states without data loss.
 * **Event System:** Custom event dispatcher for low-latency window, mouse, and keyboard input handling.
 * **Performance Profiling:** Integrated custom profiling tools for real-time frame generation and debugging metrics.
+*  **UUID / GUID Tracking:** 64-bit Universally Unique Identifiers assigned to all active entities and resources to eliminate filepath dependency conflicts.
+*  **2D Physics Simulation:** Integrating **Box2D** for real-time rigidbody dynamics, gravity, friction, and collision triggers within the runtime loop.
 
 ---
 
 ## 🗺️ Planned Features
-
-- [ ] **UUID / GUID Tracking:** 64-bit Universally Unique Identifiers assigned to all active entities and resources to eliminate filepath dependency conflicts.
-- [ ] **2D Physics Simulation:** Integrating **Box2D** for real-time rigidbody dynamics, gravity, friction, and collision triggers within the runtime loop.
 - [ ] **C# Scripting Engine:** Embedding the **Mono C# Runtime** to allow developers to write custom gameplay logic and attach scripts directly to ECS entities.
 - [ ] **SPIR-V Shader Overhaul:** Transitioning from text-based OpenGL shaders to precompiled binary bytecode using `shaderc` and `SPIRV-Cross` for automated reflection.
 - [ ] **Audio Engine:** Spatial 2D audio integration for sound effects and ambient soundtracks.
@@ -56,6 +55,7 @@
 * **[yaml-cpp](https://github.com/jbeder/yaml-cpp):** YAML data serialization and deserialization.
 * **[GLM](https://github.com/g-truc/glm):** Mathematics library for graphics software based on GLSL specifications.
 * **[stb_image](https://github.com/nothings/stb):** Single-header image decoding and texture loading.
+* **[Box2D](https://github.com/thecherno/box2d/):** 2D Physics simulation engine. 
 
 ---
 
