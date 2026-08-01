@@ -36,13 +36,12 @@
 * **Performance Profiling:** Integrated custom profiling tools for real-time frame generation and debugging metrics.
 *  **UUID / GUID Tracking:** 64-bit Universally Unique Identifiers assigned to all active entities and resources to eliminate filepath dependency conflicts.
 *  **2D Physics Simulation:** Integrating **Box2D** for real-time rigidbody dynamics, gravity, friction, and collision triggers within the runtime loop.
+*  **Audio Engine:** Audio integration for sound effects and ambient soundtracks using FMOD.
 
 ---
 
 ## 🗺️ Planned Features
-- [ ] **C# Scripting Engine:** Embedding the **Mono C# Runtime** to allow developers to write custom gameplay logic and attach scripts directly to ECS entities.
 - [ ] **SPIR-V Shader Overhaul:** Transitioning from text-based OpenGL shaders to precompiled binary bytecode using `shaderc` and `SPIRV-Cross` for automated reflection.
-- [ ] **Audio Engine:** Spatial 2D audio integration for sound effects and ambient soundtracks.
 
 ---
 
@@ -55,7 +54,8 @@
 * **[yaml-cpp](https://github.com/jbeder/yaml-cpp):** YAML data serialization and deserialization.
 * **[GLM](https://github.com/g-truc/glm):** Mathematics library for graphics software based on GLSL specifications.
 * **[stb_image](https://github.com/nothings/stb):** Single-header image decoding and texture loading.
-* **[Box2D](https://github.com/thecherno/box2d/):** 2D Physics simulation engine. 
+* **[Box2D](https://github.com/thecherno/box2d/):** 2D Physics simulation engine.
+* **[FMOD](https://www.fmod.com/):** Audio Integration to use audio files in engine and games.
 
 ---
 
