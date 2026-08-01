@@ -79,7 +79,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>YAML_CPP_STATIC_DEFINE;HZ_PLATFORM_WINDOWS;HZ_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\HazleEngine\vendor\spdlog\include;..\HazleEngine\vendor\GLFW\include;..\HazleEngine\vendor\GLM;..\HazleEngine\vendor\entt\include;..\HazleEngine\vendor\yamlcpp\include;..\HazleEngine\vendor\Box2D\include;..\HazleEngine\vendor\imguizmo\src;..\HazleEngine\src;..\HazleEngine\vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\HazleEngine\vendor\spdlog\include;..\HazleEngine\vendor\GLFW\include;..\HazleEngine\vendor\GLM;..\HazleEngine\vendor\entt\include;..\HazleEngine\vendor\yamlcpp\include;..\HazleEngine\vendor\Box2D\include;..\HazleEngine\vendor\FMOD\include;..\HazleEngine\vendor\imguizmo\src;..\HazleEngine\src;..\HazleEngine\vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -99,7 +99,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>YAML_CPP_STATIC_DEFINE;HZ_PLATFORM_WINDOWS;HZ_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\HazleEngine\vendor\spdlog\include;..\HazleEngine\vendor\GLFW\include;..\HazleEngine\vendor\GLM;..\HazleEngine\vendor\entt\include;..\HazleEngine\vendor\yamlcpp\include;..\HazleEngine\vendor\Box2D\include;..\HazleEngine\vendor\imguizmo\src;..\HazleEngine\src;..\HazleEngine\vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\HazleEngine\vendor\spdlog\include;..\HazleEngine\vendor\GLFW\include;..\HazleEngine\vendor\GLM;..\HazleEngine\vendor\entt\include;..\HazleEngine\vendor\yamlcpp\include;..\HazleEngine\vendor\Box2D\include;..\HazleEngine\vendor\FMOD\include;..\HazleEngine\vendor\imguizmo\src;..\HazleEngine\src;..\HazleEngine\vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -123,7 +123,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>YAML_CPP_STATIC_DEFINE;HZ_PLATFORM_WINDOWS;HZ_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\HazleEngine\vendor\spdlog\include;..\HazleEngine\vendor\GLFW\include;..\HazleEngine\vendor\GLM;..\HazleEngine\vendor\entt\include;..\HazleEngine\vendor\yamlcpp\include;..\HazleEngine\vendor\Box2D\include;..\HazleEngine\vendor\imguizmo\src;..\HazleEngine\src;..\HazleEngine\vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\HazleEngine\vendor\spdlog\include;..\HazleEngine\vendor\GLFW\include;..\HazleEngine\vendor\GLM;..\HazleEngine\vendor\entt\include;..\HazleEngine\vendor\yamlcpp\include;..\HazleEngine\vendor\Box2D\include;..\HazleEngine\vendor\FMOD\include;..\HazleEngine\vendor\imguizmo\src;..\HazleEngine\src;..\HazleEngine\vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -157,12 +157,6 @@
     <ProjectReference Include="..\HazleEngine\HazleEngine.vcxproj">
       <Project>{4F24402C-BBD9-B821-44CE-B2F8B082AF25}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\Shaders\Circle.glsl" />
-    <None Include="Assets\Shaders\FlatColorShader.glsl" />
-    <None Include="Assets\Shaders\Line.glsl" />
-    <None Include="Assets\Shaders\Quad.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

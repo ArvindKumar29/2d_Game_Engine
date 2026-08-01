@@ -5,6 +5,7 @@
 #include "Hazle/Core/Input.h"
 #include "Hazle/Renderer/Renderer.h"
 #include <GLFW/glfw3.h>
+#include "Hazle/Scene/Audio.h"
 
 
 namespace Hazle
@@ -21,6 +22,7 @@ namespace Hazle
 		//m_Window->SetVSync(false);
 
 		Renderer::Init();
+		Audio::Init();
 
 		m_ImGuiLayer = new ImGuiLayer();
 		PushOverlay(m_ImGuiLayer);
@@ -28,6 +30,7 @@ namespace Hazle
 
 	Application::~Application()
 	{
+		Audio::Shutdown();
 	}
 
 	void Application::PushLayer(Layer* layer)
@@ -80,8 +83,9 @@ namespace Hazle
 
 			auto [x, y] = Input::GetMousePosition();
 			//HZ_CORE_TRACE("{0}, {1}", x, y);
-		
+			
 			m_Window->OnUpdate();
+			Audio::Update();
 		}
 	}
 

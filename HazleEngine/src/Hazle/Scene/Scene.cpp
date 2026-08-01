@@ -19,6 +19,19 @@
 
 namespace Hazle
 {
+	//PLAYING AUDIO
+	class SceneContactListener : public b2ContactListener
+	{
+	public:
+		void BeginContact(b2Contact* contact) override
+		{
+			// Jab bhi koi do objects takrayenge, ye function chalega!
+			// 0.5f volume rakha hai taaki aawaz kaan na faad de
+			Audio::PlaySound("assets/audio/hit.wav", glm::vec3(0.0f), 0.5f);
+		}
+	};
+	static SceneContactListener s_ContactListener;
+
 	static b2BodyType RigidBody2DTypeToBox2DBodyType(CRigidBody2D::BodyType bodyType)
 	{
 		switch (bodyType)
@@ -61,6 +74,8 @@ namespace Hazle
 	void Scene::OnRuntimeStart()
 	{
 		OnPhysicsStart();
+		m_PhysicsWorld->SetContactListener(&s_ContactListener);
+		Audio::LoadSound("assets/audio/hit.wav", false, false, false);
 	}
 	
 	

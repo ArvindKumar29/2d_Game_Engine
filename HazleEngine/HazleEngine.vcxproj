@@ -78,7 +78,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DisableSpecificWarnings>4005;4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <PreprocessorDefinitions>YAML_CPP_STATIC_DEFINE;HZ_PLATFORM_WINDOWS;HZ_BUILD_DLL;GLFW_INCLUDE_NONE;IMGUI_IMPL_OPENGL_LOADER_GLAD;_CRT_SECURE_NO_WARNINGS;HZ_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>vendor\spdlog\include;vendor\glad\include;vendor\glm;src;vendor\GLFW\include;vendor\imgui;vendor\stb_image;vendor\entt\include;vendor\yamlcpp\include;vendor\imguizmo\src;vendor\Box2D\include;src\Hazle;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>vendor\spdlog\include;vendor\glad\include;vendor\glm;src;vendor\GLFW\include;vendor\imgui;vendor\stb_image;vendor\entt\include;vendor\yamlcpp\include;vendor\imguizmo\src;vendor\Box2D\include;vendor\FMOD\include;src\Hazle;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -91,7 +91,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>fmod_vc.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>vendor\FMOD\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
     <ProjectReference>
     </ProjectReference>
@@ -103,7 +104,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DisableSpecificWarnings>4005;4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <PreprocessorDefinitions>YAML_CPP_STATIC_DEFINE;HZ_PLATFORM_WINDOWS;HZ_BUILD_DLL;GLFW_INCLUDE_NONE;IMGUI_IMPL_OPENGL_LOADER_GLAD;_CRT_SECURE_NO_WARNINGS;HZ_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>vendor\spdlog\include;vendor\glad\include;vendor\glm;src;vendor\GLFW\include;vendor\imgui;vendor\stb_image;vendor\entt\include;vendor\yamlcpp\include;vendor\imguizmo\src;vendor\Box2D\include;src\Hazle;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>vendor\spdlog\include;vendor\glad\include;vendor\glm;src;vendor\GLFW\include;vendor\imgui;vendor\stb_image;vendor\entt\include;vendor\yamlcpp\include;vendor\imguizmo\src;vendor\Box2D\include;vendor\FMOD\include;src\Hazle;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -120,7 +121,8 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <Lib>
-      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>fmod_vc.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>vendor\FMOD\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
     <ProjectReference>
     </ProjectReference>
@@ -132,7 +134,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DisableSpecificWarnings>4005;4996;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <PreprocessorDefinitions>YAML_CPP_STATIC_DEFINE;HZ_PLATFORM_WINDOWS;HZ_BUILD_DLL;GLFW_INCLUDE_NONE;IMGUI_IMPL_OPENGL_LOADER_GLAD;_CRT_SECURE_NO_WARNINGS;HZ_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>vendor\spdlog\include;vendor\glad\include;vendor\glm;src;vendor\GLFW\include;vendor\imgui;vendor\stb_image;vendor\entt\include;vendor\yamlcpp\include;vendor\imguizmo\src;vendor\Box2D\include;src\Hazle;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>vendor\spdlog\include;vendor\glad\include;vendor\glm;src;vendor\GLFW\include;vendor\imgui;vendor\stb_image;vendor\entt\include;vendor\yamlcpp\include;vendor\imguizmo\src;vendor\Box2D\include;vendor\FMOD\include;src\Hazle;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -149,7 +151,8 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <Lib>
-      <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>fmod_vc.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>vendor\FMOD\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Lib>
     <ProjectReference>
     </ProjectReference>
@@ -165,6 +168,7 @@
     <ClInclude Include="src\Hazle\Core\Log.h" />
     <ClInclude Include="src\Hazle\Core\MouseCodes.h" />
     <ClInclude Include="src\Hazle\Core\Timestep.h" />
+    <ClInclude Include="src\Hazle\Core\UUID.h" />
     <ClInclude Include="src\Hazle\Core\Window.h" />
     <ClInclude Include="src\Hazle\Core\core.h" />
     <ClInclude Include="src\Hazle\Debug\Instrumentor.h" />
@@ -189,6 +193,7 @@
     <ClInclude Include="src\Hazle\Renderer\SubTexture2d.h" />
     <ClInclude Include="src\Hazle\Renderer\Texture.h" />
     <ClInclude Include="src\Hazle\Renderer\VertexArray.h" />
+    <ClInclude Include="src\Hazle\Scene\Audio.h" />
     <ClInclude Include="src\Hazle\Scene\Component.h" />
     <ClInclude Include="src\Hazle\Scene\Entity.h" />
     <ClInclude Include="src\Hazle\Scene\Scene.h" />
@@ -205,7 +210,6 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\hzpch.h" />
-    <ClInclude Include="src\Hazle\Core\UUID.h" />
     <ClInclude Include="vendor\imguizmo\src\ImGuizmo.h" />
     <ClInclude Include="vendor\stb_image\stb_image.h" />
   </ItemGroup>
@@ -214,6 +218,7 @@
     <ClCompile Include="src\Hazle\Core\Layer.cpp" />
     <ClCompile Include="src\Hazle\Core\LayerStack.cpp" />
     <ClCompile Include="src\Hazle\Core\Log.cpp" />
+    <ClCompile Include="src\Hazle\Core\UUID.cpp" />
     <ClCompile Include="src\Hazle\Core\hzpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>
     </ClCompile>
@@ -233,6 +238,7 @@
     <ClCompile Include="src\Hazle\Renderer\SubTexture2D.cpp" />
     <ClCompile Include="src\Hazle\Renderer\Texture.cpp" />
     <ClCompile Include="src\Hazle\Renderer\VertexArray.cpp" />
+    <ClCompile Include="src\Hazle\Scene\Audio.cpp" />
     <ClCompile Include="src\Hazle\Scene\Entity.cpp" />
     <ClCompile Include="src\Hazle\Scene\Scene.cpp" />
     <ClCompile Include="src\Hazle\Scene\SceneCamera.cpp" />
@@ -247,7 +253,6 @@
     <ClCompile Include="src\Platform\Windows\WindowPlatformUtils.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
-    <ClCompile Include="src\Hazle\Core\UUID.cpp" />
     <ClCompile Include="vendor\imguizmo\src\ImGuizmo.cpp">
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>

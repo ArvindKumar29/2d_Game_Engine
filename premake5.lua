@@ -22,6 +22,7 @@ IncludeDir["entt"]		= "HazleEngine/vendor/entt/include"
 IncludeDir["yaml_cpp"]	= "HazleEngine/vendor/yamlcpp/include"
 IncludeDir["imguizmo"]	= "HazleEngine/vendor/imguizmo/src"
 IncludeDir["Box2D"]	= "HazleEngine/vendor/Box2D/include"
+IncludeDir["FMOD"]	= "HazleEngine/vendor/FMOD/include"
 
 group "Dependencies"
 	include "HazleEngine/vendor/GLFW"
@@ -73,6 +74,7 @@ project "HazleEngine"
 		"%{IncludeDir.yaml_cpp}",
 		"%{IncludeDir.imguizmo}",
 		"%{IncludeDir.Box2D}",
+		"%{IncludeDir.FMOD}",
 		"%{prj.name}/src/Hazle"
 	}
 
@@ -81,9 +83,14 @@ project "HazleEngine"
 		"Glad",
 		"imgui",
 		"Box2D",
+		"fmod_vc.lib",
 		"opengl32.lib",
 		"yaml-cpp"
 	}
+
+	libdirs {
+        "%{prj.name}/vendor/FMOD/lib"
+    }
 	
 	filter "files:HazleEngine/vendor/imguizmo/**.cpp"
 	flags {"NoPCH"}
@@ -202,6 +209,7 @@ project "HazleNut"
 		"%{IncludeDir.entt}",
 		"%{IncludeDir.yaml_cpp}",
 		"%{IncludeDir.Box2D}",
+		"%{IncludeDir.FMOD}",
 		"%{IncludeDir.imguizmo}",
 		"HazleEngine/src",
 		"%{IncludeDir.imgui}"

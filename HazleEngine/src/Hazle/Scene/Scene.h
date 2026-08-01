@@ -4,6 +4,9 @@
 #include "Hazle/Core/UUID.h"
 #include "SceneCamera.h"
 #include "Hazle/Renderer/EditorCamera.h"
+#include "Audio.h"
+#include <box2d/b2_world.h>
+#include <box2d/b2_contact.h>
 
 class b2World;
 

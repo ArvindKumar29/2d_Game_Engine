@@ -5,6 +5,7 @@
 #include "Hazle/Event/ApplicationEvent.h"
 #include "Hazle/ImGui/ImGuiLayer.h"
 #include "Hazle/Core/Timestep.h"
+#include "Hazle/Scene/Audio.h"
 
 namespace Hazle
 {
@@ -34,7 +35,7 @@ namespace Hazle
 		bool OnWindowClose(WindowCloseEvent& e);
 		bool OnWindowResize(WindowResizeEvent& e);
 
-		std::unique_ptr<Window> m_Window;
+		Scope<Window> m_Window;
 		ImGuiLayer* m_ImGuiLayer;
 		bool m_Running = true;
 		bool m_Minimized = false;
