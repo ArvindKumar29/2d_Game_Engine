@@ -1,6 +1,6 @@
 #include <hzpch.h>
 #include "FrameBuffer.h"
-#include "Platform/OpenGL/OpenGLFramrBuffer.h"
+#include "Platform/OpenGL/OpenGLFrameBuffer.h"
 
 namespace Hazle
 {

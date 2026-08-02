@@ -3,10 +3,10 @@
 
 namespace Hazle
 {
-	Hazle::Ref<spdlog::logger> Log::s_CoreLogger;
-	Hazle::Ref<spdlog::logger> Log::s_ClientLogger;
+	Hazle::Ref<spdlog::logger> Log::s_CoreLogger; // core logger for engine
+	Hazle::Ref<spdlog::logger> Log::s_ClientLogger; // client logger for game/application
 	void Log::init(){
-		spdlog::set_pattern("%^[%T] %n: %v%$");
+		spdlog::set_pattern("%^[%T] %n: %v%$"); // set log pattern 
 		
 		s_CoreLogger = spdlog::stdout_color_mt("HAZLE");
 		s_CoreLogger->set_level(spdlog::level::trace);

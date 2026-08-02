@@ -1,5 +1,5 @@
 #include <hzpch.h>
-#include "OpenGLFramrBuffer.h"
+#include "OpenGLFrameBuffer.h"
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 

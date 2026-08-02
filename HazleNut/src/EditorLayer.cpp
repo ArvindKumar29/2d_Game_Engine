@@ -109,17 +109,20 @@ namespace Hazle
 
 	void EditorLayer::UI_Toolbar()
 	{
-		ImGui::Begin("##toolbar", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse);
+		ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 0));
+		ImGui::PushStyleVar(ImGuiStyleVar_ItemInnerSpacing, ImVec2(0, 0));
+		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0, 0, 0, 0));
+
+		ImGui::Begin("##toolbar", nullptr, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse);		
 		float size = ImGui::GetWindowHeight() - 4.0f;
 
-		ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0, 0, 0, 0));
 
 		// ADDING THEME CHANGE BUTTON...
 		Ref<Texture2D> icon = m_EditorTheme == EditorTheme::Dark ? m_IconSun : m_IconMoon;
 		ImGui::SameLine(ImGui::GetContentRegionAvail().x - size - 5.0f);
 		if (ImGui::ImageButton((ImTextureID)(uint64_t)icon->GetRendererID(), { size, size }, { 0, 1 }, { 1, 0 }))
 		{
-			
+
 			if (m_EditorTheme == EditorTheme::Dark)
 			{
 				Hazle::ImGuiLayer::SetLightThemeColors();
@@ -130,9 +133,8 @@ namespace Hazle
 				Hazle::ImGuiLayer::SetDarkThemeColors();
 				m_EditorTheme = EditorTheme::Dark;
 			}
-			
 		}
-		
+
 		// ADDING PLAY AND PAUSE BUTTON...
 		icon = m_SceneState != SceneState::Play ? m_IconPlay : m_IconStop;
 		ImGui::SameLine((ImGui::GetContentRegionAvail().x - size) * 0.5f - size);
@@ -174,7 +176,7 @@ namespace Hazle
 		}
 
 		ImGui::PopStyleColor();
-		//ImGui::PopStyleVar(2);
+		ImGui::PopStyleVar(2);
 		ImGui::End();
 	}
 
@@ -523,7 +525,7 @@ namespace Hazle
 
 				if (ImGui::MenuItem("Exit"))
 				{
-					Application::Get().close();
+					Application::Get().Close();
 				}
 				ImGui::EndMenu();
 			}
@@ -682,10 +684,10 @@ namespace Hazle
 			}
 		}
 
-		UI_Toolbar();
 
-		ImGui::End();
 		ImGui::PopStyleVar();
+		ImGui::End();
+		UI_Toolbar();
 	}
 
 	void EditorLayer::NewScene()

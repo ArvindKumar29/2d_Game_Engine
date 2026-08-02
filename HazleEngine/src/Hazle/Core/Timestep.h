@@ -2,6 +2,9 @@
 
 namespace Hazle
 {
+	// Timestep class is used to represent the time between frames in seconds, 
+	// it takes time from GLFW and converts it to seconds, 
+	// and then we can use it to update our game logic based on the time between frames.
 	class Timestep
 	{
 	public:

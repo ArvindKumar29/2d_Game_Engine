@@ -5,7 +5,7 @@
 //#include "imgui.h"
 namespace Hazle
 {
-	class HazleNut : public Hazle::Application
+	class HazleNut : public Application
 	{
 	public:
 		HazleNut()
@@ -20,6 +20,6 @@ namespace Hazle
 
 	Application* createApplication()
 	{
-		return new HazleNut();
+		return new HazleNut(); // returning a layer of HazleNut to entry point of hazle to create hazlenut application
 	}
 }

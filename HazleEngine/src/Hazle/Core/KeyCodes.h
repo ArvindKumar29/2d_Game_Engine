@@ -6,16 +6,26 @@ namespace Hazle
 
 	namespace Key
 	{
+		// KeyCodes of keys From glfw3.h
+		// standard key codes that are used in the engine for input handling and are predefined for various keys on the keyboard inside the Key namespace. 
+		// These key codes are used to identify specific keys when handling input events in the engine.
 		enum : KeyCode
 		{
-			// From glfw3.h
+			// Special Keys
 			Space = 32,
 			Apostrophe = 39, /* ' */
 			Comma = 44, /* , */
 			Minus = 45, /* - */
 			Period = 46, /* . */
 			Slash = 47, /* / */
+			Semicolon = 59, /* ; */
+			Equal = 61, /* = */
+			LeftBracket = 91,  /* [ */
+			Backslash = 92,  /* \ */
+			RightBracket = 93,  /* ] */
+			GraveAccent = 96,  /* ` */
 
+			// Numbers/Digits
 			D0 = 48, /* 0 */
 			D1 = 49, /* 1 */
 			D2 = 50, /* 2 */
@@ -27,9 +37,7 @@ namespace Hazle
 			D8 = 56, /* 8 */
 			D9 = 57, /* 9 */
 
-			Semicolon = 59, /* ; */
-			Equal = 61, /* = */
-
+			// Alpabet Keys
 			A = 65,
 			B = 66,
 			C = 67,
@@ -57,10 +65,6 @@ namespace Hazle
 			Y = 89,
 			Z = 90,
 
-			LeftBracket = 91,  /* [ */
-			Backslash = 92,  /* \ */
-			RightBracket = 93,  /* ] */
-			GraveAccent = 96,  /* ` */
 
 			World1 = 161, /* non-US #1 */
 			World2 = 162, /* non-US #2 */
@@ -85,6 +89,7 @@ namespace Hazle
 			NumLock = 282,
 			PrintScreen = 283,
 			Pause = 284,
+			// Function keys F1-F25
 			F1 = 290,
 			F2 = 291,
 			F3 = 292,
@@ -111,7 +116,7 @@ namespace Hazle
 			F24 = 313,
 			F25 = 314,
 
-			/* Keypad */
+			// Keypad Numbers ans symbols
 			KP0 = 320,
 			KP1 = 321,
 			KP2 = 322,
@@ -130,6 +135,7 @@ namespace Hazle
 			KPEnter = 335,
 			KPEqual = 336,
 
+			// Modifier Keys such as Shift, Control, Alt, and Super (Windows/Command) keys
 			LeftShift = 340,
 			LeftControl = 341,
 			LeftAlt = 342,
