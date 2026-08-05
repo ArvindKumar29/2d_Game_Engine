@@ -17,7 +17,6 @@ namespace Hazle
 		m_CameraController(1280.0f, 720.0f, true)
 	{}
 
-
 	void EditorLayer::OnAttach()
 	{
 		m_CameraController.SetZoomLevel(10.0f);

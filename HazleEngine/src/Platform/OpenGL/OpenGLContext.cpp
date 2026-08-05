@@ -1,6 +1,8 @@
 #include <hzpch.h>
 #include "OpenGLContext.h"
 #include "Hazle/Core/Log.h"
+#include "glad/glad.h"
+
 
 namespace Hazle
 {

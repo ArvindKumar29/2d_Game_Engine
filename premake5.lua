@@ -1,6 +1,6 @@
 workspace  "Hazle  Engine"
 	architecture "x64"
-	startproject "HazleNut"
+	startproject "ProjectTransform"
 	staticruntime "on"
 
 	configurations {
@@ -123,8 +123,8 @@ project "HazleEngine"
 		defines "HZ_DIST"
 		optimize "On"
 
-project "Sandbox"
-	location "Sandbox"
+project "ProjectTransform"
+	location "ProjectTransform"
 	kind "ConsoleApp"
 	language "C++"
 	cppdialect "C++17"
@@ -153,7 +153,8 @@ project "Sandbox"
 	}
 	
 	links {
-		"HazleEngine"
+		"HazleEngine",
+		"HazleNut"
 	}
 	
 	filter "system:windows"

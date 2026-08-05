@@ -14,6 +14,7 @@ namespace Hazle {
 	// For the future, a better strategy might be to buffer events in an event
 	// bus and process them during the "event" part of the update stage.
 
+	// EventType is used to categorize events. We can have a mouse event, a keyboard event, a window resize event, etc.
 	enum class EventType
 	{
 		None = 0,
@@ -23,6 +24,7 @@ namespace Hazle {
 		MouseButtonPressed, MouseButtonReleased, MouseMoved, MouseScrolled
 	};
 
+	// EventCategory is used to group events into categories. For example, a mouse event can be in the Mouse category, and a keyboard event can be in the Keyboard category.
 	enum EventCategory
 	{
 		None = 0,
@@ -33,10 +35,13 @@ namespace Hazle {
 		EventCategoryMouseButton = BIT(4)
 	};
 
+
+// Macros to help define event classes. These macros will be used in the event classes to define type of the event.
 #define EVENT_CLASS_TYPE(type) static EventType GetStaticType() { return EventType::type; }\
 								virtual EventType GetEventType() const override { return GetStaticType(); }\
 								virtual const char* GetName() const override { return #type; }
 
+// Macros to help define event classes. These macros will be used in the event classes to define the category of the event.
 #define EVENT_CLASS_CATEGORY(category) virtual int GetCategoryFlags() const override { return category; }
 
 	class Event
@@ -57,6 +62,10 @@ namespace Hazle {
 		}
 	};
 
+	// EventDispatcher is a utility class that helps in dispatching events to the appropriate event handler based on the event type. 
+	// It takes an event and allows you to call a function if the event type matches.
+	// The Dispatch function is a template function that takes a function as an argument and calls it if the event type matches and the event is not already handled.
+	// In case if the event type does not match, it returns false and does not call the function.
 	class EventDispatcher
 	{
 	public:
@@ -79,6 +88,8 @@ namespace Hazle {
 		Event& m_Event;
 	};
 
+	// Osstream operator overload for Event class. 
+	// This allows us to use the << operator to print the event to an output stream.
 	inline std::ostream& operator<<(std::ostream& os, const Event& e)
 	{
 		return os << e.ToString();

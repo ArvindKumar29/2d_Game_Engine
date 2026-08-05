@@ -1,6 +1,5 @@
 #pragma once
-#include "Renderer/Texture.h"
-#include "glad/glad.h"
+#include "Hazle/Renderer/Texture.h"
 
 namespace Hazle
 {
@@ -30,6 +29,6 @@ namespace Hazle
 		std::string m_Path;
 		uint32_t m_Width, m_Height;
 		uint32_t m_RendererID;
-		GLenum m_InternalFormat, m_DataFormat;
+		
 	};
 }

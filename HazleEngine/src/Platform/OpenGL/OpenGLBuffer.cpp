@@ -1,9 +1,12 @@
 #include <hzpch.h>
 #include "OpenGLBuffer.h"
+#include <glad/glad.h>
 
 namespace Hazle
 {
 	/////// VERTEX BUFFER //////////
+
+	// Dynamic Draw function that creates a new vertex buffer with size and an empty data array.
 	OpenGLVertexBuffer::OpenGLVertexBuffer(uint32_t size)
 	{
 		glCreateBuffers(1, &m_RendererID);
@@ -11,6 +14,7 @@ namespace Hazle
 		glBufferData(GL_ARRAY_BUFFER, size, nullptr, GL_DYNAMIC_DRAW);
 	}
 	
+	// Static Draw function that creates a new vertex buffer with the specified vertex data and size.
 	OpenGLVertexBuffer::OpenGLVertexBuffer(float* vertices, uint32_t size)
 	{
 		glCreateBuffers(1, &m_RendererID);

@@ -2,7 +2,6 @@
 
 #include "Hazle/Renderer/GraphicsContext.h"
 #include "glfw/glfw3.h"
-#include "glad/glad.h"
 
 struct GLFWwindow;
 

@@ -2,9 +2,12 @@
 
 #include "stb_image.h"
 #include "OpenGLTexture.h"
+#include "glad/glad.h"
 
 namespace Hazle
 {
+	GLenum m_InternalFormat, m_DataFormat;
+
 	OpenGLTexture2D::OpenGLTexture2D(uint32_t width, uint32_t height)
 		:m_Width(width), m_Height(height)
 	{

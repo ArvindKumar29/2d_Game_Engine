@@ -6,6 +6,8 @@
 
 namespace Hazle::Math
 {
+	// Decomposes a transformation matrix into translation, rotation, and scale components and set them to the provided references. 
+	// Returns true if decomposition is successful, false otherwise.
 	bool DecomposeTransform(glm::mat4& transform, 
 		glm::vec3& translation,
 		glm::vec3& rotation,

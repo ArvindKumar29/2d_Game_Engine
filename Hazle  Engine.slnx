@@ -7,9 +7,9 @@
   </Configurations>
   <Project Path="HazleEngine\HazleEngine.vcxproj" Id="4F24402C-BBD9-B821-44CE-B2F8B082AF25">
   </Project>
-  <Project Path="HazleNut\HazleNut.vcxproj" Id="309F783D-1C6C-D348-4585-C1F031B108D7" DefaultStartup="true">
+  <Project Path="HazleNut\HazleNut.vcxproj" Id="309F783D-1C6C-D348-4585-C1F031B108D7">
   </Project>
-  <Project Path="Sandbox\Sandbox.vcxproj" Id="F4C124E3-60A1-A37E-69B9-2E55D5170AE0">
+  <Project Path="ProjectTransform\ProjectTransform.vcxproj" Id="9806FA2B-84FF-187E-AD31-FE029989F889" DefaultStartup="true">
   </Project>
   <Folder Name="/Dependencies/">
     <Project Path="HazleEngine\vendor\Box2D\Box2D.vcxproj" Id="A434E80C-1049-10BE-D9CA-B31D459E0CEF">

@@ -8,7 +8,7 @@ namespace Hazle
 	VertexBuffer::~VertexBuffer()
 	{}
 	
-	Ref<VertexBuffer> VertexBuffer::Create(uint32_t size)
+	Ref<VertexBuffer> VertexBuffer::Create(uint32_t size)		// allocates memoory of size for the vertex buffer
 	{
 		switch (Renderer::GetAPI())
 		{
@@ -22,7 +22,7 @@ namespace Hazle
 		return nullptr;
 	}
 
-	Ref<Hazle::VertexBuffer> VertexBuffer::Create(float* vertices, uint32_t size)
+	Ref<Hazle::VertexBuffer> VertexBuffer::Create(float* vertices, uint32_t size)		// allocates memory of size for the vertex buffer and copies the vertices data into it
 	{
 		switch (Renderer::GetAPI())
 		{
@@ -42,7 +42,7 @@ namespace Hazle
 	IndexBuffer::~IndexBuffer()
 	{}
 
-	Ref<Hazle::IndexBuffer> IndexBuffer::Create(uint32_t* indices, uint32_t size)
+	Ref<Hazle::IndexBuffer> IndexBuffer::Create(uint32_t* indices, uint32_t size)		// allocates memory of size for the index buffer and copies the indices data into it
 	{	
 		switch (Renderer::GetAPI())
 		{

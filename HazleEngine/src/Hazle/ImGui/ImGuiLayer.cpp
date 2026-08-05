@@ -35,11 +35,13 @@ namespace Hazle {
 
 		io.FontDefault = io.Fonts->AddFontFromFileTTF("Assets/Fonts/Kameron-Regular.ttf", 18.5f);
 
-		ImGui::StyleColorsDark();
-		ImGui::StyleColorsClassic();
+		ImGui::StyleColorsDark();			// Set Dark Theme as default
+		ImGui::StyleColorsClassic();		// Set Classic Theme as default
 
+		// Setup Platform/Renderer bindings
+		// Setting window rounding to 0.0f to avoid black corners when using multiple viewports.
 		ImGuiStyle& style = ImGui::GetStyle();
-		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
+		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)  
 		{
 			style.WindowRounding = 0.0f;
 			style.Colors[ImGuiCol_WindowBg].w = 1.0f;
@@ -51,33 +53,33 @@ namespace Hazle {
 		Application& app = Application::Get();
 		GLFWwindow* window = static_cast<GLFWwindow*>(app.GetWindow().GetNativeWindow());
 
-		ImGui_ImplGlfw_InitForOpenGL(window, true);
-		ImGui_ImplOpenGL3_Init("#version 410");
+		ImGui_ImplGlfw_InitForOpenGL(window, true);		// Initialize ImGui for GLFW
+		ImGui_ImplOpenGL3_Init("#version 410");			// Initialize ImGui for OpenGL 3.0
 	}
 
 	void ImGuiLayer::OnDetach()
 	{
 		ImGui_ImplOpenGL3_Shutdown();
 		ImGui_ImplGlfw_Shutdown();
-		ImGui::DestroyContext();
+		ImGui::DestroyContext();						// Destroy ImGui context
 	}
 
 	void ImGuiLayer::begin()
 	{
+		// Start the Dear ImGui frame
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
 	}
 
-	void ImGuiLayer::end()
+	void ImGuiLayer::end()					// End the Dear ImGui frame and render the frame at the end after updating the application
 	{
 		ImGuiIO& io = ImGui::GetIO();
 		Application& app = Application::Get();
 		io.DisplaySize = ImVec2((float)app.GetWindow().GetWidth(), (float)app.GetWindow().GetHeight());
-
+		// Rendering
 		ImGui::Render();
-		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-
+		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());			// Render the ImGui draw data using OpenGL 3.0
 		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
 		{
 			GLFWwindow* backup_current_context = glfwGetCurrentContext();
@@ -96,48 +98,11 @@ namespace Hazle {
 	{
 		if (m_blockEvents)
 		{
-			ImGuiIO& io = ImGui::GetIO();
-			e.Handled |= e.IsInCategory(EventCategoryMouse) & io.WantCaptureMouse;
-			e.Handled |= e.IsInCategory(EventCategoryKeyboard) & io.WantCaptureKeyboard;
+			ImGuiIO& io = ImGui::GetIO();		// Get the ImGui IO object
+			e.Handled |= e.IsInCategory(EventCategoryMouse) & io.WantCaptureMouse;			// If the event is in the mouse category and ImGui wants to capture the mouse, mark the event as handled.
+			e.Handled |= e.IsInCategory(EventCategoryKeyboard) & io.WantCaptureKeyboard;	// If the event is in the keyboard category and ImGui wants to capture the keyboard, mark the event as handled.
 		}
 	}
-
-	//void ImGuiLayer::SetDarkThemeColors()
-	//{
-	//	ImGui::StyleColorsDark();
-
-	//	auto& colors = ImGui::GetStyle().Colors;
-
-	//	//BG
-	//	colors[ ImGuiCol_WindowBg ]			= ImVec4{ 0.1f, 0.105f, 0.1f, 1.0f };
-
-	//	//Headers
-	//	colors[ ImGuiCol_Header ]				= ImVec4{ 0.2f, 0.205f, 0.21f, 1.0f };
-	//	colors[ ImGuiCol_HeaderHovered ]		= ImVec4{ 0.3f, 0.305f, 0.31f, 1.0f };
-	//	colors[ ImGuiCol_HeaderActive ]			= ImVec4{ 0.15f, 0.1505f, 0.151f, 1.0f };
-	//	
-	//	//Buttons
-	//	colors[ ImGuiCol_Button ]				= ImVec4{ 0.2f, 0.205f, 0.21f, 1.0f };
-	//	colors[ ImGuiCol_ButtonHovered ]		= ImVec4{ 0.3f, 0.305f, 0.31f, 1.0f };
-	//	colors[ ImGuiCol_ButtonActive ]			= ImVec4{ 0.15f, 0.1505f, 0.151f, 1.0f };
-	//
-	//	//FrameBG
-	//	colors[ ImGuiCol_FrameBg ]				= ImVec4{ 0.2f, 0.205f, 0.21f, 1.0f };
-	//	colors[ ImGuiCol_FrameBgHovered ]		= ImVec4{ 0.3f, 0.305f, 0.31f, 1.0f };
-	//	colors[ ImGuiCol_FrameBgActive ]		= ImVec4{ 0.15f, 0.1505f, 0.151f, 1.0f };
-
-	//	//Tabs
-	//	colors[ ImGuiCol_Tab ]					= ImVec4{ 0.15f, 0.1505f, 0.151f, 1.0f };
-	//	colors[ ImGuiCol_TabHovered ]			= ImVec4{ 0.38f, 0.3805f, 0.381f, 1.0f };
-	//	colors[ ImGuiCol_TabActive ]			= ImVec4{ 0.28f, 0.2805f, 0.281f, 1.0f };
-	//	colors[ ImGuiCol_TabUnfocused ]			= ImVec4{ 0.15f, 0.1505f, 0.151f, 1.0f };
-	//	colors[ ImGuiCol_TabUnfocusedActive ]	= ImVec4{ 0.2f, 0.205f, 0.21f, 1.0f };
-
-	//	//Titles
-	//	colors[ ImGuiCol_TitleBg ]				= ImVec4{ 0.15f, 0.1505f, 0.151f, 1.0f };
-	//	colors[ ImGuiCol_TitleBgActive ]		= ImVec4{ 0.15f, 0.1505f, 0.151f, 1.0f };
-	//	colors[ ImGuiCol_TitleBgCollapsed ]		= ImVec4{ 0.95f, 0.1505f, 0.951f, 1.0f };
-	//}
 
 	void ImGuiLayer::SetDarkThemeColors()
 	{
@@ -174,47 +139,6 @@ namespace Hazle {
 		colors[ImGuiCol_TitleBgActive] = ImVec4{ 0.12f, 0.13f, 0.17f, 1.0f };
 		colors[ImGuiCol_TitleBgCollapsed] = ImVec4{ 0.08f, 0.09f, 0.11f, 1.0f };
 	}
-
-	//void ImGuiLayer::SetLightThemeColors()
-	//{
-	//	ImGui::StyleColorsLight();
-	//	auto& colors = ImGui::GetStyle().Colors;
-
-	//	// BG
-	//	colors[ImGuiCol_WindowBg]			= ImVec4{ 0.94f, 0.94f, 0.94f, 1.0f };
-	//	colors[ImGuiCol_WindowBg]			= ImVec4{ 1.0f, 1.0f, 1.0f, 1.0f };
-
-	//	//
-	//	colors[ImGuiCol_Text]				= ImVec4{ 0.10f, 0.10f, 0.10f, 1.0f };
-	//	colors[ImGuiCol_TextDisabled]		= ImVec4{ 0.50f, 0.50f, 0.50f, 1.0f };
-
-	//	//Headers
-	//	colors[ImGuiCol_Header]				= ImVec4{ 0.8f, 0.8f, 0.8f, 1.0f };
-	//	colors[ImGuiCol_HeaderHovered]		= ImVec4{ 0.7f, 0.7f, 0.7f, 1.0f };
-	//	colors[ImGuiCol_HeaderActive]		= ImVec4{ 0.5f, 0.5f, 0.5f, 1.0f };
-
-	//	//Buttons
-	//	colors[ImGuiCol_Button]				= ImVec4{ 0.85f, 0.85f, 0.85f, 1.0f };
-	//	colors[ImGuiCol_ButtonHovered]		= ImVec4{ 0.75f, 0.75f, 0.75f, 1.0f };
-	//	colors[ImGuiCol_ButtonActive]		= ImVec4{ 0.55f, 0.55f, 0.55f, 0.7f };
-
-	//	//FrameBG
-	//	colors[ImGuiCol_FrameBg]			= ImVec4{ 0.8f, 0.8f, 0.8f, 1.0f };
-	//	colors[ImGuiCol_FrameBgHovered]		= ImVec4{ 0.75f, 0.75f, 0.75f, 1.0f };
-	//	colors[ImGuiCol_FrameBgActive]		= ImVec4{ 0.9f, 0.9f, 0.9f, 1.0f };
-
-	//	//Tabs
-	//	colors[ImGuiCol_Tab]				= ImVec4{ 0.8f, 0.8f, 0.8f, 1.0f };
-	//	colors[ImGuiCol_TabHovered]			= ImVec4{ 0.9f, 0.9f, 0.9f, 1.0f };
-	//	colors[ImGuiCol_TabActive]			= ImVec4{ 1.0f, 1.0f, 1.0f, 1.0f };
-	//	colors[ImGuiCol_TabUnfocused]		= ImVec4{ 0.85f, 0.85f, 0.85f, 1.0f };
-	//	colors[ImGuiCol_TabUnfocusedActive] = ImVec4{ 0.95f, 0.95f, 0.95f, 1.0f };
-
-	//	//Titles
-	//	colors[ImGuiCol_TitleBg]			= ImVec4{ 0.85f, 0.85f, 0.85f, 1.0f };
-	//	colors[ImGuiCol_TitleBgActive]		= ImVec4{ 0.75f, 0.75f, 0.75f, 1.0f };
-	//	colors[ImGuiCol_TitleBgCollapsed]	= ImVec4{ 0.9f,  0.9f, 0.9f, 1.0f };
-	//}
 
 	void ImGuiLayer::SetLightThemeColors()
 	{

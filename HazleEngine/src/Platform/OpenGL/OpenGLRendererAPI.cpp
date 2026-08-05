@@ -1,7 +1,7 @@
 #include <hzpch.h>
 #include "OpenGLRendererAPI.h"
 #include "glad/glad.h"
-#include "Renderer/VertexArray.h"
+#include "Hazle/Renderer/VertexArray.h"
 
 namespace Hazle
 {

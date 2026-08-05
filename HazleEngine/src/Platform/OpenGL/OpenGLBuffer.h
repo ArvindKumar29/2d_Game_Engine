@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Hazle/Renderer/Buffer.h"
-#include "glad/glad.h"
+//#include <glad/glad.h>
 
 namespace Hazle
 {

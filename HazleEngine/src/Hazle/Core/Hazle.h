@@ -4,7 +4,6 @@
 //=======================================HAZLE CORE======================================================================
 #include "Application.h"																								  
 #include "core.h"																										  
-#include "EntryPoint.h"																									  
 #include "Input.h"																										  
 #include "KeyCodes.h"																									  
 #include "Layer.h"																										  
@@ -13,61 +12,60 @@
 #include "MouseCodes.h"																									  
 #include "Timestep.h"																									  
 #include "UUID.h"																										  
-#include "Window.h"																										  
-//=======================================================================================================================
+#include "Window.h"																										  //=======================================================================================================================
 																														  
 //=======================================HAZLE DEBUG=====================================================================
-#include "Debug/Instrumentor.h"																							  
+#include "Hazle/Debug/Instrumentor.h"																							  
 //=======================================================================================================================
 																														  
 //=======================================HAZLE EVENT=====================================================================
-#include "Event/ApplicationEvent.h"																						  
-#include "Event/Event.h"																								  
-#include "Event/KeyEvent.h"																								  
-#include "Event/MouseEvent.h"																							  
+#include "Hazle/Event/ApplicationEvent.h"																						  
+#include "Hazle/Event/Event.h"																								  
+#include "Hazle/Event/KeyEvent.h"																								  
+#include "Hazle/Event/MouseEvent.h"																							  
 //=======================================================================================================================
 																														  
 //=======================================HAZLE IMGUI=====================================================================
 #include "imgui.h"																										  
-#include "ImGui/ImGuiLayer.h"																							  
+#include "Hazle/ImGui/ImGuiLayer.h"																							  
 //=======================================================================================================================
 // 																														  
 //========================================HAZLE MATH=====================================================================
-#include "Math/Math.h"																									  
+#include "Hazle/Math/Math.h"																									  
 //=======================================================================================================================
 																														  
 //=======================================HAZLE RENDERER==================================================================
-#include "Renderer/Buffer.h"																							  
-#include "Renderer/Camera.h"																							  
-#include "Renderer/EditorCamera.h"																						  
-#include "Renderer/FrameBuffer.h"																						  
-#include "Renderer/GraphicsContext.h"																					  
-#include "Renderer/OrthographicCamera.h"																				  
-#include "Renderer/OrthographicCameraController.h"																		  
-#include "Renderer/RenderCommand.h"																						  
-#include "Renderer/Renderer.h"																							  
-#include "Renderer/Renderer2D.h"																						  
-#include "Renderer/RendererAPI.h"																						  
-#include "Renderer/Shader.h"																							  
-#include "Renderer/SubTexture2D.h"																						  
-#include "Renderer/Texture.h"																							  
-#include "Renderer/VertexArray.h"																						  
+#include "Hazle/Renderer/Buffer.h"																							  
+#include "Hazle/Renderer/Camera.h"																							  
+#include "Hazle/Renderer/EditorCamera.h"																						  
+#include "Hazle/Renderer/FrameBuffer.h"																						  
+#include "Hazle/Renderer/GraphicsContext.h"																					  
+#include "Hazle/Renderer/OrthographicCamera.h"																				  
+#include "Hazle/Renderer/OrthographicCameraController.h"																		  
+#include "Hazle/Renderer/RenderCommand.h"																						  
+#include "Hazle/Renderer/Renderer.h"																							  
+#include "Hazle/Renderer/Renderer2D.h"																						  
+#include "Hazle/Renderer/RendererAPI.h"																						  
+#include "Hazle/Renderer/Shader.h"																							
+#include "Hazle/Renderer/SubTexture2D.h"																						  
+#include "Hazle/Renderer/Texture.h"																							  
+#include "Hazle/Renderer/VertexArray.h"																						  
 //=======================================================================================================================
 																														  
 																														  
 //=========================================HAZLE Scene===================================================================
-#include "Scene/Audio.h"																								  
-#include "Scene/Component.h"																							  
-#include "Scene/Entity.h"																								  
-#include "Scene/Scene.h"																								  
-#include "Scene/SceneCamera.h"																							  
-#include "Scene/SceneSerializer.h"																						  
-#include "Scene/ScriptableEntity.h"																						  
+#include "Hazle/Scene/Audio.h"																								  
+#include "Hazle/Scene/Component.h"																							  
+#include "Hazle/Scene/Entity.h"																								  
+#include "Hazle/Scene/Scene.h"																								  
+#include "Hazle/Scene/SceneCamera.h"																							  
+#include "Hazle/Scene/SceneSerializer.h"																						  
+#include "Hazle/Scene/ScriptableEntity.h"																						  
 //=======================================================================================================================
 																														  
 																														  
 //=======================================HAZLE UTILS=====================================================================
-#include "Utils/PlatformUtils.h"																						  
+#include "Hazle/Utils/PlatformUtils.h"																						  
 //=======================================================================================================================
 																														  
 //==========================================GLM==========================================================================
