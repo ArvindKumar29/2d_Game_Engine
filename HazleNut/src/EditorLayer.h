@@ -90,5 +90,8 @@ namespace Hazle
 		// HazleUI Icons
 		Ref<Texture2D> m_IconPlay, m_IconStop, m_IconSun, m_IconMoon, m_IconSave, m_IconSimulate;
 		
+		uint32_t currentFrameTime, lastFrameTime[10], fps = 0;
+		uint32_t averageFrameTime = 0, avg_FPS = 0;
+
 	};
 }

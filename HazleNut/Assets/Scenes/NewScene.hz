@@ -1,236 +1,5484 @@
-Scene: RGB Hollow Cube 3x3
+Scene: 100_Quads_Face
 Entities:
-  - Entity: 1000000000
+  # --- ROW Y=0 ---
+  - Entity: 3000000000
     TagComponent:
-      Tag: Block_0_0_0
+      Tag: Quad_0_0
     TransformComponent:
       Translation: [0.0, 0.0, 0.0]
       Rotation: [0, 0, 0]
       Scale: [1, 1, 1]
     SpriteRendrerComponent:
-      Color: [0.0, 0.0, 0.0, 1.0]
-  - Entity: 1000000001
+      Color: [0.00, 0.00, 1.00, 1.0]
+  - Entity: 3000000001
     TagComponent:
-      Tag: Block_0_0_1
-    TransformComponent:
-      Translation: [0.0, 0.0, 1.1]
-      Rotation: [0, 0, 0]
-      Scale: [1, 1, 1]
-    SpriteRendrerComponent:
-      Color: [0.0, 0.0, 0.5, 1.0]
-  - Entity: 1000000002
-    TagComponent:
-      Tag: Block_0_0_2
-    TransformComponent:
-      Translation: [0.0, 0.0, 2.2]
-      Rotation: [0, 0, 0]
-      Scale: [1, 1, 1]
-    SpriteRendrerComponent:
-      Color: [0.0, 0.0, 1.0, 1.0]
-  - Entity: 1000000010
-    TagComponent:
-      Tag: Block_0_1_0
-    TransformComponent:
-      Translation: [0.0, 1.1, 0.0]
-      Rotation: [0, 0, 0]
-      Scale: [1, 1, 1]
-    SpriteRendrerComponent:
-      Color: [0.0, 0.5, 0.0, 1.0]
-  - Entity: 1000000011
-    TagComponent:
-      Tag: Block_0_1_1
-    TransformComponent:
-      Translation: [0.0, 1.1, 1.1]
-      Rotation: [0, 0, 0]
-      Scale: [1, 1, 1]
-    SpriteRendrerComponent:
-      Color: [0.0, 0.5, 0.5, 1.0]
-  - Entity: 1000000012
-    TagComponent:
-      Tag: Block_0_1_2
-    TransformComponent:
-      Translation: [0.0, 1.1, 2.2]
-      Rotation: [0, 0, 0]
-      Scale: [1, 1, 1]
-    SpriteRendrerComponent:
-      Color: [0.0, 0.5, 1.0, 1.0]
-  - Entity: 1000000020
-    TagComponent:
-      Tag: Block_0_2_0
-    TransformComponent:
-      Translation: [0.0, 2.2, 0.0]
-      Rotation: [0, 0, 0]
-      Scale: [1, 1, 1]
-    SpriteRendrerComponent:
-      Color: [0.0, 1.0, 0.0, 1.0]
-  - Entity: 1000000021
-    TagComponent:
-      Tag: Block_0_2_1
-    TransformComponent:
-      Translation: [0.0, 2.2, 1.1]
-      Rotation: [0, 0, 0]
-      Scale: [1, 1, 1]
-    SpriteRendrerComponent:
-      Color: [0.0, 1.0, 0.5, 1.0]
-  - Entity: 1000000022
-    TagComponent:
-      Tag: Block_0_2_2
-    TransformComponent:
-      Translation: [0.0, 2.2, 2.2]
-      Rotation: [0, 0, 0]
-      Scale: [1, 1, 1]
-    SpriteRendrerComponent:
-      Color: [0.0, 1.0, 1.0, 1.0]
-  - Entity: 1000000100
-    TagComponent:
-      Tag: Block_1_0_0
+      Tag: Quad_1_0
     TransformComponent:
       Translation: [1.1, 0.0, 0.0]
       Rotation: [0, 0, 0]
       Scale: [1, 1, 1]
     SpriteRendrerComponent:
-      Color: [0.5, 0.0, 0.0, 1.0]
-  - Entity: 1000000101
+      Color: [0.11, 0.00, 1.00, 1.0]
+  - Entity: 3000000002
     TagComponent:
-      Tag: Block_1_0_1
-    TransformComponent:
-      Translation: [1.1, 0.0, 1.1]
-      Rotation: [0, 0, 0]
-      Scale: [1, 1, 1]
-    SpriteRendrerComponent:
-      Color: [0.5, 0.0, 0.5, 1.0]
-  - Entity: 1000000102
-    TagComponent:
-      Tag: Block_1_0_2
-    TransformComponent:
-      Translation: [1.1, 0.0, 2.2]
-      Rotation: [0, 0, 0]
-      Scale: [1, 1, 1]
-    SpriteRendrerComponent:
-      Color: [0.5, 0.0, 1.0, 1.0]
-  - Entity: 1000000110
-    TagComponent:
-      Tag: Block_1_1_0
-    TransformComponent:
-      Translation: [1.1, 1.1, 0.0]
-      Rotation: [0, 0, 0]
-      Scale: [1, 1, 1]
-    SpriteRendrerComponent:
-      Color: [0.5, 0.5, 0.0, 1.0]
-  - Entity: 1000000112
-    TagComponent:
-      Tag: Block_1_1_2
-    TransformComponent:
-      Translation: [1.1, 1.1, 2.2]
-      Rotation: [0, 0, 0]
-      Scale: [1, 1, 1]
-    SpriteRendrerComponent:
-      Color: [0.5, 0.5, 1.0, 1.0]
-  - Entity: 1000000120
-    TagComponent:
-      Tag: Block_1_2_0
-    TransformComponent:
-      Translation: [1.1, 2.2, 0.0]
-      Rotation: [0, 0, 0]
-      Scale: [1, 1, 1]
-    SpriteRendrerComponent:
-      Color: [0.5, 1.0, 0.0, 1.0]
-  - Entity: 1000000121
-    TagComponent:
-      Tag: Block_1_2_1
-    TransformComponent:
-      Translation: [1.1, 2.2, 1.1]
-      Rotation: [0, 0, 0]
-      Scale: [1, 1, 1]
-    SpriteRendrerComponent:
-      Color: [0.5, 1.0, 0.5, 1.0]
-  - Entity: 1000000122
-    TagComponent:
-      Tag: Block_1_2_2
-    TransformComponent:
-      Translation: [1.1, 2.2, 2.2]
-      Rotation: [0, 0, 0]
-      Scale: [1, 1, 1]
-    SpriteRendrerComponent:
-      Color: [0.5, 1.0, 1.0, 1.0]
-  - Entity: 1000000200
-    TagComponent:
-      Tag: Block_2_0_0
+      Tag: Quad_2_0
     TransformComponent:
       Translation: [2.2, 0.0, 0.0]
       Rotation: [0, 0, 0]
       Scale: [1, 1, 1]
     SpriteRendrerComponent:
-      Color: [1.0, 0.0, 0.0, 1.0]
-  - Entity: 1000000201
+      Color: [0.22, 0.00, 1.00, 1.0]
+  - Entity: 3000000003
     TagComponent:
-      Tag: Block_2_0_1
+      Tag: Quad_3_0
     TransformComponent:
-      Translation: [2.2, 0.0, 1.1]
+      Translation: [3.3, 0.0, 0.0]
       Rotation: [0, 0, 0]
       Scale: [1, 1, 1]
     SpriteRendrerComponent:
-      Color: [1.0, 0.0, 0.5, 1.0]
-  - Entity: 1000000202
+      Color: [0.33, 0.00, 1.00, 1.0]
+  - Entity: 3000000004
     TagComponent:
-      Tag: Block_2_0_2
+      Tag: Quad_4_0
     TransformComponent:
-      Translation: [2.2, 0.0, 2.2]
+      Translation: [4.4, 0.0, 0.0]
       Rotation: [0, 0, 0]
       Scale: [1, 1, 1]
     SpriteRendrerComponent:
-      Color: [1.0, 0.0, 1.0, 1.0]
-  - Entity: 1000000210
+      Color: [0.44, 0.00, 1.00, 1.0]
+  - Entity: 3000000005
     TagComponent:
-      Tag: Block_2_1_0
+      Tag: Quad_5_0
+    TransformComponent:
+      Translation: [5.5, 0.0, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.55, 0.00, 1.00, 1.0]
+  - Entity: 3000000006
+    TagComponent:
+      Tag: Quad_6_0
+    TransformComponent:
+      Translation: [6.6, 0.0, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.66, 0.00, 1.00, 1.0]
+  - Entity: 3000000007
+    TagComponent:
+      Tag: Quad_7_0
+    TransformComponent:
+      Translation: [7.7, 0.0, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.77, 0.00, 1.00, 1.0]
+  - Entity: 3000000008
+    TagComponent:
+      Tag: Quad_8_0
+    TransformComponent:
+      Translation: [8.8, 0.0, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.88, 0.00, 1.00, 1.0]
+  - Entity: 3000000009
+    TagComponent:
+      Tag: Quad_9_0
+    TransformComponent:
+      Translation: [9.9, 0.0, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 1.00, 1.0]
+
+  # --- ROW Y=1 ---
+  - Entity: 3000000010
+    TagComponent:
+      Tag: Quad_0_1
+    TransformComponent:
+      Translation: [0.0, 1.1, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 0.11, 1.00, 1.0]
+  - Entity: 3000000011
+    TagComponent:
+      Tag: Quad_1_1
+    TransformComponent:
+      Translation: [1.1, 1.1, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.10, 0.10, 0.99, 1.0]
+  - Entity: 3000000012
+    TagComponent:
+      Tag: Quad_2_1
     TransformComponent:
       Translation: [2.2, 1.1, 0.0]
       Rotation: [0, 0, 0]
       Scale: [1, 1, 1]
     SpriteRendrerComponent:
-      Color: [1.0, 0.5, 0.0, 1.0]
-  - Entity: 1000000211
+      Color: [0.20, 0.09, 0.98, 1.0]
+  - Entity: 3000000013
     TagComponent:
-      Tag: Block_2_1_1
+      Tag: Quad_3_1
     TransformComponent:
-      Translation: [2.2, 1.1, 1.1]
+      Translation: [3.3, 1.1, 0.0]
       Rotation: [0, 0, 0]
       Scale: [1, 1, 1]
     SpriteRendrerComponent:
-      Color: [1.0, 0.5, 0.5, 1.0]
-  - Entity: 1000000212
+      Color: [0.29, 0.07, 0.96, 1.0]
+  - Entity: 3000000014
     TagComponent:
-      Tag: Block_2_1_2
+      Tag: Quad_4_1
     TransformComponent:
-      Translation: [2.2, 1.1, 2.2]
+      Translation: [4.4, 1.1, 0.0]
       Rotation: [0, 0, 0]
       Scale: [1, 1, 1]
     SpriteRendrerComponent:
-      Color: [1.0, 0.5, 1.0, 1.0]
-  - Entity: 1000000220
+      Color: [0.39, 0.06, 0.95, 1.0]
+  - Entity: 3000000015
     TagComponent:
-      Tag: Block_2_2_0
+      Tag: Quad_5_1
+    TransformComponent:
+      Translation: [5.5, 1.1, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.49, 0.05, 0.94, 1.0]
+  - Entity: 3000000016
+    TagComponent:
+      Tag: Quad_6_1
+    TransformComponent:
+      Translation: [6.6, 1.1, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.59, 0.04, 0.93, 1.0]
+  - Entity: 3000000017
+    TagComponent:
+      Tag: Quad_7_1
+    TransformComponent:
+      Translation: [7.7, 1.1, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.69, 0.03, 0.91, 1.0]
+  - Entity: 3000000018
+    TagComponent:
+      Tag: Quad_8_1
+    TransformComponent:
+      Translation: [8.8, 1.1, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.78, 0.01, 0.90, 1.0]
+  - Entity: 3000000019
+    TagComponent:
+      Tag: Quad_9_1
+    TransformComponent:
+      Translation: [9.9, 1.1, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.89, 0.00, 0.89, 1.0]
+
+  # --- ROW Y=2 ---
+  - Entity: 3000000020
+    TagComponent:
+      Tag: Quad_0_2
+    TransformComponent:
+      Translation: [0.0, 2.2, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 0.22, 1.00, 1.0]
+  - Entity: 3000000021
+    TagComponent:
+      Tag: Quad_1_2
+    TransformComponent:
+      Translation: [1.1, 2.2, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.09, 0.20, 0.98, 1.0]
+  - Entity: 3000000022
+    TagComponent:
+      Tag: Quad_2_2
     TransformComponent:
       Translation: [2.2, 2.2, 0.0]
       Rotation: [0, 0, 0]
       Scale: [1, 1, 1]
     SpriteRendrerComponent:
-      Color: [1.0, 1.0, 0.0, 1.0]
-  - Entity: 1000000221
+      Color: [0.17, 0.17, 0.95, 1.0]
+  - Entity: 3000000023
     TagComponent:
-      Tag: Block_2_2_1
+      Tag: Quad_3_2
     TransformComponent:
-      Translation: [2.2, 2.2, 1.1]
+      Translation: [3.3, 2.2, 0.0]
       Rotation: [0, 0, 0]
       Scale: [1, 1, 1]
     SpriteRendrerComponent:
-      Color: [1.0, 1.0, 0.5, 1.0]
-  - Entity: 1000000222
+      Color: [0.26, 0.15, 0.93, 1.0]
+  - Entity: 3000000024
     TagComponent:
-      Tag: Block_2_2_2
+      Tag: Quad_4_2
     TransformComponent:
-      Translation: [2.2, 2.2, 2.2]
+      Translation: [4.4, 2.2, 0.0]
       Rotation: [0, 0, 0]
       Scale: [1, 1, 1]
     SpriteRendrerComponent:
-      Color: [1.0, 1.0, 1.0, 1.0]
+      Color: [0.34, 0.12, 0.90, 1.0]
+  - Entity: 3000000025
+    TagComponent:
+      Tag: Quad_5_2
+    TransformComponent:
+      Translation: [5.5, 2.2, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.43, 0.10, 0.88, 1.0]
+  - Entity: 3000000026
+    TagComponent:
+      Tag: Quad_6_2
+    TransformComponent:
+      Translation: [6.6, 2.2, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.51, 0.07, 0.85, 1.0]
+  - Entity: 3000000027
+    TagComponent:
+      Tag: Quad_7_2
+    TransformComponent:
+      Translation: [7.7, 2.2, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.60, 0.05, 0.83, 1.0]
+  - Entity: 3000000028
+    TagComponent:
+      Tag: Quad_8_2
+    TransformComponent:
+      Translation: [8.8, 2.2, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.69, 0.03, 0.81, 1.0]
+  - Entity: 3000000029
+    TagComponent:
+      Tag: Quad_9_2
+    TransformComponent:
+      Translation: [9.9, 2.2, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.78, 0.00, 0.78, 1.0]
+
+  # --- ROW Y=3 ---
+  - Entity: 3000000030
+    TagComponent:
+      Tag: Quad_0_3
+    TransformComponent:
+      Translation: [0.0, 3.3, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 0.33, 1.00, 1.0]
+  - Entity: 3000000031
+    TagComponent:
+      Tag: Quad_1_3
+    TransformComponent:
+      Translation: [1.1, 3.3, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.07, 0.29, 0.96, 1.0]
+  - Entity: 3000000032
+    TagComponent:
+      Tag: Quad_2_3
+    TransformComponent:
+      Translation: [2.2, 3.3, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.15, 0.26, 0.93, 1.0]
+  - Entity: 3000000033
+    TagComponent:
+      Tag: Quad_3_3
+    TransformComponent:
+      Translation: [3.3, 3.3, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.22, 0.22, 0.89, 1.0]
+  - Entity: 3000000034
+    TagComponent:
+      Tag: Quad_4_3
+    TransformComponent:
+      Translation: [4.4, 3.3, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.29, 0.18, 0.85, 1.0]
+  - Entity: 3000000035
+    TagComponent:
+      Tag: Quad_5_3
+    TransformComponent:
+      Translation: [5.5, 3.3, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.37, 0.15, 0.82, 1.0]
+  - Entity: 3000000036
+    TagComponent:
+      Tag: Quad_6_3
+    TransformComponent:
+      Translation: [6.6, 3.3, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.44, 0.11, 0.78, 1.0]
+  - Entity: 3000000037
+    TagComponent:
+      Tag: Quad_7_3
+    TransformComponent:
+      Translation: [7.7, 3.3, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.52, 0.07, 0.74, 1.0]
+  - Entity: 3000000038
+    TagComponent:
+      Tag: Quad_8_3
+    TransformComponent:
+      Translation: [8.8, 3.3, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.59, 0.04, 0.71, 1.0]
+  - Entity: 3000000039
+    TagComponent:
+      Tag: Quad_9_3
+    TransformComponent:
+      Translation: [9.9, 3.3, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.67, 0.00, 0.67, 1.0]
+
+  # --- ROW Y=4 ---
+  - Entity: 3000000040
+    TagComponent:
+      Tag: Quad_0_4
+    TransformComponent:
+      Translation: [0.0, 4.4, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 0.44, 1.00, 1.0]
+  - Entity: 3000000041
+    TagComponent:
+      Tag: Quad_1_4
+    TransformComponent:
+      Translation: [1.1, 4.4, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.06, 0.39, 0.95, 1.0]
+  - Entity: 3000000042
+    TagComponent:
+      Tag: Quad_2_4
+    TransformComponent:
+      Translation: [2.2, 4.4, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.12, 0.34, 0.90, 1.0]
+  - Entity: 3000000043
+    TagComponent:
+      Tag: Quad_3_4
+    TransformComponent:
+      Translation: [3.3, 4.4, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.18, 0.29, 0.85, 1.0]
+  - Entity: 3000000044
+    TagComponent:
+      Tag: Quad_4_4
+    TransformComponent:
+      Translation: [4.4, 4.4, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.25, 0.25, 0.81, 1.0]
+  - Entity: 3000000045
+    TagComponent:
+      Tag: Quad_5_4
+    TransformComponent:
+      Translation: [5.5, 4.4, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.31, 0.20, 0.76, 1.0]
+  - Entity: 3000000046
+    TagComponent:
+      Tag: Quad_6_4
+    TransformComponent:
+      Translation: [6.6, 4.4, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.37, 0.15, 0.71, 1.0]
+  - Entity: 3000000047
+    TagComponent:
+      Tag: Quad_7_4
+    TransformComponent:
+      Translation: [7.7, 4.4, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.43, 0.10, 0.66, 1.0]
+  - Entity: 3000000048
+    TagComponent:
+      Tag: Quad_8_4
+    TransformComponent:
+      Translation: [8.8, 4.4, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.49, 0.05, 0.61, 1.0]
+  - Entity: 3000000049
+    TagComponent:
+      Tag: Quad_9_4
+    TransformComponent:
+      Translation: [9.9, 4.4, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.56, 0.00, 0.56, 1.0]
+
+  # --- ROW Y=5 ---
+  - Entity: 3000000050
+    TagComponent:
+      Tag: Quad_0_5
+    TransformComponent:
+      Translation: [0.0, 5.5, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 0.55, 1.00, 1.0]
+  - Entity: 3000000051
+    TagComponent:
+      Tag: Quad_1_5
+    TransformComponent:
+      Translation: [1.1, 5.5, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.05, 0.49, 0.94, 1.0]
+  - Entity: 3000000052
+    TagComponent:
+      Tag: Quad_2_5
+    TransformComponent:
+      Translation: [2.2, 5.5, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.10, 0.43, 0.88, 1.0]
+  - Entity: 3000000053
+    TagComponent:
+      Tag: Quad_3_5
+    TransformComponent:
+      Translation: [3.3, 5.5, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.15, 0.37, 0.82, 1.0]
+  - Entity: 3000000054
+    TagComponent:
+      Tag: Quad_4_5
+    TransformComponent:
+      Translation: [4.4, 5.5, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.20, 0.31, 0.76, 1.0]
+  - Entity: 3000000055
+    TagComponent:
+      Tag: Quad_5_5
+    TransformComponent:
+      Translation: [5.5, 5.5, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.25, 0.25, 0.70, 1.0]
+  - Entity: 3000000056
+    TagComponent:
+      Tag: Quad_6_5
+    TransformComponent:
+      Translation: [6.6, 5.5, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.30, 0.19, 0.64, 1.0]
+  - Entity: 3000000057
+    TagComponent:
+      Tag: Quad_7_5
+    TransformComponent:
+      Translation: [7.7, 5.5, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.35, 0.12, 0.58, 1.0]
+  - Entity: 3000000058
+    TagComponent:
+      Tag: Quad_8_5
+    TransformComponent:
+      Translation: [8.8, 5.5, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.40, 0.06, 0.52, 1.0]
+  - Entity: 3000000059
+    TagComponent:
+      Tag: Quad_9_5
+    TransformComponent:
+      Translation: [9.9, 5.5, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.44, 0.00, 0.44, 1.0]
+
+  # --- ROW Y=6 ---
+  - Entity: 3000000060
+    TagComponent:
+      Tag: Quad_0_6
+    TransformComponent:
+      Translation: [0.0, 6.6, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 0.66, 1.00, 1.0]
+  - Entity: 3000000061
+    TagComponent:
+      Tag: Quad_1_6
+    TransformComponent:
+      Translation: [1.1, 6.6, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.04, 0.59, 0.93, 1.0]
+  - Entity: 3000000062
+    TagComponent:
+      Tag: Quad_2_6
+    TransformComponent:
+      Translation: [2.2, 6.6, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.07, 0.51, 0.85, 1.0]
+  - Entity: 3000000063
+    TagComponent:
+      Tag: Quad_3_6
+    TransformComponent:
+      Translation: [3.3, 6.6, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.11, 0.44, 0.78, 1.0]
+  - Entity: 3000000064
+    TagComponent:
+      Tag: Quad_4_6
+    TransformComponent:
+      Translation: [4.4, 6.6, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.15, 0.37, 0.71, 1.0]
+  - Entity: 3000000065
+    TagComponent:
+      Tag: Quad_5_6
+    TransformComponent:
+      Translation: [5.5, 6.6, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.19, 0.30, 0.64, 1.0]
+  - Entity: 3000000066
+    TagComponent:
+      Tag: Quad_6_6
+    TransformComponent:
+      Translation: [6.6, 6.6, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.22, 0.22, 0.56, 1.0]
+  - Entity: 3000000067
+    TagComponent:
+      Tag: Quad_7_6
+    TransformComponent:
+      Translation: [7.7, 6.6, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.26, 0.15, 0.49, 1.0]
+  - Entity: 3000000068
+    TagComponent:
+      Tag: Quad_8_6
+    TransformComponent:
+      Translation: [8.8, 6.6, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.30, 0.07, 0.42, 1.0]
+  - Entity: 3000000069
+    TagComponent:
+      Tag: Quad_9_6
+    TransformComponent:
+      Translation: [9.9, 6.6, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.33, 0.00, 0.33, 1.0]
+
+  # --- ROW Y=7 ---
+  - Entity: 3000000070
+    TagComponent:
+      Tag: Quad_0_7
+    TransformComponent:
+      Translation: [0.0, 7.7, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 0.77, 1.00, 1.0]
+  - Entity: 3000000071
+    TagComponent:
+      Tag: Quad_1_7
+    TransformComponent:
+      Translation: [1.1, 7.7, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.03, 0.69, 0.91, 1.0]
+  - Entity: 3000000072
+    TagComponent:
+      Tag: Quad_2_7
+    TransformComponent:
+      Translation: [2.2, 7.7, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.05, 0.60, 0.83, 1.0]
+  - Entity: 3000000073
+    TagComponent:
+      Tag: Quad_3_7
+    TransformComponent:
+      Translation: [3.3, 7.7, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.07, 0.52, 0.74, 1.0]
+  - Entity: 3000000074
+    TagComponent:
+      Tag: Quad_4_7
+    TransformComponent:
+      Translation: [4.4, 7.7, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.10, 0.43, 0.66, 1.0]
+  - Entity: 3000000075
+    TagComponent:
+      Tag: Quad_5_7
+    TransformComponent:
+      Translation: [5.5, 7.7, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.12, 0.35, 0.58, 1.0]
+  - Entity: 3000000076
+    TagComponent:
+      Tag: Quad_6_7
+    TransformComponent:
+      Translation: [6.6, 7.7, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.15, 0.26, 0.49, 1.0]
+  - Entity: 3000000077
+    TagComponent:
+      Tag: Quad_7_7
+    TransformComponent:
+      Translation: [7.7, 7.7, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.17, 0.17, 0.41, 1.0]
+  - Entity: 3000000078
+    TagComponent:
+      Tag: Quad_8_7
+    TransformComponent:
+      Translation: [8.8, 7.7, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.20, 0.09, 0.32, 1.0]
+  - Entity: 3000000079
+    TagComponent:
+      Tag: Quad_9_7
+    TransformComponent:
+      Translation: [9.9, 7.7, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.22, 0.00, 0.22, 1.0]
+
+  # --- ROW Y=8 ---
+  - Entity: 3000000080
+    TagComponent:
+      Tag: Quad_0_8
+    TransformComponent:
+      Translation: [0.0, 8.8, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 0.88, 1.00, 1.0]
+  - Entity: 3000000081
+    TagComponent:
+      Tag: Quad_1_8
+    TransformComponent:
+      Translation: [1.1, 8.8, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.01, 0.78, 0.90, 1.0]
+  - Entity: 3000000082
+    TagComponent:
+      Tag: Quad_2_8
+    TransformComponent:
+      Translation: [2.2, 8.8, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.03, 0.69, 0.81, 1.0]
+  - Entity: 3000000083
+    TagComponent:
+      Tag: Quad_3_8
+    TransformComponent:
+      Translation: [3.3, 8.8, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.04, 0.59, 0.71, 1.0]
+  - Entity: 3000000084
+    TagComponent:
+      Tag: Quad_4_8
+    TransformComponent:
+      Translation: [4.4, 8.8, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.05, 0.49, 0.61, 1.0]
+  - Entity: 3000000085
+    TagComponent:
+      Tag: Quad_5_8
+    TransformComponent:
+      Translation: [5.5, 8.8, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.06, 0.40, 0.52, 1.0]
+  - Entity: 3000000086
+    TagComponent:
+      Tag: Quad_6_8
+    TransformComponent:
+      Translation: [6.6, 8.8, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.07, 0.30, 0.42, 1.0]
+  - Entity: 3000000087
+    TagComponent:
+      Tag: Quad_7_8
+    TransformComponent:
+      Translation: [7.7, 8.8, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.09, 0.20, 0.32, 1.0]
+  - Entity: 3000000088
+    TagComponent:
+      Tag: Quad_8_8
+    TransformComponent:
+      Translation: [8.8, 8.8, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.10, 0.10, 0.23, 1.0]
+  - Entity: 3000000089
+    TagComponent:
+      Tag: Quad_9_8
+    TransformComponent:
+      Translation: [9.9, 8.8, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.11, 0.00, 0.11, 1.0]
+
+  # --- ROW Y=9 ---
+  - Entity: 3000000090
+    TagComponent:
+      Tag: Quad_0_9
+    TransformComponent:
+      Translation: [0.0, 9.9, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 1.00, 1.00, 1.0]
+  - Entity: 3000000091
+    TagComponent:
+      Tag: Quad_1_9
+    TransformComponent:
+      Translation: [1.1, 9.9, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 0.89, 0.89, 1.0]
+  - Entity: 3000000092
+    TagComponent:
+      Tag: Quad_2_9
+    TransformComponent:
+      Translation: [2.2, 9.9, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 0.78, 0.78, 1.0]
+  - Entity: 3000000093
+    TagComponent:
+      Tag: Quad_3_9
+    TransformComponent:
+      Translation: [3.3, 9.9, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 0.67, 0.67, 1.0]
+  - Entity: 3000000094
+    TagComponent:
+      Tag: Quad_4_9
+    TransformComponent:
+      Translation: [4.4, 9.9, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 0.56, 0.56, 1.0]
+  - Entity: 3000000095
+    TagComponent:
+      Tag: Quad_5_9
+    TransformComponent:
+      Translation: [5.5, 9.9, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 0.44, 0.44, 1.0]
+  - Entity: 3000000096
+    TagComponent:
+      Tag: Quad_6_9
+    TransformComponent:
+      Translation: [6.6, 9.9, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 0.33, 0.33, 1.0]
+  - Entity: 3000000097
+    TagComponent:
+      Tag: Quad_7_9
+    TransformComponent:
+      Translation: [7.7, 9.9, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 0.22, 0.22, 1.0]
+  - Entity: 3000000098
+    TagComponent:
+      Tag: Quad_8_9
+    TransformComponent:
+      Translation: [8.8, 9.9, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 0.11, 0.11, 1.0]
+  - Entity: 3000000099
+    TagComponent:
+      Tag: Quad_9_9
+    TransformComponent:
+      Translation: [9.9, 9.9, 0.0]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 0.00, 0.00, 1.0]
+
+
+# --- ROW Y=0 ---
+  - Entity: 4000000000
+    TagComponent:
+      Tag: LeftQuad_0_0
+    TransformComponent:
+      Translation: [0.0, 0.0, 0.0]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 0.00, 1.00, 1.0]
+  - Entity: 4000000001
+    TagComponent:
+      Tag: LeftQuad_0_1
+    TransformComponent:
+      Translation: [0.0, 0.0, -1.1]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.11, 0.11, 1.00, 1.0]
+  - Entity: 4000000002
+    TagComponent:
+      Tag: LeftQuad_0_2
+    TransformComponent:
+      Translation: [0.0, 0.0, -2.2]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.22, 0.22, 1.00, 1.0]
+  - Entity: 4000000003
+    TagComponent:
+      Tag: LeftQuad_0_3
+    TransformComponent:
+      Translation: [0.0, 0.0, -3.3]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.33, 0.33, 1.00, 1.0]
+  - Entity: 4000000004
+    TagComponent:
+      Tag: LeftQuad_0_4
+    TransformComponent:
+      Translation: [0.0, 0.0, -4.4]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.44, 0.44, 1.00, 1.0]
+  - Entity: 4000000005
+    TagComponent:
+      Tag: LeftQuad_0_5
+    TransformComponent:
+      Translation: [0.0, 0.0, -5.5]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.56, 0.56, 1.00, 1.0]
+  - Entity: 4000000006
+    TagComponent:
+      Tag: LeftQuad_0_6
+    TransformComponent:
+      Translation: [0.0, 0.0, -6.6]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.67, 0.67, 1.00, 1.0]
+  - Entity: 4000000007
+    TagComponent:
+      Tag: LeftQuad_0_7
+    TransformComponent:
+      Translation: [0.0, 0.0, -7.7]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.78, 0.78, 1.00, 1.0]
+  - Entity: 4000000008
+    TagComponent:
+      Tag: LeftQuad_0_8
+    TransformComponent:
+      Translation: [0.0, 0.0, -8.8]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.89, 0.89, 1.00, 1.0]
+  - Entity: 4000000009
+    TagComponent:
+      Tag: LeftQuad_0_9
+    TransformComponent:
+      Translation: [0.0, 0.0, -9.9]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 1.00, 1.00, 1.0]
+  # --- ROW Y=1 ---
+  - Entity: 4000000010
+    TagComponent:
+      Tag: LeftQuad_1_0
+    TransformComponent:
+      Translation: [0.0, 1.1, 0.0]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 0.11, 1.00, 1.0]
+  - Entity: 4000000011
+    TagComponent:
+      Tag: LeftQuad_1_1
+    TransformComponent:
+      Translation: [0.0, 1.1, -1.1]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.10, 0.21, 0.99, 1.0]
+  - Entity: 4000000012
+    TagComponent:
+      Tag: LeftQuad_1_2
+    TransformComponent:
+      Translation: [0.0, 1.1, -2.2]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.20, 0.31, 0.98, 1.0]
+  - Entity: 4000000013
+    TagComponent:
+      Tag: LeftQuad_1_3
+    TransformComponent:
+      Translation: [0.0, 1.1, -3.3]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.30, 0.41, 0.96, 1.0]
+  - Entity: 4000000014
+    TagComponent:
+      Tag: LeftQuad_1_4
+    TransformComponent:
+      Translation: [0.0, 1.1, -4.4]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.40, 0.51, 0.95, 1.0]
+  - Entity: 4000000015
+    TagComponent:
+      Tag: LeftQuad_1_5
+    TransformComponent:
+      Translation: [0.0, 1.1, -5.5]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.49, 0.60, 0.94, 1.0]
+  - Entity: 4000000016
+    TagComponent:
+      Tag: LeftQuad_1_6
+    TransformComponent:
+      Translation: [0.0, 1.1, -6.6]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.59, 0.70, 0.93, 1.0]
+  - Entity: 4000000017
+    TagComponent:
+      Tag: LeftQuad_1_7
+    TransformComponent:
+      Translation: [0.0, 1.1, -7.7]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.69, 0.80, 0.91, 1.0]
+  - Entity: 4000000018
+    TagComponent:
+      Tag: LeftQuad_1_8
+    TransformComponent:
+      Translation: [0.0, 1.1, -8.8]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.79, 0.90, 0.90, 1.0]
+  - Entity: 4000000019
+    TagComponent:
+      Tag: LeftQuad_1_9
+    TransformComponent:
+      Translation: [0.0, 1.1, -9.9]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.89, 1.00, 0.89, 1.0]
+  # --- ROW Y=2 ---
+  - Entity: 4000000020
+    TagComponent:
+      Tag: LeftQuad_2_0
+    TransformComponent:
+      Translation: [0.0, 2.2, 0.0]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 0.22, 1.00, 1.0]
+  - Entity: 4000000021
+    TagComponent:
+      Tag: LeftQuad_2_1
+    TransformComponent:
+      Translation: [0.0, 2.2, -1.1]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.09, 0.31, 0.98, 1.0]
+  - Entity: 4000000022
+    TagComponent:
+      Tag: LeftQuad_2_2
+    TransformComponent:
+      Translation: [0.0, 2.2, -2.2]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.17, 0.40, 0.95, 1.0]
+  - Entity: 4000000023
+    TagComponent:
+      Tag: LeftQuad_2_3
+    TransformComponent:
+      Translation: [0.0, 2.2, -3.3]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.26, 0.48, 0.93, 1.0]
+  - Entity: 4000000024
+    TagComponent:
+      Tag: LeftQuad_2_4
+    TransformComponent:
+      Translation: [0.0, 2.2, -4.4]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.35, 0.57, 0.90, 1.0]
+  - Entity: 4000000025
+    TagComponent:
+      Tag: LeftQuad_2_5
+    TransformComponent:
+      Translation: [0.0, 2.2, -5.5]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.43, 0.65, 0.88, 1.0]
+  - Entity: 4000000026
+    TagComponent:
+      Tag: LeftQuad_2_6
+    TransformComponent:
+      Translation: [0.0, 2.2, -6.6]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.52, 0.74, 0.85, 1.0]
+  - Entity: 4000000027
+    TagComponent:
+      Tag: LeftQuad_2_7
+    TransformComponent:
+      Translation: [0.0, 2.2, -7.7]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.60, 0.83, 0.83, 1.0]
+  - Entity: 4000000028
+    TagComponent:
+      Tag: LeftQuad_2_8
+    TransformComponent:
+      Translation: [0.0, 2.2, -8.8]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.69, 0.91, 0.80, 1.0]
+  - Entity: 4000000029
+    TagComponent:
+      Tag: LeftQuad_2_9
+    TransformComponent:
+      Translation: [0.0, 2.2, -9.9]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.78, 1.00, 0.78, 1.0]
+  # --- ROW Y=3 ---
+  - Entity: 4000000030
+    TagComponent:
+      Tag: LeftQuad_3_0
+    TransformComponent:
+      Translation: [0.0, 3.3, 0.0]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 0.33, 1.00, 1.0]
+  - Entity: 4000000031
+    TagComponent:
+      Tag: LeftQuad_3_1
+    TransformComponent:
+      Translation: [0.0, 3.3, -1.1]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.07, 0.41, 0.96, 1.0]
+  - Entity: 4000000032
+    TagComponent:
+      Tag: LeftQuad_3_2
+    TransformComponent:
+      Translation: [0.0, 3.3, -2.2]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.15, 0.48, 0.93, 1.0]
+  - Entity: 4000000033
+    TagComponent:
+      Tag: LeftQuad_3_3
+    TransformComponent:
+      Translation: [0.0, 3.3, -3.3]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.22, 0.56, 0.89, 1.0]
+  - Entity: 4000000034
+    TagComponent:
+      Tag: LeftQuad_3_4
+    TransformComponent:
+      Translation: [0.0, 3.3, -4.4]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.30, 0.63, 0.85, 1.0]
+  - Entity: 4000000035
+    TagComponent:
+      Tag: LeftQuad_3_5
+    TransformComponent:
+      Translation: [0.0, 3.3, -5.5]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.37, 0.70, 0.81, 1.0]
+  - Entity: 4000000036
+    TagComponent:
+      Tag: LeftQuad_3_6
+    TransformComponent:
+      Translation: [0.0, 3.3, -6.6]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.44, 0.78, 0.78, 1.0]
+  - Entity: 4000000037
+    TagComponent:
+      Tag: LeftQuad_3_7
+    TransformComponent:
+      Translation: [0.0, 3.3, -7.7]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.52, 0.85, 0.74, 1.0]
+  - Entity: 4000000038
+    TagComponent:
+      Tag: LeftQuad_3_8
+    TransformComponent:
+      Translation: [0.0, 3.3, -8.8]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.59, 0.93, 0.70, 1.0]
+  - Entity: 4000000039
+    TagComponent:
+      Tag: LeftQuad_3_9
+    TransformComponent:
+      Translation: [0.0, 3.3, -9.9]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.67, 1.00, 0.67, 1.0]
+  # --- ROW Y=4 ---
+  - Entity: 4000000040
+    TagComponent:
+      Tag: LeftQuad_4_0
+    TransformComponent:
+      Translation: [0.0, 4.4, 0.0]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 0.44, 1.00, 1.0]
+  - Entity: 4000000041
+    TagComponent:
+      Tag: LeftQuad_4_1
+    TransformComponent:
+      Translation: [0.0, 4.4, -1.1]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.06, 0.51, 0.95, 1.0]
+  - Entity: 4000000042
+    TagComponent:
+      Tag: LeftQuad_4_2
+    TransformComponent:
+      Translation: [0.0, 4.4, -2.2]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.12, 0.57, 0.90, 1.0]
+  - Entity: 4000000043
+    TagComponent:
+      Tag: LeftQuad_4_3
+    TransformComponent:
+      Translation: [0.0, 4.4, -3.3]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.19, 0.63, 0.85, 1.0]
+  - Entity: 4000000044
+    TagComponent:
+      Tag: LeftQuad_4_4
+    TransformComponent:
+      Translation: [0.0, 4.4, -4.4]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.25, 0.69, 0.80, 1.0]
+  - Entity: 4000000045
+    TagComponent:
+      Tag: LeftQuad_4_5
+    TransformComponent:
+      Translation: [0.0, 4.4, -5.5]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.31, 0.75, 0.75, 1.0]
+  - Entity: 4000000046
+    TagComponent:
+      Tag: LeftQuad_4_6
+    TransformComponent:
+      Translation: [0.0, 4.4, -6.6]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.37, 0.81, 0.70, 1.0]
+  - Entity: 4000000047
+    TagComponent:
+      Tag: LeftQuad_4_7
+    TransformComponent:
+      Translation: [0.0, 4.4, -7.7]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.43, 0.88, 0.65, 1.0]
+  - Entity: 4000000048
+    TagComponent:
+      Tag: LeftQuad_4_8
+    TransformComponent:
+      Translation: [0.0, 4.4, -8.8]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.49, 0.94, 0.60, 1.0]
+  - Entity: 4000000049
+    TagComponent:
+      Tag: LeftQuad_4_9
+    TransformComponent:
+      Translation: [0.0, 4.4, -9.9]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.56, 1.00, 0.56, 1.0]
+  # --- ROW Y=5 ---
+  - Entity: 4000000050
+    TagComponent:
+      Tag: LeftQuad_5_0
+    TransformComponent:
+      Translation: [0.0, 5.5, 0.0]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 0.56, 1.00, 1.0]
+  - Entity: 4000000051
+    TagComponent:
+      Tag: LeftQuad_5_1
+    TransformComponent:
+      Translation: [0.0, 5.5, -1.1]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.05, 0.60, 0.94, 1.0]
+  - Entity: 4000000052
+    TagComponent:
+      Tag: LeftQuad_5_2
+    TransformComponent:
+      Translation: [0.0, 5.5, -2.2]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.10, 0.65, 0.88, 1.0]
+  - Entity: 4000000053
+    TagComponent:
+      Tag: LeftQuad_5_3
+    TransformComponent:
+      Translation: [0.0, 5.5, -3.3]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.15, 0.70, 0.81, 1.0]
+  - Entity: 4000000054
+    TagComponent:
+      Tag: LeftQuad_5_4
+    TransformComponent:
+      Translation: [0.0, 5.5, -4.4]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.20, 0.75, 0.75, 1.0]
+  - Entity: 4000000055
+    TagComponent:
+      Tag: LeftQuad_5_5
+    TransformComponent:
+      Translation: [0.0, 5.5, -5.5]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.25, 0.80, 0.69, 1.0]
+  - Entity: 4000000056
+    TagComponent:
+      Tag: LeftQuad_5_6
+    TransformComponent:
+      Translation: [0.0, 5.5, -6.6]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.30, 0.85, 0.63, 1.0]
+  - Entity: 4000000057
+    TagComponent:
+      Tag: LeftQuad_5_7
+    TransformComponent:
+      Translation: [0.0, 5.5, -7.7]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.35, 0.90, 0.57, 1.0]
+  - Entity: 4000000058
+    TagComponent:
+      Tag: LeftQuad_5_8
+    TransformComponent:
+      Translation: [0.0, 5.5, -8.8]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.40, 0.95, 0.51, 1.0]
+  - Entity: 4000000059
+    TagComponent:
+      Tag: LeftQuad_5_9
+    TransformComponent:
+      Translation: [0.0, 5.5, -9.9]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.44, 1.00, 0.44, 1.0]
+  # --- ROW Y=6 ---
+  - Entity: 4000000060
+    TagComponent:
+      Tag: LeftQuad_6_0
+    TransformComponent:
+      Translation: [0.0, 6.6, 0.0]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 0.67, 1.00, 1.0]
+  - Entity: 4000000061
+    TagComponent:
+      Tag: LeftQuad_6_1
+    TransformComponent:
+      Translation: [0.0, 6.6, -1.1]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.04, 0.70, 0.93, 1.0]
+  - Entity: 4000000062
+    TagComponent:
+      Tag: LeftQuad_6_2
+    TransformComponent:
+      Translation: [0.0, 6.6, -2.2]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.07, 0.74, 0.85, 1.0]
+  - Entity: 4000000063
+    TagComponent:
+      Tag: LeftQuad_6_3
+    TransformComponent:
+      Translation: [0.0, 6.6, -3.3]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.11, 0.78, 0.78, 1.0]
+  - Entity: 4000000064
+    TagComponent:
+      Tag: LeftQuad_6_4
+    TransformComponent:
+      Translation: [0.0, 6.6, -4.4]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.15, 0.81, 0.70, 1.0]
+  - Entity: 4000000065
+    TagComponent:
+      Tag: LeftQuad_6_5
+    TransformComponent:
+      Translation: [0.0, 6.6, -5.5]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.19, 0.85, 0.63, 1.0]
+  - Entity: 4000000066
+    TagComponent:
+      Tag: LeftQuad_6_6
+    TransformComponent:
+      Translation: [0.0, 6.6, -6.6]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.22, 0.89, 0.56, 1.0]
+  - Entity: 4000000067
+    TagComponent:
+      Tag: LeftQuad_6_7
+    TransformComponent:
+      Translation: [0.0, 6.6, -7.7]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.26, 0.93, 0.48, 1.0]
+  - Entity: 4000000068
+    TagComponent:
+      Tag: LeftQuad_6_8
+    TransformComponent:
+      Translation: [0.0, 6.6, -8.8]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.30, 0.96, 0.41, 1.0]
+  - Entity: 4000000069
+    TagComponent:
+      Tag: LeftQuad_6_9
+    TransformComponent:
+      Translation: [0.0, 6.6, -9.9]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.33, 1.00, 0.33, 1.0]
+  # --- ROW Y=7 ---
+  - Entity: 4000000070
+    TagComponent:
+      Tag: LeftQuad_7_0
+    TransformComponent:
+      Translation: [0.0, 7.7, 0.0]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 0.78, 1.00, 1.0]
+  - Entity: 4000000071
+    TagComponent:
+      Tag: LeftQuad_7_1
+    TransformComponent:
+      Translation: [0.0, 7.7, -1.1]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.02, 0.80, 0.91, 1.0]
+  - Entity: 4000000072
+    TagComponent:
+      Tag: LeftQuad_7_2
+    TransformComponent:
+      Translation: [0.0, 7.7, -2.2]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.05, 0.83, 0.83, 1.0]
+  - Entity: 4000000073
+    TagComponent:
+      Tag: LeftQuad_7_3
+    TransformComponent:
+      Translation: [0.0, 7.7, -3.3]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.07, 0.85, 0.74, 1.0]
+  - Entity: 4000000074
+    TagComponent:
+      Tag: LeftQuad_7_4
+    TransformComponent:
+      Translation: [0.0, 7.7, -4.4]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.10, 0.88, 0.65, 1.0]
+  - Entity: 4000000075
+    TagComponent:
+      Tag: LeftQuad_7_5
+    TransformComponent:
+      Translation: [0.0, 7.7, -5.5]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.12, 0.90, 0.57, 1.0]
+  - Entity: 4000000076
+    TagComponent:
+      Tag: LeftQuad_7_6
+    TransformComponent:
+      Translation: [0.0, 7.7, -6.6]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.15, 0.93, 0.48, 1.0]
+  - Entity: 4000000077
+    TagComponent:
+      Tag: LeftQuad_7_7
+    TransformComponent:
+      Translation: [0.0, 7.7, -7.7]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.17, 0.95, 0.40, 1.0]
+  - Entity: 4000000078
+    TagComponent:
+      Tag: LeftQuad_7_8
+    TransformComponent:
+      Translation: [0.0, 7.7, -8.8]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.20, 0.98, 0.31, 1.0]
+  - Entity: 4000000079
+    TagComponent:
+      Tag: LeftQuad_7_9
+    TransformComponent:
+      Translation: [0.0, 7.7, -9.9]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.22, 1.00, 0.22, 1.0]
+  # --- ROW Y=8 ---
+  - Entity: 4000000080
+    TagComponent:
+      Tag: LeftQuad_8_0
+    TransformComponent:
+      Translation: [0.0, 8.8, 0.0]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 0.89, 1.00, 1.0]
+  - Entity: 4000000081
+    TagComponent:
+      Tag: LeftQuad_8_1
+    TransformComponent:
+      Translation: [0.0, 8.8, -1.1]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.01, 0.90, 0.90, 1.0]
+  - Entity: 4000000082
+    TagComponent:
+      Tag: LeftQuad_8_2
+    TransformComponent:
+      Translation: [0.0, 8.8, -2.2]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.02, 0.91, 0.80, 1.0]
+  - Entity: 4000000083
+    TagComponent:
+      Tag: LeftQuad_8_3
+    TransformComponent:
+      Translation: [0.0, 8.8, -3.3]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.04, 0.93, 0.70, 1.0]
+  - Entity: 4000000084
+    TagComponent:
+      Tag: LeftQuad_8_4
+    TransformComponent:
+      Translation: [0.0, 8.8, -4.4]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.05, 0.94, 0.60, 1.0]
+  - Entity: 4000000085
+    TagComponent:
+      Tag: LeftQuad_8_5
+    TransformComponent:
+      Translation: [0.0, 8.8, -5.5]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.06, 0.95, 0.51, 1.0]
+  - Entity: 4000000086
+    TagComponent:
+      Tag: LeftQuad_8_6
+    TransformComponent:
+      Translation: [0.0, 8.8, -6.6]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.07, 0.96, 0.41, 1.0]
+  - Entity: 4000000087
+    TagComponent:
+      Tag: LeftQuad_8_7
+    TransformComponent:
+      Translation: [0.0, 8.8, -7.7]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.09, 0.98, 0.31, 1.0]
+  - Entity: 4000000088
+    TagComponent:
+      Tag: LeftQuad_8_8
+    TransformComponent:
+      Translation: [0.0, 8.8, -8.8]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.10, 0.99, 0.21, 1.0]
+  - Entity: 4000000089
+    TagComponent:
+      Tag: LeftQuad_8_9
+    TransformComponent:
+      Translation: [0.0, 8.8, -9.9]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.11, 1.00, 0.11, 1.0]
+  # --- ROW Y=9 ---
+  - Entity: 4000000090
+    TagComponent:
+      Tag: LeftQuad_9_0
+    TransformComponent:
+      Translation: [0.0, 9.9, 0.0]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 1.00, 1.00, 1.0]
+  - Entity: 4000000091
+    TagComponent:
+      Tag: LeftQuad_9_1
+    TransformComponent:
+      Translation: [0.0, 9.9, -1.1]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 1.00, 0.89, 1.0]
+  - Entity: 4000000092
+    TagComponent:
+      Tag: LeftQuad_9_2
+    TransformComponent:
+      Translation: [0.0, 9.9, -2.2]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 1.00, 0.78, 1.0]
+  - Entity: 4000000093
+    TagComponent:
+      Tag: LeftQuad_9_3
+    TransformComponent:
+      Translation: [0.0, 9.9, -3.3]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 1.00, 0.67, 1.0]
+  - Entity: 4000000094
+    TagComponent:
+      Tag: LeftQuad_9_4
+    TransformComponent:
+      Translation: [0.0, 9.9, -4.4]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 1.00, 0.56, 1.0]
+  - Entity: 4000000095
+    TagComponent:
+      Tag: LeftQuad_9_5
+    TransformComponent:
+      Translation: [0.0, 9.9, -5.5]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 1.00, 0.44, 1.0]
+  - Entity: 4000000096
+    TagComponent:
+      Tag: LeftQuad_9_6
+    TransformComponent:
+      Translation: [0.0, 9.9, -6.6]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 1.00, 0.33, 1.0]
+  - Entity: 4000000097
+    TagComponent:
+      Tag: LeftQuad_9_7
+    TransformComponent:
+      Translation: [0.0, 9.9, -7.7]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 1.00, 0.22, 1.0]
+  - Entity: 4000000098
+    TagComponent:
+      Tag: LeftQuad_9_8
+    TransformComponent:
+      Translation: [0.0, 9.9, -8.8]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 1.00, 0.11, 1.0]
+  - Entity: 4000000099
+    TagComponent:
+      Tag: LeftQuad_9_9
+    TransformComponent:
+      Translation: [0.0, 9.9, -9.9]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 1.00, 0.00, 1.0]
+
+
+
+  # --- ROW X=0 ---
+  - Entity: 5000000000
+    TagComponent:
+      Tag: BottomQuad_0_0
+    TransformComponent:
+      Translation: [0.0, 0.0, 0.0]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 0.00, 1.00, 1.0]
+  - Entity: 5000000001
+    TagComponent:
+      Tag: BottomQuad_0_1
+    TransformComponent:
+      Translation: [0.0, 0.0, -1.1]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.11, 0.11, 1.00, 1.0]
+  - Entity: 5000000002
+    TagComponent:
+      Tag: BottomQuad_0_2
+    TransformComponent:
+      Translation: [0.0, 0.0, -2.2]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.22, 0.22, 1.00, 1.0]
+  - Entity: 5000000003
+    TagComponent:
+      Tag: BottomQuad_0_3
+    TransformComponent:
+      Translation: [0.0, 0.0, -3.3]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.33, 0.33, 1.00, 1.0]
+  - Entity: 5000000004
+    TagComponent:
+      Tag: BottomQuad_0_4
+    TransformComponent:
+      Translation: [0.0, 0.0, -4.4]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.44, 0.44, 1.00, 1.0]
+  - Entity: 5000000005
+    TagComponent:
+      Tag: BottomQuad_0_5
+    TransformComponent:
+      Translation: [0.0, 0.0, -5.5]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.56, 0.56, 1.00, 1.0]
+  - Entity: 5000000006
+    TagComponent:
+      Tag: BottomQuad_0_6
+    TransformComponent:
+      Translation: [0.0, 0.0, -6.6]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.67, 0.67, 1.00, 1.0]
+  - Entity: 5000000007
+    TagComponent:
+      Tag: BottomQuad_0_7
+    TransformComponent:
+      Translation: [0.0, 0.0, -7.7]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.78, 0.78, 1.00, 1.0]
+  - Entity: 5000000008
+    TagComponent:
+      Tag: BottomQuad_0_8
+    TransformComponent:
+      Translation: [0.0, 0.0, -8.8]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.89, 0.89, 1.00, 1.0]
+  - Entity: 5000000009
+    TagComponent:
+      Tag: BottomQuad_0_9
+    TransformComponent:
+      Translation: [0.0, 0.0, -9.9]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 1.00, 1.00, 1.0]
+  # --- ROW X=1 ---
+  - Entity: 5000000010
+    TagComponent:
+      Tag: BottomQuad_1_0
+    TransformComponent:
+      Translation: [1.1, 0.0, 0.0]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.11, 0.00, 1.00, 1.0]
+  - Entity: 5000000011
+    TagComponent:
+      Tag: BottomQuad_1_1
+    TransformComponent:
+      Translation: [1.1, 0.0, -1.1]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.21, 0.10, 0.99, 1.0]
+  - Entity: 5000000012
+    TagComponent:
+      Tag: BottomQuad_1_2
+    TransformComponent:
+      Translation: [1.1, 0.0, -2.2]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.31, 0.20, 0.98, 1.0]
+  - Entity: 5000000013
+    TagComponent:
+      Tag: BottomQuad_1_3
+    TransformComponent:
+      Translation: [1.1, 0.0, -3.3]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.41, 0.30, 0.96, 1.0]
+  - Entity: 5000000014
+    TagComponent:
+      Tag: BottomQuad_1_4
+    TransformComponent:
+      Translation: [1.1, 0.0, -4.4]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.51, 0.40, 0.95, 1.0]
+  - Entity: 5000000015
+    TagComponent:
+      Tag: BottomQuad_1_5
+    TransformComponent:
+      Translation: [1.1, 0.0, -5.5]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.60, 0.49, 0.94, 1.0]
+  - Entity: 5000000016
+    TagComponent:
+      Tag: BottomQuad_1_6
+    TransformComponent:
+      Translation: [1.1, 0.0, -6.6]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.70, 0.59, 0.93, 1.0]
+  - Entity: 5000000017
+    TagComponent:
+      Tag: BottomQuad_1_7
+    TransformComponent:
+      Translation: [1.1, 0.0, -7.7]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.80, 0.69, 0.91, 1.0]
+  - Entity: 5000000018
+    TagComponent:
+      Tag: BottomQuad_1_8
+    TransformComponent:
+      Translation: [1.1, 0.0, -8.8]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.90, 0.79, 0.90, 1.0]
+  - Entity: 5000000019
+    TagComponent:
+      Tag: BottomQuad_1_9
+    TransformComponent:
+      Translation: [1.1, 0.0, -9.9]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.89, 0.89, 1.0]
+  # --- ROW X=2 ---
+  - Entity: 5000000020
+    TagComponent:
+      Tag: BottomQuad_2_0
+    TransformComponent:
+      Translation: [2.2, 0.0, 0.0]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.22, 0.00, 1.00, 1.0]
+  - Entity: 5000000021
+    TagComponent:
+      Tag: BottomQuad_2_1
+    TransformComponent:
+      Translation: [2.2, 0.0, -1.1]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.31, 0.09, 0.98, 1.0]
+  - Entity: 5000000022
+    TagComponent:
+      Tag: BottomQuad_2_2
+    TransformComponent:
+      Translation: [2.2, 0.0, -2.2]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.40, 0.17, 0.95, 1.0]
+  - Entity: 5000000023
+    TagComponent:
+      Tag: BottomQuad_2_3
+    TransformComponent:
+      Translation: [2.2, 0.0, -3.3]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.48, 0.26, 0.93, 1.0]
+  - Entity: 5000000024
+    TagComponent:
+      Tag: BottomQuad_2_4
+    TransformComponent:
+      Translation: [2.2, 0.0, -4.4]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.57, 0.35, 0.90, 1.0]
+  - Entity: 5000000025
+    TagComponent:
+      Tag: BottomQuad_2_5
+    TransformComponent:
+      Translation: [2.2, 0.0, -5.5]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.65, 0.43, 0.88, 1.0]
+  - Entity: 5000000026
+    TagComponent:
+      Tag: BottomQuad_2_6
+    TransformComponent:
+      Translation: [2.2, 0.0, -6.6]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.74, 0.52, 0.85, 1.0]
+  - Entity: 5000000027
+    TagComponent:
+      Tag: BottomQuad_2_7
+    TransformComponent:
+      Translation: [2.2, 0.0, -7.7]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.83, 0.60, 0.83, 1.0]
+  - Entity: 5000000028
+    TagComponent:
+      Tag: BottomQuad_2_8
+    TransformComponent:
+      Translation: [2.2, 0.0, -8.8]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.91, 0.69, 0.80, 1.0]
+  - Entity: 5000000029
+    TagComponent:
+      Tag: BottomQuad_2_9
+    TransformComponent:
+      Translation: [2.2, 0.0, -9.9]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.78, 0.78, 1.0]
+  # --- ROW X=3 ---
+  - Entity: 5000000030
+    TagComponent:
+      Tag: BottomQuad_3_0
+    TransformComponent:
+      Translation: [3.3, 0.0, 0.0]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.33, 0.00, 1.00, 1.0]
+  - Entity: 5000000031
+    TagComponent:
+      Tag: BottomQuad_3_1
+    TransformComponent:
+      Translation: [3.3, 0.0, -1.1]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.41, 0.07, 0.96, 1.0]
+  - Entity: 5000000032
+    TagComponent:
+      Tag: BottomQuad_3_2
+    TransformComponent:
+      Translation: [3.3, 0.0, -2.2]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.48, 0.15, 0.93, 1.0]
+  - Entity: 5000000033
+    TagComponent:
+      Tag: BottomQuad_3_3
+    TransformComponent:
+      Translation: [3.3, 0.0, -3.3]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.56, 0.22, 0.89, 1.0]
+  - Entity: 5000000034
+    TagComponent:
+      Tag: BottomQuad_3_4
+    TransformComponent:
+      Translation: [3.3, 0.0, -4.4]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.63, 0.30, 0.85, 1.0]
+  - Entity: 5000000035
+    TagComponent:
+      Tag: BottomQuad_3_5
+    TransformComponent:
+      Translation: [3.3, 0.0, -5.5]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.70, 0.37, 0.81, 1.0]
+  - Entity: 5000000036
+    TagComponent:
+      Tag: BottomQuad_3_6
+    TransformComponent:
+      Translation: [3.3, 0.0, -6.6]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.78, 0.44, 0.78, 1.0]
+  - Entity: 5000000037
+    TagComponent:
+      Tag: BottomQuad_3_7
+    TransformComponent:
+      Translation: [3.3, 0.0, -7.7]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.85, 0.52, 0.74, 1.0]
+  - Entity: 5000000038
+    TagComponent:
+      Tag: BottomQuad_3_8
+    TransformComponent:
+      Translation: [3.3, 0.0, -8.8]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.93, 0.59, 0.70, 1.0]
+  - Entity: 5000000039
+    TagComponent:
+      Tag: BottomQuad_3_9
+    TransformComponent:
+      Translation: [3.3, 0.0, -9.9]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.67, 0.67, 1.0]
+  # --- ROW X=4 ---
+  - Entity: 5000000040
+    TagComponent:
+      Tag: BottomQuad_4_0
+    TransformComponent:
+      Translation: [4.4, 0.0, 0.0]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.44, 0.00, 1.00, 1.0]
+  - Entity: 5000000041
+    TagComponent:
+      Tag: BottomQuad_4_1
+    TransformComponent:
+      Translation: [4.4, 0.0, -1.1]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.51, 0.06, 0.95, 1.0]
+  - Entity: 5000000042
+    TagComponent:
+      Tag: BottomQuad_4_2
+    TransformComponent:
+      Translation: [4.4, 0.0, -2.2]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.57, 0.12, 0.90, 1.0]
+  - Entity: 5000000043
+    TagComponent:
+      Tag: BottomQuad_4_3
+    TransformComponent:
+      Translation: [4.4, 0.0, -3.3]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.63, 0.19, 0.85, 1.0]
+  - Entity: 5000000044
+    TagComponent:
+      Tag: BottomQuad_4_4
+    TransformComponent:
+      Translation: [4.4, 0.0, -4.4]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.69, 0.25, 0.80, 1.0]
+  - Entity: 5000000045
+    TagComponent:
+      Tag: BottomQuad_4_5
+    TransformComponent:
+      Translation: [4.4, 0.0, -5.5]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.75, 0.31, 0.75, 1.0]
+  - Entity: 5000000046
+    TagComponent:
+      Tag: BottomQuad_4_6
+    TransformComponent:
+      Translation: [4.4, 0.0, -6.6]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.81, 0.37, 0.70, 1.0]
+  - Entity: 5000000047
+    TagComponent:
+      Tag: BottomQuad_4_7
+    TransformComponent:
+      Translation: [4.4, 0.0, -7.7]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.88, 0.43, 0.65, 1.0]
+  - Entity: 5000000048
+    TagComponent:
+      Tag: BottomQuad_4_8
+    TransformComponent:
+      Translation: [4.4, 0.0, -8.8]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.94, 0.49, 0.60, 1.0]
+  - Entity: 5000000049
+    TagComponent:
+      Tag: BottomQuad_4_9
+    TransformComponent:
+      Translation: [4.4, 0.0, -9.9]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.56, 0.56, 1.0]
+  # --- ROW X=5 ---
+  - Entity: 5000000050
+    TagComponent:
+      Tag: BottomQuad_5_0
+    TransformComponent:
+      Translation: [5.5, 0.0, 0.0]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.56, 0.00, 1.00, 1.0]
+  - Entity: 5000000051
+    TagComponent:
+      Tag: BottomQuad_5_1
+    TransformComponent:
+      Translation: [5.5, 0.0, -1.1]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.60, 0.05, 0.94, 1.0]
+  - Entity: 5000000052
+    TagComponent:
+      Tag: BottomQuad_5_2
+    TransformComponent:
+      Translation: [5.5, 0.0, -2.2]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.65, 0.10, 0.88, 1.0]
+  - Entity: 5000000053
+    TagComponent:
+      Tag: BottomQuad_5_3
+    TransformComponent:
+      Translation: [5.5, 0.0, -3.3]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.70, 0.15, 0.81, 1.0]
+  - Entity: 5000000054
+    TagComponent:
+      Tag: BottomQuad_5_4
+    TransformComponent:
+      Translation: [5.5, 0.0, -4.4]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.75, 0.20, 0.75, 1.0]
+  - Entity: 5000000055
+    TagComponent:
+      Tag: BottomQuad_5_5
+    TransformComponent:
+      Translation: [5.5, 0.0, -5.5]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.80, 0.25, 0.69, 1.0]
+  - Entity: 5000000056
+    TagComponent:
+      Tag: BottomQuad_5_6
+    TransformComponent:
+      Translation: [5.5, 0.0, -6.6]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.85, 0.30, 0.63, 1.0]
+  - Entity: 5000000057
+    TagComponent:
+      Tag: BottomQuad_5_7
+    TransformComponent:
+      Translation: [5.5, 0.0, -7.7]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.90, 0.35, 0.57, 1.0]
+  - Entity: 5000000058
+    TagComponent:
+      Tag: BottomQuad_5_8
+    TransformComponent:
+      Translation: [5.5, 0.0, -8.8]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.95, 0.40, 0.51, 1.0]
+  - Entity: 5000000059
+    TagComponent:
+      Tag: BottomQuad_5_9
+    TransformComponent:
+      Translation: [5.5, 0.0, -9.9]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.44, 0.44, 1.0]
+  # --- ROW X=6 ---
+  - Entity: 5000000060
+    TagComponent:
+      Tag: BottomQuad_6_0
+    TransformComponent:
+      Translation: [6.6, 0.0, 0.0]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.67, 0.00, 1.00, 1.0]
+  - Entity: 5000000061
+    TagComponent:
+      Tag: BottomQuad_6_1
+    TransformComponent:
+      Translation: [6.6, 0.0, -1.1]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.70, 0.04, 0.93, 1.0]
+  - Entity: 5000000062
+    TagComponent:
+      Tag: BottomQuad_6_2
+    TransformComponent:
+      Translation: [6.6, 0.0, -2.2]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.74, 0.07, 0.85, 1.0]
+  - Entity: 5000000063
+    TagComponent:
+      Tag: BottomQuad_6_3
+    TransformComponent:
+      Translation: [6.6, 0.0, -3.3]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.78, 0.11, 0.78, 1.0]
+  - Entity: 5000000064
+    TagComponent:
+      Tag: BottomQuad_6_4
+    TransformComponent:
+      Translation: [6.6, 0.0, -4.4]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.81, 0.15, 0.70, 1.0]
+  - Entity: 5000000065
+    TagComponent:
+      Tag: BottomQuad_6_5
+    TransformComponent:
+      Translation: [6.6, 0.0, -5.5]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.85, 0.19, 0.63, 1.0]
+  - Entity: 5000000066
+    TagComponent:
+      Tag: BottomQuad_6_6
+    TransformComponent:
+      Translation: [6.6, 0.0, -6.6]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.89, 0.22, 0.56, 1.0]
+  - Entity: 5000000067
+    TagComponent:
+      Tag: BottomQuad_6_7
+    TransformComponent:
+      Translation: [6.6, 0.0, -7.7]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.93, 0.26, 0.48, 1.0]
+  - Entity: 5000000068
+    TagComponent:
+      Tag: BottomQuad_6_8
+    TransformComponent:
+      Translation: [6.6, 0.0, -8.8]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.96, 0.30, 0.41, 1.0]
+  - Entity: 5000000069
+    TagComponent:
+      Tag: BottomQuad_6_9
+    TransformComponent:
+      Translation: [6.6, 0.0, -9.9]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.33, 0.33, 1.0]
+  # --- ROW X=7 ---
+  - Entity: 5000000070
+    TagComponent:
+      Tag: BottomQuad_7_0
+    TransformComponent:
+      Translation: [7.7, 0.0, 0.0]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.78, 0.00, 1.00, 1.0]
+  - Entity: 5000000071
+    TagComponent:
+      Tag: BottomQuad_7_1
+    TransformComponent:
+      Translation: [7.7, 0.0, -1.1]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.80, 0.02, 0.91, 1.0]
+  - Entity: 5000000072
+    TagComponent:
+      Tag: BottomQuad_7_2
+    TransformComponent:
+      Translation: [7.7, 0.0, -2.2]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.83, 0.05, 0.83, 1.0]
+  - Entity: 5000000073
+    TagComponent:
+      Tag: BottomQuad_7_3
+    TransformComponent:
+      Translation: [7.7, 0.0, -3.3]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.85, 0.07, 0.74, 1.0]
+  - Entity: 5000000074
+    TagComponent:
+      Tag: BottomQuad_7_4
+    TransformComponent:
+      Translation: [7.7, 0.0, -4.4]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.88, 0.10, 0.65, 1.0]
+  - Entity: 5000000075
+    TagComponent:
+      Tag: BottomQuad_7_5
+    TransformComponent:
+      Translation: [7.7, 0.0, -5.5]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.90, 0.12, 0.57, 1.0]
+  - Entity: 5000000076
+    TagComponent:
+      Tag: BottomQuad_7_6
+    TransformComponent:
+      Translation: [7.7, 0.0, -6.6]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.93, 0.15, 0.48, 1.0]
+  - Entity: 5000000077
+    TagComponent:
+      Tag: BottomQuad_7_7
+    TransformComponent:
+      Translation: [7.7, 0.0, -7.7]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.95, 0.17, 0.40, 1.0]
+  - Entity: 5000000078
+    TagComponent:
+      Tag: BottomQuad_7_8
+    TransformComponent:
+      Translation: [7.7, 0.0, -8.8]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.98, 0.20, 0.31, 1.0]
+  - Entity: 5000000079
+    TagComponent:
+      Tag: BottomQuad_7_9
+    TransformComponent:
+      Translation: [7.7, 0.0, -9.9]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.22, 0.22, 1.0]
+  # --- ROW X=8 ---
+  - Entity: 5000000080
+    TagComponent:
+      Tag: BottomQuad_8_0
+    TransformComponent:
+      Translation: [8.8, 0.0, 0.0]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.89, 0.00, 1.00, 1.0]
+  - Entity: 5000000081
+    TagComponent:
+      Tag: BottomQuad_8_1
+    TransformComponent:
+      Translation: [8.8, 0.0, -1.1]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.90, 0.01, 0.90, 1.0]
+  - Entity: 5000000082
+    TagComponent:
+      Tag: BottomQuad_8_2
+    TransformComponent:
+      Translation: [8.8, 0.0, -2.2]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.91, 0.02, 0.80, 1.0]
+  - Entity: 5000000083
+    TagComponent:
+      Tag: BottomQuad_8_3
+    TransformComponent:
+      Translation: [8.8, 0.0, -3.3]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.93, 0.04, 0.70, 1.0]
+  - Entity: 5000000084
+    TagComponent:
+      Tag: BottomQuad_8_4
+    TransformComponent:
+      Translation: [8.8, 0.0, -4.4]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.94, 0.05, 0.60, 1.0]
+  - Entity: 5000000085
+    TagComponent:
+      Tag: BottomQuad_8_5
+    TransformComponent:
+      Translation: [8.8, 0.0, -5.5]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.95, 0.06, 0.51, 1.0]
+  - Entity: 5000000086
+    TagComponent:
+      Tag: BottomQuad_8_6
+    TransformComponent:
+      Translation: [8.8, 0.0, -6.6]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.96, 0.07, 0.41, 1.0]
+  - Entity: 5000000087
+    TagComponent:
+      Tag: BottomQuad_8_7
+    TransformComponent:
+      Translation: [8.8, 0.0, -7.7]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.98, 0.09, 0.31, 1.0]
+  - Entity: 5000000088
+    TagComponent:
+      Tag: BottomQuad_8_8
+    TransformComponent:
+      Translation: [8.8, 0.0, -8.8]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.99, 0.10, 0.21, 1.0]
+  - Entity: 5000000089
+    TagComponent:
+      Tag: BottomQuad_8_9
+    TransformComponent:
+      Translation: [8.8, 0.0, -9.9]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.11, 0.11, 1.0]
+  # --- ROW X=9 ---
+  - Entity: 5000000090
+    TagComponent:
+      Tag: BottomQuad_9_0
+    TransformComponent:
+      Translation: [9.9, 0.0, 0.0]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 1.00, 1.0]
+  - Entity: 5000000091
+    TagComponent:
+      Tag: BottomQuad_9_1
+    TransformComponent:
+      Translation: [9.9, 0.0, -1.1]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 0.89, 1.0]
+  - Entity: 5000000092
+    TagComponent:
+      Tag: BottomQuad_9_2
+    TransformComponent:
+      Translation: [9.9, 0.0, -2.2]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 0.78, 1.0]
+  - Entity: 5000000093
+    TagComponent:
+      Tag: BottomQuad_9_3
+    TransformComponent:
+      Translation: [9.9, 0.0, -3.3]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 0.67, 1.0]
+  - Entity: 5000000094
+    TagComponent:
+      Tag: BottomQuad_9_4
+    TransformComponent:
+      Translation: [9.9, 0.0, -4.4]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 0.56, 1.0]
+  - Entity: 5000000095
+    TagComponent:
+      Tag: BottomQuad_9_5
+    TransformComponent:
+      Translation: [9.9, 0.0, -5.5]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 0.44, 1.0]
+  - Entity: 5000000096
+    TagComponent:
+      Tag: BottomQuad_9_6
+    TransformComponent:
+      Translation: [9.9, 0.0, -6.6]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 0.33, 1.0]
+  - Entity: 5000000097
+    TagComponent:
+      Tag: BottomQuad_9_7
+    TransformComponent:
+      Translation: [9.9, 0.0, -7.7]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 0.22, 1.0]
+  - Entity: 5000000098
+    TagComponent:
+      Tag: BottomQuad_9_8
+    TransformComponent:
+      Translation: [9.9, 0.0, -8.8]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 0.11, 1.0]
+  - Entity: 5000000099
+    TagComponent:
+      Tag: BottomQuad_9_9
+    TransformComponent:
+      Translation: [9.9, 0.0, -9.9]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 0.00, 1.0]
+
+
+
+# --- ROW X=0 ---
+  - Entity: 6000000000
+    TagComponent:
+      Tag: TopQuad_0_0
+    TransformComponent:
+      Translation: [0.0, 9.9, 0.0]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 1.00, 1.00, 1.0]
+  - Entity: 6000000001
+    TagComponent:
+      Tag: TopQuad_0_1
+    TransformComponent:
+      Translation: [0.0, 9.9, -1.1]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 1.00, 0.89, 1.0]
+  - Entity: 6000000002
+    TagComponent:
+      Tag: TopQuad_0_2
+    TransformComponent:
+      Translation: [0.0, 9.9, -2.2]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 1.00, 0.78, 1.0]
+  - Entity: 6000000003
+    TagComponent:
+      Tag: TopQuad_0_3
+    TransformComponent:
+      Translation: [0.0, 9.9, -3.3]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 1.00, 0.67, 1.0]
+  - Entity: 6000000004
+    TagComponent:
+      Tag: TopQuad_0_4
+    TransformComponent:
+      Translation: [0.0, 9.9, -4.4]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 1.00, 0.56, 1.0]
+  - Entity: 6000000005
+    TagComponent:
+      Tag: TopQuad_0_5
+    TransformComponent:
+      Translation: [0.0, 9.9, -5.5]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 1.00, 0.44, 1.0]
+  - Entity: 6000000006
+    TagComponent:
+      Tag: TopQuad_0_6
+    TransformComponent:
+      Translation: [0.0, 9.9, -6.6]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 1.00, 0.33, 1.0]
+  - Entity: 6000000007
+    TagComponent:
+      Tag: TopQuad_0_7
+    TransformComponent:
+      Translation: [0.0, 9.9, -7.7]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 1.00, 0.22, 1.0]
+  - Entity: 6000000008
+    TagComponent:
+      Tag: TopQuad_0_8
+    TransformComponent:
+      Translation: [0.0, 9.9, -8.8]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 1.00, 0.11, 1.0]
+  - Entity: 6000000009
+    TagComponent:
+      Tag: TopQuad_0_9
+    TransformComponent:
+      Translation: [0.0, 9.9, -9.9]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 1.00, 0.00, 1.0]
+  # --- ROW X=1 ---
+  - Entity: 6000000010
+    TagComponent:
+      Tag: TopQuad_1_0
+    TransformComponent:
+      Translation: [1.1, 9.9, 0.0]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 0.89, 0.89, 1.0]
+  - Entity: 6000000011
+    TagComponent:
+      Tag: TopQuad_1_1
+    TransformComponent:
+      Translation: [1.1, 9.9, -1.1]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.01, 0.89, 0.79, 1.0]
+  - Entity: 6000000012
+    TagComponent:
+      Tag: TopQuad_1_2
+    TransformComponent:
+      Translation: [1.1, 9.9, -2.2]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.02, 0.89, 0.69, 1.0]
+  - Entity: 6000000013
+    TagComponent:
+      Tag: TopQuad_1_3
+    TransformComponent:
+      Translation: [1.1, 9.9, -3.3]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.04, 0.89, 0.59, 1.0]
+  - Entity: 6000000014
+    TagComponent:
+      Tag: TopQuad_1_4
+    TransformComponent:
+      Translation: [1.1, 9.9, -4.4]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.05, 0.89, 0.49, 1.0]
+  - Entity: 6000000015
+    TagComponent:
+      Tag: TopQuad_1_5
+    TransformComponent:
+      Translation: [1.1, 9.9, -5.5]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.06, 0.89, 0.40, 1.0]
+  - Entity: 6000000016
+    TagComponent:
+      Tag: TopQuad_1_6
+    TransformComponent:
+      Translation: [1.1, 9.9, -6.6]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.07, 0.89, 0.30, 1.0]
+  - Entity: 6000000017
+    TagComponent:
+      Tag: TopQuad_1_7
+    TransformComponent:
+      Translation: [1.1, 9.9, -7.7]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.09, 0.89, 0.20, 1.0]
+  - Entity: 6000000018
+    TagComponent:
+      Tag: TopQuad_1_8
+    TransformComponent:
+      Translation: [1.1, 9.9, -8.8]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.10, 0.89, 0.10, 1.0]
+  - Entity: 6000000019
+    TagComponent:
+      Tag: TopQuad_1_9
+    TransformComponent:
+      Translation: [1.1, 9.9, -9.9]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.11, 0.89, 0.00, 1.0]
+  # --- ROW X=2 ---
+  - Entity: 6000000020
+    TagComponent:
+      Tag: TopQuad_2_0
+    TransformComponent:
+      Translation: [2.2, 9.9, 0.0]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 0.78, 0.78, 1.0]
+  - Entity: 6000000021
+    TagComponent:
+      Tag: TopQuad_2_1
+    TransformComponent:
+      Translation: [2.2, 9.9, -1.1]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.02, 0.78, 0.69, 1.0]
+  - Entity: 6000000022
+    TagComponent:
+      Tag: TopQuad_2_2
+    TransformComponent:
+      Translation: [2.2, 9.9, -2.2]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.05, 0.78, 0.60, 1.0]
+  - Entity: 6000000023
+    TagComponent:
+      Tag: TopQuad_2_3
+    TransformComponent:
+      Translation: [2.2, 9.9, -3.3]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.07, 0.78, 0.52, 1.0]
+  - Entity: 6000000024
+    TagComponent:
+      Tag: TopQuad_2_4
+    TransformComponent:
+      Translation: [2.2, 9.9, -4.4]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.10, 0.78, 0.43, 1.0]
+  - Entity: 6000000025
+    TagComponent:
+      Tag: TopQuad_2_5
+    TransformComponent:
+      Translation: [2.2, 9.9, -5.5]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.12, 0.78, 0.35, 1.0]
+  - Entity: 6000000026
+    TagComponent:
+      Tag: TopQuad_2_6
+    TransformComponent:
+      Translation: [2.2, 9.9, -6.6]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.15, 0.78, 0.26, 1.0]
+  - Entity: 6000000027
+    TagComponent:
+      Tag: TopQuad_2_7
+    TransformComponent:
+      Translation: [2.2, 9.9, -7.7]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.17, 0.78, 0.17, 1.0]
+  - Entity: 6000000028
+    TagComponent:
+      Tag: TopQuad_2_8
+    TransformComponent:
+      Translation: [2.2, 9.9, -8.8]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.20, 0.78, 0.09, 1.0]
+  - Entity: 6000000029
+    TagComponent:
+      Tag: TopQuad_2_9
+    TransformComponent:
+      Translation: [2.2, 9.9, -9.9]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.22, 0.78, 0.00, 1.0]
+  # --- ROW X=3 ---
+  - Entity: 6000000030
+    TagComponent:
+      Tag: TopQuad_3_0
+    TransformComponent:
+      Translation: [3.3, 9.9, 0.0]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 0.67, 0.67, 1.0]
+  - Entity: 6000000031
+    TagComponent:
+      Tag: TopQuad_3_1
+    TransformComponent:
+      Translation: [3.3, 9.9, -1.1]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.04, 0.67, 0.59, 1.0]
+  - Entity: 6000000032
+    TagComponent:
+      Tag: TopQuad_3_2
+    TransformComponent:
+      Translation: [3.3, 9.9, -2.2]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.07, 0.67, 0.52, 1.0]
+  - Entity: 6000000033
+    TagComponent:
+      Tag: TopQuad_3_3
+    TransformComponent:
+      Translation: [3.3, 9.9, -3.3]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.11, 0.67, 0.44, 1.0]
+  - Entity: 6000000034
+    TagComponent:
+      Tag: TopQuad_3_4
+    TransformComponent:
+      Translation: [3.3, 9.9, -4.4]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.15, 0.67, 0.37, 1.0]
+  - Entity: 6000000035
+    TagComponent:
+      Tag: TopQuad_3_5
+    TransformComponent:
+      Translation: [3.3, 9.9, -5.5]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.19, 0.67, 0.30, 1.0]
+  - Entity: 6000000036
+    TagComponent:
+      Tag: TopQuad_3_6
+    TransformComponent:
+      Translation: [3.3, 9.9, -6.6]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.22, 0.67, 0.22, 1.0]
+  - Entity: 6000000037
+    TagComponent:
+      Tag: TopQuad_3_7
+    TransformComponent:
+      Translation: [3.3, 9.9, -7.7]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.26, 0.67, 0.15, 1.0]
+  - Entity: 6000000038
+    TagComponent:
+      Tag: TopQuad_3_8
+    TransformComponent:
+      Translation: [3.3, 9.9, -8.8]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.30, 0.67, 0.07, 1.0]
+  - Entity: 6000000039
+    TagComponent:
+      Tag: TopQuad_3_9
+    TransformComponent:
+      Translation: [3.3, 9.9, -9.9]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.33, 0.67, 0.00, 1.0]
+  # --- ROW X=4 ---
+  - Entity: 6000000040
+    TagComponent:
+      Tag: TopQuad_4_0
+    TransformComponent:
+      Translation: [4.4, 9.9, 0.0]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 0.56, 0.56, 1.0]
+  - Entity: 6000000041
+    TagComponent:
+      Tag: TopQuad_4_1
+    TransformComponent:
+      Translation: [4.4, 9.9, -1.1]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.05, 0.56, 0.49, 1.0]
+  - Entity: 6000000042
+    TagComponent:
+      Tag: TopQuad_4_2
+    TransformComponent:
+      Translation: [4.4, 9.9, -2.2]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.10, 0.56, 0.43, 1.0]
+  - Entity: 6000000043
+    TagComponent:
+      Tag: TopQuad_4_3
+    TransformComponent:
+      Translation: [4.4, 9.9, -3.3]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.15, 0.56, 0.37, 1.0]
+  - Entity: 6000000044
+    TagComponent:
+      Tag: TopQuad_4_4
+    TransformComponent:
+      Translation: [4.4, 9.9, -4.4]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.20, 0.56, 0.31, 1.0]
+  - Entity: 6000000045
+    TagComponent:
+      Tag: TopQuad_4_5
+    TransformComponent:
+      Translation: [4.4, 9.9, -5.5]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.25, 0.56, 0.25, 1.0]
+  - Entity: 6000000046
+    TagComponent:
+      Tag: TopQuad_4_6
+    TransformComponent:
+      Translation: [4.4, 9.9, -6.6]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.30, 0.56, 0.19, 1.0]
+  - Entity: 6000000047
+    TagComponent:
+      Tag: TopQuad_4_7
+    TransformComponent:
+      Translation: [4.4, 9.9, -7.7]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.35, 0.56, 0.12, 1.0]
+  - Entity: 6000000048
+    TagComponent:
+      Tag: TopQuad_4_8
+    TransformComponent:
+      Translation: [4.4, 9.9, -8.8]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.40, 0.56, 0.06, 1.0]
+  - Entity: 6000000049
+    TagComponent:
+      Tag: TopQuad_4_9
+    TransformComponent:
+      Translation: [4.4, 9.9, -9.9]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.44, 0.56, 0.00, 1.0]
+  # --- ROW X=5 ---
+  - Entity: 6000000050
+    TagComponent:
+      Tag: TopQuad_5_0
+    TransformComponent:
+      Translation: [5.5, 9.9, 0.0]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 0.44, 0.44, 1.0]
+  - Entity: 6000000051
+    TagComponent:
+      Tag: TopQuad_5_1
+    TransformComponent:
+      Translation: [5.5, 9.9, -1.1]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.06, 0.44, 0.40, 1.0]
+  - Entity: 6000000052
+    TagComponent:
+      Tag: TopQuad_5_2
+    TransformComponent:
+      Translation: [5.5, 9.9, -2.2]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.12, 0.44, 0.35, 1.0]
+  - Entity: 6000000053
+    TagComponent:
+      Tag: TopQuad_5_3
+    TransformComponent:
+      Translation: [5.5, 9.9, -3.3]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.19, 0.44, 0.30, 1.0]
+  - Entity: 6000000054
+    TagComponent:
+      Tag: TopQuad_5_4
+    TransformComponent:
+      Translation: [5.5, 9.9, -4.4]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.25, 0.44, 0.25, 1.0]
+  - Entity: 6000000055
+    TagComponent:
+      Tag: TopQuad_5_5
+    TransformComponent:
+      Translation: [5.5, 9.9, -5.5]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.31, 0.44, 0.20, 1.0]
+  - Entity: 6000000056
+    TagComponent:
+      Tag: TopQuad_5_6
+    TransformComponent:
+      Translation: [5.5, 9.9, -6.6]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.37, 0.44, 0.15, 1.0]
+  - Entity: 6000000057
+    TagComponent:
+      Tag: TopQuad_5_7
+    TransformComponent:
+      Translation: [5.5, 9.9, -7.7]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.43, 0.44, 0.10, 1.0]
+  - Entity: 6000000058
+    TagComponent:
+      Tag: TopQuad_5_8
+    TransformComponent:
+      Translation: [5.5, 9.9, -8.8]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.49, 0.44, 0.05, 1.0]
+  - Entity: 6000000059
+    TagComponent:
+      Tag: TopQuad_5_9
+    TransformComponent:
+      Translation: [5.5, 9.9, -9.9]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.56, 0.44, 0.00, 1.0]
+  # --- ROW X=6 ---
+  - Entity: 6000000060
+    TagComponent:
+      Tag: TopQuad_6_0
+    TransformComponent:
+      Translation: [6.6, 9.9, 0.0]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 0.33, 0.33, 1.0]
+  - Entity: 6000000061
+    TagComponent:
+      Tag: TopQuad_6_1
+    TransformComponent:
+      Translation: [6.6, 9.9, -1.1]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.07, 0.33, 0.30, 1.0]
+  - Entity: 6000000062
+    TagComponent:
+      Tag: TopQuad_6_2
+    TransformComponent:
+      Translation: [6.6, 9.9, -2.2]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.15, 0.33, 0.26, 1.0]
+  - Entity: 6000000063
+    TagComponent:
+      Tag: TopQuad_6_3
+    TransformComponent:
+      Translation: [6.6, 9.9, -3.3]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.22, 0.33, 0.22, 1.0]
+  - Entity: 6000000064
+    TagComponent:
+      Tag: TopQuad_6_4
+    TransformComponent:
+      Translation: [6.6, 9.9, -4.4]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.30, 0.33, 0.19, 1.0]
+  - Entity: 6000000065
+    TagComponent:
+      Tag: TopQuad_6_5
+    TransformComponent:
+      Translation: [6.6, 9.9, -5.5]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.37, 0.33, 0.15, 1.0]
+  - Entity: 6000000066
+    TagComponent:
+      Tag: TopQuad_6_6
+    TransformComponent:
+      Translation: [6.6, 9.9, -6.6]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.44, 0.33, 0.11, 1.0]
+  - Entity: 6000000067
+    TagComponent:
+      Tag: TopQuad_6_7
+    TransformComponent:
+      Translation: [6.6, 9.9, -7.7]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.52, 0.33, 0.07, 1.0]
+  - Entity: 6000000068
+    TagComponent:
+      Tag: TopQuad_6_8
+    TransformComponent:
+      Translation: [6.6, 9.9, -8.8]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.59, 0.33, 0.04, 1.0]
+  - Entity: 6000000069
+    TagComponent:
+      Tag: TopQuad_6_9
+    TransformComponent:
+      Translation: [6.6, 9.9, -9.9]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.67, 0.33, 0.00, 1.0]
+  # --- ROW X=7 ---
+  - Entity: 6000000070
+    TagComponent:
+      Tag: TopQuad_7_0
+    TransformComponent:
+      Translation: [7.7, 9.9, 0.0]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 0.22, 0.22, 1.0]
+  - Entity: 6000000071
+    TagComponent:
+      Tag: TopQuad_7_1
+    TransformComponent:
+      Translation: [7.7, 9.9, -1.1]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.09, 0.22, 0.20, 1.0]
+  - Entity: 6000000072
+    TagComponent:
+      Tag: TopQuad_7_2
+    TransformComponent:
+      Translation: [7.7, 9.9, -2.2]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.17, 0.22, 0.17, 1.0]
+  - Entity: 6000000073
+    TagComponent:
+      Tag: TopQuad_7_3
+    TransformComponent:
+      Translation: [7.7, 9.9, -3.3]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.26, 0.22, 0.15, 1.0]
+  - Entity: 6000000074
+    TagComponent:
+      Tag: TopQuad_7_4
+    TransformComponent:
+      Translation: [7.7, 9.9, -4.4]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.35, 0.22, 0.12, 1.0]
+  - Entity: 6000000075
+    TagComponent:
+      Tag: TopQuad_7_5
+    TransformComponent:
+      Translation: [7.7, 9.9, -5.5]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.43, 0.22, 0.10, 1.0]
+  - Entity: 6000000076
+    TagComponent:
+      Tag: TopQuad_7_6
+    TransformComponent:
+      Translation: [7.7, 9.9, -6.6]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.52, 0.22, 0.07, 1.0]
+  - Entity: 6000000077
+    TagComponent:
+      Tag: TopQuad_7_7
+    TransformComponent:
+      Translation: [7.7, 9.9, -7.7]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.60, 0.22, 0.05, 1.0]
+  - Entity: 6000000078
+    TagComponent:
+      Tag: TopQuad_7_8
+    TransformComponent:
+      Translation: [7.7, 9.9, -8.8]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.69, 0.22, 0.02, 1.0]
+  - Entity: 6000000079
+    TagComponent:
+      Tag: TopQuad_7_9
+    TransformComponent:
+      Translation: [7.7, 9.9, -9.9]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.78, 0.22, 0.00, 1.0]
+  # --- ROW X=8 ---
+  - Entity: 6000000080
+    TagComponent:
+      Tag: TopQuad_8_0
+    TransformComponent:
+      Translation: [8.8, 9.9, 0.0]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 0.11, 0.11, 1.0]
+  - Entity: 6000000081
+    TagComponent:
+      Tag: TopQuad_8_1
+    TransformComponent:
+      Translation: [8.8, 9.9, -1.1]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.10, 0.11, 0.10, 1.0]
+  - Entity: 6000000082
+    TagComponent:
+      Tag: TopQuad_8_2
+    TransformComponent:
+      Translation: [8.8, 9.9, -2.2]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.20, 0.11, 0.09, 1.0]
+  - Entity: 6000000083
+    TagComponent:
+      Tag: TopQuad_8_3
+    TransformComponent:
+      Translation: [8.8, 9.9, -3.3]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.30, 0.11, 0.07, 1.0]
+  - Entity: 6000000084
+    TagComponent:
+      Tag: TopQuad_8_4
+    TransformComponent:
+      Translation: [8.8, 9.9, -4.4]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.40, 0.11, 0.06, 1.0]
+  - Entity: 6000000085
+    TagComponent:
+      Tag: TopQuad_8_5
+    TransformComponent:
+      Translation: [8.8, 9.9, -5.5]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.49, 0.11, 0.05, 1.0]
+  - Entity: 6000000086
+    TagComponent:
+      Tag: TopQuad_8_6
+    TransformComponent:
+      Translation: [8.8, 9.9, -6.6]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.59, 0.11, 0.04, 1.0]
+  - Entity: 6000000087
+    TagComponent:
+      Tag: TopQuad_8_7
+    TransformComponent:
+      Translation: [8.8, 9.9, -7.7]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.69, 0.11, 0.02, 1.0]
+  - Entity: 6000000088
+    TagComponent:
+      Tag: TopQuad_8_8
+    TransformComponent:
+      Translation: [8.8, 9.9, -8.8]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.79, 0.11, 0.01, 1.0]
+  - Entity: 6000000089
+    TagComponent:
+      Tag: TopQuad_8_9
+    TransformComponent:
+      Translation: [8.8, 9.9, -9.9]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.89, 0.11, 0.00, 1.0]
+  # --- ROW X=9 ---
+  - Entity: 6000000090
+    TagComponent:
+      Tag: TopQuad_9_0
+    TransformComponent:
+      Translation: [9.9, 9.9, 0.0]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 0.00, 0.00, 1.0]
+  - Entity: 6000000091
+    TagComponent:
+      Tag: TopQuad_9_1
+    TransformComponent:
+      Translation: [9.9, 9.9, -1.1]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.11, 0.00, 0.00, 1.0]
+  - Entity: 6000000092
+    TagComponent:
+      Tag: TopQuad_9_2
+    TransformComponent:
+      Translation: [9.9, 9.9, -2.2]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.22, 0.00, 0.00, 1.0]
+  - Entity: 6000000093
+    TagComponent:
+      Tag: TopQuad_9_3
+    TransformComponent:
+      Translation: [9.9, 9.9, -3.3]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.33, 0.00, 0.00, 1.0]
+  - Entity: 6000000094
+    TagComponent:
+      Tag: TopQuad_9_4
+    TransformComponent:
+      Translation: [9.9, 9.9, -4.4]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.44, 0.00, 0.00, 1.0]
+  - Entity: 6000000095
+    TagComponent:
+      Tag: TopQuad_9_5
+    TransformComponent:
+      Translation: [9.9, 9.9, -5.5]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.56, 0.00, 0.00, 1.0]
+  - Entity: 6000000096
+    TagComponent:
+      Tag: TopQuad_9_6
+    TransformComponent:
+      Translation: [9.9, 9.9, -6.6]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.67, 0.00, 0.00, 1.0]
+  - Entity: 6000000097
+    TagComponent:
+      Tag: TopQuad_9_7
+    TransformComponent:
+      Translation: [9.9, 9.9, -7.7]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.78, 0.00, 0.00, 1.0]
+  - Entity: 6000000098
+    TagComponent:
+      Tag: TopQuad_9_8
+    TransformComponent:
+      Translation: [9.9, 9.9, -8.8]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.89, 0.00, 0.00, 1.0]
+  - Entity: 6000000099
+    TagComponent:
+      Tag: TopQuad_9_9
+    TransformComponent:
+      Translation: [9.9, 9.9, -9.9]
+      Rotation: [1.570796, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 0.00, 1.0]
+
+
+# --- ROW Y=0 ---
+  - Entity: 7000000000
+    TagComponent:
+      Tag: RightQuad_0_0
+    TransformComponent:
+      Translation: [9.9, 0.0, 0.0]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 1.00, 1.0]
+  - Entity: 7000000001
+    TagComponent:
+      Tag: RightQuad_0_1
+    TransformComponent:
+      Translation: [9.9, 0.0, -1.1]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 0.89, 1.0]
+  - Entity: 7000000002
+    TagComponent:
+      Tag: RightQuad_0_2
+    TransformComponent:
+      Translation: [9.9, 0.0, -2.2]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 0.78, 1.0]
+  - Entity: 7000000003
+    TagComponent:
+      Tag: RightQuad_0_3
+    TransformComponent:
+      Translation: [9.9, 0.0, -3.3]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 0.67, 1.0]
+  - Entity: 7000000004
+    TagComponent:
+      Tag: RightQuad_0_4
+    TransformComponent:
+      Translation: [9.9, 0.0, -4.4]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 0.56, 1.0]
+  - Entity: 7000000005
+    TagComponent:
+      Tag: RightQuad_0_5
+    TransformComponent:
+      Translation: [9.9, 0.0, -5.5]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 0.44, 1.0]
+  - Entity: 7000000006
+    TagComponent:
+      Tag: RightQuad_0_6
+    TransformComponent:
+      Translation: [9.9, 0.0, -6.6]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 0.33, 1.0]
+  - Entity: 7000000007
+    TagComponent:
+      Tag: RightQuad_0_7
+    TransformComponent:
+      Translation: [9.9, 0.0, -7.7]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 0.22, 1.0]
+  - Entity: 7000000008
+    TagComponent:
+      Tag: RightQuad_0_8
+    TransformComponent:
+      Translation: [9.9, 0.0, -8.8]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 0.11, 1.0]
+  - Entity: 7000000009
+    TagComponent:
+      Tag: RightQuad_0_9
+    TransformComponent:
+      Translation: [9.9, 0.0, -9.9]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 0.00, 1.0]
+  # --- ROW Y=1 ---
+  - Entity: 7000000010
+    TagComponent:
+      Tag: RightQuad_1_0
+    TransformComponent:
+      Translation: [9.9, 1.1, 0.0]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.89, 0.00, 0.89, 1.0]
+  - Entity: 7000000011
+    TagComponent:
+      Tag: RightQuad_1_1
+    TransformComponent:
+      Translation: [9.9, 1.1, -1.1]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.90, 0.00, 0.79, 1.0]
+  - Entity: 7000000012
+    TagComponent:
+      Tag: RightQuad_1_2
+    TransformComponent:
+      Translation: [9.9, 1.1, -2.2]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.91, 0.00, 0.69, 1.0]
+  - Entity: 7000000013
+    TagComponent:
+      Tag: RightQuad_1_3
+    TransformComponent:
+      Translation: [9.9, 1.1, -3.3]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.93, 0.00, 0.59, 1.0]
+  - Entity: 7000000014
+    TagComponent:
+      Tag: RightQuad_1_4
+    TransformComponent:
+      Translation: [9.9, 1.1, -4.4]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.94, 0.00, 0.49, 1.0]
+  - Entity: 7000000015
+    TagComponent:
+      Tag: RightQuad_1_5
+    TransformComponent:
+      Translation: [9.9, 1.1, -5.5]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.95, 0.00, 0.40, 1.0]
+  - Entity: 7000000016
+    TagComponent:
+      Tag: RightQuad_1_6
+    TransformComponent:
+      Translation: [9.9, 1.1, -6.6]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.96, 0.00, 0.30, 1.0]
+  - Entity: 7000000017
+    TagComponent:
+      Tag: RightQuad_1_7
+    TransformComponent:
+      Translation: [9.9, 1.1, -7.7]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.98, 0.00, 0.20, 1.0]
+  - Entity: 7000000018
+    TagComponent:
+      Tag: RightQuad_1_8
+    TransformComponent:
+      Translation: [9.9, 1.1, -8.8]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.99, 0.00, 0.10, 1.0]
+  - Entity: 7000000019
+    TagComponent:
+      Tag: RightQuad_1_9
+    TransformComponent:
+      Translation: [9.9, 1.1, -9.9]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 0.00, 1.0]
+  # --- ROW Y=2 ---
+  - Entity: 7000000020
+    TagComponent:
+      Tag: RightQuad_2_0
+    TransformComponent:
+      Translation: [9.9, 2.2, 0.0]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.78, 0.00, 0.78, 1.0]
+  - Entity: 7000000021
+    TagComponent:
+      Tag: RightQuad_2_1
+    TransformComponent:
+      Translation: [9.9, 2.2, -1.1]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.80, 0.00, 0.69, 1.0]
+  - Entity: 7000000022
+    TagComponent:
+      Tag: RightQuad_2_2
+    TransformComponent:
+      Translation: [9.9, 2.2, -2.2]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.83, 0.00, 0.60, 1.0]
+  - Entity: 7000000023
+    TagComponent:
+      Tag: RightQuad_2_3
+    TransformComponent:
+      Translation: [9.9, 2.2, -3.3]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.85, 0.00, 0.52, 1.0]
+  - Entity: 7000000024
+    TagComponent:
+      Tag: RightQuad_2_4
+    TransformComponent:
+      Translation: [9.9, 2.2, -4.4]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.88, 0.00, 0.43, 1.0]
+  - Entity: 7000000025
+    TagComponent:
+      Tag: RightQuad_2_5
+    TransformComponent:
+      Translation: [9.9, 2.2, -5.5]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.90, 0.00, 0.35, 1.0]
+  - Entity: 7000000026
+    TagComponent:
+      Tag: RightQuad_2_6
+    TransformComponent:
+      Translation: [9.9, 2.2, -6.6]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.93, 0.00, 0.26, 1.0]
+  - Entity: 7000000027
+    TagComponent:
+      Tag: RightQuad_2_7
+    TransformComponent:
+      Translation: [9.9, 2.2, -7.7]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.95, 0.00, 0.17, 1.0]
+  - Entity: 7000000028
+    TagComponent:
+      Tag: RightQuad_2_8
+    TransformComponent:
+      Translation: [9.9, 2.2, -8.8]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.98, 0.00, 0.09, 1.0]
+  - Entity: 7000000029
+    TagComponent:
+      Tag: RightQuad_2_9
+    TransformComponent:
+      Translation: [9.9, 2.2, -9.9]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 0.00, 1.0]
+  # --- ROW Y=3 ---
+  - Entity: 7000000030
+    TagComponent:
+      Tag: RightQuad_3_0
+    TransformComponent:
+      Translation: [9.9, 3.3, 0.0]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.67, 0.00, 0.67, 1.0]
+  - Entity: 7000000031
+    TagComponent:
+      Tag: RightQuad_3_1
+    TransformComponent:
+      Translation: [9.9, 3.3, -1.1]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.70, 0.00, 0.59, 1.0]
+  - Entity: 7000000032
+    TagComponent:
+      Tag: RightQuad_3_2
+    TransformComponent:
+      Translation: [9.9, 3.3, -2.2]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.74, 0.00, 0.52, 1.0]
+  - Entity: 7000000033
+    TagComponent:
+      Tag: RightQuad_3_3
+    TransformComponent:
+      Translation: [9.9, 3.3, -3.3]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.78, 0.00, 0.44, 1.0]
+  - Entity: 7000000034
+    TagComponent:
+      Tag: RightQuad_3_4
+    TransformComponent:
+      Translation: [9.9, 3.3, -4.4]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.81, 0.00, 0.37, 1.0]
+  - Entity: 7000000035
+    TagComponent:
+      Tag: RightQuad_3_5
+    TransformComponent:
+      Translation: [9.9, 3.3, -5.5]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.85, 0.00, 0.30, 1.0]
+  - Entity: 7000000036
+    TagComponent:
+      Tag: RightQuad_3_6
+    TransformComponent:
+      Translation: [9.9, 3.3, -6.6]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.89, 0.00, 0.22, 1.0]
+  - Entity: 7000000037
+    TagComponent:
+      Tag: RightQuad_3_7
+    TransformComponent:
+      Translation: [9.9, 3.3, -7.7]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.93, 0.00, 0.15, 1.0]
+  - Entity: 7000000038
+    TagComponent:
+      Tag: RightQuad_3_8
+    TransformComponent:
+      Translation: [9.9, 3.3, -8.8]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.96, 0.00, 0.07, 1.0]
+  - Entity: 7000000039
+    TagComponent:
+      Tag: RightQuad_3_9
+    TransformComponent:
+      Translation: [9.9, 3.3, -9.9]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 0.00, 1.0]
+  # --- ROW Y=4 ---
+  - Entity: 7000000040
+    TagComponent:
+      Tag: RightQuad_4_0
+    TransformComponent:
+      Translation: [9.9, 4.4, 0.0]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.56, 0.00, 0.56, 1.0]
+  - Entity: 7000000041
+    TagComponent:
+      Tag: RightQuad_4_1
+    TransformComponent:
+      Translation: [9.9, 4.4, -1.1]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.60, 0.00, 0.49, 1.0]
+  - Entity: 7000000042
+    TagComponent:
+      Tag: RightQuad_4_2
+    TransformComponent:
+      Translation: [9.9, 4.4, -2.2]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.65, 0.00, 0.43, 1.0]
+  - Entity: 7000000043
+    TagComponent:
+      Tag: RightQuad_4_3
+    TransformComponent:
+      Translation: [9.9, 4.4, -3.3]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.70, 0.00, 0.37, 1.0]
+  - Entity: 7000000044
+    TagComponent:
+      Tag: RightQuad_4_4
+    TransformComponent:
+      Translation: [9.9, 4.4, -4.4]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.75, 0.00, 0.31, 1.0]
+  - Entity: 7000000045
+    TagComponent:
+      Tag: RightQuad_4_5
+    TransformComponent:
+      Translation: [9.9, 4.4, -5.5]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.80, 0.00, 0.25, 1.0]
+  - Entity: 7000000046
+    TagComponent:
+      Tag: RightQuad_4_6
+    TransformComponent:
+      Translation: [9.9, 4.4, -6.6]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.85, 0.00, 0.19, 1.0]
+  - Entity: 7000000047
+    TagComponent:
+      Tag: RightQuad_4_7
+    TransformComponent:
+      Translation: [9.9, 4.4, -7.7]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.90, 0.00, 0.12, 1.0]
+  - Entity: 7000000048
+    TagComponent:
+      Tag: RightQuad_4_8
+    TransformComponent:
+      Translation: [9.9, 4.4, -8.8]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.95, 0.00, 0.06, 1.0]
+  - Entity: 7000000049
+    TagComponent:
+      Tag: RightQuad_4_9
+    TransformComponent:
+      Translation: [9.9, 4.4, -9.9]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 0.00, 1.0]
+  # --- ROW Y=5 ---
+  - Entity: 7000000050
+    TagComponent:
+      Tag: RightQuad_5_0
+    TransformComponent:
+      Translation: [9.9, 5.5, 0.0]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.44, 0.00, 0.44, 1.0]
+  - Entity: 7000000051
+    TagComponent:
+      Tag: RightQuad_5_1
+    TransformComponent:
+      Translation: [9.9, 5.5, -1.1]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.51, 0.00, 0.40, 1.0]
+  - Entity: 7000000052
+    TagComponent:
+      Tag: RightQuad_5_2
+    TransformComponent:
+      Translation: [9.9, 5.5, -2.2]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.57, 0.00, 0.35, 1.0]
+  - Entity: 7000000053
+    TagComponent:
+      Tag: RightQuad_5_3
+    TransformComponent:
+      Translation: [9.9, 5.5, -3.3]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.63, 0.00, 0.30, 1.0]
+  - Entity: 7000000054
+    TagComponent:
+      Tag: RightQuad_5_4
+    TransformComponent:
+      Translation: [9.9, 5.5, -4.4]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.69, 0.00, 0.25, 1.0]
+  - Entity: 7000000055
+    TagComponent:
+      Tag: RightQuad_5_5
+    TransformComponent:
+      Translation: [9.9, 5.5, -5.5]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.75, 0.00, 0.20, 1.0]
+  - Entity: 7000000056
+    TagComponent:
+      Tag: RightQuad_5_6
+    TransformComponent:
+      Translation: [9.9, 5.5, -6.6]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.81, 0.00, 0.15, 1.0]
+  - Entity: 7000000057
+    TagComponent:
+      Tag: RightQuad_5_7
+    TransformComponent:
+      Translation: [9.9, 5.5, -7.7]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.88, 0.00, 0.10, 1.0]
+  - Entity: 7000000058
+    TagComponent:
+      Tag: RightQuad_5_8
+    TransformComponent:
+      Translation: [9.9, 5.5, -8.8]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.94, 0.00, 0.05, 1.0]
+  - Entity: 7000000059
+    TagComponent:
+      Tag: RightQuad_5_9
+    TransformComponent:
+      Translation: [9.9, 5.5, -9.9]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 0.00, 1.0]
+  # --- ROW Y=6 ---
+  - Entity: 7000000060
+    TagComponent:
+      Tag: RightQuad_6_0
+    TransformComponent:
+      Translation: [9.9, 6.6, 0.0]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.33, 0.00, 0.33, 1.0]
+  - Entity: 7000000061
+    TagComponent:
+      Tag: RightQuad_6_1
+    TransformComponent:
+      Translation: [9.9, 6.6, -1.1]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.41, 0.00, 0.30, 1.0]
+  - Entity: 7000000062
+    TagComponent:
+      Tag: RightQuad_6_2
+    TransformComponent:
+      Translation: [9.9, 6.6, -2.2]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.48, 0.00, 0.26, 1.0]
+  - Entity: 7000000063
+    TagComponent:
+      Tag: RightQuad_6_3
+    TransformComponent:
+      Translation: [9.9, 6.6, -3.3]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.56, 0.00, 0.22, 1.0]
+  - Entity: 7000000064
+    TagComponent:
+      Tag: RightQuad_6_4
+    TransformComponent:
+      Translation: [9.9, 6.6, -4.4]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.63, 0.00, 0.19, 1.0]
+  - Entity: 7000000065
+    TagComponent:
+      Tag: RightQuad_6_5
+    TransformComponent:
+      Translation: [9.9, 6.6, -5.5]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.70, 0.00, 0.15, 1.0]
+  - Entity: 7000000066
+    TagComponent:
+      Tag: RightQuad_6_6
+    TransformComponent:
+      Translation: [9.9, 6.6, -6.6]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.78, 0.00, 0.11, 1.0]
+  - Entity: 7000000067
+    TagComponent:
+      Tag: RightQuad_6_7
+    TransformComponent:
+      Translation: [9.9, 6.6, -7.7]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.85, 0.00, 0.07, 1.0]
+  - Entity: 7000000068
+    TagComponent:
+      Tag: RightQuad_6_8
+    TransformComponent:
+      Translation: [9.9, 6.6, -8.8]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.93, 0.00, 0.04, 1.0]
+  - Entity: 7000000069
+    TagComponent:
+      Tag: RightQuad_6_9
+    TransformComponent:
+      Translation: [9.9, 6.6, -9.9]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 0.00, 1.0]
+  # --- ROW Y=7 ---
+  - Entity: 7000000070
+    TagComponent:
+      Tag: RightQuad_7_0
+    TransformComponent:
+      Translation: [9.9, 7.7, 0.0]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.22, 0.00, 0.22, 1.0]
+  - Entity: 7000000071
+    TagComponent:
+      Tag: RightQuad_7_1
+    TransformComponent:
+      Translation: [9.9, 7.7, -1.1]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.31, 0.00, 0.20, 1.0]
+  - Entity: 7000000072
+    TagComponent:
+      Tag: RightQuad_7_2
+    TransformComponent:
+      Translation: [9.9, 7.7, -2.2]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.40, 0.00, 0.17, 1.0]
+  - Entity: 7000000073
+    TagComponent:
+      Tag: RightQuad_7_3
+    TransformComponent:
+      Translation: [9.9, 7.7, -3.3]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.48, 0.00, 0.15, 1.0]
+  - Entity: 7000000074
+    TagComponent:
+      Tag: RightQuad_7_4
+    TransformComponent:
+      Translation: [9.9, 7.7, -4.4]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.57, 0.00, 0.12, 1.0]
+  - Entity: 7000000075
+    TagComponent:
+      Tag: RightQuad_7_5
+    TransformComponent:
+      Translation: [9.9, 7.7, -5.5]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.65, 0.00, 0.10, 1.0]
+  - Entity: 7000000076
+    TagComponent:
+      Tag: RightQuad_7_6
+    TransformComponent:
+      Translation: [9.9, 7.7, -6.6]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.74, 0.00, 0.07, 1.0]
+  - Entity: 7000000077
+    TagComponent:
+      Tag: RightQuad_7_7
+    TransformComponent:
+      Translation: [9.9, 7.7, -7.7]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.83, 0.00, 0.05, 1.0]
+  - Entity: 7000000078
+    TagComponent:
+      Tag: RightQuad_7_8
+    TransformComponent:
+      Translation: [9.9, 7.7, -8.8]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.91, 0.00, 0.02, 1.0]
+  - Entity: 7000000079
+    TagComponent:
+      Tag: RightQuad_7_9
+    TransformComponent:
+      Translation: [9.9, 7.7, -9.9]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 0.00, 1.0]
+  # --- ROW Y=8 ---
+  - Entity: 7000000080
+    TagComponent:
+      Tag: RightQuad_8_0
+    TransformComponent:
+      Translation: [9.9, 8.8, 0.0]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.11, 0.00, 0.11, 1.0]
+  - Entity: 7000000081
+    TagComponent:
+      Tag: RightQuad_8_1
+    TransformComponent:
+      Translation: [9.9, 8.8, -1.1]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.21, 0.00, 0.10, 1.0]
+  - Entity: 7000000082
+    TagComponent:
+      Tag: RightQuad_8_2
+    TransformComponent:
+      Translation: [9.9, 8.8, -2.2]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.31, 0.00, 0.09, 1.0]
+  - Entity: 7000000083
+    TagComponent:
+      Tag: RightQuad_8_3
+    TransformComponent:
+      Translation: [9.9, 8.8, -3.3]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.41, 0.00, 0.07, 1.0]
+  - Entity: 7000000084
+    TagComponent:
+      Tag: RightQuad_8_4
+    TransformComponent:
+      Translation: [9.9, 8.8, -4.4]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.51, 0.00, 0.06, 1.0]
+  - Entity: 7000000085
+    TagComponent:
+      Tag: RightQuad_8_5
+    TransformComponent:
+      Translation: [9.9, 8.8, -5.5]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.60, 0.00, 0.05, 1.0]
+  - Entity: 7000000086
+    TagComponent:
+      Tag: RightQuad_8_6
+    TransformComponent:
+      Translation: [9.9, 8.8, -6.6]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.70, 0.00, 0.04, 1.0]
+  - Entity: 7000000087
+    TagComponent:
+      Tag: RightQuad_8_7
+    TransformComponent:
+      Translation: [9.9, 8.8, -7.7]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.80, 0.00, 0.02, 1.0]
+  - Entity: 7000000088
+    TagComponent:
+      Tag: RightQuad_8_8
+    TransformComponent:
+      Translation: [9.9, 8.8, -8.8]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.90, 0.00, 0.01, 1.0]
+  - Entity: 7000000089
+    TagComponent:
+      Tag: RightQuad_8_9
+    TransformComponent:
+      Translation: [9.9, 8.8, -9.9]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 0.00, 1.0]
+  # --- ROW Y=9 ---
+  - Entity: 7000000090
+    TagComponent:
+      Tag: RightQuad_9_0
+    TransformComponent:
+      Translation: [9.9, 9.9, 0.0]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 0.00, 0.00, 1.0]
+  - Entity: 7000000091
+    TagComponent:
+      Tag: RightQuad_9_1
+    TransformComponent:
+      Translation: [9.9, 9.9, -1.1]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.11, 0.00, 0.00, 1.0]
+  - Entity: 7000000092
+    TagComponent:
+      Tag: RightQuad_9_2
+    TransformComponent:
+      Translation: [9.9, 9.9, -2.2]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.22, 0.00, 0.00, 1.0]
+  - Entity: 7000000093
+    TagComponent:
+      Tag: RightQuad_9_3
+    TransformComponent:
+      Translation: [9.9, 9.9, -3.3]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.33, 0.00, 0.00, 1.0]
+  - Entity: 7000000094
+    TagComponent:
+      Tag: RightQuad_9_4
+    TransformComponent:
+      Translation: [9.9, 9.9, -4.4]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.44, 0.00, 0.00, 1.0]
+  - Entity: 7000000095
+    TagComponent:
+      Tag: RightQuad_9_5
+    TransformComponent:
+      Translation: [9.9, 9.9, -5.5]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.56, 0.00, 0.00, 1.0]
+  - Entity: 7000000096
+    TagComponent:
+      Tag: RightQuad_9_6
+    TransformComponent:
+      Translation: [9.9, 9.9, -6.6]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.67, 0.00, 0.00, 1.0]
+  - Entity: 7000000097
+    TagComponent:
+      Tag: RightQuad_9_7
+    TransformComponent:
+      Translation: [9.9, 9.9, -7.7]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.78, 0.00, 0.00, 1.0]
+  - Entity: 7000000098
+    TagComponent:
+      Tag: RightQuad_9_8
+    TransformComponent:
+      Translation: [9.9, 9.9, -8.8]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.89, 0.00, 0.00, 1.0]
+  - Entity: 7000000099
+    TagComponent:
+      Tag: RightQuad_9_9
+    TransformComponent:
+      Translation: [9.9, 9.9, -9.9]
+      Rotation: [0, 1.570796, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 0.00, 1.0]
+
+
+
+# --- ROW Y=0 ---
+  - Entity: 8000000000
+    TagComponent:
+      Tag: BackQuad_0_0
+    TransformComponent:
+      Translation: [0.0, 0.0, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 1.00, 1.00, 1.0]
+  - Entity: 8000000001
+    TagComponent:
+      Tag: BackQuad_1_0
+    TransformComponent:
+      Translation: [1.1, 0.0, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.89, 0.89, 1.0]
+  - Entity: 8000000002
+    TagComponent:
+      Tag: BackQuad_2_0
+    TransformComponent:
+      Translation: [2.2, 0.0, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.78, 0.78, 1.0]
+  - Entity: 8000000003
+    TagComponent:
+      Tag: BackQuad_3_0
+    TransformComponent:
+      Translation: [3.3, 0.0, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.67, 0.67, 1.0]
+  - Entity: 8000000004
+    TagComponent:
+      Tag: BackQuad_4_0
+    TransformComponent:
+      Translation: [4.4, 0.0, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.56, 0.56, 1.0]
+  - Entity: 8000000005
+    TagComponent:
+      Tag: BackQuad_5_0
+    TransformComponent:
+      Translation: [5.5, 0.0, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.44, 0.44, 1.0]
+  - Entity: 8000000006
+    TagComponent:
+      Tag: BackQuad_6_0
+    TransformComponent:
+      Translation: [6.6, 0.0, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.33, 0.33, 1.0]
+  - Entity: 8000000007
+    TagComponent:
+      Tag: BackQuad_7_0
+    TransformComponent:
+      Translation: [7.7, 0.0, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.22, 0.22, 1.0]
+  - Entity: 8000000008
+    TagComponent:
+      Tag: BackQuad_8_0
+    TransformComponent:
+      Translation: [8.8, 0.0, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.11, 0.11, 1.0]
+  - Entity: 8000000009
+    TagComponent:
+      Tag: BackQuad_9_0
+    TransformComponent:
+      Translation: [9.9, 0.0, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 0.00, 1.0]
+  # --- ROW Y=1 ---
+  - Entity: 8000000010
+    TagComponent:
+      Tag: BackQuad_0_1
+    TransformComponent:
+      Translation: [0.0, 1.1, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.89, 1.00, 0.89, 1.0]
+  - Entity: 8000000011
+    TagComponent:
+      Tag: BackQuad_1_1
+    TransformComponent:
+      Translation: [1.1, 1.1, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.90, 0.89, 0.79, 1.0]
+  - Entity: 8000000012
+    TagComponent:
+      Tag: BackQuad_2_1
+    TransformComponent:
+      Translation: [2.2, 1.1, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.91, 0.78, 0.69, 1.0]
+  - Entity: 8000000013
+    TagComponent:
+      Tag: BackQuad_3_1
+    TransformComponent:
+      Translation: [3.3, 1.1, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.93, 0.67, 0.59, 1.0]
+  - Entity: 8000000014
+    TagComponent:
+      Tag: BackQuad_4_1
+    TransformComponent:
+      Translation: [4.4, 1.1, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.94, 0.56, 0.49, 1.0]
+  - Entity: 8000000015
+    TagComponent:
+      Tag: BackQuad_5_1
+    TransformComponent:
+      Translation: [5.5, 1.1, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.95, 0.44, 0.40, 1.0]
+  - Entity: 8000000016
+    TagComponent:
+      Tag: BackQuad_6_1
+    TransformComponent:
+      Translation: [6.6, 1.1, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.96, 0.33, 0.30, 1.0]
+  - Entity: 8000000017
+    TagComponent:
+      Tag: BackQuad_7_1
+    TransformComponent:
+      Translation: [7.7, 1.1, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.98, 0.22, 0.20, 1.0]
+  - Entity: 8000000018
+    TagComponent:
+      Tag: BackQuad_8_1
+    TransformComponent:
+      Translation: [8.8, 1.1, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.99, 0.11, 0.10, 1.0]
+  - Entity: 8000000019
+    TagComponent:
+      Tag: BackQuad_9_1
+    TransformComponent:
+      Translation: [9.9, 1.1, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 0.00, 1.0]
+  # --- ROW Y=2 ---
+  - Entity: 8000000020
+    TagComponent:
+      Tag: BackQuad_0_2
+    TransformComponent:
+      Translation: [0.0, 2.2, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.78, 1.00, 0.78, 1.0]
+  - Entity: 8000000021
+    TagComponent:
+      Tag: BackQuad_1_2
+    TransformComponent:
+      Translation: [1.1, 2.2, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.80, 0.89, 0.69, 1.0]
+  - Entity: 8000000022
+    TagComponent:
+      Tag: BackQuad_2_2
+    TransformComponent:
+      Translation: [2.2, 2.2, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.83, 0.78, 0.60, 1.0]
+  - Entity: 8000000023
+    TagComponent:
+      Tag: BackQuad_3_2
+    TransformComponent:
+      Translation: [3.3, 2.2, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.85, 0.67, 0.52, 1.0]
+  - Entity: 8000000024
+    TagComponent:
+      Tag: BackQuad_4_2
+    TransformComponent:
+      Translation: [4.4, 2.2, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.88, 0.56, 0.43, 1.0]
+  - Entity: 8000000025
+    TagComponent:
+      Tag: BackQuad_5_2
+    TransformComponent:
+      Translation: [5.5, 2.2, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.90, 0.44, 0.35, 1.0]
+  - Entity: 8000000026
+    TagComponent:
+      Tag: BackQuad_6_2
+    TransformComponent:
+      Translation: [6.6, 2.2, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.93, 0.33, 0.26, 1.0]
+  - Entity: 8000000027
+    TagComponent:
+      Tag: BackQuad_7_2
+    TransformComponent:
+      Translation: [7.7, 2.2, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.95, 0.22, 0.17, 1.0]
+  - Entity: 8000000028
+    TagComponent:
+      Tag: BackQuad_8_2
+    TransformComponent:
+      Translation: [8.8, 2.2, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.98, 0.11, 0.09, 1.0]
+  - Entity: 8000000029
+    TagComponent:
+      Tag: BackQuad_9_2
+    TransformComponent:
+      Translation: [9.9, 2.2, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 0.00, 1.0]
+  # --- ROW Y=3 ---
+  - Entity: 8000000030
+    TagComponent:
+      Tag: BackQuad_0_3
+    TransformComponent:
+      Translation: [0.0, 3.3, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.67, 1.00, 0.67, 1.0]
+  - Entity: 8000000031
+    TagComponent:
+      Tag: BackQuad_1_3
+    TransformComponent:
+      Translation: [1.1, 3.3, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.70, 0.89, 0.59, 1.0]
+  - Entity: 8000000032
+    TagComponent:
+      Tag: BackQuad_2_3
+    TransformComponent:
+      Translation: [2.2, 3.3, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.74, 0.78, 0.52, 1.0]
+  - Entity: 8000000033
+    TagComponent:
+      Tag: BackQuad_3_3
+    TransformComponent:
+      Translation: [3.3, 3.3, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.78, 0.67, 0.44, 1.0]
+  - Entity: 8000000034
+    TagComponent:
+      Tag: BackQuad_4_3
+    TransformComponent:
+      Translation: [4.4, 3.3, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.81, 0.56, 0.37, 1.0]
+  - Entity: 8000000035
+    TagComponent:
+      Tag: BackQuad_5_3
+    TransformComponent:
+      Translation: [5.5, 3.3, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.85, 0.44, 0.30, 1.0]
+  - Entity: 8000000036
+    TagComponent:
+      Tag: BackQuad_6_3
+    TransformComponent:
+      Translation: [6.6, 3.3, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.89, 0.33, 0.22, 1.0]
+  - Entity: 8000000037
+    TagComponent:
+      Tag: BackQuad_7_3
+    TransformComponent:
+      Translation: [7.7, 3.3, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.93, 0.22, 0.15, 1.0]
+  - Entity: 8000000038
+    TagComponent:
+      Tag: BackQuad_8_3
+    TransformComponent:
+      Translation: [8.8, 3.3, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.96, 0.11, 0.07, 1.0]
+  - Entity: 8000000039
+    TagComponent:
+      Tag: BackQuad_9_3
+    TransformComponent:
+      Translation: [9.9, 3.3, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 0.00, 1.0]
+  # --- ROW Y=4 ---
+  - Entity: 8000000040
+    TagComponent:
+      Tag: BackQuad_0_4
+    TransformComponent:
+      Translation: [0.0, 4.4, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.56, 1.00, 0.56, 1.0]
+  - Entity: 8000000041
+    TagComponent:
+      Tag: BackQuad_1_4
+    TransformComponent:
+      Translation: [1.1, 4.4, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.60, 0.89, 0.49, 1.0]
+  - Entity: 8000000042
+    TagComponent:
+      Tag: BackQuad_2_4
+    TransformComponent:
+      Translation: [2.2, 4.4, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.65, 0.78, 0.43, 1.0]
+  - Entity: 8000000043
+    TagComponent:
+      Tag: BackQuad_3_4
+    TransformComponent:
+      Translation: [3.3, 4.4, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.70, 0.67, 0.37, 1.0]
+  - Entity: 8000000044
+    TagComponent:
+      Tag: BackQuad_4_4
+    TransformComponent:
+      Translation: [4.4, 4.4, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.75, 0.56, 0.31, 1.0]
+  - Entity: 8000000045
+    TagComponent:
+      Tag: BackQuad_5_4
+    TransformComponent:
+      Translation: [5.5, 4.4, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.80, 0.44, 0.25, 1.0]
+  - Entity: 8000000046
+    TagComponent:
+      Tag: BackQuad_6_4
+    TransformComponent:
+      Translation: [6.6, 4.4, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.85, 0.33, 0.19, 1.0]
+  - Entity: 8000000047
+    TagComponent:
+      Tag: BackQuad_7_4
+    TransformComponent:
+      Translation: [7.7, 4.4, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.90, 0.22, 0.12, 1.0]
+  - Entity: 8000000048
+    TagComponent:
+      Tag: BackQuad_8_4
+    TransformComponent:
+      Translation: [8.8, 4.4, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.95, 0.11, 0.06, 1.0]
+  - Entity: 8000000049
+    TagComponent:
+      Tag: BackQuad_9_4
+    TransformComponent:
+      Translation: [9.9, 4.4, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 0.00, 1.0]
+  # --- ROW Y=5 ---
+  - Entity: 8000000050
+    TagComponent:
+      Tag: BackQuad_0_5
+    TransformComponent:
+      Translation: [0.0, 5.5, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.44, 1.00, 0.44, 1.0]
+  - Entity: 8000000051
+    TagComponent:
+      Tag: BackQuad_1_5
+    TransformComponent:
+      Translation: [1.1, 5.5, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.51, 0.89, 0.40, 1.0]
+  - Entity: 8000000052
+    TagComponent:
+      Tag: BackQuad_2_5
+    TransformComponent:
+      Translation: [2.2, 5.5, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.57, 0.78, 0.35, 1.0]
+  - Entity: 8000000053
+    TagComponent:
+      Tag: BackQuad_3_5
+    TransformComponent:
+      Translation: [3.3, 5.5, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.63, 0.67, 0.30, 1.0]
+  - Entity: 8000000054
+    TagComponent:
+      Tag: BackQuad_4_5
+    TransformComponent:
+      Translation: [4.4, 5.5, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.69, 0.56, 0.25, 1.0]
+  - Entity: 8000000055
+    TagComponent:
+      Tag: BackQuad_5_5
+    TransformComponent:
+      Translation: [5.5, 5.5, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.75, 0.44, 0.20, 1.0]
+  - Entity: 8000000056
+    TagComponent:
+      Tag: BackQuad_6_5
+    TransformComponent:
+      Translation: [6.6, 5.5, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.81, 0.33, 0.15, 1.0]
+  - Entity: 8000000057
+    TagComponent:
+      Tag: BackQuad_7_5
+    TransformComponent:
+      Translation: [7.7, 5.5, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.88, 0.22, 0.10, 1.0]
+  - Entity: 8000000058
+    TagComponent:
+      Tag: BackQuad_8_5
+    TransformComponent:
+      Translation: [8.8, 5.5, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.94, 0.11, 0.05, 1.0]
+  - Entity: 8000000059
+    TagComponent:
+      Tag: BackQuad_9_5
+    TransformComponent:
+      Translation: [9.9, 5.5, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 0.00, 1.0]
+  # --- ROW Y=6 ---
+  - Entity: 8000000060
+    TagComponent:
+      Tag: BackQuad_0_6
+    TransformComponent:
+      Translation: [0.0, 6.6, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.33, 1.00, 0.33, 1.0]
+  - Entity: 8000000061
+    TagComponent:
+      Tag: BackQuad_1_6
+    TransformComponent:
+      Translation: [1.1, 6.6, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.41, 0.89, 0.30, 1.0]
+  - Entity: 8000000062
+    TagComponent:
+      Tag: BackQuad_2_6
+    TransformComponent:
+      Translation: [2.2, 6.6, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.48, 0.78, 0.26, 1.0]
+  - Entity: 8000000063
+    TagComponent:
+      Tag: BackQuad_3_6
+    TransformComponent:
+      Translation: [3.3, 6.6, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.56, 0.67, 0.22, 1.0]
+  - Entity: 8000000064
+    TagComponent:
+      Tag: BackQuad_4_6
+    TransformComponent:
+      Translation: [4.4, 6.6, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.63, 0.56, 0.19, 1.0]
+  - Entity: 8000000065
+    TagComponent:
+      Tag: BackQuad_5_6
+    TransformComponent:
+      Translation: [5.5, 6.6, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.70, 0.44, 0.15, 1.0]
+  - Entity: 8000000066
+    TagComponent:
+      Tag: BackQuad_6_6
+    TransformComponent:
+      Translation: [6.6, 6.6, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.78, 0.33, 0.11, 1.0]
+  - Entity: 8000000067
+    TagComponent:
+      Tag: BackQuad_7_6
+    TransformComponent:
+      Translation: [7.7, 6.6, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.85, 0.22, 0.07, 1.0]
+  - Entity: 8000000068
+    TagComponent:
+      Tag: BackQuad_8_6
+    TransformComponent:
+      Translation: [8.8, 6.6, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.93, 0.11, 0.04, 1.0]
+  - Entity: 8000000069
+    TagComponent:
+      Tag: BackQuad_9_6
+    TransformComponent:
+      Translation: [9.9, 6.6, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 0.00, 1.0]
+  # --- ROW Y=7 ---
+  - Entity: 8000000070
+    TagComponent:
+      Tag: BackQuad_0_7
+    TransformComponent:
+      Translation: [0.0, 7.7, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.22, 1.00, 0.22, 1.0]
+  - Entity: 8000000071
+    TagComponent:
+      Tag: BackQuad_1_7
+    TransformComponent:
+      Translation: [1.1, 7.7, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.31, 0.89, 0.20, 1.0]
+  - Entity: 8000000072
+    TagComponent:
+      Tag: BackQuad_2_7
+    TransformComponent:
+      Translation: [2.2, 7.7, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.40, 0.78, 0.17, 1.0]
+  - Entity: 8000000073
+    TagComponent:
+      Tag: BackQuad_3_7
+    TransformComponent:
+      Translation: [3.3, 7.7, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.48, 0.67, 0.15, 1.0]
+  - Entity: 8000000074
+    TagComponent:
+      Tag: BackQuad_4_7
+    TransformComponent:
+      Translation: [4.4, 7.7, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.57, 0.56, 0.12, 1.0]
+  - Entity: 8000000075
+    TagComponent:
+      Tag: BackQuad_5_7
+    TransformComponent:
+      Translation: [5.5, 7.7, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.65, 0.44, 0.10, 1.0]
+  - Entity: 8000000076
+    TagComponent:
+      Tag: BackQuad_6_7
+    TransformComponent:
+      Translation: [6.6, 7.7, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.74, 0.33, 0.07, 1.0]
+  - Entity: 8000000077
+    TagComponent:
+      Tag: BackQuad_7_7
+    TransformComponent:
+      Translation: [7.7, 7.7, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.83, 0.22, 0.05, 1.0]
+  - Entity: 8000000078
+    TagComponent:
+      Tag: BackQuad_8_7
+    TransformComponent:
+      Translation: [8.8, 7.7, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.91, 0.11, 0.02, 1.0]
+  - Entity: 8000000079
+    TagComponent:
+      Tag: BackQuad_9_7
+    TransformComponent:
+      Translation: [9.9, 7.7, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 0.00, 1.0]
+  # --- ROW Y=8 ---
+  - Entity: 8000000080
+    TagComponent:
+      Tag: BackQuad_0_8
+    TransformComponent:
+      Translation: [0.0, 8.8, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.11, 1.00, 0.11, 1.0]
+  - Entity: 8000000081
+    TagComponent:
+      Tag: BackQuad_1_8
+    TransformComponent:
+      Translation: [1.1, 8.8, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.21, 0.89, 0.10, 1.0]
+  - Entity: 8000000082
+    TagComponent:
+      Tag: BackQuad_2_8
+    TransformComponent:
+      Translation: [2.2, 8.8, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.31, 0.78, 0.09, 1.0]
+  - Entity: 8000000083
+    TagComponent:
+      Tag: BackQuad_3_8
+    TransformComponent:
+      Translation: [3.3, 8.8, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.41, 0.67, 0.07, 1.0]
+  - Entity: 8000000084
+    TagComponent:
+      Tag: BackQuad_4_8
+    TransformComponent:
+      Translation: [4.4, 8.8, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.51, 0.56, 0.06, 1.0]
+  - Entity: 8000000085
+    TagComponent:
+      Tag: BackQuad_5_8
+    TransformComponent:
+      Translation: [5.5, 8.8, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.60, 0.44, 0.05, 1.0]
+  - Entity: 8000000086
+    TagComponent:
+      Tag: BackQuad_6_8
+    TransformComponent:
+      Translation: [6.6, 8.8, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.70, 0.33, 0.04, 1.0]
+  - Entity: 8000000087
+    TagComponent:
+      Tag: BackQuad_7_8
+    TransformComponent:
+      Translation: [7.7, 8.8, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.80, 0.22, 0.02, 1.0]
+  - Entity: 8000000088
+    TagComponent:
+      Tag: BackQuad_8_8
+    TransformComponent:
+      Translation: [8.8, 8.8, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.90, 0.11, 0.01, 1.0]
+  - Entity: 8000000089
+    TagComponent:
+      Tag: BackQuad_9_8
+    TransformComponent:
+      Translation: [9.9, 8.8, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 0.00, 1.0]
+  # --- ROW Y=9 ---
+  - Entity: 8000000090
+    TagComponent:
+      Tag: BackQuad_0_9
+    TransformComponent:
+      Translation: [0.0, 9.9, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.00, 1.00, 0.00, 1.0]
+  - Entity: 8000000091
+    TagComponent:
+      Tag: BackQuad_1_9
+    TransformComponent:
+      Translation: [1.1, 9.9, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.11, 0.89, 0.00, 1.0]
+  - Entity: 8000000092
+    TagComponent:
+      Tag: BackQuad_2_9
+    TransformComponent:
+      Translation: [2.2, 9.9, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.22, 0.78, 0.00, 1.0]
+  - Entity: 8000000093
+    TagComponent:
+      Tag: BackQuad_3_9
+    TransformComponent:
+      Translation: [3.3, 9.9, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.33, 0.67, 0.00, 1.0]
+  - Entity: 8000000094
+    TagComponent:
+      Tag: BackQuad_4_9
+    TransformComponent:
+      Translation: [4.4, 9.9, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.44, 0.56, 0.00, 1.0]
+  - Entity: 8000000095
+    TagComponent:
+      Tag: BackQuad_5_9
+    TransformComponent:
+      Translation: [5.5, 9.9, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.56, 0.44, 0.00, 1.0]
+  - Entity: 8000000096
+    TagComponent:
+      Tag: BackQuad_6_9
+    TransformComponent:
+      Translation: [6.6, 9.9, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.67, 0.33, 0.00, 1.0]
+  - Entity: 8000000097
+    TagComponent:
+      Tag: BackQuad_7_9
+    TransformComponent:
+      Translation: [7.7, 9.9, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.78, 0.22, 0.00, 1.0]
+  - Entity: 8000000098
+    TagComponent:
+      Tag: BackQuad_8_9
+    TransformComponent:
+      Translation: [8.8, 9.9, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [0.89, 0.11, 0.00, 1.0]
+  - Entity: 8000000099
+    TagComponent:
+      Tag: BackQuad_9_9
+    TransformComponent:
+      Translation: [9.9, 9.9, -9.9]
+      Rotation: [0, 0, 0]
+      Scale: [1, 1, 1]
+    SpriteRendrerComponent:
+      Color: [1.00, 0.00, 0.00, 1.0]

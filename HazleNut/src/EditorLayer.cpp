@@ -367,6 +367,15 @@ namespace Hazle
 
 	void EditorLayer::OnUpdate(Timestep ts)
 	{
+		currentFrameTime = ts.GetMilliseconds() - lastFrameTime[9];
+		for (int i = 0; i < 9; i++)
+		{
+			lastFrameTime[i] = lastFrameTime[i + 1];
+			averageFrameTime += lastFrameTime[i];
+		}
+		fps = 1000.0f / currentFrameTime;
+		averageFrameTime /= 10.0f;
+		avg_FPS = 1000.0f / averageFrameTime;
 
 		if (Input::IsKeyPressed(Key::Escape))
 		{
@@ -549,6 +558,9 @@ namespace Hazle
 		ImGui::Text("Vertices: %d", stats.QuadCount * 4);
 		ImGui::Text("Indices: %d", stats.QuadCount * 6);
 		
+		ImGui::Separator();
+		ImGui::Text("FrameTime: %d ms", currentFrameTime);
+		ImGui::Text("Average FPS: %d", fps);
 		ImGui::Separator();
 
 		ImGui::Checkbox("Show Physics Colliders", &m_ShowPhysicsColliders);
