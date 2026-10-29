@@ -9,8 +9,8 @@
 
 ---
 
-![HazleNut Level Editor Workspace]
-<img width="1920" height="1080" alt="Editor Camera View Dark Theme" src="https://github.com/user-attachments/assets/11d810de-5c9f-4edb-ac20-1bf043af66c9" />
+# ![HazleNut Level Editor Workspace and demo video 720p]
+https://github.com/user-attachments/assets/ff4b478c-142d-413d-bf4b-95f2631a7d32
 
 ---
 
